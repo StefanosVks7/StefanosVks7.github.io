@@ -1,159 +1,144 @@
 const canvas = document.getElementById("mlp-bg");
 const ctx = canvas.getContext("2d");
+
 let W, H;
-let layers;
-let nodes = [];
-const edges = [];
-let activeLayer = 0;
-const waveSpeed = 0.02;
+let particles = [];
+let mouse = { x: null, y: null };
+
+const particleCount = 120;
+const maxDistance = 120;
 
 function resizeCanvas() {
-    const dpr = window.devicePixelRatio || 1;
-    W = window.innerWidth;
-    H = window.innerHeight;
+  const dpr = window.devicePixelRatio || 1;
 
-    // Adjust layers for small screens
-    if (W < H) {
-    layers = [4, 8, 8, 2];
-    } else {
-    layers = [4, 8, 10, 8, 2];
-    }
+  W = window.innerWidth;
+  H = window.innerHeight;
 
-    canvas.width = W * dpr;
-    canvas.height = H * dpr;
-    canvas.style.width = W + "px";
-    canvas.style.height = H + "px";
-    ctx.setTransform(1, 0, 0, 1, 0, 0);
-    ctx.scale(dpr, dpr);
+  canvas.width = W * dpr;
+  canvas.height = H * dpr;
+  canvas.style.width = W + "px";
+  canvas.style.height = H + "px";
 
-    generateNodes();
+  ctx.setTransform(1,0,0,1,0,0);
+  ctx.scale(dpr, dpr);
+
+  initParticles();
 }
 
 window.addEventListener("resize", resizeCanvas);
 
-function generateNodes() {
-  nodes.length = 0;
-  edges.length = 0;
+window.addEventListener("mousemove", e => {
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+});
 
-  const rotateMobile = W < H;
+window.addEventListener("mouseleave", () => {
+  mouse.x = null;
+  mouse.y = null;
+});
 
-  if (rotateMobile) {
-    // === ROTATED (vertical) layout ===
-    const spacingY = H / (layers.length + 1); // vertical spacing between layers
-    const maxNodes = Math.max(...layers);
-    const spacingX = W / (maxNodes + 1); // horizontal spacing between nodes
-    const totalWidth = spacingX * maxNodes;
-    const xOffset = (W - totalWidth) / 2; // center horizontally
+function initParticles() {
+  particles = [];
 
-    for (let i = 0; i < layers.length; i++) {
-      const layer = [];
-      const nodesInLayer = layers[i];
-      const layerWidth = spacingX * nodesInLayer;
-      const layerXOffset = (W - layerWidth) / 2; // center nodes of each layer
-
-    for (let j = 0; j < nodesInLayer; j++) {
-      const x = - xOffset + layerXOffset + spacingX * (j + 1);
-      const y = spacingY * (i + 1);
-      layer.push({ x, y });
-    }
-
-      nodes.push(layer);
-    }
-
-  } else {
-    // === NORMAL (horizontal) layout ===
-    const spacingX = W / (layers.length + 1);
-    for (let i = 0; i < layers.length; i++) {
-      const layer = [];
-      const spacingY = H / (layers[i] + 1);
-      for (let j = 0; j < layers[i]; j++) {
-        layer.push({ x: spacingX * (i + 1), y: spacingY * (j + 1) });
-      }
-      nodes.push(layer);
-    }
+  for (let i = 0; i < particleCount; i++) {
+    particles.push({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
+      size: Math.random() * 2 + 1
+    });
   }
+}
 
-  // === Create edges ===
-  for (let i = 0; i < nodes.length - 1; i++) {
-    for (let a of nodes[i]) {
-      for (let b of nodes[i + 1]) {
-        edges.push({ a, b, progress: 0 });
+function drawBackground() {
+  const gradient = ctx.createRadialGradient(
+    W/2, H/2, 0,
+    W/2, H/2, H
+  );
+
+  gradient.addColorStop(0, "#0b0f1a");
+  gradient.addColorStop(1, "#000000");
+
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0,0,W,H);
+}
+
+function updateParticles() {
+
+  for (let p of particles) {
+
+    p.x += p.vx;
+    p.y += p.vy;
+
+    if (p.x < 0 || p.x > W) p.vx *= -1;
+    if (p.y < 0 || p.y > H) p.vy *= -1;
+
+    if (mouse.x !== null) {
+      const dx = p.x - mouse.x;
+      const dy = p.y - mouse.y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+
+      if (dist < 150) {
+        p.vx += dx * 0.0003;
+        p.vy += dy * 0.0003;
       }
     }
   }
 }
 
-let lastTime = performance.now();
+function drawParticles() {
 
-function draw(time = performance.now()) {
-  const delta = (time - lastTime) / 3000; // seconds since last frame
-  lastTime = time;
+  ctx.shadowColor = "rgba(120,200,255,0.7)";
+  ctx.shadowBlur = 10;
 
-  ctx.fillStyle = "rgba(0,0,0,0.3)";
-  ctx.fillRect(0, 0, W, H);
-
-  // dim static edges
-  ctx.strokeStyle = "rgba(255,255,255,0.05)";
-  ctx.lineWidth = 1;
-  for (let e of edges) {
+  for (let p of particles) {
+    ctx.fillStyle = "rgba(180,200,255,0.9)";
     ctx.beginPath();
-    ctx.moveTo(e.a.x, e.a.y);
-    ctx.lineTo(e.b.x, e.b.y);
-    ctx.stroke();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
+    ctx.fill();
   }
 
-  // update signal progress with time delta
-  for (let e of edges) {
-    if (nodes[activeLayer].includes(e.a) && nodes[activeLayer + 1].includes(e.b)) {
-      e.progress += waveSpeed * delta * 60; // normalize to 60 FPS baseline
-      if (e.progress > 1) e.progress = 1;
+  ctx.shadowBlur = 0;
+}
 
-      const grad = ctx.createLinearGradient(e.a.x, e.a.y, e.b.x, e.b.y);
-      grad.addColorStop(0, "rgba(125, 249, 255,0.1)");
-      grad.addColorStop(Math.max(0, e.progress - 0.1), "rgba(125, 249, 255,0.1)");
-      grad.addColorStop(e.progress, "rgba(125, 249, 255,0.1)");
-      grad.addColorStop(Math.min(1, e.progress + 0.1), "rgba(125, 249, 255,0)");
-      grad.addColorStop(1, "rgba(0,0,255,0)");
+function drawConnections() {
 
-      ctx.strokeStyle = grad;
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.moveTo(e.a.x, e.a.y);
-      ctx.lineTo(e.b.x, e.b.y);
-      ctx.stroke();
-    } else {
-      e.progress = 0;
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+
+      const a = particles[i];
+      const b = particles[j];
+
+      const dx = a.x - b.x;
+      const dy = a.y - b.y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+
+      if (dist < maxDistance) {
+
+        const alpha = 1 - dist / maxDistance;
+
+        ctx.strokeStyle = `rgba(150,180,255,${alpha * 0.3})`;
+        ctx.lineWidth = 1;
+
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+      }
     }
   }
+}
 
-  // light up nodes
-  for (let i = 0; i < nodes.length; i++) {
-    for (let n of nodes[i]) {
-      const active = i === activeLayer || i === activeLayer + 1;
-      const glow = active ? 0.8 : 0.3;
-      const grad = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, 7);
-      grad.addColorStop(0, `rgba(150,150,150,${glow})`);
-      grad.addColorStop(1, "rgba(150,150,150,0)");
-      ctx.fillStyle = grad;
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, 5, 0, Math.PI * 2);
-      ctx.fill();
-    }
-  }
+function animate() {
 
-  // advance layer when all edges complete
-  const allEdgesComplete = edges
-    .filter(e => nodes[activeLayer].includes(e.a) && nodes[activeLayer + 1].includes(e.b))
-    .every(e => e.progress >= 1);
+  drawBackground();
+  updateParticles();
+  drawConnections();
+  drawParticles();
 
-  if (allEdgesComplete) {
-    activeLayer++;
-    if (activeLayer >= nodes.length - 1) activeLayer = 0;
-    for (let e of edges) e.progress = 0;
-  }
-
-  requestAnimationFrame(draw);
+  requestAnimationFrame(animate);
 }
 
 resizeCanvas();
-draw();
+animate();
