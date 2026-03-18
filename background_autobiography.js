@@ -1,6 +1,5 @@
 (function () {
 
-  // === CREATE CANVAS ===
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
   document.body.appendChild(canvas);
@@ -10,7 +9,6 @@
   canvas.style.left = "0";
   canvas.style.zIndex = "-1";
 
-  // === IMAGE (YOUR FACE) ===
   const img = new Image();
   img.src = "icon.png";
 
@@ -19,9 +17,8 @@
   let mouse = { x: 0, y: 0 };
   let time = 0;
 
-  const PARTICLE_COUNT = 300;
+  const PARTICLE_COUNT = 350;
   const FIELD_SCALE = 0.002;
-  const MAX_SPEED = 1.4;
 
   mouse.x = window.innerWidth / 2;
   mouse.y = window.innerHeight / 2;
@@ -51,9 +48,9 @@
     mouse.y = e.clientY;
   });
 
-  // === PARTICLE CLASS ===
   class Particle {
-    constructor() {
+    constructor(layer) {
+      this.layer = layer; // depth layer
       this.reset();
     }
 
@@ -71,28 +68,26 @@
         Math.sin(this.x * FIELD_SCALE) +
         Math.cos(this.y * FIELD_SCALE);
 
-      this.vx += Math.cos(angle) * 0.2;
-      this.vy += Math.sin(angle) * 0.2;
+      const speedFactor = 0.15 + this.layer * 0.1;
 
+      this.vx += Math.cos(angle) * speedFactor;
+      this.vy += Math.sin(angle) * speedFactor;
+
+      // subtle mouse influence
       const dx = this.x - mouse.x;
       const dy = this.y - mouse.y;
       const dist = Math.sqrt(dx * dx + dy * dy) || 1;
 
-      // vortex
-      if (dist < 200) {
-        const a = Math.atan2(dy, dx);
-        this.vx += Math.cos(a + Math.PI / 2) * 0.3;
-        this.vy += Math.sin(a + Math.PI / 2) * 0.3;
-      }
-
-      const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
-      if (speed > MAX_SPEED) {
-        this.vx *= 0.92;
-        this.vy *= 0.92;
+      if (dist < 180) {
+        this.vx += dx * 0.0002 * this.layer;
+        this.vy += dy * 0.0002 * this.layer;
       }
 
       this.x += this.vx;
       this.y += this.vy;
+
+      this.vx *= 0.96;
+      this.vy *= 0.96;
 
       this.life--;
 
@@ -106,14 +101,14 @@
     }
 
     draw() {
-      const hue = (this.x * 0.2 + this.y * 0.2 + time * 40) % 360;
+      const alpha = 0.2 + this.layer * 0.3;
 
       ctx.beginPath();
       ctx.moveTo(this.x, this.y);
-      ctx.lineTo(this.x - this.vx * 4, this.y - this.vy * 4);
+      ctx.lineTo(this.x - this.vx * 5, this.y - this.vy * 5);
 
-      ctx.strokeStyle = `hsla(${hue}, 90%, 70%, 0.8)`;
-      ctx.lineWidth = 1;
+      ctx.strokeStyle = `rgba(120,200,255,${alpha})`;
+      ctx.lineWidth = this.layer * 1.2;
       ctx.stroke();
     }
   }
@@ -121,26 +116,39 @@
   function initParticles() {
     particles = [];
 
-    const count = width < 600 ? 180 : PARTICLE_COUNT;
-
-    for (let i = 0; i < count; i++) {
-      particles.push(new Particle());
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      const layer = Math.random(); // depth
+      particles.push(new Particle(layer));
     }
   }
 
-  // === DRAW IMAGE (INTEGRATED) ===
-  function drawImage() {
+  // 🎬 CINEMATIC FACE
+  function drawFace() {
     if (!img.complete) return;
 
-    const size = Math.min(width, height) * 0.35;
+    const baseSize = Math.min(width, height) * 0.35;
+
+    // slow breathing scale
+    const scale = 1 + Math.sin(time * 0.5) * 0.03;
+
+    const size = baseSize * scale;
+
+    // subtle floating motion
+    const offsetX = Math.sin(time * 0.3) * 10;
+    const offsetY = Math.cos(time * 0.25) * 10;
 
     ctx.save();
-    ctx.globalAlpha = 0.08;
+
+    // glow pulse
+    ctx.shadowColor = "rgba(0,150,255,0.4)";
+    ctx.shadowBlur = 40 + Math.sin(time) * 10;
+
+    ctx.globalAlpha = 0.1;
 
     ctx.drawImage(
       img,
-      width / 2 - size / 2,
-      height / 2 - size / 2,
+      width / 2 - size / 2 + offsetX,
+      height / 2 - size / 2 + offsetY,
       size,
       size
     );
@@ -148,18 +156,17 @@
     ctx.restore();
   }
 
-  // === ANIMATION ===
   function animate() {
     time += 0.01;
 
-    ctx.fillStyle = "rgba(0,0,0,0.1)";
+    // smoother trails (fog feel)
+    ctx.fillStyle = "rgba(0,0,0,0.06)";
     ctx.fillRect(0, 0, width, height);
 
-    // draw your face FIRST (behind particles)
-    drawImage();
+    drawFace();
 
-    ctx.shadowColor = "rgba(0,200,255,0.8)";
-    ctx.shadowBlur = 12;
+    ctx.shadowColor = "rgba(120,200,255,0.6)";
+    ctx.shadowBlur = 10;
 
     particles.forEach(p => {
       p.update();
