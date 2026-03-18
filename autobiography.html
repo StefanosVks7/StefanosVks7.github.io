@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="icon.png">
+  <title>Stefanos Voikos</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* Background canvas */
+    #mlp-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+      background: black;
+    }
+  </style>
+</head>
+<body>
+  <!-- Neural Network Background -->
+  <canvas id="mlp-bg"></canvas>
+
+  <!-- Sidebar -->
+  <div id="mySidebar" class="sidebar">
+    <div class="sidebar-content">
+      <div class="nav-links">
+                <a href="home.html">Home</a>
+                <a href="thesis.html">Thesis</a>
+                <a href="projects.html">Projects</a>
+                <a href="autobiography.html">Auto-Biography</a>
+      </div>
+      <div class="sidebar-footer">
+        <h3>Contact</h3>
+        <div class="social-icons">
+          <a href="mailto:elstefanosvks7@gmail.com" target="_blank"><i class="fa-regular fa-envelope"></i></a>
+          <a href="mailto:stefvoikos@netmode.ntua.gr" target="_blank"><i class="fa-regular fa-envelope"></i></a>
+          <a href="https://www.instagram.com/stefanos_vks7/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/profile.php?id=100007415688420" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://github.com/StefanosVks7" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div id="main">
+    <button class="openbtn" onclick="toggleNav()">&#9776;</button>
+    
+    <header class="header">
+      <h1 class="fade-in">Stefanos Voikos</h1>
+      <p class="fade-in delay-1">Electrical and Computer Engineer | Data Scientist | Network Enginnering | ML Enginnering </p>
+    </header>
+
+    <section class="about fade-in delay-2">
+      <h2>About Me</h2>
+      <p> Stefanos Voikos is a Research Assistant at the Network Management and Optimal Design Laboratory at the National Technical University of Athens (NTUA). He received his Diploma in Electrical and Computer Engineering from NTUA in 2023 and is currently pursuing an MSc in Data Science and Machine Learning at the same institution. His research interests focus on radio and compute resource allocation in wireless federated learning systems, with emphasis on optimization, distributed machine learning, and efficient resource management in next-generation wireless networks. His work also involves applying machine learning and optimization techniques to improve system performance, scalability, and energy efficiency in communication networks.</p>
+      <h3> Sports, Gymnastics, Football, Music </h3>
+      <p> In my free time, I actively engage in sports and gymnastics, as I believe in the importance of good physical condition to enhance mental clarity and efficiency. Football, as a team sport, has helped me cultivate skills in cooperation, strategic thinking and perseverance. At the same time, music is a creative outlet and a means of relaxation for me, enhancing inspiration and balance in my everyday life. All these activities contribute to the formation of a complete lifestyle, with an emphasis on discipline, teamwork and creativity.</p>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+
+  <script src="background_home.js"></script>
+</body>
+</html>
