@@ -16,6 +16,48 @@
       z-index: -1;
       background: black;
     }
+    /* Το εφέ της σταθερής φωτογραφίας στο φόντο */
+.bio-hero-image {
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('your-photo-1.jpg');
+    height: 60vh;
+    background-attachment: fixed; /* Αυτό κάνει το Parallax */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.bio-section {
+    padding: 100px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* "Glassmorphism" Card */
+.bio-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 700px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* Animation για το Reveal καθώς σκρολάρεις */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
   </style>
 </head>
 <body>
@@ -48,20 +90,34 @@
   <div id="main">
     <button class="openbtn" onclick="toggleNav()">&#9776;</button>
     
-    <header class="header">
-      <h1 class="fade-in">Stefanos Voikos</h1>
-      <p class="fade-in delay-1">Electrical and Computer Engineer | Data Scientist | Network Enginnering | ML Enginnering </p>
-    </header>
+    <div class="bio-hero-image">
+        <div class="hero-text fade-in">
+            <h1>Stefanos Voikos</h1>
+            <p>From the fields of Chaidari to the Labs of NTUA</p>
+        </div>
+    </div>
 
-    <section class="about fade-in delay-2">
-      <h2>About Me</h2>
-      <p> Stefanos Voikos is a Research Assistant at the Network Management and Optimal Design Laboratory at the National Technical University of Athens (NTUA). He received his Diploma in Electrical and Computer Engineering from NTUA in 2023 and is currently pursuing an MSc in Data Science and Machine Learning at the same institution. His research interests focus on radio and compute resource allocation in wireless federated learning systems, with emphasis on optimization, distributed machine learning, and efficient resource management in next-generation wireless networks. His work also involves applying machine learning and optimization techniques to improve system performance, scalability, and energy efficiency in communication networks.</p>
-      <h3> Sports, Gymnastics, Football, Music </h3>
-      <p> In my free time, I actively engage in sports and gymnastics, as I believe in the importance of good physical condition to enhance mental clarity and efficiency. Football, as a team sport, has helped me cultivate skills in cooperation, strategic thinking and perseverance. At the same time, music is a creative outlet and a means of relaxation for me, enhancing inspiration and balance in my everyday life. All these activities contribute to the formation of a complete lifestyle, with an emphasis on discipline, teamwork and creativity.</p>
+    <section class="bio-section reveal">
+        <div class="bio-card">
+            <h2>Origins & Foundations</h2>
+            <p>Raised in <strong>Chaidari</strong>, my journey began with a balance of rigorous study and competitive sports. My ancestry instilled in me a deep respect for perseverance—a trait that led me through the demanding halls of Electrical Engineering at NTUA.</p>
+        </div>
     </section>
-    <section class="about fade-in delay-3"> </section>
-    <h2>In General, I have to add more over myself</h2>
-  </div>
+
+    <section class="bio-section reveal">
+        <div class="bio-card">
+            <h2>The Athlete's Mindset in Research</h2>
+            <p>I believe that <strong>precision in time scheduling</strong> is as vital as precision in an algorithm. Years in gymnastics taught me that excellence is a habit of discipline. I apply this same "Athlete's Ethic" to my PhD research, treating every complex optimization problem as a challenge of endurance and focus.</p>
+        </div>
+    </section>
+
+    <section class="bio-section reveal">
+        <div class="bio-card">
+            <h2>Creative Sanctuary</h2>
+            <p>Beyond the code and the mathematical proofs, <strong>Music</strong> remains my creative sanctuary. It provides the necessary relaxation to maintain mental clarity, ensuring a balanced lifestyle focused on continuous growth.</p>
+        </div>
+    </section>
+</div>
 
   <script src="script.js"></script>
 
