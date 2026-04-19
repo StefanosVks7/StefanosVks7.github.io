@@ -36,16 +36,6 @@
     text-transform: uppercase;
 }
 
-.tech-stack span {
-    display: inline-block;
-    background: rgba(255,255,255,0.1);
-    margin-right: 5px;
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    margin-top: 10px;
-}
-
 .scholar-btn {
     display: block;
     text-align: center;
@@ -55,6 +45,64 @@
     border-radius: 8px;
     margin-top: 20px;
     text-decoration: none;
+}
+
+      /* Highlight για το DiMAT */
+.highlight-card {
+    border: 1px solid #007bff !important;
+    background: rgba(0, 123, 255, 0.05) !important;
+}
+
+.status-badge {
+    color: #28a745;
+    font-weight: bold;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+}
+
+/* Πιστοποιήσεις */
+.certification-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.cert-item {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cert-item i {
+    font-size: 2rem;
+    color: #00c6ff;
+    margin-right: 15px;
+}
+
+.cert-info h4 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.cert-info p {
+    margin: 5px 0 0 0;
+    font-size: 0.8rem;
+    color: #bbb;
+}
+
+.tech-stack span {
+    background: #222;
+    border: 1px solid #444;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    margin-right: 5px;
+    display: inline-block;
+    margin-top: 5px;
 }
   </style>
 </head>
@@ -91,7 +139,7 @@
     <button class="openbtn" onclick="toggleNav()">&#9776;</button>
     
     <header class="header">
-        <h1>Engineering Portfolio & Research</h1>
+        <h1>Engineering Portfolio & Project and Research</h1>
     </header>
 
     <section class="projects fade-in delay-1">
@@ -101,25 +149,25 @@
             <div class="paper-entry">
                 <h3>Coordinated jamming and poisoning attack detection and mitigation in wireless federated learning networks</h3>
                 <p><em>Published in IEEE Open Journal of the Communications Society, 2025</em></p>
-                <a href="URL_LINK" target="_blank" class="paper-link"><i class="fas fa-link"></i> View on Publisher</a>
+                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=CzUVqG0AAAAJ&citation_for_view=CzUVqG0AAAAJ:u-x6o8ySG0sC" target="_blank" class="paper-link"><i class="fas fa-link"></i> View on Publisher</a>
             </div>
 
             <div class="paper-entry">
                 <h3>Resilient RAN Selection and SFC Deployment in Dependable Wireless Edge Cloud Networks</h3>
                 <p><em>Published in IEEE Transactions on Network and Service Management 23, 1312-1328, 2025</em></p>
-                <a href="URL_LINK" target="_blank" class="paper-link"><i class="fas fa-link"></i> View on Publisher</a>
+                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=CzUVqG0AAAAJ&citation_for_view=CzUVqG0AAAAJ:d1gkVwhDpl0C" target="_blank" class="paper-link"><i class="fas fa-link"></i> View on Publisher</a>
             </div>
 
           <div class="paper-entry">
                 <h3>A Reference Architecture for Digital Transformation of SMEs in the Manufacturing Domain</h3>
                 <p><em>Published in 2025 IEEE International Conference on Engineering, Technology, and Innovation (ICE/ITMC), 2025</em></p>
-                <a href="URL_LINK" target="_blank" class="paper-link"><i class="fas fa-link"></i> View on Publisher</a>
+                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=CzUVqG0AAAAJ&citation_for_view=CzUVqG0AAAAJ:u5HHmVD_uO8C" target="_blank" class="paper-link"><i class="fas fa-link"></i> View on Publisher</a>
             </div>
 
           <div class="paper-entry">
                 <h3>Latency and Energy Minimization in RIS-enabled AirComp Federated Learning Networks</h3>
                 <p><em>Published in IEEE Transactions on Vehicular Technology, 2026</em></p>
-                <a href="URL_LINK" target="_blank" class="paper-link"><i class="fas fa-link"></i> View on Publisher</a>
+                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=CzUVqG0AAAAJ&citation_for_view=CzUVqG0AAAAJ:9yKSN-GCB0IC" target="_blank" class="paper-link"><i class="fas fa-link"></i> View on Publisher</a>
             </div>
 
             <div class="scholar-cta">
@@ -129,26 +177,86 @@
             </div>
         </div>
     </section>
+    
+    <section class="projects fade-in delay-1">
+        <h2><i class="fas fa-microchip"></i> Research & European Projects</h2>
+        <div class="project-grid">
+            
+            <div class="project-card highlight-card">
+                <span class="category-tag">European Project (Horizon Europe)</span>
+                <h3>DiMAT: Digital Transformation for SMEs</h3>
+                <p class="status-badge">Completed: 12/2025</p>
+                <p>Συμμετοχή στον σχεδιασμό και την υλοποίηση ολιστικής αρχιτεκτονικής για τον ψηφιακό μετασχηματισμό ΜΜΕ. Ανάπτυξη open-source toolkits και διαδραστικών visualizations για το Industry 4.0.</p>
+                <div class="tech-stack">
+                    <span>Python</span> <span>Vue.js</span> <span>Docker</span> <span>D3.js</span> <span>Linux VMs</span> <span>Virtual Objects</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <span class="category-tag">6G Research</span>
+                <h3>Hexa-X-II & 6G Architecture</h3>
+                <p>Συμμετοχή στον σχεδιασμό της αρχιτεκτονικής δικτύων 6G, εστιάζοντας στην ενοποίηση υπολογιστικών πόρων και δικτύου (Compute-Network Integration).</p>
+                <div class="tech-stack">
+                    <span>6G</span> <span>Resource Allocation</span> <span>Optimization</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="projects fade-in delay-2">
-        <h2>Technical Projects</h2>
-        
+        <h2><i class="fas fa-code"></i> Engineering & ML Projects</h2>
         <div class="project-grid">
             <div class="project-card">
-                <span class="category-tag">Machine Learning</span>
+                <span class="category-tag">Data Science & ML</span>
                 <h3>Graph Neural Networks for Social Analysis</h3>
-                <p>Implementation of GNNs to predict emotional ties in school environments using Python and PyTorch.</p>
+                <p>Ανάπτυξη αλγορίθμου πρόβλεψης κοινωνικών και συναισθηματικών σχέσεων σε σχολικά περιβάλλοντα με χρήση GNNs.</p>
                 <div class="tech-stack">
-                    <span>Python</span> <span>PyTorch</span> <span>NetworkX</span>
+                    <span>Python</span> <span>PyTorch</span> <span>NetworkX</span> <span>Machine Learning</span>
                 </div>
             </div>
 
             <div class="project-card">
                 <span class="category-tag">Optimization</span>
                 <h3>RIS-Assisted Resource Management</h3>
-                <p>Simulation of Reconfigurable Intelligent Surfaces to optimize energy harvesting in wireless networks.</p>
+                <p>Επίλυση προβλημάτων βελτιστοποίησης (Convex Optimization) για την κατανομή πόρων σε δίκτυα FL με χρήση RIS.</p>
                 <div class="tech-stack">
-                    <span>MATLAB</span> <span>Optimization</span> <span>Wireless Comm</span>
+                    <span>MATLAB</span> <span>Convex Optimization</span> <span>KKT Conditions</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <span class="category-tag">Mobile Development</span>
+                <h3>Cross-Platform Mobile Applications</h3>
+                <p>Σχεδιασμός και ανάπτυξη εφαρμογών Android/iOS στο πλαίσιο ακαδημαϊκών και προσωπικών projects.</p>
+                <div class="tech-stack">
+                    <span>Flutter</span> <span>Dart</span> <span>NoSQL</span> <span>Neo4j</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects fade-in delay-3">
+        <h2><i class="fas fa-award"></i> Certifications & Distinctions</h2>
+        <div class="certification-grid">
+            <div class="cert-item">
+                <i class="fab fa-microsoft"></i>
+                <div class="cert-info">
+                    <h4>Microsoft Certified: Azure AI Fundamentals</h4>
+                    <p>Credential ID: AI-900</p>
+                </div>
+            </div>
+            <div class="cert-item">
+                <i class="fas fa-satellite-dish"></i>
+                <div class="cert-info">
+                    <h4>HUAWEI Seeds for the Future</h4>
+                    <p>Global Talent Program (2023)</p>
+                </div>
+            </div>
+            <div class="cert-item">
+                <i class="fas fa-terminal"></i>
+                <div class="cert-info">
+                    <h4>IEEEXtreme Programming Competition</h4>
+                    <p>Participations: 2019, 2022, 2024</p>
                 </div>
             </div>
         </div>
