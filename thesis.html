@@ -45,47 +45,64 @@
     </div>
 
     <div id="main">
-        <button class="openbtn" onclick="toggleNav()">&#9776;</button>
-        
-        <header class="header">
-            <h1>Thesis</h1>
-        </header>
-        
-            <h2 class = "fade-in delay-1">Οn this page, I sincerely list and present to you the dissertations that I have prepared throughout my academic career. </h2>
-            
-            </h3>
-
-        <section class="projects fade-in delay-4">
-            <!-- Thesis 1 -->
-            <div class="version-section centered">
-                <h3>Thesis 1 (Graduate Thesis at Electrical and Computer Engineering, NTUA)</h3>
-                <div class="button-group centered">
-                    <a href="thesis_graduate.pdf" target="_blank" class="pdf-button view-button">
-                        <i class="fas fa-external-link-alt"></i>
-                        <span>View PDF</span>
-                    </a>
-                    <a href="thesis_graduate.pdf" download="Thesis_graduate.pdf" class="pdf-button download-button">
-                        <i class="fas fa-download"></i>
-                        <span>Download PDF</span>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="version-section centered">
-                <h3>Thesis 2 (Post-graduate Thesis at Data Science and Machine Learning)</h3>
-                <div class="button-group centered">
-                    <a href="thesis_postgraduate.pdf" target="_blank" class="pdf-button view-button">
-                        <i class="fas fa-external-link-alt"></i>
-                        <span>View PDF</span>
-                    </a>
-                    <a href="thesis_postgraduate.pdf" download="Thesis_postgraduate.pdf" class="pdf-button download-button">
-                        <i class="fas fa-download"></i>
-                        <span>Download PDF</span>
-                    </a>
-                </div>
-            </div>
-        </section>
+    <button class="openbtn" onclick="toggleNav()">&#9776;</button>
+    
+    <header class="header">
+        <h1>Research & Dissertations</h1>
+    </header>
+    
+    <div class="intro-text fade-in delay-1">
+        <p>A chronological overview of my academic research, from my foundational studies at NTUA to my current doctoral investigations in intelligent networking.</p>
     </div>
+
+    <section class="projects fade-in delay-2">
+        
+        <div class="version-section current-research">
+            <span class="status-badge">Ongoing</span>
+            <h3>Doctoral Research (PhD)</h3>
+            <p class="institution">National Technical University of Athens</p>
+            <p class="description">
+                My current research focuses on <strong>Radio and Compute Resource Allocation</strong> within 
+                Wireless Federated Learning systems. I am investigating novel optimization frameworks to 
+                improve energy efficiency and scalability in 6G environments.
+            </p>
+        </div>
+
+        <div class="version-section">
+            <h3>Diploma Thesis (M.Eng. in ECE)</h3>
+            <p class="thesis-title">"Insert Your Actual Thesis Title Here"</p>
+            <p class="abstract-preview">
+                <strong>Key Focus:</strong> Optimization of network resources and performance analysis 
+                in communication systems. (Add a 1-sentence summary of your result here).
+            </p>
+            <div class="button-group">
+                <a href="thesis_graduate.pdf" target="_blank" class="pdf-button view-button">
+                    <i class="fas fa-external-link-alt"></i> <span>View PDF</span>
+                </a>
+                <a href="thesis_graduate.pdf" download="Thesis_graduate.pdf" class="pdf-button download-button">
+                    <i class="fas fa-download"></i> <span>Download</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="version-section">
+            <h3>MSc Thesis (Data Science & ML)</h3>
+            <p class="thesis-title">"Insert Your Actual MSc Thesis Title Here"</p>
+            <p class="abstract-preview">
+                <strong>Key Focus:</strong> Applying Distributed Machine Learning techniques to 
+                solve complex resource management problems in wireless networks.
+            </p>
+            <div class="button-group">
+                <a href="thesis_postgraduate.pdf" target="_blank" class="pdf-button view-button">
+                    <i class="fas fa-external-link-alt"></i> <span>View PDF</span>
+                </a>
+                <a href="thesis_postgraduate.pdf" download="Thesis_postgraduate.pdf" class="pdf-button download-button">
+                    <i class="fas fa-download"></i> <span>Download</span>
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
 
     <script src="script.js"></script>
   <script src="background_thesis.js"></script>
