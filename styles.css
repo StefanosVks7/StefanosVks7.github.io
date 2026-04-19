@@ -47,6 +47,31 @@ section {
   transition: transform 0.3s;
 }
 
+.status-badge {
+    background-color: #007bff; /* Or a color that fits your theme */
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.version-section {
+    background: rgba(255, 255, 255, 0.05); /* Slight glassmorphism */
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.thesis-title {
+    font-style: italic;
+    color: #ccc;
+    margin-bottom: 10px;
+}
+
 .project-card:hover {
   transform: translateY(-5px);
   background: #2a2a2a;
