@@ -14,12 +14,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function reveal() {
   var reveals = document.querySelectorAll(".reveal");
+  var bg2 = document.getElementById("bg-photo-2");
+
   for (var i = 0; i < reveals.length; i++) {
     var windowHeight = window.innerHeight;
     var elementTop = reveals[i].getBoundingClientRect().top;
-    var elementVisible = 150;
-    if (elementTop < windowHeight - elementVisible) {
+    
+    if (elementTop < windowHeight - 150) {
       reveals[i].classList.add("active");
+      
+      // If we reach the second card (Athlete's Mindset), fade in second photo
+      if(i === 1) { 
+          bg2.style.opacity = "1"; 
+      }
     }
   }
 }
