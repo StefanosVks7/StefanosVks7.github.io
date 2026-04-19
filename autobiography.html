@@ -16,18 +16,28 @@
       z-index: -1;
       background: black;
     }
+    body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Replace with your actual photo filename */
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('image_9870b4.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    z-index: -2; /* Keeps it behind everything */
+}
     /* Το εφέ της σταθερής φωτογραφίας στο φόντο */
 .bio-hero-image {
-    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('your-photo-1.jpg');
-    height: 60vh;
-    background-attachment: fixed; /* Αυτό κάνει το Parallax */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
+    text-align: center;
 }
 
 .bio-section {
