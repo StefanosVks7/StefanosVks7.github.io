@@ -17,19 +17,6 @@
     background-size: cover;
     background-position: center;
 }
-
-.second-photo {
-    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('icon.png');
-    opacity: 0; /* Hidden by default */
-}
-    /* Background canvas */
-    #mlp-bg {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: -1;
-      background: black;
-    }
     body::before {
     content: "";
     position: fixed;
@@ -37,12 +24,17 @@
     left: 0;
     width: 100%;
     height: 100%;
-    /* Replace with your actual photo filename */
-    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('icon.png'); 
+    /* Ensure the path to your image is correct */
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('your_actual_photo.jpg'); 
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    z-index: -2; /* Keeps it behind everything */
+    z-index: -2; 
+}
+
+/* Ensure the canvas doesn't block the photo if it's black */
+#mlp-bg {
+    opacity: 0.3; /* This lets the photo show through the neural network lines */
 }
     /* Το εφέ της σταθερής φωτογραφίας στο φόντο */
 .bio-hero-image {
@@ -143,9 +135,8 @@
     </section>
 </div>
 
-  <script src="script.js"></script>
-
-  <script src="background_autobiography.js"></script>
+ <script src="script.js"></script>
+    <script src="background_autobiography.js"></script>
 </body>
-  <div id="bg-photo-2" class="fixed-bg second-photo"></div>
 </html>
+
