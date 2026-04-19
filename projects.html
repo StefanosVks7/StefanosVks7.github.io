@@ -16,6 +16,46 @@
       z-index: -1;
       background: black;
     }
+      .paper-entry {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.paper-link {
+    color: #00c6ff;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.category-tag {
+    background: #007bff;
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.tech-stack span {
+    display: inline-block;
+    background: rgba(255,255,255,0.1);
+    margin-right: 5px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin-top: 10px;
+}
+
+.scholar-btn {
+    display: block;
+    text-align: center;
+    background: #4285F4;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 20px;
+    text-decoration: none;
+}
   </style>
 </head>
 <body>
@@ -48,49 +88,72 @@
 
 <!-- Projects Section -->
     <div id="main">
-        <button class="openbtn" onclick="toggleNav()">&#9776;</button>
+    <button class="openbtn" onclick="toggleNav()">&#9776;</button>
+    
+    <header class="header">
+        <h1>Engineering Portfolio & Research</h1>
+    </header>
+
+    <section class="projects fade-in delay-1">
+        <div class="project-card academic-papers">
+            <h2><i class="fas fa-graduation-cap"></i> Featured Publications</h2>
+            
+            <div class="paper-entry">
+                <h3>Coordinated jamming and poisoning attack detection and mitigation in wireless federated learning networks</h3>
+                <p><em>Published in IEEE Open Journal of the Communications Society, 2025</em></p>
+                <a href="URL_LINK" target="_blank" class="paper-link"><i class="fas fa-link"></i> View on Publisher</a>
+            </div>
+
+            <div class="paper-entry">
+                <h3>Resilient RAN Selection and SFC Deployment in Dependable Wireless Edge Cloud Networks</h3>
+                <p><em>Published in IEEE Transactions on Network and Service Management 23, 1312-1328, 2025</em></p>
+                <a href="URL_LINK" target="_blank" class="paper-link"><i class="fas fa-link"></i> View on Publisher</a>
+            </div>
+
+          <div class="paper-entry">
+                <h3>A Reference Architecture for Digital Transformation of SMEs in the Manufacturing Domain</h3>
+                <p><em>Published in 2025 IEEE International Conference on Engineering, Technology, and Innovation (ICE/ITMC), 2025</em></p>
+                <a href="URL_LINK" target="_blank" class="paper-link"><i class="fas fa-link"></i> View on Publisher</a>
+            </div>
+
+          <div class="paper-entry">
+                <h3>Latency and Energy Minimization in RIS-enabled AirComp Federated Learning Networks</h3>
+                <p><em>Published in IEEE Transactions on Vehicular Technology, 2026</em></p>
+                <a href="URL_LINK" target="_blank" class="paper-link"><i class="fas fa-link"></i> View on Publisher</a>
+            </div>
+
+            <div class="scholar-cta">
+                <a href="https://scholar.google.com/citations?user=CzUVqG0AAAAJ&hl=en&oi=ao" target="_blank" class="btn scholar-btn">
+                    <i class="fab fa-google"></i> Full List on Google Scholar
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects fade-in delay-2">
+        <h2>Technical Projects</h2>
         
-        <header class="header">
-            <h1>Projects as a Graduate Electrical and Computer Engineer</h1>
-        </header>
-        <section class="projects fade-in delay-1">
-            <div class="project-card" >
-                <h2>Projects </h2>
-              
-                <h3>Project 1</h3>
-                <p>(Not yet uploaded)</p>
-
-                <h3>Project 2</h3>
-                <p>(Not yet uploaded)</p>
+        <div class="project-grid">
+            <div class="project-card">
+                <span class="category-tag">Machine Learning</span>
+                <h3>Graph Neural Networks for Social Analysis</h3>
+                <p>Implementation of GNNs to predict emotional ties in school environments using Python and PyTorch.</p>
+                <div class="tech-stack">
+                    <span>Python</span> <span>PyTorch</span> <span>NetworkX</span>
+                </div>
             </div>
-            
-        </section>
-      
-        <section class="projects fade-in delay-1">
-            <div class="project-card" >
-                <h2>Projects as a Post-Graduate Student at NTUA </h2>
-              
-                <h3>Project 1</h3>
-                <p>(Not yet uploaded)</p>
 
-                <h3>Project 2</h3>
-                <p>(Not yet uploaded)</p>
+            <div class="project-card">
+                <span class="category-tag">Optimization</span>
+                <h3>RIS-Assisted Resource Management</h3>
+                <p>Simulation of Reconfigurable Intelligent Surfaces to optimize energy harvesting in wireless networks.</p>
+                <div class="tech-stack">
+                    <span>MATLAB</span> <span>Optimization</span> <span>Wireless Comm</span>
+                </div>
             </div>
-            
-        </section>
-              <section class="projects fade-in delay-1">
-            <div class="project-card" >
-                <h2>Papers and Journals</h2>
-              
-                <h3>Paper 1</h3>
-                <p>(Not yet uploaded)</p>
-
-                <h3>Journal 2</h3>
-                <p>(Not yet uploaded)</p>
-            </div>
-            
-        </section>
-    </div>
+        </div>
+    </section>
+</div>
 
     <script src="script.js"></script>
       <script src="background_projects.js"></script>
