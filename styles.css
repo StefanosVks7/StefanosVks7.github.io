@@ -58,42 +58,34 @@ section {
     display: inline-block;
 }
 
- /* Mobile responsiveness for timeline */
-    @media (max-width: 600px) {
-        .timeline-container {
-            padding: 10px 12px 10px 0;
-            margin: 20px 0;
-        }
+ @media (max-width: 600px) {
+    /* ...existing rules... */
 
-        .timeline-container::after {
-            left: 18px;
-        }
-
-        .timeline-item {
-            padding: 15px 0 15px 44px;
-        }
-
-        .timeline-dot {
-            left: 11px;
-            width: 13px;
-            height: 13px;
-            top: 22px;
-        }
-
-        .timeline-content {
-            padding: 14px;
-            box-sizing: border-box;
-            width: 100%;
-        }
-
-        .timeline-date {
-            font-size: 0.95rem;
-        }
-
-        .timeline-content h3 {
-            font-size: 1rem;
-        }
+    #main {
+        overflow-x: hidden;
     }
+
+    .timeline-container {
+        padding: 10px 8px 10px 0;
+        margin: 20px 0;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .timeline-item {
+        padding: 15px 8px 15px 44px;
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    .timeline-content {
+        padding: 14px;
+        box-sizing: border-box;
+        width: 100%;
+        overflow-wrap: break-word;
+        word-break: break-word;
+    }
+}
 
 .version-section {
     background: rgba(255, 255, 255, 0.05); /* Slight glassmorphism */
