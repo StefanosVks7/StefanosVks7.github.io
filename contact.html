@@ -249,7 +249,7 @@
   </header>
 
   <div class="card">
-    <form id="contactForm">
+    <form id="contactForm" action="https://formspree.io/f/xwvjenlq" method="POST">
 
       <div class="field">
         <label for="name">Your Name</label>
@@ -258,7 +258,7 @@
 
       <div class="field">
         <label for="sender">Your Email</label>
-        <input type="email" id="sender" name="sender" placeholder="you@example.com" required />
+        <input type="email" id="sender" name="email" placeholder="you@example.com" required />
       </div>
 
       <div class="field">
@@ -296,6 +296,8 @@
         </div>
       </div>
 
+      <input type="hidden" name="_replyto" id="replyto" value="elstefanosvks7@gmail.com" />
+      <input type="hidden" name="_subject" value="New message from your website" />
       <button type="submit" class="btn">Send Message</button>
 
       <div class="success-msg" id="successMsg">
@@ -368,22 +370,11 @@
     draw();
   })();
 
-  /* ── Form submit → mailto ── */
-  document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const name      = document.getElementById('name').value.trim();
-    const sender    = document.getElementById('sender').value.trim();
-    const subject   = document.getElementById('subject').value.trim();
-    const message   = document.getElementById('message').value.trim();
-    const recipient = document.querySelector('input[name="recipient"]:checked').value;
-
-    const body = `Name: ${name}\nFrom: ${sender}\n\n${message}`;
-    const mailto = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-    window.location.href = mailto;
-
-    document.getElementById('successMsg').style.display = 'block';
-    this.reset();
+  /* ── Sync selected email to hidden _replyto field ── */
+  document.querySelectorAll('input[name="recipient"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+      document.getElementById('replyto').value = this.value;
+    });
   });
 </script>
 </body>
