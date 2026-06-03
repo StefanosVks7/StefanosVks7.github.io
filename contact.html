@@ -370,9 +370,15 @@
     draw();
   })();
 
-  /* ── Sync selected email to hidden _replyto field ── */
+  /* ── Switch form endpoint based on selected email ── */
+  const endpoints = {
+    'elstefanosvks7@gmail.com': 'https://formspree.io/f/xwvjenlq',
+    'stefvoikos@netmode.ntua.gr': 'https://formspree.io/f/maqzwdba'
+  };
+  const form = document.getElementById('contactForm');
   document.querySelectorAll('input[name="recipient"]').forEach(radio => {
     radio.addEventListener('change', function() {
+      form.action = endpoints[this.value];
       document.getElementById('replyto').value = this.value;
     });
   });
