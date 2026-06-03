@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact — Stefanos Voikos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #020510;
+      color: #e8eaf6;
+      font-family: 'Source Sans 3', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    canvas#stars {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 24px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    header h1 {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      letter-spacing: -0.5px;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    header p {
+      font-size: 1rem;
+      font-weight: 300;
+      color: #8b9fcf;
+      letter-spacing: 0.5px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 560px;
+      background: rgba(10, 14, 40, 0.72);
+      border: 1px solid rgba(120, 140, 210, 0.18);
+      border-radius: 16px;
+      padding: 44px 48px;
+      backdrop-filter: blur(10px);
+    }
+
+    .field {
+      margin-bottom: 24px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #7b8fc0;
+      margin-bottom: 8px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea,
+    select {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(120, 140, 210, 0.22);
+      border-radius: 8px;
+      color: #e8eaf6;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.97rem;
+      padding: 12px 16px;
+      outline: none;
+      transition: border-color 0.25s, background 0.25s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus,
+    select:focus {
+      border-color: rgba(150, 130, 230, 0.6);
+      background: rgba(255,255,255,0.07);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(180, 190, 225, 0.3);
+    }
+
+    select option {
+      background: #0d1230;
+      color: #e8eaf6;
+    }
+
+    .select-wrapper {
+      position: relative;
+    }
+
+    .select-wrapper::after {
+      content: '';
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0; height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 6px solid #7b8fc0;
+      pointer-events: none;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 130px;
+      line-height: 1.6;
+    }
+
+    .divider {
+      height: 1px;
+      background: rgba(120, 140, 210, 0.15);
+      margin: 32px 0;
+    }
+
+    .email-toggle {
+      display: flex;
+      gap: 12px;
+    }
+
+    .email-option {
+      flex: 1;
+      cursor: pointer;
+    }
+
+    .email-option input[type="radio"] {
+      display: none;
+    }
+
+    .email-option .pill {
+      display: block;
+      text-align: center;
+      padding: 11px 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(120, 140, 210, 0.22);
+      background: rgba(255,255,255,0.03);
+      font-size: 0.82rem;
+      color: #8b9fcf;
+      transition: all 0.22s;
+      word-break: break-all;
+      line-height: 1.4;
+    }
+
+    .email-option input[type="radio"]:checked + .pill {
+      border-color: rgba(150, 120, 240, 0.65);
+      background: rgba(120, 90, 220, 0.14);
+      color: #c5b8f7;
+    }
+
+    .email-option .pill:hover {
+      border-color: rgba(150, 130, 230, 0.4);
+      color: #c5b8f7;
+    }
+
+    .pill-label {
+      display: block;
+      font-size: 0.68rem;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      opacity: 0.65;
+    }
+
+    .btn {
+      width: 100%;
+      margin-top: 8px;
+      padding: 14px;
+      background: linear-gradient(135deg, rgba(100, 70, 200, 0.8), rgba(70, 50, 160, 0.9));
+      border: 1px solid rgba(160, 130, 255, 0.35);
+      border-radius: 8px;
+      color: #fff;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+
+    .btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn:active { transform: scale(0.99); }
+
+    .note {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.8rem;
+      color: #5a6a9a;
+    }
+
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 18px;
+      border-radius: 8px;
+      background: rgba(30, 180, 120, 0.1);
+      border: 1px solid rgba(30, 180, 120, 0.3);
+      color: #6ee7b7;
+      font-size: 0.95rem;
+      margin-top: 16px;
+    }
+
+    @media (max-width: 480px) {
+      .card { padding: 32px 24px; }
+      .email-toggle { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="stars"></canvas>
+
+<div class="page">
+  <header>
+    <h1>Get in Touch</h1>
+    <p>Electrical &amp; Computer Engineer &nbsp;|&nbsp; Data Scientist &nbsp;|&nbsp; ML Engineer</p>
+  </header>
+
+  <div class="card">
+    <form id="contactForm">
+
+      <div class="field">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="John Doe" required />
+      </div>
+
+      <div class="field">
+        <label for="sender">Your Email</label>
+        <input type="email" id="sender" name="sender" placeholder="you@example.com" required />
+      </div>
+
+      <div class="field">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" placeholder="Research collaboration, inquiry…" required />
+      </div>
+
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Write your message here…" required></textarea>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="field">
+        <label>Send To</label>
+        <div class="email-toggle">
+
+          <label class="email-option">
+            <input type="radio" name="recipient" value="elstefanosvks7@gmail.com" checked />
+            <span class="pill">
+              <span class="pill-label">Personal</span>
+              elstefanosvks7@gmail.com
+            </span>
+          </label>
+
+          <label class="email-option">
+            <input type="radio" name="recipient" value="stefvoikos@netmode.ntua.gr" />
+            <span class="pill">
+              <span class="pill-label">Academic</span>
+              stefvoikos@netmode.ntua.gr
+            </span>
+          </label>
+
+        </div>
+      </div>
+
+      <button type="submit" class="btn">Send Message</button>
+
+      <div class="success-msg" id="successMsg">
+        ✓ &nbsp; Your message has been sent. I'll get back to you soon!
+      </div>
+    </form>
+  </div>
+
+  <p class="note">Responses within 1–2 business days</p>
+</div>
+
+<script>
+  /* ── Constellation background ── */
+  (function() {
+    const canvas = document.getElementById('stars');
+    const ctx = canvas.getContext('2d');
+    let W, H, nodes, animId;
+
+    function resize() {
+      W = canvas.width  = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+      init();
+    }
+
+    function rand(a, b) { return a + Math.random() * (b - a); }
+
+    function init() {
+      const count = Math.floor(W * H / 7000);
+      nodes = Array.from({length: count}, () => ({
+        x: rand(0, W), y: rand(0, H),
+        vx: rand(-0.15, 0.15), vy: rand(-0.15, 0.15),
+        r: rand(1, 2.2)
+      }));
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      const maxDist = 140;
+
+      for (let i = 0; i < nodes.length; i++) {
+        const n = nodes[i];
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < 0) n.x = W; if (n.x > W) n.x = 0;
+        if (n.y < 0) n.y = H; if (n.y > H) n.y = 0;
+
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(180, 190, 255, 0.85)';
+        ctx.fill();
+
+        for (let j = i + 1; j < nodes.length; j++) {
+          const m = nodes[j];
+          const dx = n.x - m.x, dy = n.y - m.y;
+          const dist = Math.sqrt(dx*dx + dy*dy);
+          if (dist < maxDist) {
+            ctx.beginPath();
+            ctx.moveTo(n.x, n.y);
+            ctx.lineTo(m.x, m.y);
+            ctx.strokeStyle = `rgba(140, 160, 240, ${0.35 * (1 - dist / maxDist)})`;
+            ctx.lineWidth = 0.6;
+            ctx.stroke();
+          }
+        }
+      }
+      animId = requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', () => { cancelAnimationFrame(animId); resize(); draw(); });
+    resize();
+    draw();
+  })();
+
+  /* ── Form submit → mailto ── */
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name      = document.getElementById('name').value.trim();
+    const sender    = document.getElementById('sender').value.trim();
+    const subject   = document.getElementById('subject').value.trim();
+    const message   = document.getElementById('message').value.trim();
+    const recipient = document.querySelector('input[name="recipient"]:checked').value;
+
+    const body = `Name: ${name}\nFrom: ${sender}\n\n${message}`;
+    const mailto = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailto;
+
+    document.getElementById('successMsg').style.display = 'block';
+    this.reset();
+  });
+</script>
+</body>
+</html>
