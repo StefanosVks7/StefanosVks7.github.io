@@ -19,7 +19,40 @@ document.addEventListener("DOMContentLoaded", () => {
     if (menuToggle) {
         menuToggle.addEventListener('click', toggleNav);
     }
+
+    // 4. Έλεγχος αποθηκευμένου Theme κατά το φόρτωμα της σελίδας
+    const savedTheme = localStorage.getItem('theme');
+    const themeBtn = document.getElementById('theme-toggle');
+    
+    if (savedTheme === 'light') {
+        document.body.classList.add('light-mode');
+        if (themeBtn) {
+            const icon = themeBtn.querySelector('i');
+            if (icon) icon.className = 'fa-solid fa-sun'; // Αλλάζει το εικονίδιο σε ήλιο
+        }
+    }
 });
+
+// Η συνάρτηση toggle που καλείται από το onclick="toggleTheme()" του button σου
+function toggleTheme() {
+    const body = document.body;
+    const themeBtn = document.getElementById('theme-toggle');
+    
+    body.classList.toggle('light-mode');
+    
+    if (themeBtn) {
+        const icon = themeBtn.querySelector('i');
+        if (icon) {
+            if (body.classList.contains('light-mode')) {
+                icon.className = 'fa-solid fa-sun'; // Ήλιος για Light Mode
+                localStorage.setItem('theme', 'light');
+            } else {
+                icon.className = 'fa-solid fa-moon'; // Φεγγάρι για Dark Mode
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+    }
+}
 
 // Reveal function for scrolling cards
 function reveal() {
