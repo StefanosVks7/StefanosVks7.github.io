@@ -16,6 +16,30 @@
       z-index: -1;
       background: black;
     }
+
+    .social-icons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .social-icons a {
+      color: #8b9fcf;
+      font-size: 1.1rem;
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(120,140,210,0.25);
+      display: flex; align-items: center; justify-content: center;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+      text-decoration: none;
+    }
+
+    .social-icons a:hover {
+      color: #fff;
+      border-color: rgba(150,130,230,0.6);
+      background: rgba(120,90,220,0.14);
+    }
   </style>
 </head>
 <body>
@@ -35,13 +59,19 @@
       <div class="sidebar-footer">
         <h3>Contact</h3>
         <div class="social-icons">
+        <a href="mailto:elstefanosvks7@gmail.com" title="Gmail"><i class="fa-regular fa-envelope"></i></a>
+        <a href="mailto:stefvoikos@netmode.ntua.gr" title="NTUA Email"><i class="fa-regular fa-envelope"></i></a>
+        <a href="https://www.instagram.com/stefanos_vks7/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=100054974571442" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://github.com/StefanosVks7" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+      </div>
+        <!-- <div class="social-icons">
           <a href="mailto:elstefanosvks7@gmail.com" target="_blank"><i class="fa-regular fa-envelope"></i></a>
           <a href="mailto:stefvoikos@netmode.ntua.gr" target="_blank"><i class="fa-regular fa-envelope"></i></a>
           <a href="https://www.instagram.com/stefanos_vks7/" target="_blank"><i class="fab fa-instagram"></i></a>
           <a href="https://www.facebook.com/profile.php?id=100054974571442" target="_blank"><i class="fab fa-facebook"></i></a>
-          <!-- <a href="https://github.com/StefanosVks7" target="_blank"><i class="fab fa-github"></i></a> -->
-          <a href="https://github.com/StefanosVks7" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-        </div>
+          <a href="https://github.com/StefanosVks7" target="_blank"><i class="fab fa-github"></i></a>
+        </div> -->
       </div>
     </div>
   </div>
