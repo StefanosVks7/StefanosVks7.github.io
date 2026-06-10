@@ -6,28 +6,41 @@ body {
   scroll-behavior: smooth;
 }
 
+/* 1. Γενικό Light Mode Background & Κείμενο στο Main Part */
 body.light-mode {
-  background-color: #f4f6f9;
-  color: #1a1a1a;
+  background-color: #f4f6f9 !important;
+  color: #1a1a1a !important;
 }
 
-body.light-mode #mlp-bg {
-  background: #f4f6f9; /* Αλλαγή του canvas background */
-}
-
+/* 2. Διόρθωση για τη Sidebar (Φόντο και Τίτλοι) */
 body.light-mode .sidebar {
-  background-color: #ffffff;
-  border-right: 1px solid rgba(0,0,0,0.1);
+  background-color: #f8f9fa !important; /* Ανοιχτό γκρίζο/λευκό */
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
 }
 
+body.light-mode .sidebar-footer h3 {
+  color: #1a1a1a !important; /* Μαύρος τίτλος "Contact" */
+}
+
+/* 3. Διόρθωση για τα Links (Γράμματα) της Sidebar */
+body.light-mode .nav-links a {
+  color: #2d3748 !important; /* Σκούρο γκρι/μαύρο για τα γράμματα */
+}
+
+body.light-mode .nav-links a:hover {
+  color: #785cd2 !important; /* Μοβ highlight στο hover */
+  background-color: rgba(120, 90, 220, 0.08);
+}
+
+/* 4. Social Icons στη Sidebar */
 body.light-mode .social-icons a {
-  color: #4a5568;
-  border-color: rgba(0,0,0,0.15);
+  color: #4a5568 !important;
+  border-color: rgba(0, 0, 0, 0.15) !important;
 }
 
 body.light-mode .social-icons a:hover {
-  color: #fff;
-  background: #4a5568;
+  color: #ffffff !important;
+  background-color: #4a5568 !important;
 }
 
 /* Styling για το Theme Button */
