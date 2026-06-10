@@ -6,6 +6,56 @@ body {
   scroll-behavior: smooth;
 }
 
+body.light-mode {
+  background-color: #f4f6f9;
+  color: #1a1a1a;
+}
+
+body.light-mode #mlp-bg {
+  background: #f4f6f9; /* Αλλαγή του canvas background */
+}
+
+body.light-mode .sidebar {
+  background-color: #ffffff;
+  border-right: 1px solid rgba(0,0,0,0.1);
+}
+
+body.light-mode .social-icons a {
+  color: #4a5568;
+  border-color: rgba(0,0,0,0.15);
+}
+
+body.light-mode .social-icons a:hover {
+  color: #fff;
+  background: #4a5568;
+}
+
+/* Styling για το Theme Button */
+.theme-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 1.2rem;
+  padding: 10px 14px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  color: #8b9fcf;
+  border: 1px solid rgba(120,140,210,0.25);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.theme-btn:hover {
+  color: #fff;
+  background: rgba(120,90,220,0.2);
+}
+
+body.light-mode .theme-btn {
+  background: rgba(0, 0, 0, 0.05);
+  color: #4a5568;
+  border-color: rgba(0,0,0,0.15);
+}
+
 h3 {  
   text-align: center;
 }
