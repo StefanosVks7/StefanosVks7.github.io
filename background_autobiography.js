@@ -23,6 +23,10 @@
   mouse.x = window.innerWidth / 2;
   mouse.y = window.innerHeight / 2;
 
+  function isLightMode() {
+    return document.body.classList.contains("light-mode");
+  }
+
   function resizeCanvas() {
     const dpr = window.devicePixelRatio || 1;
 
@@ -50,7 +54,7 @@
 
   class Particle {
     constructor(layer) {
-      this.layer = layer; // depth layer
+      this.layer = layer;
       this.reset();
     }
 
@@ -63,7 +67,6 @@
     }
 
     update() {
-
       const angle =
         Math.sin(this.x * FIELD_SCALE) +
         Math.cos(this.y * FIELD_SCALE);
@@ -73,7 +76,6 @@
       this.vx += Math.cos(angle) * speedFactor;
       this.vy += Math.sin(angle) * speedFactor;
 
-      // subtle mouse influence
       const dx = this.x - mouse.x;
       const dy = this.y - mouse.y;
       const dist = Math.sqrt(dx * dx + dy * dy) || 1;
@@ -101,13 +103,16 @@
     }
 
     draw() {
+      const light = isLightMode();
       const alpha = 0.2 + this.layer * 0.3;
 
       ctx.beginPath();
       ctx.moveTo(this.x, this.y);
       ctx.lineTo(this.x - this.vx * 5, this.y - this.vy * 5);
 
-      ctx.strokeStyle = `rgba(120,200,255,${alpha})`;
+      ctx.strokeStyle = light
+        ? `rgba(60,100,200,${alpha * 0.7})`
+        : `rgba(120,200,255,${alpha})`;
       ctx.lineWidth = this.layer * 1.2;
       ctx.stroke();
     }
@@ -115,32 +120,27 @@
 
   function initParticles() {
     particles = [];
-
     for (let i = 0; i < PARTICLE_COUNT; i++) {
-      const layer = Math.random(); // depth
+      const layer = Math.random();
       particles.push(new Particle(layer));
     }
   }
 
-  // 🎬 CINEMATIC FACE
   function drawFace() {
     if (!img.complete) return;
 
     const baseSize = Math.min(width, height) * 0.35;
-
-    // slow breathing scale
     const scale = 1 + Math.sin(time * 0.5) * 0.03;
-
     const size = baseSize * scale;
 
-    // subtle floating motion
     const offsetX = Math.sin(time * 0.3) * 10;
     const offsetY = Math.cos(time * 0.25) * 10;
 
     ctx.save();
 
-    // glow pulse
-    ctx.shadowColor = "rgba(0,150,255,0.4)";
+    ctx.shadowColor = isLightMode()
+      ? "rgba(60,100,220,0.3)"
+      : "rgba(0,150,255,0.4)";
     ctx.shadowBlur = 40 + Math.sin(time) * 10;
 
     ctx.globalAlpha = 0.1;
@@ -159,13 +159,19 @@
   function animate() {
     time += 0.01;
 
-    // smoother trails (fog feel)
-    ctx.fillStyle = "rgba(0,0,0,0.06)";
+    const light = isLightMode();
+
+    // trails — lighter fade in light mode
+    ctx.fillStyle = light
+      ? "rgba(244,246,249,0.12)"
+      : "rgba(0,0,0,0.06)";
     ctx.fillRect(0, 0, width, height);
 
     drawFace();
 
-    ctx.shadowColor = "rgba(120,200,255,0.6)";
+    ctx.shadowColor = light
+      ? "rgba(60,100,200,0.4)"
+      : "rgba(120,200,255,0.6)";
     ctx.shadowBlur = 10;
 
     particles.forEach(p => {
