@@ -8,6 +8,10 @@ let mouse = { x: null, y: null };
 const particleCount = 120;
 const maxDistance = 120;
 
+function isLightMode() {
+  return document.body.classList.contains("light-mode");
+}
+
 function resizeCanvas() {
   const dpr = window.devicePixelRatio || 1;
 
@@ -52,16 +56,23 @@ function initParticles() {
 }
 
 function drawBackground() {
+  const light = isLightMode();
+
   const gradient = ctx.createRadialGradient(
     W/2, H/2, 0,
     W/2, H/2, H
   );
 
-  gradient.addColorStop(0, "#0b0f1a");
-  gradient.addColorStop(1, "#000000");
+  if (light) {
+    gradient.addColorStop(0, "#e8edf5");
+    gradient.addColorStop(1, "#f4f6f9");
+  } else {
+    gradient.addColorStop(0, "#0b0f1a");
+    gradient.addColorStop(1, "#000000");
+  }
 
   ctx.fillStyle = gradient;
-  ctx.fillRect(0,0,W,H);
+  ctx.fillRect(0, 0, W, H);
 }
 
 function updateParticles() {
@@ -88,12 +99,13 @@ function updateParticles() {
 }
 
 function drawParticles() {
+  const light = isLightMode();
 
-  ctx.shadowColor = "rgba(120,200,255,0.7)";
+  ctx.shadowColor = light ? "rgba(100,120,200,0.4)" : "rgba(120,200,255,0.7)";
   ctx.shadowBlur = 10;
 
   for (let p of particles) {
-    ctx.fillStyle = "rgba(180,200,255,0.9)";
+    ctx.fillStyle = light ? "rgba(80,100,180,0.6)" : "rgba(180,200,255,0.9)";
     ctx.beginPath();
     ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
     ctx.fill();
@@ -103,6 +115,7 @@ function drawParticles() {
 }
 
 function drawConnections() {
+  const light = isLightMode();
 
   for (let i = 0; i < particles.length; i++) {
     for (let j = i + 1; j < particles.length; j++) {
@@ -118,7 +131,9 @@ function drawConnections() {
 
         const alpha = 1 - dist / maxDistance;
 
-        ctx.strokeStyle = `rgba(150,180,255,${alpha * 0.3})`;
+        ctx.strokeStyle = light
+          ? `rgba(80,100,200,${alpha * 0.25})`
+          : `rgba(150,180,255,${alpha * 0.3})`;
         ctx.lineWidth = 1;
 
         ctx.beginPath();
