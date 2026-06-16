@@ -43,6 +43,80 @@ body.light-mode .social-icons a:hover {
   background-color: #4a5568 !important;
 }
 
+/* =============================================
+   LIGHT MODE FIXES - projects.html
+   ============================================= */
+
+/* Main project cards */
+body.light-mode .project-card {
+  background: #ffffff;
+  color: #1a1a1a;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .project-card:hover {
+  background: #f0f4ff;
+}
+
+/* Highlight card (DiMAT) */
+body.light-mode .project-card.highlight-card {
+  background: rgba(0, 100, 255, 0.04) !important;
+  border: 1px solid rgba(0, 100, 255, 0.25) !important;
+}
+
+/* Paper entries inside the publications card */
+body.light-mode .paper-entry {
+  border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .paper-entry h3 {
+  color: #1a1a1a;
+}
+
+body.light-mode .paper-entry p {
+  color: #4a5568;
+}
+
+/* "View on Publisher" links */
+body.light-mode .paper-link {
+  color: #0066cc;
+}
+
+/* Tech stack badges */
+body.light-mode .tech-stack span {
+  background: #eef0f5;
+  border-color: #ccd0dc;
+  color: #2d3748;
+}
+
+/* Status badge (green "Completed") */
+body.light-mode .status-badge {
+  color: #276749;
+}
+
+/* Certification items */
+body.light-mode .cert-item {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .cert-item i {
+  color: #0066cc;
+}
+
+body.light-mode .cert-info h4 {
+  color: #1a1a1a;
+}
+
+body.light-mode .cert-info p {
+  color: #4a5568;
+}
+
+/* Canvas background fallback */
+body.light-mode #background {
+  background: #f4f6f9;
+}
 /* Styling για το Theme Button */
 .theme-btn {
   position: absolute;
