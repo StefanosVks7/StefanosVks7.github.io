@@ -14,15 +14,17 @@
   const FIELD_SCALE = 0.002;
   const MAX_SPEED = 1.4;
 
-  // style canvas
   canvas.style.position = "fixed";
   canvas.style.top = "0";
   canvas.style.left = "0";
   canvas.style.zIndex = "-1";
 
-  // initial mouse (IMPORTANT)
   mouse.x = window.innerWidth / 2;
   mouse.y = window.innerHeight / 2;
+
+  function isLightMode() {
+    return document.body.classList.contains("light-mode");
+  }
 
   function resizeCanvas() {
     const dpr = window.devicePixelRatio || 1;
@@ -63,7 +65,6 @@
     }
 
     update() {
-
       const angle =
         Math.sin(this.x * FIELD_SCALE) +
         Math.cos(this.y * FIELD_SCALE);
@@ -75,7 +76,6 @@
       const dy = this.y - mouse.y;
       const dist = Math.sqrt(dx * dx + dy * dy) || 1;
 
-      // vortex effect
       if (dist < 200) {
         const a = Math.atan2(dy, dx);
         this.vx += Math.cos(a + Math.PI / 2) * 0.3;
@@ -103,13 +103,17 @@
     }
 
     draw() {
+      const light = isLightMode();
       const hue = (this.x * 0.2 + this.y * 0.2 + time * 40) % 360;
 
       ctx.beginPath();
       ctx.moveTo(this.x, this.y);
       ctx.lineTo(this.x - this.vx * 4, this.y - this.vy * 4);
 
-      ctx.strokeStyle = `hsla(${hue}, 90%, 70%, 0.8)`;
+      // In light mode: slightly darker/more saturated so colors pop on white
+      ctx.strokeStyle = light
+        ? `hsla(${hue}, 80%, 45%, 0.75)`
+        : `hsla(${hue}, 90%, 70%, 0.8)`;
       ctx.lineWidth = 1;
       ctx.stroke();
     }
@@ -128,10 +132,17 @@
   function animate() {
     time += 0.01;
 
-    ctx.fillStyle = "rgba(0,0,0,0.1)";
+    const light = isLightMode();
+
+    // Trails fade against the correct background color
+    ctx.fillStyle = light
+      ? "rgba(244,246,249,0.18)"
+      : "rgba(0,0,0,0.1)";
     ctx.fillRect(0, 0, width, height);
 
-    ctx.shadowColor = "rgba(0,200,255,0.8)";
+    ctx.shadowColor = light
+      ? "rgba(0,100,220,0.5)"
+      : "rgba(0,200,255,0.8)";
     ctx.shadowBlur = 12;
 
     particles.forEach(p => {
