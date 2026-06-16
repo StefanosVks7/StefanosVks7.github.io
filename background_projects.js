@@ -9,6 +9,10 @@ const PARTICLE_COUNT = 350;
 const FIELD_SCALE = 0.002;
 const MAX_SPEED = 1.2;
 
+function isLightMode() {
+  return document.body.classList.contains("light-mode");
+}
+
 function resizeCanvas() {
   const dpr = window.devicePixelRatio || 1;
 
@@ -45,7 +49,6 @@ class Particle {
   }
 
   update() {
-
     const angle =
       Math.sin(this.x * FIELD_SCALE) +
       Math.cos(this.y * FIELD_SCALE);
@@ -53,7 +56,6 @@ class Particle {
     this.vx += Math.cos(angle) * 0.15;
     this.vy += Math.sin(angle) * 0.15;
 
-    // mouse influence
     const dx = this.x - mouse.x;
     const dy = this.y - mouse.y;
     const dist = Math.sqrt(dx*dx + dy*dy);
@@ -63,7 +65,6 @@ class Particle {
       this.vy += dy * 0.0005;
     }
 
-    // speed limit
     const speed = Math.sqrt(this.vx*this.vx + this.vy*this.vy);
     if (speed > MAX_SPEED) {
       this.vx *= 0.9;
@@ -95,9 +96,12 @@ class Particle {
   }
 
   draw() {
+    const light = isLightMode();
     ctx.beginPath();
     ctx.arc(this.x, this.y, 1.4, 0, Math.PI * 2);
-    ctx.fillStyle = "rgba(200,220,255,0.9)";
+    ctx.fillStyle = light
+      ? "rgba(60,90,180,0.7)"
+      : "rgba(200,220,255,0.9)";
     ctx.fill();
   }
 }
@@ -113,29 +117,40 @@ function initParticles() {
 }
 
 function drawBackground() {
+  const light = isLightMode();
 
   const gradient = ctx.createRadialGradient(
-    width / 2,
-    height / 2,
-    0,
-    width / 2,
-    height / 2,
-    height
+    width / 2, height / 2, 0,
+    width / 2, height / 2, height
   );
 
-  gradient.addColorStop(0, "#0a0f1a");
-  gradient.addColorStop(1, "#000000");
+  if (light) {
+    gradient.addColorStop(0, "#e8edf5");
+    gradient.addColorStop(1, "#f4f6f9");
+  } else {
+    gradient.addColorStop(0, "#0a0f1a");
+    gradient.addColorStop(1, "#000000");
+  }
 
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, width, height);
 }
 
 function animate() {
+  const light = isLightMode();
 
-  ctx.fillStyle = "rgba(0,0,0,0.08)";
+  // Use drawBackground for clean full repaint each frame
+  drawBackground();
+
+  // Subtle trail overlay
+  ctx.fillStyle = light
+    ? "rgba(244,246,249,0.25)"
+    : "rgba(0,0,0,0.08)";
   ctx.fillRect(0, 0, width, height);
 
-  ctx.shadowColor = "rgba(120,200,255,0.7)";
+  ctx.shadowColor = light
+    ? "rgba(60,100,200,0.4)"
+    : "rgba(120,200,255,0.7)";
   ctx.shadowBlur = 8;
 
   particles.forEach(p => {
