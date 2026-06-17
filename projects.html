@@ -24,12 +24,6 @@
     border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-.paper-link {
-    color: #00c6ff;
-    text-decoration: none;
-    font-size: 0.9rem;
-}
-
 .category-tag {
     background: #007bff;
     font-size: 0.7rem;
@@ -127,6 +121,39 @@
     margin-right: 5px;
     display: inline-block;
     margin-top: 5px;
+}
+
+      .paper-actions-row {
+    display: flex;
+    justify-content: space-between; /* Pushes the child items to opposite ends */
+    align-items: center;           /* Vertically centers both elements */
+    width: 100%;                   /* Ensures the row spans the full width of the card */
+}
+
+/* Optional styling to make the layout look polished and clean */
+.paper-link {
+    text-decoration: none;
+    color: #00a2ff; /* Adjust to match your theme's blue */
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.cite-trigger {
+    background: #2a2a2e; /* Dark background matching the image */
+    color: #a0a0a5;
+    border: 1px solid #4a4a4e;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.cite-trigger:hover {
+    background: #3a3a3e;
+    color: #ffffff;
 }
   </style>
 </head>
