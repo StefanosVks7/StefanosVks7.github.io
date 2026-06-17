@@ -47,6 +47,28 @@ body.light-mode .social-icons a:hover {
    LIGHT MODE FIXES - projects.html
    ============================================= */
 
+/* --- Default Dark Mode Styles --- */
+.bio-hero-image h1 {
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+.bio-hero-image .hero-subtitle {
+    color: #8b9fcf;
+    margin-top: 10px;
+    transition: color 0.3s ease;
+}
+
+/* --- Light Mode Overrides --- */
+/* When your JS toggles "light-mode" on the body, these colors flip automatically */
+body.light-mode .bio-hero-image h1 {
+    color: #111111; /* Sharp dark text for high readability */
+}
+
+body.light-mode .bio-hero-image .hero-subtitle {
+    color: #3c64c8; /* A deeper blue that perfectly matches your light-mode particle stroke color */
+}
+
 /* Main project cards */
 body.light-mode .project-card {
   background: #ffffff;
