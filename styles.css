@@ -165,6 +165,93 @@ body.light-mode .theme-btn {
   border-color: rgba(0,0,0,0.15);
 }
 
+/* Μικρά κομψά κουμπιά για τα papers */
+.btn-small {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(120, 140, 210, 0.25);
+  color: #8b9fcf;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-small:hover {
+  border-color: rgba(150, 130, 230, 0.6);
+  color: #fff;
+  background: rgba(120, 90, 220, 0.14);
+}
+
+/* Αρχική κατάσταση BibTeX (Κρυμμένο) */
+.bibtex-wrapper {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  margin-top: 0;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.0);
+}
+
+/* Όταν ενεργοποιείται από τη JavaScript */
+.bibtex-wrapper.show {
+  max-height: 300px; /* Επαρκές ύψος για το κείμενο */
+  opacity: 1;
+  margin-top: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.bibtex-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.75rem;
+  color: #6f81a5;
+}
+
+.copy-btn {
+  background: none;
+  border: none;
+  color: #a78bfa;
+  cursor: pointer;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s;
+}
+
+.copy-btn:hover { color: #fff; }
+
+.bibtex-code {
+  padding: 12px;
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 0.8rem;
+  color: #b4c2e0;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+/* Light mode προσαρμογή */
+body.light-mode .bibtex-wrapper {
+  background: rgba(0, 0, 0, 0.03);
+}
+body.light-mode .bibtex-code {
+  color: #2c3e50;
+}
+body.light-mode .bibtex-header {
+  color: #555;
+}
+
 h3 {  
   text-align: center;
 }
