@@ -256,7 +256,7 @@
 
   <script src="script.js"></script>
   <script src="background_home.js"></script>
-  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <!-- <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> -->
   <script>
     // ── Language Switcher ─────────────────────────────────────────────────────
 
@@ -359,22 +359,34 @@ function toggleLangDropdown() {
   document.getElementById('lang-dropdown').classList.toggle('open');
 }
 
+// function changeLanguage(langCode, label, flag) {
+//   document.getElementById('lang-dropdown').classList.remove('open');
+//   document.getElementById('lang-current').textContent = label;
+  
+//   // Highlight chosen element item flag
+//   document.querySelectorAll('.lang-option').forEach(btn => {
+//     btn.classList.toggle('active', btn.textContent.includes(label));
+//   });
+
+//   const selectEl = document.querySelector('.goog-te-combo');
+//   if (selectEl) {
+//     selectEl.value = langCode;
+//     selectEl.dispatchEvent(new Event('change'));
+//   }
+// }
 function changeLanguage(langCode, label, flag) {
   document.getElementById('lang-dropdown').classList.remove('open');
   document.getElementById('lang-current').textContent = label;
-  
-  // Highlight chosen element item flag
+
+  // Highlights active selection
   document.querySelectorAll('.lang-option').forEach(btn => {
     btn.classList.toggle('active', btn.textContent.includes(label));
   });
 
-  const selectEl = document.querySelector('.goog-te-combo');
-  if (selectEl) {
-    selectEl.value = langCode;
-    selectEl.dispatchEvent(new Event('change'));
-  }
+  // Wipes out old hash variations and forces a clean native Google translation viewport wrapper
+  const currentUrl = window.location.href.split('#')[0];
+  window.location.href = `https://translate.google.com/translate?sl=en&tl=${langCode}&u=${encodeURIComponent(currentUrl)}`;
 }
-
 // Intercept click frames outside elements box targets 
 document.addEventListener('click', e => {
   const switcher = document.getElementById('lang-switcher');
