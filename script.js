@@ -54,6 +54,32 @@ function toggleTheme() {
     }
 }
 
+// Function για το ακορντεόν (Slide Down/Up) του BibTeX
+function toggleBibtex(button) {
+  const entry = button.closest('.paper-entry');
+  const wrapper = entry.querySelector('.bibtex-wrapper');
+  wrapper.classList.toggle('show');
+}
+
+// Function για την αντιγραφή του κειμένου στο clipboard
+function copyBibtex(button) {
+  const wrapper = button.closest('.bibtex-wrapper');
+  const codeText = wrapper.querySelector('.bibtex-code code').innerText;
+  
+  navigator.clipboard.writeText(codeText).then(() => {
+    const originalText = button.innerHTML;
+    button.innerHTML = `<i class="fa-solid fa-check"></i> Copied!`;
+    button.style.color = "#34d399"; // Πράσινο χρώμα επιτυχίας
+    
+    setTimeout(() => {
+      button.innerHTML = originalText;
+      button.style.color = "";
+    }, 2000);
+  }).catch(err => {
+    console.error('Failed to copy: ', err);
+  });
+}
+
 // Reveal function for scrolling cards
 function reveal() {
     const reveals = document.querySelectorAll(".reveal");
