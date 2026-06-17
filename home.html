@@ -211,35 +211,23 @@
   </div>
 
   <div id="lang-switcher">
-    <button id="lang-btn" onclick="toggleLangDropdown()">
-      <i class="fa-solid fa-globe"></i>
-      <span id="lang-current">EN</span>
-      <i class="fa-solid fa-chevron-down" style="font-size:0.65rem"></i>
-    </button>
-    <div id="lang-dropdown">
-      <button class="lang-option active" onclick="setLanguage('en', 'EN', '🇬🇧')">
-        <span class="lang-flag">🇬🇧</span> English
-      </button>
-      <button class="lang-option" onclick="setLanguage('el', 'ΕΛ', '🇬🇷')">
-        <span class="lang-flag">🇬🇷</span> Ελληνικά
-      </button>
-      <button class="lang-option" onclick="setLanguage('de', 'DE', '🇩🇪')">
-        <span class="lang-flag">🇩🇪</span> Deutsch
-      </button>
-      <button class="lang-option" onclick="setLanguage('fr', 'FR', '🇫🇷')">
-        <span class="lang-flag">🇫🇷</span> Français
-      </button>
-      <button class="lang-option" onclick="setLanguage('it', 'IT', '🇮🇹')">
-        <span class="lang-flag">🇮🇹</span> Italiano
-      </button>
-      <button class="lang-option" onclick="setLanguage('es', 'ES', '🇪🇸')">
-        <span class="lang-flag">🇪🇸</span> Español
-      </button>
-      <button class="lang-option" onclick="setLanguage('ru', 'RU', '🇷🇺')">
-        <span class="lang-flag">🇷🇺</span> Русский
-      </button>
-    </div>
+  <button id="lang-btn" onclick="toggleLangDropdown()">
+    <i class="fa-solid fa-globe"></i>
+    <span id="lang-current">EN</span>
+    <i class="fa-solid fa-chevron-down" style="font-size:0.65rem"></i>
+  </button>
+  <div id="lang-dropdown">
+    <button class="lang-option active" onclick="changeLanguage('en', 'EN', '🇬🇧')"><span class="lang-flag">🇬🇧</span> English</button>
+    <button class="lang-option" onclick="changeLanguage('el', 'ΕΛ', '🇬🇷')"><span class="lang-flag">🇬🇷</span> Ελληνικά</button>
+    <button class="lang-option" onclick="changeLanguage('de', 'DE', '🇩🇪')"><span class="lang-flag">🇩🇪</span> Deutsch</button>
+    <button class="lang-option" onclick="changeLanguage('fr', 'FR', '🇫🇷')"><span class="lang-flag">🇫🇷</span> Français</button>
+    <button class="lang-option" onclick="changeLanguage('it', 'IT', '🇮🇹')"><span class="lang-flag">🇮🇹</span> Italiano</button>
+    <button class="lang-option" onclick="changeLanguage('es', 'ES', '🇪🇸')"><span class="lang-flag">🇪🇸</span> Español</button>
+    <button class="lang-option" onclick="changeLanguage('ru', 'RU', '🇷🇺')"><span class="lang-flag">🇷🇺</span> Русский</button>
   </div>
+</div>
+
+<div id="google_translate_element" style="display:none;"></div>
 
   <div id="main">
     <button class="openbtn" onclick="toggleNav()">&#9776;</button>
@@ -268,7 +256,7 @@
 
   <script src="script.js"></script>
   <script src="background_home.js"></script>
-
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   <script>
     // ── Language Switcher ─────────────────────────────────────────────────────
 
@@ -357,6 +345,43 @@
       hideOverlay();
     }
 
+    // Global translation initialization engine
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    includedLanguages: 'en,el,de,fr,it,es,ru',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+    autoDisplay: false
+  }, 'google_translate_element');
+}
+
+function toggleLangDropdown() {
+  document.getElementById('lang-dropdown').classList.toggle('open');
+}
+
+function changeLanguage(langCode, label, flag) {
+  document.getElementById('lang-dropdown').classList.remove('open');
+  document.getElementById('lang-current').textContent = label;
+  
+  // Highlight chosen element item flag
+  document.querySelectorAll('.lang-option').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.includes(label));
+  });
+
+  const selectEl = document.querySelector('.goog-te-combo');
+  if (selectEl) {
+    selectEl.value = langCode;
+    selectEl.dispatchEvent(new Event('change'));
+  }
+}
+
+// Intercept click frames outside elements box targets 
+document.addEventListener('click', e => {
+  const switcher = document.getElementById('lang-switcher');
+  if (switcher && !switcher.contains(e.target)) {
+    document.getElementById('lang-dropdown').classList.remove('open');
+  }
+});
     async function translateWithClaude(targetLang) {
       const langName = LANG_NAMES[targetLang];
 
