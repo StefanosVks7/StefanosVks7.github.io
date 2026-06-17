@@ -50,7 +50,92 @@
     .nav-links a:last-child { border-bottom: none; }
     .nav-links a:hover { color: #fff; }
     .nav-links a.active { color: #fff; font-weight: 600; } */
+/* ==========================================
+   LIGHT MODE OVERRIDES FOR CONTACT.HTML
+   ========================================== */
 
+/* 1. Global typography color shifts */
+body.light-mode {
+  background: #f4f6f9;
+  color: #1a2035;
+}
+
+body.light-mode header h1 {
+  color: #111111;
+}
+
+body.light-mode header p {
+  color: #3c64c8; /* Clear accent blue for high visibility */
+}
+
+body.light-mode .note {
+  color: #5c6b89;
+}
+
+/* 2. Glass Form Card Transition */
+body.light-mode .card {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .field label {
+  color: #3c64c8;
+}
+
+/* 3. Inputs, Labels & Placeholders */
+body.light-mode input[type="text"],
+body.light-mode input[type="email"],
+body.light-mode textarea {
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  color: #111111;
+}
+
+body.light-mode input[type="text"]:focus,
+body.light-mode input[type="email"]:focus,
+body.light-mode textarea:focus {
+  background: #ffffff;
+  border-color: #3c64c8;
+}
+
+body.light-mode input::placeholder,
+body.light-mode textarea::placeholder {
+  color: rgba(0, 0, 0, 0.35);
+}
+
+body.light-mode .divider {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+/* 4. Recipient Selectable Pills */
+body.light-mode .email-option .pill {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(0, 0, 0, 0.02);
+  color: #555555;
+}
+
+body.light-mode .email-option input[type="radio"]:checked + .pill {
+  border-color: #3c64c8;
+  background: rgba(60, 100, 200, 0.08);
+  color: #3c64c8;
+}
+
+body.light-mode .email-option .pill:hover {
+  border-color: #3c64c8;
+  color: #3c64c8;
+}
+
+/* 5. Menu Open Button Fix */
+body.light-mode .openbtn {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #333333;
+}
+body.light-mode .openbtn:hover {
+  background: rgba(60, 100, 200, 0.1);
+  color: #3c64c8;
+}
     .social-icons {
       display: flex;
       gap: 12px;
