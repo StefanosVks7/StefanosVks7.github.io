@@ -58,7 +58,13 @@ function initParticles() {
   }
 }
 
+function isLightMode() {
+  return document.body.classList.contains("light-mode");
+}
+
 function drawBackground() {
+  const lightMode = isLightMode();
+
   const gradient = ctx.createRadialGradient(
     W/2, H/2, 0,
     W/2, H/2, H
