@@ -51,49 +51,40 @@ function initParticles() {
   }
 }
 
+function isLightMode() {
+  return document.body.classList.contains("light-mode");
+}
+
 function drawBackground() {
+  const light = isLightMode();
   const gradient = ctx.createRadialGradient(
     W/2, H/2, 0,
     W/2, H/2, H
   );
 
-  gradient.addColorStop(0, "#0b0f1a");
-  gradient.addColorStop(1, "#000000");
+  if (light) {
+    // Soft radial light gradient
+    gradient.addColorStop(0, "#fdfefe");
+    gradient.addColorStop(1, "#f4f6f9");
+  } else {
+    // Original deep dark neural gradient
+    gradient.addColorStop(0, "#0b0f1a");
+    gradient.addColorStop(1, "#000000");
+  }
 
   ctx.fillStyle = gradient;
   ctx.fillRect(0,0,W,H);
 }
 
-function updateParticles() {
-
-  for (let p of particles) {
-
-    p.x += p.vx;
-    p.y += p.vy;
-
-    if (p.x < 0 || p.x > W) p.vx *= -1;
-    if (p.y < 0 || p.y > H) p.vy *= -1;
-
-    if (mouse.x !== null) {
-      const dx = p.x - mouse.x;
-      const dy = p.y - mouse.y;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-
-      if (dist < 150) {
-        p.vx += dx * 0.0003;
-        p.vy += dy * 0.0003;
-      }
-    }
-  }
-}
-
 function drawParticles() {
-
-  ctx.shadowColor = "rgba(120,200,255,0.7)";
-  ctx.shadowBlur = 10;
+  const light = isLightMode();
+  
+  // Choose high-contrast accent colors based on theme configuration
+  ctx.shadowColor = light ? "rgba(60,100,200,0.3)" : "rgba(120,200,255,0.7)";
+  ctx.shadowBlur = light ? 4 : 10;
 
   for (let p of particles) {
-    ctx.fillStyle = "rgba(180,200,255,0.9)";
+    ctx.fillStyle = light ? "rgba(60,100,200,0.7)" : "rgba(180,200,255,0.9)";
     ctx.beginPath();
     ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
     ctx.fill();
@@ -103,10 +94,10 @@ function drawParticles() {
 }
 
 function drawConnections() {
+  const light = isLightMode();
 
   for (let i = 0; i < particles.length; i++) {
     for (let j = i + 1; j < particles.length; j++) {
-
       const a = particles[i];
       const b = particles[j];
 
@@ -115,10 +106,12 @@ function drawConnections() {
       const dist = Math.sqrt(dx*dx + dy*dy);
 
       if (dist < maxDistance) {
-
         const alpha = 1 - dist / maxDistance;
 
-        ctx.strokeStyle = `rgba(150,180,255,${alpha * 0.3})`;
+        // Connections dynamically shift from bright cyan-blue to sleek deep network links
+        ctx.strokeStyle = light 
+          ? `rgba(60,100,200,${alpha * 0.18})` 
+          : `rgba(150,180,255,${alpha * 0.3})`;
         ctx.lineWidth = 1;
 
         ctx.beginPath();
@@ -129,7 +122,6 @@ function drawConnections() {
     }
   }
 }
-
 function animate() {
 
   drawBackground();
