@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!-- <title>Stefanos Voikos | ECE & ML Researcher</title> -->
   <meta name="description" content="Official portfolio of Stefanos Voikos, Research Assistant at NTUA. Exploring 6G networks, Machine Learning, and Federated Learning.">
   <meta name="keywords" content="Stefanos Voikos, Στέφανος Βόικος, NTUA, 6G, Federated Learning, NETMODE, ECE">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +9,7 @@
   <title>Stefanos Voikos</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
   <style>
     /* Background canvas */
     #mlp-bg {
@@ -43,44 +43,81 @@
       border-color: rgba(150,130,230,0.6);
       background: rgba(120,90,220,0.14);
     }
+
+    /* Container για το D3 Γράφημα */
+    .research-graph-container {
+      width: 100%;
+      height: 380px;
+      margin: 25px 0;
+      background: rgba(12, 18, 35, 0.45);
+      border: 1px solid rgba(120, 140, 210, 0.15);
+      border-radius: 16px;
+      backdrop-filter: blur(8px);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .graph-tooltip {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(20, 28, 50, 0.85);
+      border: 1px solid rgba(167, 139, 250, 0.4);
+      color: #e2e8f0;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      pointer-events: none;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+
+    /* SVG Node styling */
+    .node circle {
+      cursor: pointer;
+      stroke-width: 1.5px;
+      transition: r 0.2s, stroke-width 0.2s;
+    }
+    .node text {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 11px;
+      fill: #cbd5e1;
+      pointer-events: none;
+      user-select: none;
+    }
+    .link {
+      stroke-opacity: 0.25;
+      stroke-width: 1.2px;
+    }
   </style>
 </head>
 <body>
-  <!-- Neural Network Background -->
   <canvas id="mlp-bg"></canvas>
 
-  <!-- Sidebar -->
   <div id="mySidebar" class="sidebar">
     <div class="sidebar-content">
       <div class="nav-links">
-                <a href="home.html">Home</a>
-                <a href="thesis.html">Research & Dissertations</a>
-                <a href="projects.html">Engineering Portfolio, Projects and Research</a>
-                <a href="autobiography.html">Auto-Biography</a>
-                <a href="contact.html">Contact</a>
+        <a href="home.html">Home</a>
+        <a href="thesis.html">Research & Dissertations</a>
+        <a href="projects.html">Engineering Portfolio, Projects and Research</a>
+        <a href="autobiography.html">Auto-Biography</a>
+        <a href="contact.html">Contact</a>
       </div>
       <div class="sidebar-footer">
         <h3>Contact</h3>
         <div class="social-icons">
-        <a href="mailto:elstefanosvks7@gmail.com" title="Gmail"><i class="fa-regular fa-envelope"></i></a>
-        <a href="mailto:stefvoikos@netmode.ntua.gr" title="NTUA Email"><i class="fa-regular fa-envelope"></i></a>
-        <a href="https://www.instagram.com/stefanos_vks7/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.facebook.com/profile.php?id=100054974571442" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
-        <a href="https://github.com/StefanosVks7" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/stefanos-voikos-3a5b98216/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-      </div>
-        <!-- <div class="social-icons">
-          <a href="mailto:elstefanosvks7@gmail.com" target="_blank"><i class="fa-regular fa-envelope"></i></a>
-          <a href="mailto:stefvoikos@netmode.ntua.gr" target="_blank"><i class="fa-regular fa-envelope"></i></a>
-          <a href="https://www.instagram.com/stefanos_vks7/" target="_blank"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.facebook.com/profile.php?id=100054974571442" target="_blank"><i class="fab fa-facebook"></i></a>
-          <a href="https://github.com/StefanosVks7" target="_blank"><i class="fab fa-github"></i></a>
-        </div> -->
+          <a href="mailto:elstefanosvks7@gmail.com" title="Gmail"><i class="fa-regular fa-envelope"></i></a>
+          <a href="mailto:stefvoikos@netmode.ntua.gr" title="NTUA Email"><i class="fa-regular fa-envelope"></i></a>
+          <a href="https://www.instagram.com/stefanos_vks7/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/profile.php?id=100054974571442" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://github.com/StefanosVks7" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/stefanos-voikos-3a5b98216/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Main Content -->
   <div id="main">
     <button class="openbtn" onclick="toggleNav()">&#9776;</button>
     
@@ -90,20 +127,18 @@
     
     <header class="header">
       <h1 class="fade-in">Stefanos Voikos</h1>
-      <p class="fade-in delay-1">Electrical and Computer Engineer | Data Scientist | Network Enginnering | ML Enginnering </p>
+      <p class="fade-in delay-1">Electrical and Computer Engineer | Data Scientist | Network Engineering | ML Engineering</p>
     </header>
 
-    <!-- <section class="about fade-in delay-2">
-      <h2>About Me</h2>
-      <p>Stefanos Voikos is a Research Assistant at the Network Management and Optimal Design Laboratory at the National Technical University of Athens (NTUA). He received his Diploma in Electrical and Computer Engineering from NTUA in 2023 and is currently pursuing an MSc in Data Science and Machine Learning at the same institution. His research interests focus on radio and compute resource allocation in wireless federated learning systems, with emphasis on optimization, distributed machine learning, and efficient resource management in next-generation wireless networks. His work also involves applying machine learning and optimization techniques to improve system performance, scalability, and energy efficiency in communication networks.</p>
-      <h3> Sports, Gymnastics, Football, Music </h3>
-      <p> In my free time, I actively engage in sports and gymnastics, as I believe in the importance of good physical condition to enhance mental clarity and efficiency. Football, as a team sport, has helped me cultivate skills in cooperation, strategic thinking and perseverance. At the same time, music is a creative outlet and a means of relaxation for me, enhancing inspiration and balance in my everyday life. All these activities contribute to the formation of a complete lifestyle, with an emphasis on discipline, teamwork and creativity.</p>
-    </section> -->
     <section class="about fade-in delay-2">
       <h2>About Me</h2>
-      <p>Stefanos Voikos is a Research Assistant at the <strong>Network Management and Optimal Design Laboratory</strong> at the National Technical University of Athens (NTUA).</p> 
-      
-      <p>Following my MSc, I have transitioned into doctoral studies focusing on the  intersection of <strong>Next-Generation Wireless Networks (6G)</strong> and <strong>Distributed Intelligence</strong>. My current work explores the orchestration of radio and compute resources to support massive-scale Federated Learning, being passionate about applying optimization and distributed learning techniques to enhance the scalability and energy efficiency of next-generation networks.</p>
+      <p>Stefanos Voikos is a Research Assistant at the <strong>Network Management and Optimal Design Laboratory</strong> at the National Technical University of Athens (NTUA).</p>
+
+      <p>Following my MSc, I have transitioned into doctoral studies focusing on the intersection of <strong>Next-Generation Wireless Networks (6G)</strong> and <strong>Distributed Intelligence</strong>. My current work explores the orchestration of radio and compute resources to support massive-scale Federated Learning, being passionate about applying optimization and distributed learning techniques to enhance the scalability and energy efficiency of next-generation networks.</p>
+
+      <div class="research-graph-container" id="d3-container">
+        <div class="graph-tooltip" id="graph-tip">💡 Drag nodes to explore • Click to view projects</div>
+      </div>
 
       <div class="cta-container">
         <a href="thesis.html" class="btn">View My Research</a>
@@ -113,7 +148,146 @@
   </div>
 
   <script src="script.js"></script>
-
   <script src="background_home.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Data Structure Mapping your Core Domain
+      const data = {
+        nodes: [
+          { id: "Stefanos", group: "core", radius: 14, color: "#ffffff" },
+          
+          // Core Research Pillars
+          { id: "6G Networks", group: "pillar", radius: 10, color: "#a78bfa", target: "projects.html#6g" },
+          { id: "Federated Learning", group: "pillar", radius: 10, color: "#a78bfa", target: "projects.html#federated-learning" },
+          { id: "Optimization", group: "pillar", radius: 10, color: "#a78bfa", target: "projects.html#optimization" },
+          
+          // Sub-domains / Tools
+          { id: "RIS / Beamforming", group: "tech", radius: 7, color: "#8b9fcf", target: "projects.html#ris" },
+          { id: "Resource Allocation", group: "tech", radius: 7, color: "#8b9fcf", target: "projects.html#resource-allocation" },
+          { id: "Distributed Intelligence", group: "tech", radius: 7, color: "#8b9fcf", target: "projects.html#ml" },
+          { id: "CVXPY / Gurobi", group: "tech", radius: 6, color: "#64748b", target: "projects.html#tools" },
+          { id: "Python / Data Science", group: "tech", radius: 6, color: "#64748b", target: "projects.html#tools" }
+        ],
+        links: [
+          { source: "Stefanos", target: "6G Networks" },
+          { source: "Stefanos", target: "Federated Learning" },
+          { source: "Stefanos", target: "Optimization" },
+          
+          { source: "6G Networks", target: "RIS / Beamforming" },
+          { source: "6G Networks", target: "Resource Allocation" },
+          { source: "Federated Learning", target: "Distributed Intelligence" },
+          { source: "Federated Learning", target: "Resource Allocation" },
+          { source: "Optimization", target: "CVXPY / Gurobi" },
+          { source: "Optimization", target: "Resource Allocation" },
+          { source: "Distributed Intelligence", target: "Python / Data Science" }
+        ]
+      };
+
+      const container = document.getElementById("d3-container");
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+
+      const svg = d3.select("#d3-container")
+        .append("svg")
+        .attr("width", "100%")
+        .attr("height", "100%")
+        .attr("viewBox", `0 0 ${width} ${height}`);
+
+      // Force Simulation Setup
+      const simulation = d3.forceSimulation(data.nodes)
+        .force("link", d3.forceLink(data.links).id(d => d.id).distance(75))
+        .force("charge", d3.forceManyBody().strength(-140))
+        .force("center", d3.forceCenter(width / 2, height / 2))
+        .force("collision", d3.forceCollide().radius(d => d.radius + 15));
+
+      // Build Links (Lines)
+      const link = svg.append("g")
+        .attr("class", "links")
+        .selectAll("line")
+        .data(data.links)
+        .enter().append("line")
+        .attr("class", "link")
+        .attr("stroke", "rgba(139, 159, 207, 0.3)");
+
+      // Build Nodes (Groups of Circles + Text)
+      const node = svg.append("g")
+        .attr("class", "nodes")
+        .selectAll(".node")
+        .data(data.nodes)
+        .enter().append("g")
+        .attr("class", "node")
+        .call(d3.drag()
+          .on("start", dragstarted)
+          .on("drag", dragged)
+          .on("end", dragended));
+
+      // Append Circle Shapes
+      node.append("circle")
+        .attr("r", d => d.radius)
+        .attr("fill", d => d.group === "core" ? "transparent" : d.color)
+        .attr("stroke", d => d.color)
+        .attr("stroke-width", d => d.group === "core" ? 2 : 1.5)
+        .on("mouseover", function(event, d) {
+          d3.select(this).attr("r", d.radius + 3).attr("stroke-width", 2.5);
+          if (d.target) {
+            document.getElementById("graph-tip").innerHTML = `🔗 Go to: <strong>${d.id}</strong> section`;
+          }
+        })
+        .on("mouseout", function(event, d) {
+          d3.select(this).attr("r", d.radius).attr("stroke-width", d.group === "core" ? 2 : 1.5);
+          document.getElementById("graph-tip").innerHTML = `💡 Drag nodes to explore • Click to view projects`;
+        })
+        .on("click", (event, d) => {
+          if (d.target) {
+            window.location.href = d.target;
+          }
+        });
+
+      // Append Text Labels
+      node.append("text")
+        .attr("dx", d => d.radius + 6)
+        .attr("dy", ".35em")
+        .text(d => d.id)
+        .style("font-weight", d => d.group === "core" || d.group === "pillar" ? "600" : "400")
+        .style("fill", d => d.group === "core" ? "#fff" : "#cbd5e1");
+
+      // Ticker to update positions dynamic
+      simulation.on("tick", () => {
+        link
+          .attr("x1", d => d.source.x)
+          .attr("y1", d => d.source.y)
+          .attr("x2", d => d.target.x)
+          .attr("y2", d => d.target.y);
+
+        node.attr("transform", d => `translate(${d.x},${d.y})`);
+      });
+
+      // Drag Handlers
+      function dragstarted(event, d) {
+        if (!event.active) simulation.alphaTarget(0.3).restart();
+        d.fx = d.x;
+        d.fy = d.y;
+      }
+
+      function dragged(event, d) {
+        d.fx = event.x;
+        d.fy = event.y;
+      }
+
+      function dragended(event, d) {
+        if (!event.active) simulation.alphaTarget(0);
+        d.fx = null;
+        d.fy = null;
+      }
+
+      // Handle Resize smoothly
+      window.addEventListener("resize", () => {
+        const w = container.clientWidth;
+        const h = container.clientHeight;
+        simulation.force("center", d3.forceCenter(w / 2, h / 2)).alpha(0.1).restart();
+      });
+    });
+  </script>
 </body>
 </html>
