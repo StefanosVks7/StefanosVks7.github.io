@@ -90,6 +90,45 @@
       stroke-opacity: 0.25;
       stroke-width: 1.2px;
     }
+
+    /* Language Switcher Button Component */
+    .lang-toggle-btn {
+      position: fixed;
+      top: 16px;
+      right: 70px; /* Δίπλα από το Theme Toggle */
+      z-index: 1000;
+      background: rgba(20, 28, 50, 0.75);
+      border: 1px solid rgba(120, 140, 210, 0.3);
+      color: #8b9fcf;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+      backdrop-filter: blur(6px);
+      letter-spacing: 0.05em;
+    }
+
+    .lang-toggle-btn:hover {
+      border-color: rgba(150, 130, 230, 0.6);
+      color: #fff;
+      background: rgba(120, 90, 220, 0.18);
+    }
+
+    /* Light mode adjustments για το Language Button */
+    body.light-mode .lang-toggle-btn {
+      background: rgba(240,243,252,0.85);
+      border-color: rgba(80,100,200,0.25);
+      color: #4a5a9a;
+    }
+    body.light-mode .lang-toggle-btn:hover {
+      color: #1a237e;
+      background: rgba(80,100,200,0.1);
+    }
   </style>
 </head>
 <body>
@@ -97,7 +136,7 @@
 
   <div id="mySidebar" class="sidebar">
     <div class="sidebar-content">
-      <div class="nav-links">
+      <div class="nav-links" id="sidebar-nav-links">
         <a href="home.html">Home</a>
         <a href="thesis.html">Research & Dissertations</a>
         <a href="projects.html">Engineering Portfolio, Projects and Research</a>
@@ -121,6 +160,10 @@
   <div id="main">
     <button class="openbtn" onclick="toggleNav()">&#9776;</button>
     
+    <button id="language-toggle" class="lang-toggle-btn" onclick="switchLanguage()">
+      <i class="fa-solid fa-globe"></i> <span>GR</span>
+    </button>
+
     <button id="theme-toggle" class="theme-btn" onclick="toggleTheme()">
       <i class="fa-solid fa-moon"></i>
     </button>
@@ -141,8 +184,8 @@
       </div>
 
       <div class="cta-container">
-        <a href="thesis.html" class="btn">View My Research</a>
-        <a href="projects.html" class="btn">See Projects</a>
+        <a href="thesis.html" class="btn" id="cta-research">View My Research</a>
+        <a href="projects.html" class="btn" id="cta-projects">See Projects</a>
       </div>
     </section>
   </div>
@@ -152,17 +195,12 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      // Data Structure Mapping your Core Domain
       const data = {
         nodes: [
           { id: "Stefanos", group: "core", radius: 14, color: "#ffffff" },
-          
-          // Core Research Pillars
           { id: "6G Networks", group: "pillar", radius: 10, color: "#a78bfa", target: "projects.html#6g" },
           { id: "Federated Learning", group: "pillar", radius: 10, color: "#a78bfa", target: "projects.html#federated-learning" },
           { id: "Optimization", group: "pillar", radius: 10, color: "#a78bfa", target: "projects.html#optimization" },
-          
-          // Sub-domains / Tools
           { id: "RIS / Beamforming", group: "tech", radius: 7, color: "#8b9fcf", target: "projects.html#ris" },
           { id: "Resource Allocation", group: "tech", radius: 7, color: "#8b9fcf", target: "projects.html#resource-allocation" },
           { id: "Distributed Intelligence", group: "tech", radius: 7, color: "#8b9fcf", target: "projects.html#ml" },
@@ -173,7 +211,6 @@
           { source: "Stefanos", target: "6G Networks" },
           { source: "Stefanos", target: "Federated Learning" },
           { source: "Stefanos", target: "Optimization" },
-          
           { source: "6G Networks", target: "RIS / Beamforming" },
           { source: "6G Networks", target: "Resource Allocation" },
           { source: "Federated Learning", target: "Distributed Intelligence" },
@@ -194,14 +231,12 @@
         .attr("height", "100%")
         .attr("viewBox", `0 0 ${width} ${height}`);
 
-      // Force Simulation Setup
       const simulation = d3.forceSimulation(data.nodes)
         .force("link", d3.forceLink(data.links).id(d => d.id).distance(75))
         .force("charge", d3.forceManyBody().strength(-140))
         .force("center", d3.forceCenter(width / 2, height / 2))
         .force("collision", d3.forceCollide().radius(d => d.radius + 15));
 
-      // Build Links (Lines)
       const link = svg.append("g")
         .attr("class", "links")
         .selectAll("line")
@@ -210,7 +245,6 @@
         .attr("class", "link")
         .attr("stroke", "rgba(139, 159, 207, 0.3)");
 
-      // Build Nodes (Groups of Circles + Text)
       const node = svg.append("g")
         .attr("class", "nodes")
         .selectAll(".node")
@@ -222,7 +256,6 @@
           .on("drag", dragged)
           .on("end", dragended));
 
-      // Append Circle Shapes
       node.append("circle")
         .attr("r", d => d.radius)
         .attr("fill", d => d.group === "core" ? "transparent" : d.color)
@@ -231,6 +264,11 @@
         .on("mouseover", function(event, d) {
           d3.select(this).attr("r", d.radius + 3).attr("stroke-width", 2.5);
           if (d.target) {
+            // Προσαρμογή του anchor link με βάση την τρέχουσα γλώσσα
+            const currentLang = localStorage.getItem('preferredLang') || 'en';
+            const pagePrefix = currentLang === 'gr' ? 'projects_gr.html' : 'projects.html';
+            const hash = d.target.includes('#') ? d.target.split('#')[1] : '';
+            
             document.getElementById("graph-tip").innerHTML = `🔗 Go to: <strong>${d.id}</strong> section`;
           }
         })
@@ -240,11 +278,13 @@
         })
         .on("click", (event, d) => {
           if (d.target) {
-            window.location.href = d.target;
+            const currentLang = localStorage.getItem('preferredLang') || 'en';
+            const pagePrefix = currentLang === 'gr' ? 'projects_gr.html' : 'projects.html';
+            const hash = d.target.includes('#') ? '#' + d.target.split('#')[1] : '';
+            window.location.href = pagePrefix + hash;
           }
         });
 
-      // Append Text Labels
       node.append("text")
         .attr("dx", d => d.radius + 6)
         .attr("dy", ".35em")
@@ -252,7 +292,6 @@
         .style("font-weight", d => d.group === "core" || d.group === "pillar" ? "600" : "400")
         .style("fill", d => d.group === "core" ? "#fff" : "#cbd5e1");
 
-      // Ticker to update positions dynamic
       simulation.on("tick", () => {
         link
           .attr("x1", d => d.source.x)
@@ -263,7 +302,6 @@
         node.attr("transform", d => `translate(${d.x},${d.y})`);
       });
 
-      // Drag Handlers
       function dragstarted(event, d) {
         if (!event.active) simulation.alphaTarget(0.3).restart();
         d.fx = d.x;
@@ -281,13 +319,42 @@
         d.fy = null;
       }
 
-      // Handle Resize smoothly
       window.addEventListener("resize", () => {
         const w = container.clientWidth;
         const h = container.clientHeight;
         simulation.force("center", d3.forceCenter(w / 2, h / 2)).alpha(0.1).restart();
       });
     });
+  </script>
+
+  <script>
+    function switchLanguage() {
+      localStorage.setItem('preferredLang', 'gr');
+      window.location.href = 'home_gr.html';
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Καθορίζουμε ρητά ότι βρισκόμαστε στο αγγλικό configuration
+      localStorage.setItem('preferredLang', 'en');
+      updateLinksToLanguage('en');
+    });
+
+    function updateLinksToLanguage(lang) {
+      const suffix = lang === 'gr' ? '_gr.html' : '.html';
+      const navLinks = document.querySelectorAll('#sidebar-nav-links a');
+      const files = ['home', 'thesis', 'projects', 'autobiography', 'contact'];
+      
+      navLinks.forEach((link, index) => {
+        if(files[index]) {
+          link.setAttribute('href', files[index] + suffix);
+        }
+      });
+
+      const ctaResearch = document.getElementById('cta-research');
+      const ctaProjects = document.getElementById('cta-projects');
+      if(ctaResearch) ctaResearch.setAttribute('href', 'thesis' + suffix);
+      if(ctaProjects) ctaProjects.setAttribute('href', 'projects' + suffix);
+    }
   </script>
 </body>
 </html>
