@@ -353,6 +353,45 @@ body.light-mode .openbtn:hover {
       .card { padding: 32px 20px; }
       .email-toggle { flex-direction: column; }
     }
+
+     /* Language Switcher Button Component */
+    .lang-toggle-btn {
+      position: fixed;
+      top: 16px;
+      right: 70px; /* Δίπλα από το Theme Toggle */
+      z-index: 1000;
+      background: rgba(20, 28, 50, 0.75);
+      border: 1px solid rgba(120, 140, 210, 0.3);
+      color: #8b9fcf;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+      backdrop-filter: blur(6px);
+      letter-spacing: 0.05em;
+    }
+
+    .lang-toggle-btn:hover {
+      border-color: rgba(150, 130, 230, 0.6);
+      color: #fff;
+      background: rgba(120, 90, 220, 0.18);
+    }
+
+    /* Light mode adjustments για το Language Button */
+    body.light-mode .lang-toggle-btn {
+      background: rgba(240,243,252,0.85);
+      border-color: rgba(80,100,200,0.25);
+      color: #4a5a9a;
+    }
+    body.light-mode .lang-toggle-btn:hover {
+      color: #1a237e;
+      background: rgba(80,100,200,0.1);
+    }
   </style>
 </head>
 <body>
@@ -363,7 +402,7 @@ body.light-mode .openbtn:hover {
 <!-- Sidebar -->
 <div id="mySidebar" class="sidebar">
   <div class="sidebar-content">
-    <div class="nav-links">
+    <div class="nav-links" id="sidebar-nav-links">
       <a href="home.html">Home</a>
       <a href="thesis.html">Research & Dissertations</a>
       <a href="projects.html">Engineering Portfolio, Projects and Research</a>
@@ -392,7 +431,9 @@ body.light-mode .openbtn:hover {
     <button id="theme-toggle" class="theme-btn" onclick="toggleTheme()">
       <i class="fa-solid fa-moon"></i>
     </button>
-    
+    <button id="language-toggle" class="lang-toggle-btn" onclick="switchLanguage()">
+           <i class="fa-solid fa-globe"></i> <span>GR</span>
+      </button>
     <header class="header">
     <h1 class="fade-in">Stefanos Voikos</h1>
     <p class="fade-in delay-1">Electrical and Computer Engineer | Data Scientist | Network Enginnering | ML Enginnering </p>
@@ -454,7 +495,34 @@ body.light-mode .openbtn:hover {
   <p class="note">Responses within 1–2 business days</p>
 </div>
   <script src="script.js"></script>
+  function switchLanguage() {
+      localStorage.setItem('preferredLang', 'gr');
+      window.location.href = 'contact_gr.html';
+    }
 
+    document.addEventListener("DOMContentLoaded", () => {
+      // Καθορίζουμε ρητά ότι βρισκόμαστε στο αγγλικό configuration
+      localStorage.setItem('preferredLang', 'en');
+      updateLinksToLanguage('en');
+    });
+
+    function updateLinksToLanguage(lang) {
+      const suffix = lang === 'gr' ? '_gr.html' : '.html';
+      const navLinks = document.querySelectorAll('#sidebar-nav-links a');
+      const files = ['home', 'thesis', 'projects', 'autobiography', 'contact'];
+      
+      navLinks.forEach((link, index) => {
+        if(files[index]) {
+          link.setAttribute('href', files[index] + suffix);
+        }
+      });
+
+      const ctaResearch = document.getElementById('cta-research');
+      const ctaProjects = document.getElementById('cta-projects');
+      if(ctaResearch) ctaResearch.setAttribute('href', 'thesis' + suffix);
+      if(ctaProjects) ctaProjects.setAttribute('href', 'projects' + suffix);
+    }
+  </script>
   <script src="background_contact.js"></script>
 </body>
 </html>
