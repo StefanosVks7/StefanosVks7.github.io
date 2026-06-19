@@ -466,24 +466,24 @@ body.light-mode .openbtn:hover {
       <div class="divider"></div>
 
       <div class="field">
-        <label>Send To</label>
-        <div class="email-toggle">
-          <label class="email-option">
-            <input type="radio" name="recipient" value="elstefanosvks7@gmail.com" checked />
-            <span class="pill">
-              <span class="pill-label">Personal</span>
-              elstefanosvks7@gmail.com
-            </span>
-          </label>
-          <label class="email-option">
-            <input type="radio" name="recipient" value="stefvoikos@netmode.ntua.gr" />
-            <span class="pill">
-              <span class="pill-label">Academic</span>
-              stefvoikos@netmode.ntua.gr
-            </span>
-          </label>
-        </div>
+      <label>Send To</label>
+      <div class="email-toggle">
+        <label class="email-option">
+          <input type="radio" name="recipient" value="elstefanosvks7@gmail.com" checked />
+          <span class="pill">
+            <span class="pill-label">Personal</span>
+            elstefanosvks7@gmail.com
+          </span>
+        </label>
+        <label class="email-option">
+          <input type="radio" name="recipient" value="stefvoikos@netmode.ntua.gr" />
+          <span class="pill">
+            <span class="pill-label">Academic</span>
+            stefvoikos@netmode.ntua.gr
+          </span>
+        </label>
       </div>
+    </div>
 
       <input type="hidden" name="_replyto" id="replyto" value="elstefanosvks7@gmail.com" />
       <input type="hidden" name="_subject" value="New message from your website" />
@@ -525,5 +525,30 @@ body.light-mode .openbtn:hover {
     }
   </script>
   <script src="background_contact.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const contactForm = document.getElementById("contactForm");
+      const recipientRadios = document.querySelectorAll('input[name="recipient"]');
+    
+      // Mapping των emails με τα αντίστοιχα Formspree Links σας
+      const formspreeEndpoints = {
+        "elstefanosvks7@gmail.com": "https://formspree.io/f/xwvjenlq",
+        "stefvoikos@netmode.ntua.gr": "https://formspree.io/f/maqzwdba"
+      };
+    
+      recipientRadios.forEach(radio => {
+        radio.addEventListener("change", (e) => {
+          const selectedEmail = e.target.value;
+          const newEndpoint = formspreeEndpoints[selectedEmail];
+          
+          if (newEndpoint) {
+            // Αλλάζει δυναμικά το action attribute της φόρμας
+            contactForm.setAttribute("action", newEndpoint);
+            console.log(`Formspree target updated to: ${newEndpoint}`); // Για δικό σου debugging
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
