@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Official portfolio of Stefanos Voikos, Research Assistant at NTUA. Exploring 6G networks, Machine Learning, and Federated Learning.">
+  <meta name="keywords" content="Stefanos Voikos, Στέφανος Βόικος, NTUA, 6G, Federated Learning, NETMODE, ECE">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="icon.png">
+  <title>Stefanos Voikos</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+  #mlp-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1;
+    background: black;
+  }
+    .social-icons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .social-icons a {
+      color: #8b9fcf;
+      font-size: 1.1rem;
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(120,140,210,0.25);
+      display: flex; align-items: center; justify-content: center;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+      text-decoration: none;
+    }
+
+    .social-icons a:hover {
+      color: #fff;
+      border-color: rgba(150,130,230,0.6);
+      background: rgba(120,90,220,0.14);
+    }
+  /* Timeline Container */
+.timeline-container {
+    position: relative;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* The Vertical Line */
+.timeline-container::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.2);
+    top: 0;
+    bottom: 0;
+    left: 40px; /* Adjust based on your layout */
+}
+/* Timeline Item */
+.timeline-item {
+    padding: 20px 0 20px 70px; /* Space for the line/dots */
+    position: relative;
+    width: 100%;
+}
+
+/* Timeline Dots */
+.timeline-dot {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: #007bff; /* Blue accent */
+    border-radius: 50%;
+    left: 33px;
+    top: 30px;
+    z-index: 1;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
+
+.timeline-date {
+    font-weight: bold;
+    color: #00c6ff;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+/* Content Box Styling */
+.timeline-content {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateX(10px); /* Subtle interaction effect */
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.current-research {
+    border-left: 4px solid #007bff;
+    background: rgba(0, 123, 255, 0.1) !important;
+}
+
+.status-badge {
+    background: #007bff;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 10px;
+}  
+
+    /* Language Switcher Button Component */
+    .lang-toggle-btn {
+      position: fixed;
+      top: 16px;
+      right: 70px; /* Δίπλα από το Theme Toggle */
+      z-index: 1000;
+      background: rgba(20, 28, 50, 0.75);
+      border: 1px solid rgba(120, 140, 210, 0.3);
+      color: #8b9fcf;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+      backdrop-filter: blur(6px);
+      letter-spacing: 0.05em;
+    }
+
+    .lang-toggle-btn:hover {
+      border-color: rgba(150, 130, 230, 0.6);
+      color: #fff;
+      background: rgba(120, 90, 220, 0.18);
+    }
+</style>
+</head>
+<body>
+    <canvas id="mlp-bg"></canvas>  
+    <!-- Sidebar -->
+    <div id="mySidebar" class="sidebar">
+        <div class="sidebar-content">
+            <!-- Navigation Links -->
+            <div class="nav-links">
+                <a href="home.html">Αρχική</a>
+                <a href="thesis.html">Έρευνα & Διατριβές</a>
+                <a href="projects.html">Χαρτοφυλάκιο Μηχανικών, Έργα και Έρευνα</a>
+                <a href="autobiography.html">Αυτοβιογραφία</a>
+                <a href="contact.html">Επικοινωνία</a>
+            </div>
+            
+            <!-- Social Media Section at Bottom -->
+            <div class="sidebar-footer">
+                <h3>Επικοινωνία</h3>
+                <div class="social-icons">
+                    <a href="mailto:elstefanosvks7@gmail.com" target="_blank"><i class="fa-regular fa-envelope"></i></a>
+                    <a href="mailto:stefvoikos@netmode.ntua.gr" target="_blank"><i class="fa-regular fa-envelope"></i></a>
+                    <a href="https://www.instagram.com/stefanos_vks7/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=100054974571442" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <!-- <a href="https://github.com/StefanosVks7" target="_blank"><i class="fab fa-github"></i></a> -->
+                    <a href="https://github.com/StefanosVks7" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/stefanos-voikos-3a5b98216/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="main">
+    <button class="openbtn" onclick="toggleNav()">&#9776;</button>
+
+    <button id="theme-toggle" class="theme-btn" onclick="toggleTheme()">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+
+    <header class="header">
+        <h1>Έρευνα & Διατριβές</h1>
+    </header>
+    
+    <div class="intro-text fade-in delay-1">
+        <p>Μια χρονολογική ανασκόπηση της ακαδημαϊκής μου έρευνας, από τις βασικές μου σπουδές στο ΕΜΠ έως τις τρέχουσες διδακτορικές μου έρευνες στα ευφυή δίκτυα.</p>
+    </div>
+
+    <section class="timeline-container fade-in delay-2">
+    
+    <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2025 - Σήμερα</div>
+        <div class="timeline-content current-research">
+            <span class="status-badge">Υποψήφιος Διδάκτωρ</span>
+            <h3>Διδακτορική Έρευνα (PhD)</h3>
+            <p class="institution">Εθνικό Μετσόβειο Πολυτεχνείο</p>
+            <p class="description">
+                Focusing on <strong>Radio and Compute Resource Allocation</strong> in Wireless Federated Learning systems for 6G environments.
+            </p>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2023 - 2025</div>
+        <div class="timeline-content">
+            <h3>Μεταπτυχιακό στην Επιστήμη Δεδομένων και Μηχανική Μάθηση</h3>
+            <p class="thesis-title">"Κατανομή πόρων σε ασύρματα δίκτυα ομόσπονδης μάθησης..."</p>
+            <p class="abstract-preview">
+                Σχεδίασα ένα ολιστικό πλαίσιο διαχείρισης για ασύρματα δίκτυα με τη βοήθεια RIS χρησιμοποιώντας επαναληπτικές τεχνικές βελτιστοποίησης.
+            </p>
+            <div class="button-group">
+                <a href="thesis_postgraduate.pdf" target="_blank" class="pdf-button view-button"><i class="fas fa-external-link-alt"></i> View</a>
+                <a href="thesis_postgraduate.pdf" download class="pdf-button download-button"><i class="fas fa-download"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2018 - 2023</div>
+        <div class="timeline-content">
+            <h3>Δίπλωμα Ηλεκτρολόγου Μηχανικού & Μηχανικού Υπολογιστών (M.Eng)</h3>
+            <p class="thesis-title">"Ανάλυση Γράφων Κοινωνικής και Συναισθηµατικής Πληροφορίας"</p>
+            <p class="abstract-preview">
+                Αξιοποίησα τη Μηχανική Μάθηση για την πρόβλεψη κοινωνικών και συναισθηματικών σχέσεων μέσα σε κοινωνικά γραφήματα χρησιμοποιώντας μετρήσεις ομοιότητας.
+            </p>
+            <div class="button-group">
+                <a href="thesis_graduate.pdf" target="_blank" class="pdf-button view-button"><i class="fas fa-external-link-alt"></i> View</a>
+                <a href="thesis_graduate.pdf" download class="pdf-button download-button"><i class="fas fa-download"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+
+  <script>
+    function switchLanguage() {
+      localStorage.setItem('preferredLang', 'en');
+      window.location.href = 'thesis.html';
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      localStorage.setItem('preferredLang', 'gr');
+      
+      // Αλλάζουμε το λεκτικό του κουμπιού σε EN ώστε ο χρήστης να ξέρει πώς να γυρίσει πίσω
+      const langBtnSpan = document.querySelector('#language-toggle span');
+      if(langBtnSpan) langBtnSpan.textContent = 'EN';
+
+      // Ενημερώνουμε dynamic όλα τα links να δείχνουν στα υπόλοιπα εγχώρια _gr αρχεία
+      updateLinksToLanguage('gr');
+    });
+
+    function updateLinksToLanguage(lang) {
+      const suffix = lang === 'gr' ? '_gr.html' : '.html';
+      const navLinks = document.querySelectorAll('#sidebar-nav-links a');
+      const files = ['home', 'thesis', 'projects', 'autobiography', 'contact'];
+      
+      navLinks.forEach((link, index) => {
+        if(files[index]) link.setAttribute('href', files[index] + suffix);
+      });
+
+      const ctaResearch = document.getElementById('cta-research');
+      const ctaProjects = document.getElementById('cta-projects');
+      if(ctaResearch) ctaResearch.setAttribute('href', 'thesis' + suffix);
+      if(ctaProjects) ctaProjects.setAttribute('href', 'projects' + suffix);
+    }
+  </script>
+    <script src="script.js"></script>
+  <script src="background_thesis.js"></script>
+  
+</body>
+</html>
