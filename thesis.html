@@ -114,6 +114,34 @@
     display: inline-block;
     margin-bottom: 10px;
 }  
+
+    /* Language Switcher Button Component */
+    .lang-toggle-btn {
+      position: fixed;
+      top: 16px;
+      right: 70px; /* Δίπλα από το Theme Toggle */
+      z-index: 1000;
+      background: rgba(20, 28, 50, 0.75);
+      border: 1px solid rgba(120, 140, 210, 0.3);
+      color: #8b9fcf;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+      backdrop-filter: blur(6px);
+      letter-spacing: 0.05em;
+    }
+
+    .lang-toggle-btn:hover {
+      border-color: rgba(150, 130, 230, 0.6);
+      color: #fff;
+      background: rgba(120, 90, 220, 0.18);
+    }
 </style>
 </head>
 <body>
@@ -210,7 +238,37 @@
 </section>
 </div>
 
+  <script>
+    function switchLanguage() {
+      localStorage.setItem('preferredLang', 'gr');
+      window.location.href = 'thesis_gr.html';
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Καθορίζουμε ρητά ότι βρισκόμαστε στο αγγλικό configuration
+      localStorage.setItem('preferredLang', 'en');
+      updateLinksToLanguage('en');
+    });
+
+    function updateLinksToLanguage(lang) {
+      const suffix = lang === 'gr' ? '_gr.html' : '.html';
+      const navLinks = document.querySelectorAll('#sidebar-nav-links a');
+      const files = ['home', 'thesis', 'projects', 'autobiography', 'contact'];
+      
+      navLinks.forEach((link, index) => {
+        if(files[index]) {
+          link.setAttribute('href', files[index] + suffix);
+        }
+      });
+
+      const ctaResearch = document.getElementById('cta-research');
+      const ctaProjects = document.getElementById('cta-projects');
+      if(ctaResearch) ctaResearch.setAttribute('href', 'thesis' + suffix);
+      if(ctaProjects) ctaProjects.setAttribute('href', 'projects' + suffix);
+    }
+  </script>
     <script src="script.js"></script>
   <script src="background_thesis.js"></script>
+  
 </body>
 </html>
