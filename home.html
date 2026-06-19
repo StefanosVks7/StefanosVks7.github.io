@@ -274,7 +274,7 @@
         })
         .on("mouseout", function(event, d) {
           d3.select(this).attr("r", d.radius).attr("stroke-width", d.group === "core" ? 2 : 1.5);
-          document.getElementById("graph-tip").innerHTML = `💡 Drag nodes to explore • Click to view projects`;
+          document.getElementById("graph-tip").innerHTML = `Drag nodes to explore • Click to view projects`;
         })
         .on("click", (event, d) => {
           if (d.target) {
