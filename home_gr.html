@@ -137,14 +137,14 @@
   <div id="mySidebar" class="sidebar">
     <div class="sidebar-content">
       <div class="nav-links" id="sidebar-nav-links">
-        <a href="home.html">Home</a>
-        <a href="thesis.html">Research & Dissertations</a>
-        <a href="projects.html">Engineering Portfolio, Projects and Research</a>
-        <a href="autobiography.html">Auto-Biography</a>
-        <a href="contact.html">Contact</a>
+        <a href="home.html">Αρχική</a>
+        <a href="thesis.html">Έρευνα & Διατριβές</a>
+        <a href="projects.html">Χαρτοφυλάκιο, Έργα και Έρευνα Μηχανικού</a>
+        <a href="autobiography.html">Αυτοβιογραφία</a>
+        <a href="contact.html">Επικοινωνία</a>
       </div>
       <div class="sidebar-footer">
-        <h3>Contact</h3>
+        <h3>Επικοινωνία</h3>
         <div class="social-icons">
           <a href="mailto:elstefanosvks7@gmail.com" title="Gmail"><i class="fa-regular fa-envelope"></i></a>
           <a href="mailto:stefvoikos@netmode.ntua.gr" title="NTUA Email"><i class="fa-regular fa-envelope"></i></a>
@@ -196,27 +196,27 @@
     document.addEventListener("DOMContentLoaded", () => {
       const data = {
         nodes: [
-          { id: "Stefanos", group: "core", radius: 14, color: "#ffffff" },
-          { id: "6G Networks", group: "pillar", radius: 10, color: "#a78bfa", target: "projects.html#6g" },
-          { id: "Federated Learning", group: "pillar", radius: 10, color: "#a78bfa", target: "projects.html#federated-learning" },
-          { id: "Optimization", group: "pillar", radius: 10, color: "#a78bfa", target: "projects.html#optimization" },
+          { id: "Στέφανος", group: "core", radius: 14, color: "#ffffff" },
+          { id: "6G Δίκτυα", group: "pillar", radius: 10, color: "#a78bfa", target: "projects.html#6g" },
+          { id: "Ομόσπονδη Μάθηση", group: "pillar", radius: 10, color: "#a78bfa", target: "projects.html#federated-learning" },
+          { id: "Βελτιστοποίηση", group: "pillar", radius: 10, color: "#a78bfa", target: "projects.html#optimization" },
           { id: "RIS / Beamforming", group: "tech", radius: 7, color: "#8b9fcf", target: "projects.html#ris" },
-          { id: "Resource Allocation", group: "tech", radius: 7, color: "#8b9fcf", target: "projects.html#resource-allocation" },
-          { id: "Distributed Intelligence", group: "tech", radius: 7, color: "#8b9fcf", target: "projects.html#ml" },
+          { id: "Κατανομή πόρων", group: "tech", radius: 7, color: "#8b9fcf", target: "projects.html#resource-allocation" },
+          { id: "Κατανεμημένη Νοημοσύνη", group: "tech", radius: 7, color: "#8b9fcf", target: "projects.html#ml" },
           { id: "CVXPY / Gurobi", group: "tech", radius: 6, color: "#64748b", target: "projects.html#tools" },
-          { id: "Python / Data Science", group: "tech", radius: 6, color: "#64748b", target: "projects.html#tools" }
+          { id: "Python / Επιστήμη Δεδομένων", group: "tech", radius: 6, color: "#64748b", target: "projects.html#tools" }
         ],
         links: [
-          { source: "Stefanos", target: "6G Networks" },
-          { source: "Stefanos", target: "Federated Learning" },
-          { source: "Stefanos", target: "Optimization" },
-          { source: "6G Networks", target: "RIS / Beamforming" },
-          { source: "6G Networks", target: "Resource Allocation" },
-          { source: "Federated Learning", target: "Distributed Intelligence" },
-          { source: "Federated Learning", target: "Resource Allocation" },
-          { source: "Optimization", target: "CVXPY / Gurobi" },
-          { source: "Optimization", target: "Resource Allocation" },
-          { source: "Distributed Intelligence", target: "Python / Data Science" }
+          { source: "Στέφανος", target: "6G Δίκτυα" },
+          { source: "Στέφανος", target: "Ομόσπονδη Μάθηση" },
+          { source: "Στέφανος", target: "Βελτιστοποίηση" },
+          { source: "6G Δίκτυα", target: "RIS / Beamforming" },
+          { source: "6G Δίκτυα", target: "Κατανομή πόρων" },
+          { source: "Ομόσπονδη Μάθηση", target: "Κατανεμημένη Νοημοσύνη" },
+          { source: "Ομόσπονδη Μάθηση", target: "Κατανομή πόρων" },
+          { source: "Βελτιστοποίηση", target: "CVXPY / Gurobi" },
+          { source: "Βελτιστοποίηση", target: "Κατανομή πόρων" },
+          { source: "Κατανεμημένη Νοημοσύνη", target: "Python / Επιστήμη Δεδομένων" }
         ]
       };
 
@@ -268,12 +268,12 @@
             const pagePrefix = currentLang === 'gr' ? 'projects_gr.html' : 'projects.html';
             const hash = d.target.includes('#') ? d.target.split('#')[1] : '';
             
-            document.getElementById("graph-tip").innerHTML = `🔗 Go to: <strong>${d.id}</strong> section`;
+            document.getElementById("graph-tip").innerHTML = `🔗 Πηγαίνετε στον: <strong>${d.id}</strong> τομέα`;
           }
         })
         .on("mouseout", function(event, d) {
           d3.select(this).attr("r", d.radius).attr("stroke-width", d.group === "core" ? 2 : 1.5);
-          document.getElementById("graph-tip").innerHTML = `💡 Drag nodes to explore • Click to view projects`;
+          document.getElementById("graph-tip").innerHTML = ` Σύρετε κόμβους για εξερεύνηση • Κάντε κλικ για να δείτε έργα`;
         })
         .on("click", (event, d) => {
           if (d.target) {
