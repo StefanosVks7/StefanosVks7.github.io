@@ -483,6 +483,7 @@ section {
 
 /* The button used to open the sidebar */
 .openbtn {
+    position: fixed;
     border-radius: 20px;
     font-size: 20px;
     cursor: pointer;
@@ -491,6 +492,8 @@ section {
     padding: 10px 15px;
     border: none;
     margin: 20px;
+    left: 20px;        /* Ή absolute τιμή ανάλογα πού το θέλεις αριστερά */
+    z-index: 1000;
     transition: background-color 0.3s;
 }
 
