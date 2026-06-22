@@ -140,10 +140,12 @@ body.light-mode #background {
   background: #f4f6f9;
 }
 /* Styling για το Theme Button */
+/* Styling για το Theme Button */
 .theme-btn {
   position: fixed;
-  top: 20px;
+  top: 16px;          /* Αλλαγή σε 16px για να ευθυγραμμιστεί με τη γλώσσα */
   right: 20px;
+  z-index: 1001;      /* Πάνω από το background και το main */
   font-size: 1.2rem;
   padding: 10px 14px;
   cursor: pointer;
@@ -153,6 +155,8 @@ body.light-mode #background {
   border-radius: 8px;
   transition: all 0.2s ease;
 }
+
+
 
 .theme-btn:hover {
   color: #fff;
@@ -482,19 +486,20 @@ section {
 }
 
 /* The button used to open the sidebar */
+/* The button used to open the sidebar */
 .openbtn {
-    position: fixed;
-    border-radius: 20px;
-    font-size: 20px;
-    cursor: pointer;
-    background-color: #111;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    margin: 20px;
-    left: 20px;        /* Ή absolute τιμή ανάλογα πού το θέλεις αριστερά */
-    z-index: 1000;
-    transition: background-color 0.3s;
+  position: fixed;
+  top: 16px;          /* Ευθυγράμμιση και εδώ */
+  left: 20px;        
+  z-index: 1001;      /* Ίδιο z-index για να είναι στην ίδια "γραμμή" πλοήγησης */
+  border-radius: 20px;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  transition: background-color 0.3s;
 }
 
 .openbtn:hover {
