@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="icon.png">
-  <title>Stefanos Voikos</title>
+  <title data-i18n="meta-title">Stefanos Voikos - Research & Dissertations</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
@@ -57,11 +57,11 @@
     background: rgba(255, 255, 255, 0.2);
     top: 0;
     bottom: 0;
-    left: 40px; /* Adjust based on your layout */
+    left: 40px;
 }
 /* Timeline Item */
 .timeline-item {
-    padding: 20px 0 20px 70px; /* Space for the line/dots */
+    padding: 20px 0 20px 70px;
     position: relative;
     width: 100%;
 }
@@ -71,7 +71,7 @@
     position: absolute;
     width: 16px;
     height: 16px;
-    background: #007bff; /* Blue accent */
+    background: #007bff;
     border-radius: 50%;
     left: 33px;
     top: 30px;
@@ -96,7 +96,7 @@
 }
 
 .timeline-content:hover {
-    transform: translateX(10px); /* Subtle interaction effect */
+    transform: translateX(10px);
     background: rgba(255, 255, 255, 0.08);
 }
 
@@ -115,12 +115,15 @@
     margin-bottom: 10px;
 }  
 
-    /* Language Switcher Button Component */
-    .lang-toggle-btn {
+    /* Language Switcher Container & Dropdown */
+    .lang-container {
       position: fixed;
       top: 16px;
-      right: 70px; /* Δίπλα από το Theme Toggle */
+      right: 70px;
       z-index: 1000;
+    }
+
+    .lang-toggle-btn {
       background: rgba(20, 28, 50, 0.75);
       border: 1px solid rgba(120, 140, 210, 0.3);
       color: #8b9fcf;
@@ -142,31 +145,82 @@
       color: #fff;
       background: rgba(120, 90, 220, 0.18);
     }
+
+    .lang-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 8px;
+      background: rgba(15, 22, 42, 0.95);
+      border: 1px solid rgba(120, 140, 210, 0.2);
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      display: none;
+      flex-direction: column;
+      max-height: 280px;
+      overflow-y: auto;
+      width: 140px;
+      backdrop-filter: blur(10px);
+    }
+
+    .lang-dropdown.show {
+      display: flex;
+    }
+
+    .lang-dropdown button {
+      background: none;
+      border: none;
+      color: #8b9fcf;
+      padding: 8px 16px;
+      text-align: left;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      width: 100%;
+    }
+
+    .lang-dropdown button:hover {
+      background: rgba(120, 90, 220, 0.2);
+      color: #fff;
+    }
+
+    .lang-dropdown button.active {
+      color: #00c6ff;
+      font-weight: bold;
+      background: rgba(0, 198, 255, 0.08);
+    }
+
+    .lang-dropdown::-webkit-scrollbar {
+      width: 6px;
+    }
+    .lang-dropdown::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .lang-dropdown::-webkit-scrollbar-thumb {
+      background: rgba(120, 140, 210, 0.3);
+      border-radius: 4px;
+    }
 </style>
 </head>
 <body>
     <canvas id="mlp-bg"></canvas>  
-    <!-- Sidebar -->
     <div id="mySidebar" class="sidebar">
         <div class="sidebar-content">
-            <!-- Navigation Links -->
-            <div class="nav-links">
-                <a href="home.html">Home</a>
-                <a href="thesis.html">Research & Dissertations</a>
-                <a href="projects.html">Engineering Portfolio, Projects and Research</a>
-                <a href="autobiography.html">Auto-Biography</a>
-                <a href="contact.html">Contact</a>
+            <div class="nav-links" id="sidebar-nav-links">
+                <a href="home.html" data-i18n="nav-home">Home</a>
+                <a href="thesis.html" data-i18n="nav-thesis">Research & Dissertations</a>
+                <a href="projects.html" data-i18n="nav-projects">Engineering Portfolio, Projects and Research</a>
+                <a href="autobiography.html" data-i18n="nav-bio">Auto-Biography</a>
+                <a href="contact.html" data-i18n="nav-contact">Contact</a>
             </div>
             
-            <!-- Social Media Section at Bottom -->
             <div class="sidebar-footer">
-                <h3>Contact</h3>
+                <h3 data-i18n="sidebar-contact-title">Contact</h3>
                 <div class="social-icons">
                     <a href="mailto:elstefanosvks7@gmail.com" target="_blank"><i class="fa-regular fa-envelope"></i></a>
                     <a href="mailto:stefvoikos@netmode.ntua.gr" target="_blank"><i class="fa-regular fa-envelope"></i></a>
                     <a href="https://www.instagram.com/stefanos_vks7/" target="_blank"><i class="fab fa-instagram"></i></a>
                     <a href="https://www.facebook.com/profile.php?id=100054974571442" target="_blank"><i class="fab fa-facebook"></i></a>
-                    <!-- <a href="https://github.com/StefanosVks7" target="_blank"><i class="fab fa-github"></i></a> -->
                     <a href="https://github.com/StefanosVks7" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
                     <a href="https://www.linkedin.com/in/stefanos-voikos-3a5b98216/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
                 </div>
@@ -177,20 +231,24 @@
     <div id="main">
     <button class="openbtn" onclick="toggleNav()">&#9776;</button>
 
-      <button id="language-toggle" class="lang-toggle-btn" onclick="switchLanguage()">
-           <i class="fa-solid fa-globe"></i> <span>GR</span>
-      </button>
+      <div class="lang-container">
+        <button id="language-toggle" class="lang-toggle-btn" onclick="toggleLangDropdown(event)">
+             <i class="fa-solid fa-globe"></i> <span id="current-lang-label">EN</span> <i class="fa-solid fa-chevron-down" style="font-size:0.7rem;"></i>
+        </button>
+        <div id="lang-dropdown" class="lang-dropdown">
+          </div>
+      </div>
       
     <button id="theme-toggle" class="theme-btn" onclick="toggleTheme()">
       <i class="fa-solid fa-moon"></i>
     </button>
 
     <header class="header">
-        <h1>Research & Dissertations</h1>
+        <h1 data-i18n="page-title">Research & Dissertations</h1>
     </header>
     
     <div class="intro-text fade-in delay-1">
-        <p>A chronological overview of my academic research, from my foundational studies at NTUA to my current doctoral investigations in intelligent networking.</p>
+        <p data-i18n="intro-text">A chronological overview of my academic research, from my foundational studies at NTUA to my current doctoral investigations in intelligent networking.</p>
     </div>
 
     <section class="timeline-container fade-in delay-2">
@@ -199,10 +257,10 @@
         <div class="timeline-dot"></div>
         <div class="timeline-date">2025 - Present</div>
         <div class="timeline-content current-research">
-            <span class="status-badge">PhD Candidate</span>
-            <h3>Doctoral Research (PhD)</h3>
-            <p class="institution">National Technical University of Athens</p>
-            <p class="description">
+            <span class="status-badge" data-i18n="badge-phd">PhD Candidate</span>
+            <h3 data-i18n="title-phd">Doctoral Research (PhD)</h3>
+            <p class="institution" data-i18n="inst-ntua">National Technical University of Athens</p>
+            <p class="description" data-i18n="desc-phd">
                 Focusing on <strong>Radio and Compute Resource Allocation</strong> in Wireless Federated Learning systems for 6G environments.
             </p>
         </div>
@@ -212,13 +270,13 @@
         <div class="timeline-dot"></div>
         <div class="timeline-date">2023 - 2025</div>
         <div class="timeline-content">
-            <h3>MSc in Data Science & Machine Learning</h3>
-            <p class="thesis-title">"Resource allocation in wireless federated learning networks"</p>
-            <p class="abstract-preview">
+            <h3 data-i18n="title-msc">MSc in Data Science & Machine Learning</h3>
+            <p class="thesis-title" data-i18n="title-msc-thesis">"Resource allocation in wireless federated learning networks"</p>
+            <p class="abstract-preview" data-i18n="desc-msc">
                 Designed a holistic management framework for RIS-assisted wireless networks using iterative optimization techniques.
             </p>
             <div class="button-group">
-                <a href="thesis_postgraduate.pdf" target="_blank" class="pdf-button view-button"><i class="fas fa-external-link-alt"></i> View</a>
+                <a href="thesis_postgraduate.pdf" target="_blank" class="pdf-button view-button"><i class="fas fa-external-link-alt"></i> <span data-i18n="btn-view">View</span></a>
                 <a href="thesis_postgraduate.pdf" download class="pdf-button download-button"><i class="fas fa-download"></i></a>
             </div>
         </div>
@@ -228,13 +286,13 @@
         <div class="timeline-dot"></div>
         <div class="timeline-date">2018 - 2023</div>
         <div class="timeline-content">
-            <h3>Diploma in Electrical & Computer Engineering (M.Eng)</h3>
-            <p class="thesis-title">"Analysis of Social and Emotional Information Graphs"</p>
-            <p class="abstract-preview">
+            <h3 data-i18n="title-diplo">Diploma in Electrical & Computer Engineering (M.Eng)</h3>
+            <p class="thesis-title" data-i18n="title-diplo-thesis">"Analysis of Social and Emotional Information Graphs"</p>
+            <p class="abstract-preview" data-i18n="desc-diplo">
                 Leveraged Machine Learning to predict social and emotional relationships within social graphs using similarity metrics.
             </p>
             <div class="button-group">
-                <a href="thesis_graduate.pdf" target="_blank" class="pdf-button view-button"><i class="fas fa-external-link-alt"></i> View</a>
+                <a href="thesis_graduate.pdf" target="_blank" class="pdf-button view-button"><i class="fas fa-external-link-alt"></i> <span data-i18n="btn-view">View</span></a>
                 <a href="thesis_graduate.pdf" download class="pdf-button download-button"><i class="fas fa-download"></i></a>
             </div>
         </div>
@@ -243,36 +301,519 @@
 </div>
 
   <script>
-    function switchLanguage() {
-      localStorage.setItem('preferredLang', 'gr');
-      window.location.href = 'thesis_gr.html';
+    const languages = [
+      { code: 'en', name: 'English' },
+      { code: 'el', name: 'Ελληνικά' },
+      { code: 'de', name: 'Deutsch' },
+      { code: 'fr', name: 'Français' },
+      { code: 'it', name: 'Italiano' },
+      { code: 'es', name: 'Español' },
+      { code: 'ru', name: 'Русский' },
+      { code: 'pt', name: 'Português' },
+      { code: 'pl', name: 'Polski' },
+      { code: 'sv', name: 'Svenska' },
+      { code: 'sr', name: 'Српски' },
+      { code: 'bg', name: 'Български' },
+      { code: 'ro', name: 'Română' },
+      { code: 'sq', name: 'Shqip' },
+      { code: 'fa', name: 'فارسی' },
+      { code: 'ar', name: 'العربية' },
+      { code: 'zh', name: '中文' },
+      { code: 'ja', name: '日本語' },
+      { code: 'hi', name: 'हिन्दी' }
+    ];
+
+    const i18nData = {
+      en: {
+        "meta-title": "Stefanos Voikos - Research & Dissertations",
+        "nav-home": "Home",
+        "nav-thesis": "Research & Dissertations",
+        "nav-projects": "Engineering Portfolio, Projects and Research",
+        "nav-bio": "Auto-Biography",
+        "nav-contact": "Contact",
+        "sidebar-contact-title": "Contact",
+        "page-title": "Research & Dissertations",
+        "intro-text": "A chronological overview of my academic research, from my foundational studies at NTUA to my current doctoral investigations in intelligent networking.",
+        "badge-phd": "PhD Candidate",
+        "title-phd": "Doctoral Research (PhD)",
+        "inst-ntua": "National Technical University of Athens",
+        "desc-phd": "Focusing on <strong>Radio and Compute Resource Allocation</strong> in Wireless Federated Learning systems for 6G environments.",
+        "title-msc": "MSc in Data Science & Machine Learning",
+        "title-msc-thesis": "\"Resource allocation in wireless federated learning networks\"",
+        "desc-msc": "Designed a holistic management framework for RIS-assisted wireless networks using iterative optimization techniques.",
+        "title-diplo": "Diploma in Electrical & Computer Engineering (M.Eng)",
+        "title-diplo-thesis": "\"Analysis of Social and Emotional Information Graphs\"",
+        "desc-diplo": "Leveraged Machine Learning to predict social and emotional relationships within social graphs using similarity metrics.",
+        "btn-view": "View"
+      },
+      el: {
+        "meta-title": "Στέφανος Βόικος - Έρευνα & Διατριβές",
+        "nav-home": "Αρχική",
+        "nav-thesis": "Έρευνα & Διατριβές",
+        "nav-projects": "Portfolio Μηχανικού, Projects & Έρευνα",
+        "nav-bio": "Αυτοβιογραφία",
+        "nav-contact": "Επικοινωνία",
+        "sidebar-contact-title": "Επικοινωνία",
+        "page-title": "Έρευνα & Διατριβές",
+        "intro-text": "Μια χρονολογική ανασκόπηση της ακαδημαϊκής μου έρευνας, από τις βασικές μου σπουδές στο ΕΜΠ έως τις τρέχουσες διδακτορικές μου μελέτες στα έξυπνα δίκτυα.",
+        "badge-phd": "Υποψήφιος Διδάκτωρ",
+        "title-phd": "Διδακτορική Έρευνα (PhD)",
+        "inst-ntua": "Εθνικό Μετσόβιο Πολυτεχνείο",
+        "desc-phd": "Εστίαση στην <strong>Καταννομή Ραδιοφωνικών και Υπολογιστικών Πόρων</strong> σε συστήματα Ασύρματης Ομόσπονδης Μάθησης για περιβάλλοντα δικτύων 6G.",
+        "title-msc": "Μεταπτυχιακό (MSc) στην Επιστήμη Δεδομένων & Μηχανική Μάθηση",
+        "title-msc-thesis": "\"Κατανομή πόρων σε ασύρματα δίκτυα ομόσπονδης μάθησης\"",
+        "desc-msc": "Σχεδιασμός ενός ολιστικού πλαισίου διαχείρισης για ασύρματα δίκτυα υποβοηθούμενα από RIS, χρησιμοποιώντας επαναληπτικές τεχνικές βελτιστοποίησης.",
+        "title-diplo": "Δίπλωμα Ηλεκτρολόγου Μηχανικού & Μηχανικού Υπολογιστών (M.Eng)",
+        "title-diplo-thesis": "\"Ανάλυση Γράφων Κοινωνικής και Συναισθηματικής Πληροφορίας\"",
+        "desc-diplo": "Αξιοποίηση της Μηχανικής Μάθησης για την πρόβλεψη κοινωνικών και συναισθηματικών σχέσεων σε κοινωνικούς γράφους με τη χρήση μετρικών ομοιότητας.",
+        "btn-view": "Προβολή"
+      },
+      de: {
+        "meta-title": "Stefanos Voikos - Forschung & Dissertationen",
+        "nav-home": "Startseite",
+        "nav-thesis": "Forschung & Dissertationen",
+        "nav-projects": "Ingenieurportfolio, Projekte & Forschung",
+        "nav-bio": "Autobiographie",
+        "nav-contact": "Kontakt",
+        "sidebar-contact-title": "Kontakt",
+        "page-title": "Forschung & Dissertationen",
+        "intro-text": "Ein chronologischer Überblick über meine akademische Forschung, von meinen grundlegenden Studien an der NTUA bis hin zu meinen aktuellen Promotionsuntersuchungen im Bereich intelligenter Netzwerke.",
+        "badge-phd": "Doktorand",
+        "title-phd": "Doktoratsforschung (PhD)",
+        "inst-ntua": "Nationale Technische Universität Athen",
+        "desc-phd": "Fokus auf <strong>Funk- und Rechenressourcenallokation</strong> in drahtlosen föderierten Lernsystemen für 6G-Umgebungen.",
+        "title-msc": "MSc in Datenwissenschaft & Maschinelles Lernen",
+        "title-msc-thesis": "\"Ressourcenallokation in drahtlosen föderierten Lernnetzwerken\"",
+        "desc-msc": "Entwicklung eines ganzheitlichen Management-Frameworks für RIS-gestützte drahtlose Netzwerke unter Verwendung iterativer Optimierungstechniken.",
+        "title-diplo": "Diplom in Elektrotechnik & Informationstechnik (M.Eng)",
+        "title-diplo-thesis": "\"Analyse von sozialen und emotionalen Informationsgraphen\"",
+        "desc-diplo": "Nutzung von maschinellem Lernen zur Vorhersage sozialer und emotionaler Beziehungen in sozialen Graphen mithilfe von Ähnlichkeitsmetriken.",
+        "btn-view": "Ansehen"
+      },
+      fr: {
+        "meta-title": "Stefanos Voikos - Recherche & Dissertations",
+        "nav-home": "Accueil",
+        "nav-thesis": "Recherche & Dissertations",
+        "nav-projects": "Portfolio d'ingénierie, Projets & Recherche",
+        "nav-bio": "Auto-Biographie",
+        "nav-contact": "Contact",
+        "sidebar-contact-title": "Contact",
+        "page-title": "Recherche & Dissertations",
+        "intro-text": "Un aperçu chronologique de mes recherches académiques, de mes études fondamentales à l'NTUA à mes recherches doctorales actuelles sur les réseaux intelligents.",
+        "badge-phd": "Doctorant",
+        "title-phd": "Recherche Doctorale (PhD)",
+        "inst-ntua": "Université Polytechnique Nationale d'Athènes",
+        "desc-phd": "Concentration sur l'<strong>allocation des ressources radio et de calcul</strong> dans les systèmes d'apprentissage fédéré sans fil pour les environnements 6G.",
+        "title-msc": "Master (MSc) en Science des Données & Apprentissage Automatique",
+        "title-msc-thesis": "\"Allocation des ressources dans les réseaux d'apprentissage fédéré sans fil\"",
+        "desc-msc": "Conception d'un cadre de gestion holistique pour les réseaux sans fil assistés par RIS en utilisant des techniques d'optimisation itératives.",
+        "title-diplo": "Diplôme d'Ingénieur en Électricité et Informatique (M.Eng)",
+        "title-diplo-thesis": "\"Analyse des graphes d'informations sociales et émotionnelles\"",
+        "desc-diplo": "Exploitation de l'apprentissage automatique pour prédire les relations sociales et émotionnelles au sein des graphes sociaux à l'aide de métriques de similarité.",
+        "btn-view": "Voir"
+      },
+      it: {
+        "meta-title": "Stefanos Voikos - Ricerca & Tesi",
+        "nav-home": "Home",
+        "nav-thesis": "Ricerca & Tesi",
+        "nav-projects": "Portfolio di Ingegneria, Progetti & Ricerca",
+        "nav-bio": "Auto-Biografia",
+        "nav-contact": "Contatti",
+        "sidebar-contact-title": "Contatti",
+        "page-title": "Ricerca & Tesi",
+        "intro-text": "Panoramica cronologica della mia ricerca accademica, dai miei studi fondamentali alla NTUA alle mie attuali indagini dottorali sulle reti intelligenti.",
+        "badge-phd": "Dottorando",
+        "title-phd": "Ricerca di Dottorato (PhD)",
+        "inst-ntua": "Università Politecnica Nazionale di Atene",
+        "desc-phd": "Focalizzazione sull'<strong>allocazione delle risorse radio e di calcolo</strong> nei sistemi di apprendimento federato wireless per ambienti 6G.",
+        "title-msc": "Master (MSc) in Data Science & Machine Learning",
+        "title-msc-thesis": "\"Allocazione delle risorse nelle reti di apprendimento federato wireless\"",
+        "desc-msc": "Progettazione di un framework di gestione olistico per reti wireless assistite da RIS utilizzando tecniche di ottimizzazione iterativa.",
+        "title-diplo": "Diploma in Ingegneria Elettrica e Informatica (M.Eng)",
+        "title-diplo-thesis": "\"Analisi dei grafi di informazioni sociali ed emotive\"",
+        "desc-diplo": "Utilizzo del Machine Learning per prevedere le relazioni sociali ed emotive all'interno dei grafi sociali utilizzando metriche di similarità.",
+        "btn-view": "Visualizza"
+      },
+      es: {
+        "meta-title": "Stefanos Voikos - Investigación y Tesis",
+        "nav-home": "Inicio",
+        "nav-thesis": "Investigación y Tesis",
+        "nav-projects": "Portafolio de Ingeniería, Proyectos e Investigación",
+        "nav-bio": "Autobiografía",
+        "nav-contact": "Contacto",
+        "sidebar-contact-title": "Contacto",
+        "page-title": "Investigación y Tesis",
+        "intro-text": "Una descripción cronológica de mi investigación académica, desde mi formación fundacional en la NTUA hasta mis investigaciones doctorales actuales en redes inteligentes.",
+        "badge-phd": "Candidato a PhD",
+        "title-phd": "Investigación Doctoral (PhD)",
+        "inst-ntua": "Universidad Politécnica Nacional de Atenas",
+        "desc-phd": "Centrado en la <strong>asignación de recursos de radio y computación</strong> en sistemas de aprendizaje federado inalámbrico para entornos 6G.",
+        "title-msc": "Máster (MSc) en Ciencia de Datos y Aprendizaje Automático",
+        "title-msc-thesis": "\"Asignación de recursos en redes inalámbricas de aprendizaje federado\"",
+        "desc-msc": "Diseño de un marco de gestión integral para redes inalámbricas asistidas por RIS utilizando técnicas de optimización iterativas.",
+        "title-diplo": "Diploma en Ingeniería Eléctrica y de Computación (M.Eng)",
+        "title-diplo-thesis": "\"Análisis de grafos de información social y emocional\"",
+        "desc-diplo": "Aprovechamiento del aprendizaje automático para predecir relaciones sociales y emocionales dentro de grafos sociales utilizando métricas de similitud.",
+        "btn-view": "Ver"
+      },
+      ru: {
+        "meta-title": "Стефанос Воикос - Исследования и диссертации",
+        "nav-home": "Главная",
+        "nav-thesis": "Исследования и диссертации",
+        "nav-projects": "Инженерное портфолио, проекты и исследования",
+        "nav-bio": "Автобиография",
+        "nav-contact": "Контакты",
+        "sidebar-contact-title": "Контакты",
+        "page-title": "Исследования и диссертации",
+        "intro-text": "Хронологический обзор моих академических исследований, начиная с базового обучения в NTUA и заканчивая текущими докторскими исследованиями в области интеллектуальных сетей.",
+        "badge-phd": "Аспирант",
+        "title-phd": "Докторское исследование (PhD)",
+        "inst-ntua": "Афинский национальный технический университет",
+        "desc-phd": "Фокус на <strong>распределении радио- и вычислительных ресурсов</strong> в беспроводных системах федеративного обучения для сред 6G.",
+        "title-msc": "Магистр (MSc) в области анализа данных и машинного обучения",
+        "title-msc-thesis": "\"Распределение ресурсов в беспроводных сетях федеративного обучения\"",
+        "desc-msc": "Разработка целостной структуры управления беспроводными сетями с поддержкой RIS с использованием методов итеративной оптимизации.",
+        "title-diplo": "Диплом инженера в области электротехники и вычислительной техники (M.Eng)",
+        "title-diplo-thesis": "\"Анализ графов социальной и эмоциональной информации\"",
+        "desc-diplo": "Использование машинного обучения для прогнозирования социальных и эмоциональных отношений в социальных графах с помощью метрик сходства.",
+        "btn-view": "Смотреть"
+      },
+      pt: {
+        "meta-title": "Stefanos Voikos - Investigação & Dissertações",
+        "nav-home": "Início",
+        "nav-thesis": "Investigação & Dissertações",
+        "nav-projects": "Portfólio de Engenharia, Projetos & Investigação",
+        "nav-bio": "Autobiografia",
+        "nav-contact": "Contacto",
+        "sidebar-contact-title": "Contacto",
+        "page-title": "Investigação & Dissertações",
+        "intro-text": "Uma visão cronológica da minha investigação académica, desde os meus estudos fundamentais na NTUA até às minhas atuais investigações de doutoramento em redes inteligentes.",
+        "badge-phd": "Candidato a PhD",
+        "title-phd": "Investigação de Doutoramento (PhD)",
+        "inst-ntua": "Universidade Técnica Nacional de Atenas",
+        "desc-phd": "Foco na <strong>alocação de recursos de rádio e computação</strong> em sistemas de aprendizagem federada sem fios para ambientes 6G.",
+        "title-msc": "Mestrado (MSc) em Ciência de Dados & Aprendizagem Automática",
+        "title-msc-thesis": "\"Alocação de recursos em redes de aprendizagem federada sem fios\"",
+        "desc-msc": "Desenho de um modelo de gestão holístico para redes sem fios assistidas por RIS usando técnicas de otimização iterativas.",
+        "title-diplo": "Diploma em Engenharia Eletrotécnica e de Computadores (M.Eng)",
+        "title-diplo-thesis": "\"Análise de grafos de informação social e emocional\"",
+        "desc-diplo": "Utilização de Aprendizagem Automática para prever relações sociais e emocionais em grafos sociais usando métricas de similaridade.",
+        "btn-view": "Ver"
+      },
+      pl: {
+        "meta-title": "Stefanos Voikos - Badania i rozprawy",
+        "nav-home": "Strona główna",
+        "nav-thesis": "Badania i rozprawy",
+        "nav-projects": "Portfolio inżynierskie, projekty i badania",
+        "nav-bio": "Autobiografia",
+        "nav-contact": "Kontakt",
+        "sidebar-contact-title": "Kontakt",
+        "page-title": "Badania i rozprawy",
+        "intro-text": "Chronologiczny przegląd moich badań akademickich, od studiów licencjackich na NTUA po obecne badania doktorskie w dziedzinie inteligentnych sieci.",
+        "badge-phd": "Doktorant",
+        "title-phd": "Badania Doktorskie (PhD)",
+        "inst-ntua": "Narodowy Uniwersytet Techniczny w Atenach",
+        "desc-phd": "Koncentracja na <strong>alokacji zasobów radiowych i obliczeniowych</strong> w bezprzewodowych systemach uczenia federacyjnego dla środowisk 6G.",
+        "title-msc": "Magister (MSc) ze Specjalnością Data Science & Machine Learning",
+        "title-msc-thesis": "\"Alokacja zasobów w bezprzewodowych sieciach uczenia federacyjnego\"",
+        "desc-msc": "Zaprojektowanie całościowego ramowego systemu zarządzania dla sieci bezprzewodowych wspomaganych przez RIS z wykorzystaniem iteracyjnych technik optymalizacji.",
+        "title-diplo": "Dyplom z Elektrotechniki i Informatyki (M.Eng)",
+        "title-diplo-thesis": "\"Analiza grafów informacji społecznych i emocjonalnych\"",
+        "desc-diplo": "Wykorzystanie uczenia maszynowego do przewidywania relacji społecznych i emocjonalnych w grafach społecznych za pomocą miar podobieństwa.",
+        "btn-view": "Zobacz"
+      },
+      sv: {
+        "meta-title": "Stefanos Voikos - Forskning & Avhandlingar",
+        "nav-home": "Hem",
+        "nav-thesis": "Forskning & Avhandlingar",
+        "nav-projects": "Ingenjörsportfölj, Projekt & Forskning",
+        "nav-bio": "Autobiografi",
+        "nav-contact": "Kontakt",
+        "sidebar-contact-title": "Kontakt",
+        "page-title": "Forskning & Avhandlingar",
+        "intro-text": "En kronologisk översikt över min akademiska forskning, från mina grundläggande studier vid NTUA till mina nuvarande doktorandstudier inom intelligenta nätverk.",
+        "badge-phd": "Doktorand",
+        "title-phd": "Doktorandforskning (PhD)",
+        "inst-ntua": "Atens nationella tekniska universitet",
+        "desc-phd": "Fokus på <strong>radio- och beräkningsresursallokering</strong> i trådlösa federerade inlärningssystem för 6G-miljöer.",
+        "title-msc": "Masterexamen (MSc) i datavetenskap & maskininlärning",
+        "title-msc-thesis": "\"Resursallokering i trådlösa federerade inlärningsnätverk\"",
+        "desc-msc": "Designade ett holistiskt ramverk för hantering av RIS-assisterade trådlösa nätverk med hjälp av iterativa optimeringstekniker.",
+        "title-diplo": "Civilingenjörsexamen i elektroteknik och datateknik (M.Eng)",
+        "title-diplo-thesis": "\"Analys av sociala och emotionella informationsgrafer\"",
+        "desc-diplo": "Använde maskininlärning för att förutsäga sociala och emotionella relationer inom sociala grafer med hjälp av likhetsmetriker.",
+        "btn-view": "Visa"
+      },
+      sr: {
+        "meta-title": "Стефанос Воикос - Истраживања и дисертације",
+        "nav-home": "Почетна",
+        "nav-thesis": "Истраживања и дисертације",
+        "nav-projects": "Инжењерски портфолио, пројекти и истраживања",
+        "nav-bio": "Аутобиографија",
+        "nav-contact": "Контакт",
+        "sidebar-contact-title": "Контакт",
+        "page-title": "Истраживања и дисертације",
+        "intro-text": "Хронолошки преглед мог академског истраживања, од мојих основних студија на NTUA до мојих тренутних докторских истраживања у области интелигентног умрежавања.",
+        "badge-phd": "Докторанд",
+        "title-phd": "Докторско истраживање (PhD)",
+        "inst-ntua": "Национални технички универзитет у Атини",
+        "desc-phd": "Фокусирање на <strong>алокацију радио и рачунарских ресурса</strong> у системима бежичног федеративног учења за 6G окружења.",
+        "title-msc": "Мастер студије (MSc) из науке о подацима и машинског учења",
+        "title-msc-thesis": "\"Алокација ресурса у бежичним мрежама федеративног учења\"",
+        "desc-msc": "Дизајнирао холистички оквир за управљање бежичним мрежама потпомогнутим од стране RIS-а користећи итеративне технике оптимизације.",
+        "title-diplo": "Диплома електротехнике и рачунарства (M.Eng)",
+        "title-diplo-thesis": "\"Анализа графова социјалних и емоционалних информација\"",
+        "desc-diplo": "Искористио машинско учење за предвиђање друштвених и емоционалних односа унутар друштвених графова користећи метрике сличности.",
+        "btn-view": "Погледај"
+      },
+      bg: {
+        "meta-title": "Стефанос Воикос - Изследвания и дисертации",
+        "nav-home": "Начало",
+        "nav-thesis": "Изследвания и дисертации",
+        "nav-projects": "Инженерно портфолио, проекти и изследвания",
+        "nav-bio": "Автобиография",
+        "nav-contact": "Контакт",
+        "sidebar-contact-title": "Контакт",
+        "page-title": "Изследвания и дисертации",
+        "intro-text": "Хронологичен преглед на моите академични изследвания, от фундаменталното ми обучение в NTUA до настоящите ми докторски проучвания в интелигентните мрежи.",
+        "badge-phd": "Докторант",
+        "title-phd": "Докторски изследвания (PhD)",
+        "inst-ntua": "Национален технически университет в Атина",
+        "desc-phd": "Фокусиране върху <strong>разпределението на радио и изчислителни ресурси</strong> в системи за безжично федеративно обучение за 6G среди.",
+        "title-msc": "Магистър (MSc) по наука за данните и машинно обучение",
+        "title-msc-thesis": "\"Разпределение на ресурси в мрежи за безжично федеративно обучение\"",
+        "desc-msc": "Проектиране на цялостна рамка за управление на безжични мрежи, подпомагани от RIS, чрез използване на итеративни техники за оптимизация.",
+        "title-diplo": "Дипломиран инженер по електротехника и компютърни науки (M.Eng)",
+        "title-diplo-thesis": "\"Анализ на графи на социална и емоционална информация\"",
+        "desc-diplo": "Използване на машинно обучение за прогнозиране на социални и емоционални отношения в социални графи с помощта на метрики за сходство.",
+        "btn-view": "Преглед"
+      },
+      ro: {
+        "meta-title": "Stefanos Voikos - Cercetare și Dizertații",
+        "nav-home": "Acasă",
+        "nav-thesis": "Cercetare și Dizertații",
+        "nav-projects": "Portofoliu de Inginerie, Proiecte și Cercetare",
+        "nav-bio": "Autobiografie",
+        "nav-contact": "Contact",
+        "sidebar-contact-title": "Contact",
+        "page-title": "Cercetare și Dizertații",
+        "intro-text": "O privire cronologică asupra cercetării mele academice, de la studiile mele fundamentale la NTUA până la investigațiile mele doctorale actuale în rețele intelligente.",
+        "badge-phd": "Doctorand",
+        "title-phd": "Cercetare Doctorală (PhD)",
+        "inst-ntua": "Universitatea Tehnică Națională din Atena",
+        "desc-phd": "Concentrare pe <strong>alocarea resurselor radio și de calcul</strong> în sistemele de învățare federativă fără fir pentru medii 6G.",
+        "title-msc": "Master (MSc) în Știința Datelor și Învățare Automată",
+        "title-msc-thesis": "\"Alocarea resurselor în rețele de învățare federativă fără fir\"",
+        "desc-msc": "Am proiectat un cadru de management holistic pentru rețele fără fir asistate de RIS utilizând tehnici de optimizare iterativă.",
+        "title-diplo": "Diplomă de Inginer în Electronică și Telecomunicații (M.Eng)",
+        "title-diplo-thesis": "\"Analiza grafurilor de informații sociale și emoționale\"",
+        "desc-diplo": "Utilizarea învățării automate pentru a prezice relațiile sociale și emoționale în cadrul grafurilor sociale folosind metrici de similitudine.",
+        "btn-view": "Vizualizare"
+      },
+      fa: {
+        "meta-title": "استفانوس وویکوس - تحقیقات و پایان‌نامه‌ها",
+        "nav-home": "خانه",
+        "nav-thesis": "تحقیقات و پایان‌نامه‌ها",
+        "nav-projects": "نمونه کار مهندسی، پروژه‌ها و تحقیقات",
+        "nav-bio": "خودزندگینامه",
+        "nav-contact": "تماس",
+        "sidebar-contact-title": "تماس",
+        "page-title": "تحقیقات و پایان‌نامه‌ها",
+        "intro-text": "یک مرور زمان‌بندی‌شده از تحقیقات دانشگاهی من، از مطالعات پایه‌ای من در NTUA تا بررسی‌های دکتری فعلی من در شبکه‌های هوشمند.",
+        "badge-phd": "دانشجوی دکتری",
+        "title-phd": "تحقیقات دکتری (PhD)",
+        "inst-ntua": "دانشگاه ملی فنی آتن",
+        "desc-phd": "تمرکز بر <strong>تخصیص منابع رادیویی و محاسباتی</strong> در سیستم‌های یادگیری فدرال بی‌سیم برای محیط‌های 6G.",
+        "title-msc": "کارشناسی ارشد در علم داده و یادگیری ماشین",
+        "title-msc-thesis": "«تخصیص منابع در شبکه‌های یادگیری فدرال بی‌سیم»",
+        "desc-msc": "طراحی یک چارچوب مدیریت جامع برای شبکه‌های بی‌سیم مجهز به RIS با استفاده از تکنیک‌های بهینه‌سازی تکراری.",
+        "title-diplo": "دیپلم مهندسی برق و کامپیوتر (M.Eng)",
+        "title-diplo-thesis": "«تحلیل گراف‌های اطلاعات اجتماعی و عاطفی»",
+        "desc-diplo": "بهره‌گیری از یادگیری ماشین برای پیش‌بینی روابط اجتماعی و عاطفی در گراف‌های اجتماعی با استفاده از معیارهای شباهت.",
+        "btn-view": "مشاهده"
+      },
+      sq: {
+        "meta-title": "Stefanos Voikos - Kërkime & Disertacione",
+        "nav-home": "Ballina",
+        "nav-thesis": "Kërkime & Disertacione",
+        "nav-projects": "Portofoli i Inxhinierisë, Projekte dhe Kërkime",
+        "nav-bio": "Auto-Biografi",
+        "nav-contact": "Kontakt",
+        "sidebar-contact-title": "Kontakt",
+        "page-title": "Kërkime & Disertacione",
+        "intro-text": "Një pasqyrim kronologjik i kërkimit tim akademik, nga studimet e mia themelore në NTUA deri në kërkimet e mia aktuale të doktoraturës në rrjetet inteligjente.",
+        "badge-phd": "Kandidat PhD",
+        "title-phd": "Kërkimi i Doktoraturës (PhD)",
+        "inst-ntua": "Universiteti Teknik Kombëtar i Athinës",
+        "desc-phd": "Fokusimi në <strong>Alokimin e Burimeve të Radios dhe llogaritjes</strong> në sistemet e Mësimit të Federuar pa tel për mjediset 6G.",
+        "title-msc": "MSc në Shkencën e të Dhënave & Mësimin e Makinerisë",
+        "title-msc-thesis": "\"Alokimi i burimeve në rrjetet e mësimit të federuar pa tel\"",
+        "desc-msc": "Dizajnoi një kornizë gjithëpërfshirëse të menaxhimit për rrjetet pa tel të asistuara nga RIS duke përdorur teknika të optimizimit përsëritës.",
+        "title-diplo": "Diplomë në Inxhinieri Elektrike & Kompjuterike (M.Eng)",
+        "title-diplo-thesis": "\"Analiza e Grafeve të Informacionit Social dhe Emocional\"",
+        "desc-diplo": "Shfrytëzoi Mësimin e Makinerisë për të parashikuar marrëdhëniet sociale dhe emocionale brenda grafeve sociale duke përdorur metrika të ngjashmërisë.",
+        "btn-view": "Shiko"
+      },
+      ar: {
+        "meta-title": "ستيفانوس فويكوس - الأبحاث والأطروحات",
+        "nav-home": "الرئيسية",
+        "nav-thesis": "الأبحاث والأطروحات",
+        "nav-projects": "ملف الهندسة والمشاريع والأبحاث",
+        "nav-bio": "السيرة الذاتية",
+        "nav-contact": "الاتصال",
+        "sidebar-contact-title": "الاتصال",
+        "page-title": "الأبحاث والأطروحات",
+        "intro-text": "نظرة عامة زمنية على أبحاثي الأكاديمية، من دراساتي الأساسية في NTUA إلى أبحاث الدكتوراه الحالية في الشبكات الذكية.",
+        "badge-phd": "مرشح دكتوراه",
+        "title-phd": "أبحاث الدكتوراه (PhD)",
+        "inst-ntua": "جامعة أثينا التقنية الوطنية",
+        "desc-phd": "التركيز على <strong>تخصيص موارد الراديو والحوسبة</strong> في أنظمة التعلم الفيدرالي اللاسلكي لبيئات 6G.",
+        "title-msc": "ماجستير في علم البيانات والتعلم الآلي",
+        "title-msc-thesis": "\"تخصيص الموارد في شبكات التعلم الفيدرالي اللاسلكية\"",
+        "desc-msc": "تصميم إطار إدارة شامل للشبكات اللاسلكية المدعومة بـ RIS باستخدام تقنيات التحسين التكراري.",
+        "title-diplo": "دبلوم في الهندسة الكهربائية وهندسة الحاسبات (M.Eng)",
+        "title-diplo-thesis": "\"تحليل الرسوم البيانية للمعلومات الاجتماعية والعاطفية\"",
+        "desc-diplo": "استخدام التعلم الآلي للتنبؤ بالعلاقات الاجتماعية والعاطفية داخل الرسوم البيانية الاجتماعية باستخدام مقاييس التشابه.",
+        "btn-view": "عرض"
+      },
+      zh: {
+        "meta-title": "Stefanos Voikos - 研究与論文",
+        "nav-home": "首页",
+        "nav-thesis": "研究与論文",
+        "nav-projects": "工程作品集、项目与研究",
+        "nav-bio": "自传",
+        "nav-contact": "联系方式",
+        "sidebar-contact-title": "联系方式",
+        "page-title": "研究与論文",
+        "intro-text": "我学术研究的时间线概述，从雅典国家技术大学的基础研究到目前在智能网络领域的博士研究。",
+        "badge-phd": "博士生",
+        "title-phd": "博士研究 (PhD)",
+        "inst-ntua": "雅典国家技术大学",
+        "desc-phd": "专注于 6G 环境下无线联邦学习系统中的<strong>无线电与计算资源分配</strong>。",
+        "title-msc": "数据科学与机器学习硕士 (MSc)",
+        "title-msc-thesis": "“无线联邦学习网络中的资源分配”",
+        "desc-msc": "利用迭代优化技术设计了 RIS 辅助无线网络的整体管理框架。",
+        "title-diplo": "电气与计算机工程学士/硕士学位 (M.Eng)",
+        "title-diplo-thesis": "“社交与情感信息图谱分析”",
+        "desc-diplo": "利用机器学习，通过相似度指标预测社交图谱中的社交与情感关系。",
+        "btn-view": "查看"
+      },
+      ja: {
+        "meta-title": "Stefanos Voikos - 研究と学位論文",
+        "nav-home": "ホーム",
+        "nav-thesis": "研究と学位論文",
+        "nav-projects": "エンジニアリングポートフォリオ・プロジェクト・研究",
+        "nav-bio": "自伝",
+        "nav-contact": "連絡先",
+        "sidebar-contact-title": "連絡先",
+        "page-title": "研究と学位論文",
+        "intro-text": "NTUAでの基礎研究から、インテリジェントネットワークにおける現在の博士課程研究に至るまでの、私の学術研究の時系列的な概要です。",
+        "badge-phd": "博士課程在籍",
+        "title-phd": "博士研究 (PhD)",
+        "inst-ntua": "アテネ国立工科大学",
+        "desc-phd": "6G環境における無線連合学習システムにおける<strong>無線および計算リソース割り当て</strong>に焦点を当てています。",
+        "title-msc": "データサイエンス＆機械学習修士 (MSc)",
+        "title-msc-thesis": "「無線連合学習ネットワークにおけるリソース割り当て」",
+        "desc-msc": "反復最適化手法を用いて、RIS支援無線ネットワークの包括的な管理フレームワークを構築。",
+        "title-diplo": "電気・コンピュータ工学ディプロマ (M.Eng)",
+        "title-diplo-thesis": "「社会的・感情的信息グラフの分析」",
+        "desc-diplo": "機械学習を活用し、類似度指標を用いて社会的グラフ内の社会的・感情的関係を予測。",
+        "btn-view": "閲覧"
+      },
+      hi: {
+        "meta-title": "Stefanos Voikos - अनुसंधान और शोधप्रबंध",
+        "nav-home": "होम",
+        "nav-thesis": "अनुसंधान और शोधप्रबंध",
+        "nav-projects": "इंजीनियरिंग पोर्टफोलियो, प्रोजेक्ट और अनुसंधान",
+        "nav-bio": "आत्मकथा",
+        "nav-contact": "संपर्क",
+        "sidebar-contact-title": "संपर्क",
+        "page-title": "अनुसंधान और शोधप्रबंध",
+        "intro-text": "मेरे शैक्षणिक अनुसंधान का एक कालानुक्रमिक अवलोकन, NTUA में मेरे बुनियादी अध्ययन से लेकर इंटेलिजेंट नेटवर्किंग में मेरे वर्तमान डॉक्टरेट अनुसंधान तक।",
+        "badge-phd": "पीएचडी छात्र",
+        "title-phd": "डॉक्टरेट अनुसंधान (PhD)",
+        "inst-ntua": "एथेंस राष्ट्रीय तकनीकी विश्वविद्यालय",
+        "desc-phd": "6G वातावरण के लिए无线 फेडरेटेड लर्निंग सिस्टम में <strong>रेडियो और कंप्यूट रिसोर्स एलोकेशन</strong> पर ध्यान केंद्रित करना।",
+        "title-msc": "डेटा साइंस और मशीन लर्निंग में एमएससी (MSc)",
+        "title-msc-thesis": "\"वायरलेस फेडरेटेड लर्निंग नेटवर्क में संसाधन आवंटन\"",
+        "desc-msc": "पुनरावर्ती अनुकूलन तकनीकों का उपयोग करके RIS-सहायता प्राप्त वायरलेस नेटवर्क के लिए एक समग्र प्रबंधन ढांचा तैयार किया।",
+        "title-diplo": "इलेक्ट्रिकल और कंप्यूटर इंजीनियरिंग में डिप्लोमा (M.Eng)",
+        "title-diplo-thesis": "\"सामाजिक और भावनात्मक सूचना ग्राफ का विश्लेषण\"",
+        "desc-diplo": "समानता मेट्रिक्स का उपयोग करके सामाजिक ग्राफ के भीतर सामाजिक और भावनात्मक संबंधों की भविष्यवाणी करने के लिए मशीन लर्निंग का लाभ उठाया।",
+        "btn-view": "देखें"
+      }
+    };
+
+    function renderDropdown() {
+      const dropdown = document.getElementById('lang-dropdown');
+      dropdown.innerHTML = '';
+      languages.forEach(lang => {
+        const btn = document.createElement('button');
+        btn.textContent = lang.name;
+        btn.setAttribute('onclick', `setLanguage('${lang.code}')`);
+        btn.id = `lang-btn-${lang.code}`;
+        dropdown.appendChild(btn);
+      });
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      // Καθορίζουμε ρητά ότι βρισκόμαστε στο αγγλικό configuration
-      localStorage.setItem('preferredLang', 'en');
-      updateLinksToLanguage('en');
-    });
+    function toggleLangDropdown(event) {
+      event.stopPropagation();
+      document.getElementById('lang-dropdown').classList.toggle('show');
+    }
 
-    function updateLinksToLanguage(lang) {
-      const suffix = lang === 'gr' ? '_gr.html' : '.html';
-      const navLinks = document.querySelectorAll('#sidebar-nav-links a');
-      const files = ['home', 'thesis', 'projects', 'autobiography', 'contact'];
+    function setLanguage(lang) {
+      localStorage.setItem('preferredLang', lang);
+      applyLanguage(lang);
+      document.getElementById('lang-dropdown').classList.remove('show');
+    }
+
+    function applyLanguage(lang) {
+      const data = i18nData[lang] || i18nData['en'];
       
-      navLinks.forEach((link, index) => {
-        if(files[index]) {
-          link.setAttribute('href', files[index] + suffix);
+      const currentLangLabel = document.getElementById('current-lang-label');
+      if (currentLangLabel) {
+        currentLangLabel.textContent = lang.toUpperCase();
+      }
+
+      languages.forEach(l => {
+        const btn = document.getElementById(`lang-btn-${l.code}`);
+        if(btn) {
+          if(l.code === lang) btn.classList.add('active');
+          else btn.classList.remove('active');
         }
       });
 
-      const ctaResearch = document.getElementById('cta-research');
-      const ctaProjects = document.getElementById('cta-projects');
-      if(ctaResearch) ctaResearch.setAttribute('href', 'thesis' + suffix);
-      if(ctaProjects) ctaProjects.setAttribute('href', 'projects' + suffix);
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (data[key]) {
+          if (el.tagName === 'TITLE') {
+            document.title = data[key];
+          } else {
+            el.innerHTML = data[key];
+          }
+        }
+      });
     }
+
+    window.onclick = function(event) {
+      if (!event.target.matches('.lang-toggle-btn') && !event.target.matches('.lang-toggle-btn *')) {
+        const dropdowns = document.getElementsByClassName("lang-dropdown");
+        for (let i = 0; i < dropdowns.length; i++) {
+          let openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      renderDropdown();
+      const savedLang = localStorage.getItem('preferredLang') || 'en';
+      applyLanguage(savedLang);
+    });
   </script>
-    <script src="script.js"></script>
+  <script src="script.js"></script>
   <script src="background_thesis.js"></script>
-  
 </body>
 </html>
