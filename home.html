@@ -6,7 +6,7 @@
   <meta name="keywords" content="Stefanos Voikos, Στέφανος Βόικος, NTUA, 6G, Federated Learning, NETMODE, ECE">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="icon.png">
-  <title>Stefanos Voikos</title>
+  <title data-i18n="meta-title">Stefanos Voikos</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script src="https://d3js.org/d3.v7.min.js"></script>
@@ -91,43 +91,66 @@
       stroke-width: 1.2px;
     }
 
-    /* Language Switcher Button Component */
-    .lang-toggle-btn {
+    /* Sleek Language Dropdown Integration */
+    .lang-dropdown-wrapper {
       position: fixed;
       top: 16px;
-      right: 70px; /* Δίπλα από το Theme Toggle */
+      right: 70px;
       z-index: 1000;
+      display: inline-block;
+    }
+
+    .lang-dropdown-wrapper i {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #8b9fcf;
+      pointer-events: none;
+      font-size: 0.85rem;
+    }
+
+    .lang-toggle-select {
       background: rgba(20, 28, 50, 0.75);
       border: 1px solid rgba(120, 140, 210, 0.3);
       color: #8b9fcf;
-      padding: 6px 14px;
+      padding: 6px 14px 6px 30px;
       border-radius: 20px;
       font-size: 0.85rem;
       font-weight: 600;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      outline: none;
       transition: all 0.2s;
       backdrop-filter: blur(6px);
       letter-spacing: 0.05em;
+      appearance: none;
+      -webkit-appearance: none;
     }
 
-    .lang-toggle-btn:hover {
+    .lang-toggle-select:hover {
       border-color: rgba(150, 130, 230, 0.6);
       color: #fff;
       background: rgba(120, 90, 220, 0.18);
     }
 
-    /* Light mode adjustments για το Language Button */
-    body.light-mode .lang-toggle-btn {
+    .lang-toggle-select option {
+      background: #0c1223;
+      color: #cbd5e1;
+    }
+
+    /* Light mode adjustments */
+    body.light-mode .lang-toggle-select {
       background: rgba(240,243,252,0.85);
       border-color: rgba(80,100,200,0.25);
       color: #4a5a9a;
     }
-    body.light-mode .lang-toggle-btn:hover {
+    body.light-mode .lang-toggle-select:hover {
       color: #1a237e;
       background: rgba(80,100,200,0.1);
+    }
+    body.light-mode .lang-toggle-select option {
+      background: #ffffff;
+      color: #333333;
     }
   </style>
 </head>
@@ -137,14 +160,14 @@
   <div id="mySidebar" class="sidebar">
     <div class="sidebar-content">
       <div class="nav-links" id="sidebar-nav-links">
-        <a href="home.html">Home</a>
-        <a href="thesis.html">Research & Dissertations</a>
-        <a href="projects.html">Engineering Portfolio, Projects and Research</a>
-        <a href="autobiography.html">Auto-Biography</a>
-        <a href="contact.html">Contact</a>
+        <a href="home.html" data-i18n="nav-home">Home</a>
+        <a href="thesis.html" data-i18n="nav-research">Research & Dissertations</a>
+        <a href="projects.html" data-i18n="nav-projects">Engineering Portfolio, Projects and Research</a>
+        <a href="autobiography.html" data-i18n="nav-bio">Auto-Biography</a>
+        <a href="contact.html" data-i18n="nav-contact">Contact</a>
       </div>
       <div class="sidebar-footer">
-        <h3>Contact</h3>
+        <h3 data-i18n="footer-contact">Contact</h3>
         <div class="social-icons">
           <a href="mailto:elstefanosvks7@gmail.com" title="Gmail"><i class="fa-regular fa-envelope"></i></a>
           <a href="mailto:stefvoikos@netmode.ntua.gr" title="NTUA Email"><i class="fa-regular fa-envelope"></i></a>
@@ -160,9 +183,30 @@
   <div id="main">
     <button class="openbtn" onclick="toggleNav()">&#9776;</button>
     
-    <button id="language-toggle" class="lang-toggle-btn" onclick="switchLanguage()">
-      <i class="fa-solid fa-globe"></i> <span>GR</span>
-    </button>
+    <div class="lang-dropdown-wrapper">
+      <i class="fa-solid fa-globe"></i>
+      <select id="language-selector" class="lang-toggle-select" onchange="translatePage(this.value)">
+        <option value="en">English</option>
+        <option value="el">Ελληνικά</option>
+        <option value="de">Deutsch</option>
+        <option value="fr">Français</option>
+        <option value="it">Italiano</option>
+        <option value="es">Español</option>
+        <option value="ru">Русский</option>
+        <option value="pt">Português</option>
+        <option value="pl">Polski</option>
+        <option value="sv">Svenska</option>
+        <option value="sr">Српски (Ћирилица)</option>
+        <option value="bg">Български</option>
+        <option value="ro">Română</option>
+        <option value="sq">Shqip</option>
+        <option value="fa">فارسی</option>
+        <option value="ar">العربية</option>
+        <option value="zh">中文</option>
+        <option value="ja">日本語</option>
+        <option value="hi">हिन्दी</option>
+      </select>
+    </div>
   
     <button id="theme-toggle" class="theme-btn" onclick="toggleTheme()">
       <i class="fa-solid fa-moon"></i>
@@ -170,22 +214,21 @@
     
     <header class="header">
       <h1 class="fade-in">Stefanos Voikos</h1>
-      <p class="fade-in delay-1">Electrical and Computer Engineer | Data Scientist | Network Engineering | ML Engineering</p>
+      <p class="fade-in delay-1" data-i18n="header-sub">Electrical and Computer Engineer | Data Scientist | Network Engineering | ML Engineering</p>
     </header>
 
     <section class="about fade-in delay-2">
-      <h2>About Me</h2>
-      <p>Stefanos Voikos is a Research Assistant at the <strong>Network Management and Optimal Design Laboratory</strong> at the National Technical University of Athens (NTUA).</p>
-
-      <p>Following my MSc, I have transitioned into doctoral studies focusing on the intersection of <strong>Next-Generation Wireless Networks (6G)</strong> and <strong>Distributed Intelligence</strong>. My current work explores the orchestration of radio and compute resources to support massive-scale Federated Learning, being passionate about applying optimization and distributed learning techniques to enhance the scalability and energy efficiency of next-generation networks.</p>
+      <h2 data-i18n="about-title">About Me</h2>
+      <p id="about-p1"></p>
+      <p id="about-p2"></p>
 
       <div class="research-graph-container" id="d3-container">
-        <div class="graph-tooltip" id="graph-tip"> Drag nodes to explore • Click to view projects</div>
+        <div class="graph-tooltip" id="graph-tip"></div>
       </div>
 
       <div class="cta-container">
-        <a href="thesis.html" class="btn" id="cta-research">View My Research</a>
-        <a href="projects.html" class="btn" id="cta-projects">See Projects</a>
+        <a href="thesis.html" class="btn" id="cta-research" data-i18n="cta-research">View My Research</a>
+        <a href="projects.html" class="btn" id="cta-projects" data-i18n="cta-projects">See Projects</a>
       </div>
     </section>
   </div>
@@ -194,33 +237,561 @@
   <script src="background_home.js"></script>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const data = {
-        nodes: [
-          { id: "Stefanos", group: "core", radius: 14, color: "#ffffff" },
-          { id: "6G Networks", group: "pillar", radius: 10, color: "#a78bfa", target: "projects.html#6g" },
-          { id: "Federated Learning", group: "pillar", radius: 10, color: "#a78bfa", target: "projects.html#federated-learning" },
-          { id: "Optimization", group: "pillar", radius: 10, color: "#a78bfa", target: "projects.html#optimization" },
-          { id: "RIS / Beamforming", group: "tech", radius: 7, color: "#8b9fcf", target: "projects.html#ris" },
-          { id: "Resource Allocation", group: "tech", radius: 7, color: "#8b9fcf", target: "projects.html#resource-allocation" },
-          { id: "Distributed Intelligence", group: "tech", radius: 7, color: "#8b9fcf", target: "projects.html#ml" },
-          { id: "CVXPY / Gurobi", group: "tech", radius: 6, color: "#64748b", target: "projects.html#tools" },
-          { id: "Python / Data Science", group: "tech", radius: 6, color: "#64748b", target: "projects.html#tools" }
-        ],
-        links: [
-          { source: "Stefanos", target: "6G Networks" },
-          { source: "Stefanos", target: "Federated Learning" },
-          { source: "Stefanos", target: "Optimization" },
-          { source: "6G Networks", target: "RIS / Beamforming" },
-          { source: "6G Networks", target: "Resource Allocation" },
-          { source: "Federated Learning", target: "Distributed Intelligence" },
-          { source: "Federated Learning", target: "Resource Allocation" },
-          { source: "Optimization", target: "CVXPY / Gurobi" },
-          { source: "Optimization", target: "Resource Allocation" },
-          { source: "Distributed Intelligence", target: "Python / Data Science" }
-        ]
-      };
+    // --- Dictionary Structure Supporting Your Custom script.js / local-assets Logic ---
+    const i18nData = {
+  en: {
+    "meta-title": "Stefanos Voikos",
+    "nav-home": "Home",
+    "nav-research": "Research & Dissertations",
+    "nav-projects": "Engineering Portfolio, Projects and Research",
+    "nav-bio": "Auto-Biography",
+    "nav-contact": "Contact",
+    "footer-contact": "Contact",
+    "header-sub": "Electrical and Computer Engineer | Data Scientist | Network Engineering | ML Engineering",
+    "about-title": "About Me",
+    "about-p1": "Stefanos Voikos is a Research Assistant at the <strong>Network Management and Optimal Design Laboratory</strong> at the National Technical University of Athens (NTUA).",
+    "about-p2": "Following my MSc, I have transitioned into doctoral studies focusing on the intersection of <strong>Next-Generation Wireless Networks (6G)</strong> and <strong>Distributed Intelligence</strong>. My current work explores the orchestration of radio and compute resources to support massive-scale Federated Learning, being passionate about applying optimization and distributed learning techniques to enhance the scalability and energy efficiency of next-generation networks.",
+    "cta-research": "View My Research",
+    "cta-projects": "See Projects",
+    "tip-default": "Drag nodes to explore • Click to view projects",
+    "tip-hover": "🔗 Go to: <strong>{node}</strong> section",
+    "node-stefanos": "Stefanos",
+    "node-6g": "6G Networks",
+    "node-fl": "Federated Learning",
+    "node-opt": "Optimization",
+    "node-ris": "RIS / Beamforming",
+    "node-res": "Resource Allocation",
+    "node-dist": "Distributed Intelligence",
+    "node-tools": "CVXPY / Gurobi",
+    "node-ds": "Python / Data Science"
+  },
+  el: {
+    "meta-title": "Στέφανος Βόικος",
+    "nav-home": "Αρχική",
+    "nav-research": "Έρευνα & Διατριβές",
+    "nav-projects": "Μηχανικό Portfolio, Έργα και Έρευνα",
+    "nav-bio": "Αυτοβιογραφία",
+    "nav-contact": "Επικοινωνία",
+    "footer-contact": "Επικοινωνία",
+    "header-sub": "Ηλεκτρολόγος Μηχανικός και Μηχανικός Υπολογιστών | Data Scientist | Network Engineering | ML Engineering",
+    "about-title": "Σχετικά με Εμένα",
+    "about-p1": "Ο Στέφανος Βόικος είναι Βοηθός Ερευνητής στο <strong>Εργαστήριο Διαχείρισης Δικτύων και Βέλτιστου Σχεδιασμού (Netmode)</strong> του Εθνικού Μετσοβίου Πολυτεχνείου (ΕΜΠ).",
+    "about-p2": "Μετά την ολοκλήρωση του ΠΜΣ, μετέβην σε διδακτορικές σπουδές με επίκεντρο την τομή των <strong>Ασύρματων Δικτύων Επόμενης Γενιάς (6G)</strong> και της <strong>Κατανεμημένης Νοημοσύνης (Distributed Intelligence)</strong>. Η τρέχουσα έρευνά μου επικεντρώνεται στην ενορχήστρωση ραδιοσυχνοτήτων και υπολογιστικών πόρων για την υποστήριξη Ομόσπονδης Μάθησης (Federated Learning) μαζικής κλίμακας, με πάθος για την εφαρμογή τεχνικών βελτιστοποίησης για την ενίσχυση της επεκτασιμότητας και της ενεργειακής αποδοτικότητας.",
+    "cta-research": "Προβολή Έρευνας",
+    "cta-projects": "Δείτε τα Έργα",
+    "tip-default": "Σύρετε τους κόμβους για εξερεύνηση • Κάντε κλικ για προβολή έργων",
+    "tip-hover": "🔗 Μετάβαση στην ενότητα: <strong>{node}</strong>",
+    "node-stefanos": "Στέφανος",
+    "node-6g": "Δίκτυα 6G",
+    "node-fl": "Ομόσπονδη Μάθηση",
+    "node-opt": "Βελτιστοποίηση",
+    "node-ris": "RIS / Beamforming",
+    "node-res": "Κατανομή Πόρων",
+    "node-dist": "Κατανεμημένη Νοημοσύνη",
+    "node-tools": "CVXPY / Gurobi",
+    "node-ds": "Python / Data Science"
+  },
+  de: {
+    "meta-title": "Stefanos Voikos",
+    "nav-home": "Startseite",
+    "nav-research": "Forschung & Dissertationen",
+    "nav-projects": "Ingenieur-Portfolio, Projekte und Forschung",
+    "nav-bio": "Autobiographie",
+    "nav-contact": "Kontakt",
+    "footer-contact": "Kontakt",
+    "header-sub": "Elektro- und Informationstechniker | Data Scientist | Netzwerkingenieurwesen | ML-Ingenieurwesen",
+    "about-title": "Über mich",
+    "about-p1": "Stefanos Voikos ist wissenschaftlicher Mitarbeiter am <strong>Network Management and Optimal Design Laboratory</strong> der Nationalen Technischen Universität Athen (NTUA).",
+    "about-p2": "Nach meinem Master-Abschluss habe ich ein Promotionsstudium begonnen, das sich auf die Schnittstelle zwischen <strong>Mobilfunknetzen der nächsten Generation (6G)</strong> und <strong>Verteilter Intelligenz</strong> konzentriert. Meine aktuelle Arbeit untersucht die Orchestrierung von Funk- und Rechenressourcen zur Unterstützung von großskaligem Föderiertem Lernen. Meine Leidenschaft gilt der Anwendung von Optimierungs- und verteilten Lernverfahren, um die Skalierbarkeit und Energieeffizienz von Netzwerken der nächsten Generation zu verbessern.",
+    "cta-research": "Forschung anzeigen",
+    "cta-projects": "Projekte ansehen",
+    "tip-default": "Knoten ziehen zum Erkunden • Klicken zum Anzeigen von Projekten",
+    "tip-hover": "🔗 Gehe zu Bereich: <strong>{node}</strong>",
+    "node-stefanos": "Stefanos",
+    "node-6g": "6G-Netzwerke",
+    "node-fl": "Föderiertes Lernen",
+    "node-opt": "Optimierung",
+    "node-ris": "RIS / Beamforming",
+    "node-res": "Ressourcenallokation",
+    "node-dist": "Verteilte Intelligenz",
+    "node-tools": "CVXPY / Gurobi",
+    "node-ds": "Python / Data Science"
+  },
+  fr: {
+    "meta-title": "Stefanos Voikos",
+    "nav-home": "Accueil",
+    "nav-research": "Recherche & Dissertations",
+    "nav-projects": "Portfolio d'Ingénierie, Projets et Recherche",
+    "nav-bio": "Autobiographie",
+    "nav-contact": "Contact",
+    "footer-contact": "Contact",
+    "header-sub": "Ingénieur Électricien et Informaticien | Data Scientist | Ingénierie Réseau | Ingénierie ML",
+    "about-title": "À Propos de Moi",
+    "about-p1": "Stefanos Voikos est assistant de recherche au <strong>Network Management and Optimal Design Laboratory</strong> de l'Université Polytechnique Nationale d'Athènes (NTUA).",
+    "about-p2": "Après l'obtention de mon Master, j'ai entamé des études doctorales axées sur l'intersection des <strong>réseaux sans fil de nouvelle génération (6G)</strong> et de l'<strong>intelligence distribuée</strong>. Mes travaux actuels explorent l'orchestration des ressources radio et informatiques pour soutenir l'apprentissage fédéré à grande échelle, avec une passion pour l'application de techniques d'optimisation et d'apprentissage distribué afin d'améliorer l'évolutivité et l'efficacité énergétique des réseaux de nouvelle génération.",
+    "cta-research": "Voir mes Recherches",
+    "cta-projects": "Voir les Projets",
+    "tip-default": "Glissez les nœuds pour explorer • Cliquez pour voir les projets",
+    "tip-hover": "🔗 Aller à la section : <strong>{node}</strong>",
+    "node-stefanos": "Stefanos",
+    "node-6g": "Réseaux 6G",
+    "node-fl": "Apprentissage Fédéré",
+    "node-opt": "Optimisation",
+    "node-ris": "RIS / Beamforming",
+    "node-res": "Allocation des Ressources",
+    "node-dist": "Intelligence Distribuée",
+    "node-tools": "CVXPY / Gurobi",
+    "node-ds": "Python / Data Science"
+  },
+  it: {
+    "meta-title": "Stefanos Voikos",
+    "nav-home": "Home",
+    "nav-research": "Ricerca & Dissertazioni",
+    "nav-projects": "Portfolio di Ingegneria, Progetti e Ricerca",
+    "nav-bio": "Autobiografia",
+    "nav-contact": "Contatti",
+    "footer-contact": "Contatti",
+    "header-sub": "Ingegnere Elettrico e Informatico | Data Scientist | Ingegneria di Rete | Ingegneria ML",
+    "about-title": "Chi Sono",
+    "about-p1": "Stefanos Voikos è un assistente di ricerca presso il <strong>Network Management and Optimal Design Laboratory</strong> dell'Università Tecnica Nazionale di Atene (NTUA).",
+    "about-p2": "Dopo il conseguimento della laurea magistrale, ho intrapreso gli studi di dottorato concentrandomi sull'intersezione tra le <strong>reti wireless di nuova generazione (6G)</strong> e l'<strong>intelligenza distribuita</strong>. Il mio lavoro attuale esplora l'orchestrazione delle risorse radio e computazionali per supportare l'apprendimento federato su scala di massa, guidato dalla passione per l'applicazione di tecniche di ottimizzazione e apprendimento distribuito volte a migliorare la scalabilità e l'efficienza energetica delle reti di prossima generazione.",
+    "cta-research": "Visualizza la Ricerca",
+    "cta-projects": "Mostra Progetti",
+    "tip-default": "Trascina i nodi per esplorare • Clicca per vedere i progetti",
+    "tip-hover": "🔗 Vai alla sezione: <strong>{node}</strong>",
+    "node-stefanos": "Stefanos",
+    "node-6g": "Reti 6G",
+    "node-fl": "Apprendimento Federato",
+    "node-opt": "Ottimizzazione",
+    "node-ris": "RIS / Beamforming",
+    "node-res": "Allocazione Risorse",
+    "node-dist": "Intelligenza Distribuita",
+    "node-tools": "CVXPY / Gurobi",
+    "node-ds": "Python / Data Science"
+  },
+  es: {
+    "meta-title": "Stefanos Voikos",
+    "nav-home": "Inicio",
+    "nav-research": "Investigación y Tesis",
+    "nav-projects": "Portafolio de Ingeniería, Proyectos e Investigación",
+    "nav-bio": "Autobiografía",
+    "nav-contact": "Contacto",
+    "footer-contact": "Contacto",
+    "header-sub": "Ingeniero Eléctrico y de Computación | Científico de Datos | Ingeniería de Redes | Ingeniería de ML",
+    "about-title": "Sobre Mí",
+    "about-p1": "Stefanos Voikos es asistente de investigación en el <strong>Network Management and Optimal Design Laboratory</strong> de la Universidad Técnica Nacional de Atenas (NTUA).",
+    "about-p2": "Tras finalizar mi maestría, he iniciado mis estudios de doctorado centrándome en la intersección de las <strong>redes inalámbricas de próxima generación (6G)</strong> y la <strong>inteligencia distribuida</strong>. Mi trabajo actual explora la orquestación de recursos de radio y computación para dar soporte al aprendizaje federado a gran escala, con pasión por aplicar técnicas de optimización y aprendizaje distribuido para mejorar la escalabilidad y la eficiencia energética de las redes de próxima generación.",
+    "cta-research": "Ver Mi Investigación",
+    "cta-projects": "Ver Proyectos",
+    "tip-default": "Arrastra los nodos para explorar • Haz clic para ver los proyectos",
+    "tip-hover": "🔗 Ir a la sección: <strong>{node}</strong>",
+    "node-stefanos": "Stefanos",
+    "node-6g": "Redes 6G",
+    "node-fl": "Aprendizaje Federado",
+    "node-opt": "Optimización",
+    "node-ris": "RIS / Beamforming",
+    "node-res": "Asignación de Recursos",
+    "node-dist": "Inteligencia Distribuida",
+    "node-tools": "CVXPY / Gurobi",
+    "node-ds": "Python / Data Science"
+  },
+  ru: {
+    "meta-title": "Стефанос Воикос",
+    "nav-home": "Главная",
+    "nav-research": "Исследования и диссертации",
+    "nav-projects": "Инженерное портфолио, проекты и исследования",
+    "nav-bio": "Автобиография",
+    "nav-contact": "Контакты",
+    "footer-contact": "Контакты",
+    "header-sub": "Инженер-электрик и вычислительной техники | Дата-сайентист | Сетевая инженерия | Инженерия ML",
+    "about-title": "О себе",
+    "about-p1": "Стефанос Воикос — научный сотрудник в <strong>Network Management and Optimal Design Laboratory</strong> Афинского национального технического университета (NTUA).",
+    "about-p2": "После получения степени магистра я перешел к докторским исследованиям, сосредоточенным на стыке <strong>беспроводных сетей нового поколения (6G)</strong> и <strong>распределенного интеллекта</strong>. Моя текущая работа посвящена оркестровке радио- и вычислительных ресурсов для поддержки крупномасштабного федеративного обучения. Я увлечен применением методов оптимизации и распределенного обучения для повышения масштабируемости и энергоэффективности сетей следующего поколения.",
+    "cta-research": "Посмотреть исследования",
+    "cta-projects": "Посмотреть проекты",
+    "tip-default": "Перетаскивайте узлы для изучения • Нажмите для просмотра проектов",
+    "tip-hover": "🔗 Перейти в раздел: <strong>{node}</strong>",
+    "node-stefanos": "Стефанос",
+    "node-6g": "Сети 6G",
+    "node-fl": "Федеративное обучение",
+    "node-opt": "Оптимизация",
+    "node-ris": "RIS / Формирование луча",
+    "node-res": "Выделение ресурсов",
+    "node-dist": "Распределенный интеллект",
+    "node-tools": "CVXPY / Gurobi",
+    "node-ds": "Python / Data Science"
+  },
+  pt: {
+    "meta-title": "Stefanos Voikos",
+    "nav-home": "Início",
+    "nav-research": "Pesquisa e Dissertações",
+    "nav-projects": "Portfólio de Engenharia, Projetos e Pesquisa",
+    "nav-bio": "Autobiografia",
+    "nav-contact": "Contacto",
+    "footer-contact": "Contacto",
+    "header-sub": "Engenheiro Eletrotécnico e de Computadores | Cientista de Dados | Engenharia de Redes | Engenharia de ML",
+    "about-title": "Sobre Mim",
+    "about-p1": "Stefanos Voikos é assistente de investigação no <strong>Network Management and Optimal Design Laboratory</strong> na Universidade Técnica Nacional de Atenas (NTUA).",
+    "about-p2": "Após a conclusão do meu mestrado, transitei para os estudos de doutoramento focando-me na interseção de <strong>Redes Sem Fios de Próxima Geração (6G)</strong> e <strong>Inteligência Distribuída</strong>. O meu trabalho atual explora a orquestração de recursos de rádio e computação para suportar aprendizagem federada em larga escala, sendo apaixonado pela aplicação de técnicas de otimização e aprendizagem distribuída para melhorar a escalabilidade e eficiência energética das redes de próxima geração.",
+    "cta-research": "Ver Minha Pesquisa",
+    "cta-projects": "Ver Projetos",
+    "tip-default": "Arraste os nós para explorar • Clique para ver os projetos",
+    "tip-hover": "🔗 Ir para a secção: <strong>{node}</strong>",
+    "node-stefanos": "Stefanos",
+    "node-6g": "Redes 6G",
+    "node-fl": "Aprendizagem Federada",
+    "node-opt": "Otimização",
+    "node-ris": "RIS / Beamforming",
+    "node-res": "Alocação de Recursos",
+    "node-dist": "Inteligência Distribuída",
+    "node-tools": "CVXPY / Gurobi",
+    "node-ds": "Python / Data Science"
+  },
+  pl: {
+    "meta-title": "Stefanos Voikos",
+    "nav-home": "Strona główna",
+    "nav-research": "Badania i rozprawy",
+    "nav-projects": "Portfolio inżynierskie, projekty i badania",
+    "nav-bio": "Autobiografia",
+    "nav-contact": "Kontakt",
+    "footer-contact": "Kontakt",
+    "header-sub": "Inżynier Elektryk i Komputerowy | Data Scientist | Inżynieria Sieciowa | Inżynieria ML",
+    "about-title": "O mnie",
+    "about-p1": "Stefanos Voikos jest asystentem badawczym w <strong>Network Management and Optimal Design Laboratory</strong> na Narodowym Uniwersytecie Technicznym w Atenach (NTUA).",
+    "about-p2": "Po ukończeniu studiów magisterskich rozpocząłem studia doktoranckie skupiające się na styku <strong>sieci bezprzewodowych nowej generacji (6G)</strong> oraz <strong>inteligencji rozproszonej</strong>. Moja obecna praca bada orkiestrację zasobów radiowych i obliczeniowych w celu wsparcia uczenia federacyjnego na masową skalę. Moją pasją jest stosowanie technik optymalizacji i uczenia rozproszonego w celu zwiększenia skalowalności i efektywności energetycznej sieci nowej generacji.",
+    "cta-research": "Zobacz moje badania",
+    "cta-projects": "Zobacz projekty",
+    "tip-default": "Przeciągaj węzły, aby eksplorować • Kliknij, aby zobaczyć projekty",
+    "tip-hover": "🔗 Przejdź do sekcji: <strong>{node}</strong>",
+    "node-stefanos": "Stefanos",
+    "node-6g": "Sieci 6G",
+    "node-fl": "Uczenie Federacyjne",
+    "node-opt": "Optymalizacja",
+    "node-ris": "RIS / Beamforming",
+    "node-res": "Alokacja zasobów",
+    "node-dist": "Inteligencja Rozproszona",
+    "node-tools": "CVXPY / Gurobi",
+    "node-ds": "Python / Data Science"
+  },
+  sv: {
+    "meta-title": "Stefanos Voikos",
+    "nav-home": "Hem",
+    "nav-research": "Forskning & Avhandlingar",
+    "nav-projects": "Ingenjörsportfölj, projekt och forskning",
+    "nav-bio": "Autobiografi",
+    "nav-contact": "Kontakt",
+    "footer-contact": "Kontakt",
+    "header-sub": "Elektro- och datatekniker | Data Scientist | Nätverksteknik | ML-teknik",
+    "about-title": "Om mig",
+    "about-p1": "Stefanos Voikos är forskningsassistent vid <strong>Network Management and Optimal Design Laboratory</strong> vid Atens nationella tekniska universitet (NTUA).",
+    "about-p2": "Efter min masterexamen har jag övergått till doktorandstudier med fokus på skärningspunkten mellan <strong>nästa generations trådlösa nätverk (6G)</strong> och <strong>distribuerad intelligens</strong>. Mitt nuvarande arbete utforskar orkestrering av radio- och beräkningsresurser för att stödja storskalig federerad inlärning. Jag brinner för att tillämpa optimering och distribuerade inlärningstekniker för att förbättra skalbarheten och energieffektiviteten i nästa generations nätverk.",
+    "cta-research": "Visa min forskning",
+    "cta-projects": "Se projekt",
+    "tip-default": "Dra noder för att utforska • Klicka för att se projekt",
+    "tip-hover": "🔗 Gå till sektion: <strong>{node}</strong>",
+    "node-stefanos": "Stefanos",
+    "node-6g": "6G-nätverk",
+    "node-fl": "Federerad inlärning",
+    "node-opt": "Optimering",
+    "node-ris": "RIS / Beamforming",
+    "node-res": "Resursallokering",
+    "node-dist": "Distribuerad intelligens",
+    "node-tools": "CVXPY / Gurobi",
+    "node-ds": "Python / Data Science"
+  },
+  sr: {
+    "meta-title": "Стефанос Воикос",
+    "nav-home": "Почетна",
+    "nav-research": "Истраживања и дисертације",
+    "nav-projects": "Инжењерски портфолио, пројекти и истраживања",
+    "nav-bio": "Аутобиографија",
+    "nav-contact": "Контакт",
+    "footer-contact": "Контакт",
+    "header-sub": "Инжењер електротехнике и рачунарства | Дата Сциентист | Мрежни инжењеринг | МЛ инжењеринг",
+    "about-title": "О мени",
+    "about-p1": "Стефанос Воикос је асистент истраживач у <strong>Network Management and Optimal Design Laboratory</strong> на Националном техничком универзитету у Атини (NTUA).",
+    "about-p2": "Након завршетка мастер студија, прешао сам на докторске студије са фокусом на раскрсницу <strong>бежичних мрежа следеће генерације (6G)</strong> и <strong>дистрибуиране интелигенције</strong>. Мој тренутни рад истражује оркестрацију радио и рачунарских ресурса за подршку масовном федеративном учењу. Страствен сам у примени технике оптимизације и дистрибуираног учења како бих побољшао скалабилност и енергетску ефикасност мрежа следеће генерације.",
+    "cta-research": "Погледајте истраживања",
+    "cta-projects": "Погледајте пројекте",
+    "tip-default": "Превуците чворове за истраживање • Кликните да бисте видели пројекте",
+    "tip-hover": "🔗 Иди на одељак: <strong>{node}</strong>",
+    "node-stefanos": "Стефанос",
+    "node-6g": "6G мреже",
+    "node-fl": "Федеративно учење",
+    "node-opt": "Оптимизација",
+    "node-ris": "RIS / Беамформинг",
+    "node-res": "Алокација ресурса",
+    "node-dist": "Дистрибуирана интелигенција",
+    "node-tools": "CVXPY / Gurobi",
+    "node-ds": "Python / Data Science"
+  },
+  bg: {
+    "meta-title": "Стефанос Воикос",
+    "nav-home": "Начало",
+    "nav-research": "Изследвания и дисертации",
+    "nav-projects": "Инженерен портфолио, проекти и изследвания",
+    "nav-bio": "Автобиография",
+    "nav-contact": "Контакт",
+    "footer-contact": "Контакт",
+    "header-sub": "Електроинженер и компютърен инженер | Учен по данни | Мрежово инженерство | ML инженерство",
+    "about-title": "За мен",
+    "about-p1": "Стефанос Воикос е научен сътрудник в <strong>Network Management and Optimal Design Laboratory</strong> към Националната техническа политехника в Атина (NTUA).",
+    "about-p2": "След завършване на магистърската ми степен преминах към докторантура, фокусирана върху пресечната точка на <strong>безжичните мрежи от следващо поколение (6G)</strong> и <strong>разпределения интелект</strong>. Настоящата ми работа изследва оркестрацията на радио и изчислителни ресурси за поддръжка на мащабно федеративно обучение. Вдъхновявам се от прилагането на техники за оптимизация и разпределено обучение за подобряване на мащабируемостта и енергийната ефективност на мрежите от следващо поколение.",
+    "cta-research": "Преглед на изследванията",
+    "cta-projects": "Вижте проектите",
+    "tip-default": "Плъзнете възлите за изследване • Кликнете за преглед на проекти",
+    "tip-hover": "🔗 Отиди на раздел: <strong>{node}</strong>",
+    "node-stefanos": "Стефанос",
+    "node-6g": "6G мрежи",
+    "node-fl": "Федеративно обучение",
+    "node-opt": "Оптимизация",
+    "node-ris": "RIS / Beamforming",
+    "node-res": "Разпределение на ресурси",
+    "node-dist": "Разпределен интелект",
+    "node-tools": "CVXPY / Gurobi",
+    "node-ds": "Python / Data Science"
+  },
+  ro: {
+    "meta-title": "Stefanos Voikos",
+    "nav-home": "Acasă",
+    "nav-research": "Cercetare și Teze",
+    "nav-projects": "Portofoliu de Inginerie, Proiecte și Cercetare",
+    "nav-bio": "Autobiografie",
+    "nav-contact": "Contact",
+    "footer-contact": "Contact",
+    "header-sub": "Inginer Electrician și de Calculatoare | Data Scientist | Inginerie de Rețea | Inginerie ML",
+    "about-title": "Despre Mine",
+    "about-p1": "Stefanos Voikos este asistent de cercetare la <strong>Network Management and Optimal Design Laboratory</strong> din cadrul Universității Tehnice Naționale din Atena (NTUA).",
+    "about-p2": "După finalizarea masteratului, am trecut la studiile doctorale axate na intersecția dintre <strong>rețelele wireless de generație următoare (6G)</strong> și <strong>inteligența distribuită</strong>. Activitatea mea curentă explorează orchestrarea resurselor radio și de calcul pentru a susține învățarea federativă la scară masivă, fiind pasionat de aplicarea tehnicilor de optimizare și învățare distribuită pentru a spori scalabilitatea și eficiența energetică a rețelelor de generație următoare.",
+    "cta-research": "Vezi cercetarea mea",
+    "cta-projects": "Vezi proiectele",
+    "tip-default": "Trageți nodurile pentru a explora • Faceți clic pentru proiecte",
+    "tip-hover": "🔗 Mergi la secțiunea: <strong>{node}</strong>",
+    "node-stefanos": "Stefanos",
+    "node-6g": "Rețele 6G",
+    "node-fl": "Învățare Federativă",
+    "node-opt": "Optimizare",
+    "node-ris": "RIS / Beamforming",
+    "node-res": "Alocare de Resurse",
+    "node-dist": "Inteligență Distribuită",
+    "node-tools": "CVXPY / Gurobi",
+    "node-ds": "Python / Data Science"
+  },
+  sq: {
+    "meta-title": "Stefanos Voikos",
+    "nav-home": "Ballina",
+    "nav-research": "Kërkim & Disertacione",
+    "nav-projects": "Portfolio Inxhinierike, Projekte dhe Kërkim",
+    "nav-bio": "Autobiografi",
+    "nav-contact": "Kontakt",
+    "footer-contact": "Kontakt",
+    "header-sub": "Inxhinier Elektrik dhe Kompjuterik | Data Scientist | Inxhinieri Rrjeti | Inxhinieri ML",
+    "about-title": "Rreth Meje",
+    "about-p1": "Stefanos Voikos është asistent kërkimor në <strong>Network Management and Optimal Design Laboratory</strong> në Universitetin Teknik Kombëtar të Athinës (NTUA).",
+    "about-p2": "Pas përfundimit të masterit, kam kaluar në studimet e doktoratës duke u fokusuar në kryqëzimin e <strong>Rrjeteve Wireless të Gjeneratës së Ardhshme (6G)</strong> dhe <strong>Inteligjencës së Shpërndarë</strong>. Puna ime aktuale eksploron orkestrimin e burimeve radiofonike dhe kompjuterike për të mbështetur Mësimin Federativ në shkallë masive, me pasion për zbatimin e teknikave të optimizimit dhe mësimit të shpërndarë për të rritur shkallëzueshmërinë dhe efikasitetin e energjisë së rrjeteve të gjeneratës së ardhshme.",
+    "cta-research": "Shiko Kërkimin Tim",
+    "cta-projects": "Shih Projektet",
+    "tip-default": "Tërhiqni nyjet për të eksploruar • Klikoni për të parë projektet",
+    "tip-hover": "🔗 Shko te seksioni: <strong>{node}</strong>",
+    "node-stefanos": "Stefanos",
+    "node-6g": "Rrjetet 6G",
+    "node-fl": "Mësim Federativ",
+    "node-opt": "Optimizim",
+    "node-ris": "RIS / Beamforming",
+    "node-res": "Alokimi i Burimeve",
+    "node-dist": "Inteligjencë e Shpërndarë",
+    "node-tools": "CVXPY / Gurobi",
+    "node-ds": "Python / Data Science"
+  },
+  fa: {
+    "meta-title": "استفانوس وویکوس",
+    "nav-home": "خانه",
+    "nav-research": "تحقیقات و پایان‌نامه‌ها",
+    "nav-projects": "پورتفولیو مهندسی، پروژه‌ها و تحقیقات",
+    "nav-bio": "زندگینامه",
+    "nav-contact": "تماس",
+    "footer-contact": "تماس",
+    "header-sub": "مهندس برق و کامپیوتر | دانشمند داده | مهندسی شبکه | مهندسی یادگیری ماشین",
+    "about-title": "درباره من",
+    "about-p1": "استفانوس وویکوس دستیار پژوهشی در <strong>Network Management and Optimal Design Laboratory</strong> در دانشگاه فنی ملی آتن (NTUA) است.",
+    "about-p2": "پس از اتمام دوره کارشناسی ارشد، تحصیلات دکتری خود را با تمرکز بر تلاقی <strong>شبکه‌های بی‌سیم نسل آینده (6G)</strong> و <strong>هوش توزیع‌شده</strong> آغاز کردم. کار فعلی من به بررسی هماهنگ‌سازی منابع رادیویی و محاسباتی برای پشتیبانی از یادگیری فدرال در مقیاس بزرگ می‌پردازد. من به استفاده از تکنیک‌های بهینه‌سازی و یادگیری توزیع‌شده برای بهبود مقیاس‌پذیری و بهره‌وری انرژی شبکه‌های نسل بعدی علاقه‌مند هستم.",
+    "cta-research": "مشاهده تحقیقات من",
+    "cta-projects": "دیدن پروژه‌ها",
+    "tip-default": "گره‌ها را بکشید تا کاوش کنید • برای مشاهده پروژه‌ها کلیک کنید",
+    "tip-hover": "🔗 برو به بخش: <strong>{node}</strong>",
+    "node-stefanos": "Stefanos",
+    "node-6g": "شبکه‌های 6G",
+    "node-fl": "یادگیری فدرال",
+    "node-opt": "بهینه‌سازی",
+    "node-ris": "RIS / شکل‌دهی پرتو",
+    "node-res": "تخصیص منابع",
+    "node-dist": "هوش توزیع‌شده",
+    "node-tools": "CVXPY / Gurobi",
+    "node-ds": "پایتون / علوم داده"
+  },
+  ar: {
+    "meta-title": "ستيفانوس فويكوس",
+    "nav-home": "الرئيسية",
+    "nav-research": "الأبحاث والرسائل العلمية",
+    "nav-projects": "الملف الهندسي، المشاريع والأبحاث",
+    "nav-bio": "السيرة الذاتية",
+    "nav-contact": "اتصل بي",
+    "footer-contact": "اتصل بي",
+    "header-sub": "مهندس كهرباء وحاسوب | عالم بيانات | هندسة الشبكات | هندسة تعلم الآلة",
+    "about-title": "نبذة عني",
+    "about-p1": "ستيفانوس فويكوس هو باحث مساعد في <strong>Network Management and Optimal Design Laboratory</strong> في الجامعة التقنية الوطنية في أثينا (NTUA).",
+    "about-p2": "بعد حصولي على الماجستير، انتقلت إلى دراسة الدكتوراه مع التركيز على تقاطع <strong>شبكات الاتصالات اللاسلكية من الجيل القادم (6G)</strong> و<strong>الذكاء الموزع</strong>. يركز عملي الحالي على تنسيق موارد الراديو والحوسبة لدعم التعلم الفيدرالي واسع النطاق، وشغفي هو تطبيق تقنيات التحسين والتعلم الموزع لتعزيز القابلية للتوسع وكفاءة الطاقة في شبكات الجيل القادم.",
+    "cta-research": "عرض أبحاثي",
+    "cta-projects": "مشاهدة المشاريع",
+    "tip-default": "اسحب العقد للاستكشاف • انقر لعرض المشاريع",
+    "tip-hover": "🔗 الذهاب إلى قسم: <strong>{node}</strong>",
+    "node-stefanos": "Stefanos",
+    "node-6g": "شبكات 6G",
+    "node-fl": "التعلم الفيدرالي",
+    "node-opt": "التحسين الرياضي",
+    "node-ris": "RIS / تشكيل الشعاع",
+    "node-res": "تخصيص الموارد",
+    "node-dist": "الذكاء الموزع",
+    "node-tools": "CVXPY / Gurobi",
+    "node-ds": "باثيون / علم البيانات"
+  },
+  zh: {
+    "meta-title": "Stefanos Voikos",
+    "nav-home": "首页",
+    "nav-research": "研究与论文",
+    "nav-projects": "工程作品集、项目与研究",
+    "nav-bio": "个人自传",
+    "nav-contact": "联系方式",
+    "footer-contact": "联系方式",
+    "header-sub": "电子与计算机工程师 | 数据科学家 | 网络工程 | 机器学习工程",
+    "about-title": "关于我",
+    "about-p1": "Stefanos Voikos 是国立雅典理工大学 (NTUA) <strong>网络管理与优化设计实验室 (Netmode)</strong> 的研究助理。",
+    "about-p2": "硕士毕业后，我开始攻读博士学位，专注于<strong>下一代无线网络 (6G)</strong> 与<strong>分布式智能</strong>的交汇领域。我目前的工作探索如何编排无线电与 computation 资源以支持大规模联邦学习，并致力于应用优化算法和分布式学习技术来提高下一代网络的扩展性和能源效率。",
+    "cta-research": "查看我的研究",
+    "cta-projects": "查看项目",
+    "tip-default": "拖拽节点进行探索 • 点击查看相关项目",
+    "tip-hover": "🔗 跳转到 : <strong>{node}</strong> 板块",
+    "node-stefanos": "Stefanos",
+    "node-6g": "6G 网络",
+    "node-fl": "联邦学习",
+    "node-opt": "最优化",
+    "node-ris": "RIS / 波束成形",
+    "node-res": "资源分配",
+    "node-dist": "分布式智能",
+    "node-tools": "CVXPY / Gurobi",
+    "node-ds": "Python / 数据科学"
+  },
+  ja: {
+    "meta-title": "Stefanos Voikos",
+    "nav-home": "ホーム",
+    "nav-research": "研究・学位論文",
+    "nav-projects": "エンジニアリングポートフォリオ・プロジェクト・研究",
+    "nav-bio": "自伝",
+    "nav-contact": "お問い合わせ",
+    "footer-contact": "お問い合わせ",
+    "header-sub": "電気電子・コンピュータエンジニア | データサイエンティスト | ネットワークエンジニアリング | MLエンジニアリング",
+    "about-title": "私について",
+    "about-p1": "Stefanos Voikosは、アテネ国立工科大学 (NTUA) の <strong>Network Management and Optimal Design Laboratory</strong> の研究助手です。",
+    "about-p2": "修士課程修了後、<strong>次世代無線通信ネットワーク (6G)</strong> と <strong>分散型インテリジェンス</strong> の交差点に焦点を当てた博士課程に進学しました。現在の研究は、大規模な連合学習 (Federated Learning) をサポートするための無線および計算リソースのオーケストレーションを探索しており、次世代ネットワークの拡張性とエネルギー効率を向上させるために最適化手法や分散学習技術を適用することに情熱を注いでいます。",
+    "cta-research": "研究を見る",
+    "cta-projects": "プロジェクトを見る",
+    "tip-default": "ノードをドラッグして探索 • クリックしてプロジェクトを表示",
+    "tip-hover": "🔗 <strong>{node}</strong> セクションに移動",
+    "node-stefanos": "Stefanos",
+    "node-6g": "6Gネットワーク",
+    "node-fl": "連合学習",
+    "node-opt": "最適化",
+    "node-ris": "RIS / ビームフォーミング",
+    "node-res": "リソース割り当て",
+    "node-dist": "分散型インテリジェンス",
+    "node-tools": "CVXPY / Gurobi",
+    "node-ds": "Python / データサイエンス"
+  },
+  hi: {
+    "meta-title": "स्टेफानोस वोइकोस",
+    "nav-home": "होम",
+    "nav-research": "अनुसंधान और शोधप्रबंध",
+    "nav-projects": "इंजीनियरिंग पोर्टफोलियो, परियोजनाएं और अनुसंधान",
+    "nav-bio": "आत्मकथा",
+    "nav-contact": "संपर्क",
+    "footer-contact": "संपर्क",
+    "header-sub": "इलेक्ट्रिकल और कंप्यूटर इंजीनियर | डेटा साइंटिस्ट | नेटवर्क इंजीनियरिंग | एमएल इंजीनियरिंग",
+    "about-title": "मेरे बारे में",
+    "about-p1": "स्टेफानोस वोइकोस एथेंस के राष्ट्रीय तकनीकी विश्वविद्यालय (NTUA) में <strong>Network Management and Optimal Design Laboratory</strong> में एक अनुसंधान सहायक हैं।",
+    "about-p2": "अपने एमएससी के बाद, मैंने <strong>अगली पीढ़ी के वायरलेस नेटवर्क (6G)</strong> और <strong>वितरित इंटेलिजेंस (Distributed Intelligence)</strong> के चौराहे पर ध्यान केंद्रित करते हुए डॉक्टरेट की पढ़ाई शुरू की है। मेरा वर्तमान कार्य बड़े पैमाने पर फेडरेटेड लर्निंग का समर्थन करने के लिए रेडियो और कंप्यूटिंग संसाधनों के ऑर्केस्ट्रेशन की खोज करता है। मैं अगली पीढ़ी के नेटवर्क की स्केलेबिलिटी और ऊर्जा दक्षता को बढ़ाने के लिए अनुकूलन (Optimization) और वितरित शिक्षण तकनीकों को लागू करने के प्रति उत्साही हूँ।",
+    "cta-research": "मेरा अनुसंधान देखें",
+    "cta-projects": "परियोजनाएं देखें",
+    "tip-default": "अन्वेषण के लिए नोड्स को खींचें • परियोजनाओं को देखने के लिए क्लिक करें",
+    "tip-hover": "🔗 अनुभाग पर जाएं: <strong>{node}</strong>",
+    "node-stefanos": "Stefanos",
+    "node-6g": "6G नेटवर्क",
+    "node-fl": "फेडरेटेड लर्निंग",
+    "node-opt": "अनुकूलन",
+    "node-ris": "RIS / बीमफॉर्मिंग",
+    "node-res": "संसाधन आवंटन",
+    "node-dist": "वितरित इंटेलिजेंस",
+    "node-tools": "CVXPY / Gurobi",
+    "node-ds": "पायथन / डेटा विज्ञान"
+  }
+};
 
+    // --- Dynamic D3 Node Declarations globally scoped to adjust dynamically ---
+    let rawGraphData = [
+      { id: "Stefanos", group: "core", radius: 14, color: "#ffffff", i18nKey: "node-stefanos" },
+      { id: "6G Networks", group: "pillar", radius: 10, color: "#a78bfa", target: "projects.html#6g", i18nKey: "node-6g" },
+      { id: "Federated Learning", group: "pillar", radius: 10, color: "#a78bfa", target: "projects.html#federated-learning", i18nKey: "node-fl" },
+      { id: "Optimization", group: "pillar", radius: 10, color: "#a78bfa", target: "projects.html#optimization", i18nKey: "node-opt" },
+      { id: "RIS / Beamforming", group: "tech", radius: 7, color: "#8b9fcf", target: "projects.html#ris", i18nKey: "node-ris" },
+      { id: "Resource Allocation", group: "tech", radius: 7, color: "#8b9fcf", target: "projects.html#resource-allocation", i18nKey: "node-res" },
+      { id: "Distributed Intelligence", group: "tech", radius: 7, color: "#8b9fcf", target: "projects.html#ml", i18nKey: "node-dist" },
+      { id: "CVXPY / Gurobi", group: "tech", radius: 6, color: "#64748b", target: "projects.html#tools", i18nKey: "node-tools" },
+      { id: "Python / Data Science", group: "tech", radius: 6, color: "#64748b", target: "projects.html#tools", i18nKey: "node-ds" }
+    ];
+
+    let links = [
+      { source: "Stefanos", target: "6G Networks" },
+      { source: "Stefanos", target: "Federated Learning" },
+      { source: "Stefanos", target: "Optimization" },
+      { source: "6G Networks", target: "RIS / Beamforming" },
+      { source: "6G Networks", target: "Resource Allocation" },
+      { source: "Federated Learning", target: "Distributed Intelligence" },
+      { source: "Federated Learning", target: "Resource Allocation" },
+      { source: "Optimization", target: "CVXPY / Gurobi" },
+      { source: "Optimization", target: "Resource Allocation" },
+      { source: "Distributed Intelligence", target: "Python / Data Science" }
+    ];
+
+    let d3NodeTextSelection; 
+
+    // --- Master Translation Execution Engine ---
+    function translatePage(lang) {
+      // Safe fallback mechanism if translations are not yet provided for all 20 options
+      const dict = i18nData[lang] || i18nData["en"];
+      localStorage.setItem('preferredLang', lang);
+      document.getElementById("language-selector").value = lang;
+
+      // Translate standard text arrays
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (dict[key]) el.textContent = dict[key];
+      });
+
+      // Handle HTML paragraph blocks cleanly
+      if (dict["about-p1"]) document.getElementById("about-p1").innerHTML = dict["about-p1"];
+      if (dict["about-p2"]) document.getElementById("about-p2").innerHTML = dict["about-p2"];
+      
+      // Update interactive tooltip base strings
+      const currentTip = document.getElementById("graph-tip");
+      if (currentTip && dict["tip-default"]) currentTip.innerHTML = dict["tip-default"];
+
+      // Reactive update to the live D3 Canvas strings safely
+      if (d3NodeTextSelection) {
+        d3NodeTextSelection.text(d => dict[d.i18nKey] || d.id);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // D3 Topology Map Initialization Setup
       const container = document.getElementById("d3-container");
       const width = container.clientWidth;
       const height = container.clientHeight;
@@ -231,8 +802,8 @@
         .attr("height", "100%")
         .attr("viewBox", `0 0 ${width} ${height}`);
 
-      const simulation = d3.forceSimulation(data.nodes)
-        .force("link", d3.forceLink(data.links).id(d => d.id).distance(75))
+      const simulation = d3.forceSimulation(rawGraphData)
+        .force("link", d3.forceLink(links).id(d => d.id).distance(75))
         .force("charge", d3.forceManyBody().strength(-140))
         .force("center", d3.forceCenter(width / 2, height / 2))
         .force("collision", d3.forceCollide().radius(d => d.radius + 15));
@@ -240,7 +811,7 @@
       const link = svg.append("g")
         .attr("class", "links")
         .selectAll("line")
-        .data(data.links)
+        .data(links)
         .enter().append("line")
         .attr("class", "link")
         .attr("stroke", "rgba(139, 159, 207, 0.3)");
@@ -248,7 +819,7 @@
       const node = svg.append("g")
         .attr("class", "nodes")
         .selectAll(".node")
-        .data(data.nodes)
+        .data(rawGraphData)
         .enter().append("g")
         .attr("class", "node")
         .call(d3.drag()
@@ -264,31 +835,28 @@
         .on("mouseover", function(event, d) {
           d3.select(this).attr("r", d.radius + 3).attr("stroke-width", 2.5);
           if (d.target) {
-            // Προσαρμογή του anchor link με βάση την τρέχουσα γλώσσα
             const currentLang = localStorage.getItem('preferredLang') || 'en';
-            const pagePrefix = currentLang === 'gr' ? 'projects_gr.html' : 'projects.html';
-            const hash = d.target.includes('#') ? d.target.split('#')[1] : '';
+            const dict = i18nData[currentLang] || i18nData["en"];
+            const resolvedNodeName = dict[d.i18nKey] || d.id;
             
-            document.getElementById("graph-tip").innerHTML = `🔗 Go to: <strong>${d.id}</strong> section`;
+            document.getElementById("graph-tip").innerHTML = dict["tip-hover"].replace("{node}", resolvedNodeName);
           }
         })
         .on("mouseout", function(event, d) {
           d3.select(this).attr("r", d.radius).attr("stroke-width", d.group === "core" ? 2 : 1.5);
-          document.getElementById("graph-tip").innerHTML = `Drag nodes to explore • Click to view projects`;
+          const currentLang = localStorage.getItem('preferredLang') || 'en';
+          document.getElementById("graph-tip").innerHTML = i18nData[currentLang]["tip-default"];
         })
         .on("click", (event, d) => {
           if (d.target) {
-            const currentLang = localStorage.getItem('preferredLang') || 'en';
-            const pagePrefix = currentLang === 'gr' ? 'projects_gr.html' : 'projects.html';
-            const hash = d.target.includes('#') ? '#' + d.target.split('#')[1] : '';
-            window.location.href = pagePrefix + hash;
+            window.location.href = d.target;
           }
         });
 
-      node.append("text")
+      // Bind text pointers to global handler
+      d3NodeTextSelection = node.append("text")
         .attr("dx", d => d.radius + 6)
         .attr("dy", ".35em")
-        .text(d => d.id)
         .style("font-weight", d => d.group === "core" || d.group === "pillar" ? "600" : "400")
         .style("fill", d => d.group === "core" ? "#fff" : "#cbd5e1");
 
@@ -324,37 +892,11 @@
         const h = container.clientHeight;
         simulation.force("center", d3.forceCenter(w / 2, h / 2)).alpha(0.1).restart();
       });
+
+      // Run runtime tracking language configuration
+      const savedLang = localStorage.getItem('preferredLang') || 'en';
+      translatePage(savedLang);
     });
-  </script>
-
-  <script>
-    function switchLanguage() {
-      localStorage.setItem('preferredLang', 'gr');
-      window.location.href = 'home_gr.html';
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      // Καθορίζουμε ρητά ότι βρισκόμαστε στο αγγλικό configuration
-      localStorage.setItem('preferredLang', 'en');
-      updateLinksToLanguage('en');
-    });
-
-    function updateLinksToLanguage(lang) {
-      const suffix = lang === 'gr' ? '_gr.html' : '.html';
-      const navLinks = document.querySelectorAll('#sidebar-nav-links a');
-      const files = ['home', 'thesis', 'projects', 'autobiography', 'contact'];
-      
-      navLinks.forEach((link, index) => {
-        if(files[index]) {
-          link.setAttribute('href', files[index] + suffix);
-        }
-      });
-
-      const ctaResearch = document.getElementById('cta-research');
-      const ctaProjects = document.getElementById('cta-projects');
-      if(ctaResearch) ctaResearch.setAttribute('href', 'thesis' + suffix);
-      if(ctaProjects) ctaProjects.setAttribute('href', 'projects' + suffix);
-    }
   </script>
 </body>
 </html>
