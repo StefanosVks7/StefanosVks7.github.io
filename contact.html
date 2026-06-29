@@ -930,7 +930,9 @@
     const languages = ["en", "el", "de", "fr", "it", "es", "ru", "pt", "pl", "sv", "sr", "bg", "ro", "sq", "fa", "ar", "zh", "ja", "hi"];
 
     let d3NodeTextSelection;
-    
+     
+
+    // --- Master Translation Execution Engine ---
     function translatePage(lang) {
       // Safe fallback mechanism if translations are not yet provided for all 20 options
       const dict = i18nData[lang] || i18nData["en"];
