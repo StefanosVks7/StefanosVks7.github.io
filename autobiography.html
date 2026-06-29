@@ -162,9 +162,30 @@
   <div id="main">
     <button class="openbtn" onclick="toggleNav()">&#9776;</button>
 
-    <button id="language-toggle" class="lang-toggle-btn" onclick="switchLanguage()">
-      <i class="fa-solid fa-globe"></i> <span id="current-lang-label">EN</span>
-    </button>
+    <div class="lang-dropdown-wrapper">
+      <i class="fa-solid fa-globe"></i>
+      <select id="language-selector" class="lang-toggle-select" onchange="translatePage(this.value)">
+        <option value="en">English</option>
+        <option value="el">Ελληνικά</option>
+        <option value="de">Deutsch</option>
+        <option value="fr">Français</option>
+        <option value="it">Italiano</option>
+        <option value="es">Español</option>
+        <option value="ru">Русский</option>
+        <option value="pt">Português</option>
+        <option value="pl">Polski</option>
+        <option value="sv">Svenska</option>
+        <option value="sr">Српски</option>
+        <option value="bg">Български</option>
+        <option value="ro">Română</option>
+        <option value="sq">Shqip</option>
+        <option value="fa">فارسی</option>
+        <option value="ar">العربية</option>
+        <option value="zh">中文</option>
+        <option value="ja">日本語</option>
+        <option value="hi">हिन्दी</option>
+      </select>
+    </div>
     <button id="theme-toggle" class="theme-btn" onclick="toggleTheme()">
       <i class="fa-solid fa-moon"></i>
     </button>
@@ -639,6 +660,35 @@
       applyTranslations(nextLang);
     }
 
+    let d3NodeTextSelection; 
+
+    // --- Master Translation Execution Engine ---
+    function translatePage(lang) {
+      // Safe fallback mechanism if translations are not yet provided for all 20 options
+      const dict = i18nData[lang] || i18nData["en"];
+      localStorage.setItem('preferredLang', lang);
+      document.getElementById("language-selector").value = lang;
+
+      // Translate standard text arrays
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (dict[key]) el.textContent = dict[key];
+      });
+
+      // Handle HTML paragraph blocks cleanly
+      if (dict["about-p1"]) document.getElementById("about-p1").innerHTML = dict["about-p1"];
+      if (dict["about-p2"]) document.getElementById("about-p2").innerHTML = dict["about-p2"];
+      
+      // Update interactive tooltip base strings
+      const currentTip = document.getElementById("graph-tip");
+      if (currentTip && dict["tip-default"]) currentTip.innerHTML = dict["tip-default"];
+
+      // Reactive update to the live D3 Canvas strings safely
+      if (d3NodeTextSelection) {
+        d3NodeTextSelection.text(d => dict[d.i18nKey] || d.id);
+      }
+    }
+    
     function updateLinksToLanguage(lang) {
       const suffix = lang === 'en' ? '.html' : `_${lang}.html`;
       const navLinks = document.querySelectorAll('#sidebar-nav-links a');
