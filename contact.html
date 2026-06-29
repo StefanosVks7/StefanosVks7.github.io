@@ -37,27 +37,39 @@
       cursor: pointer;
       outline: none;
       letter-spacing: 0.05em;
+      padding-left: 32px; /* <-- ΑΥΤΟ ΘΑ ΣΩΣΕΙ ΤΗΝ ΚΑΤΑΣΤΑΣΗ */
     }
     .lang-toggle-select option {
       background: #0d1222;
       color: #fff;
     }
     .lang-dropdown-wrapper {
-      position: fixed;
-      top: 16px;
-      right: 70px;
-      z-index: 1000;
-      background: rgba(20, 28, 50, 0.75);
-      border: 1px solid rgba(120, 140, 210, 0.3);
-      color: #8b9fcf;
-      padding: 6px 12px;
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.2s;
-      backdrop-filter: blur(6px);
-    }
+  position: fixed;
+  top: 16px;
+  right: 70px;
+  z-index: 1000;
+  background: rgba(20, 28, 50, 0.75);
+  border: 1px solid rgba(120, 140, 210, 0.3);
+  color: #8b9fcf;
+  padding: 6px 12px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+  backdrop-filter: blur(6px);
+}
+
+/* Το εικονίδιο μέσα στον wrapper */
+.lang-dropdown-wrapper i {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #8b9fcf;
+  pointer-events: none;
+  font-size: 0.85rem;
+}
     .lang-dropdown-wrapper:hover {
       border-color: rgba(150, 130, 230, 0.6);
       color: #fff;
