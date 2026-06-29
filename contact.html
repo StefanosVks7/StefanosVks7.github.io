@@ -468,7 +468,7 @@
 
   <script>
     // Embedded Multi-Language Dictionary Bundle
-    window.i18nData = {
+    const i18nData = {
       en: {
         "meta-title": "Stefanos Voikos",
         "nav-home": "Home",
@@ -957,50 +957,6 @@
       if (d3NodeTextSelection) {
         d3NodeTextSelection.text(d => dict[d.i18nKey] || d.id);
       }
-    }
-    
-    function applyTranslations(lang) {
-      if (!window.i18nData || !window.i18nData[lang]) return;
-      const data = window.i18nData[lang];
-
-      // Standard text translation mapping
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (data[key]) el.innerHTML = data[key];
-      });
-
-      // Placeholder element text mapping
-      document.querySelectorAll('[data-i18n-ph]').forEach(el => {
-        const key = el.getAttribute('data-i18n-ph');
-        if (data[key]) el.setAttribute('placeholder', data[key]);
-      });
-
-      // Update interactive global buttons
-      document.getElementById('current-lang-label').innerText = lang.toUpperCase();
-      document.documentElement.setAttribute('lang', lang);
-      
-      updateLinksToLanguage(lang);
-    }
-
-    function switchLanguage() {
-      let currentLang = localStorage.getItem('preferredLang') || 'en';
-      let nextIndex = (languages.indexOf(currentLang) + 1) % languages.length;
-      let nextLang = languages[nextIndex];
-      
-      localStorage.setItem('preferredLang', nextLang);
-      applyTranslations(nextLang);
-    }
-
-    function updateLinksToLanguage(lang) {
-      const suffix = lang === 'en' ? '.html' : `_${lang}.html`;
-      const navLinks = document.querySelectorAll('#sidebar-nav-links a');
-      const files = ['home', 'thesis', 'projects', 'autobiography', 'contact'];
-      
-      navLinks.forEach((link, index) => {
-        if(files[index]) {
-          link.setAttribute('href', files[index] + suffix);
-        }
-      });
     }
 
     document.addEventListener("DOMContentLoaded", () => {
