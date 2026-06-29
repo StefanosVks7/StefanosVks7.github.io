@@ -929,8 +929,13 @@
 
     const languages = ["en", "el", "de", "fr", "it", "es", "ru", "pt", "pl", "sv", "sr", "bg", "ro", "sq", "fa", "ar", "zh", "ja", "hi"];
 
-    let d3NodeTextSelection;
-     
+    document.addEventListener("DOMContentLoaded", () => {
+      // Read the saved language from localStorage, default to 'en' if nothing is saved yet
+      const savedLang = localStorage.getItem('preferredLang') || 'en';
+      
+      // Update the navigation links to use the correct matching files (_gr.html or .html)
+      updateLinksToLanguage(savedLang);
+    }); 
 
     // --- Master Translation Execution Engine ---
     function translatePage(lang) {
@@ -958,10 +963,11 @@
         d3NodeTextSelection.text(d => dict[d.i18nKey] || d.id);
       }
     }
-
+    
+    // Runs immediately when the document is parsing and elements are ready
     document.addEventListener("DOMContentLoaded", () => {
       const savedLang = localStorage.getItem('preferredLang') || 'en';
-      applyTranslations(savedLang);
+      translatePage(savedLang);
 
       // Formspree routing setup
       const contactForm = document.getElementById("contactForm");
