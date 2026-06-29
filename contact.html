@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="icon.png">
-  <title>Stefanos Voikos</title>
+  <title data-i18n="meta-title">Stefanos Voikos</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
@@ -36,113 +36,62 @@
       gap: 4px;
     }
 
-    /* .nav-links a {
-      color: #c8cfe8;
-      text-decoration: none;
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 1rem;
-      font-weight: 400;
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      transition: color 0.2s;
+    /* ==========================================
+       LIGHT MODE OVERRIDES FOR CONTACT.HTML
+       ========================================== */
+    body.light-mode {
+      background: #f4f6f9;
+      color: #1a2035;
     }
-
-    .nav-links a:last-child { border-bottom: none; }
-    .nav-links a:hover { color: #fff; }
-    .nav-links a.active { color: #fff; font-weight: 600; } */
-/* ==========================================
-   LIGHT MODE OVERRIDES FOR CONTACT.HTML
-   ========================================== */
-
-/* 1. Global typography color shifts */
-body.light-mode {
-  background: #f4f6f9;
-  color: #1a2035;
-}
-
-body.light-mode header h1 {
-  color: #111111;
-}
-
-body.light-mode header p {
-  color: #3c64c8; /* Clear accent blue for high visibility */
-}
-
-body.light-mode .note {
-  color: #5c6b89;
-}
-
-/* 2. Glass Form Card Transition */
-body.light-mode .card {
-  background: rgba(255, 255, 255, 0.75);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
-}
-
-body.light-mode .field label {
-  color: #3c64c8;
-}
-
-/* 3. Inputs, Labels & Placeholders */
-body.light-mode input[type="text"],
-body.light-mode input[type="email"],
-body.light-mode textarea {
-  background: rgba(0, 0, 0, 0.02);
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  color: #111111;
-}
-
-body.light-mode input[type="text"]:focus,
-body.light-mode input[type="email"]:focus,
-body.light-mode textarea:focus {
-  background: #ffffff;
-  border-color: #3c64c8;
-}
-
-body.light-mode input::placeholder,
-body.light-mode textarea::placeholder {
-  color: rgba(0, 0, 0, 0.35);
-}
-
-body.light-mode .divider {
-  background: rgba(0, 0, 0, 0.08);
-}
-
-/* 4. Recipient Selectable Pills */
-body.light-mode .email-option .pill {
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  background: rgba(0, 0, 0, 0.02);
-  color: #555555;
-}
-
-body.light-mode .email-option input[type="radio"]:checked + .pill {
-  border-color: #3c64c8;
-  background: rgba(60, 100, 200, 0.08);
-  color: #3c64c8;
-}
-
-body.light-mode .email-option .pill:hover {
-  border-color: #3c64c8;
-  color: #3c64c8;
-}
-
-/* 5. Menu Open Button Fix */
-body.light-mode .openbtn {
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  color: #333333;
-}
-body.light-mode .openbtn:hover {
-  background: rgba(60, 100, 200, 0.1);
-  color: #3c64c8;
-}
+    body.light-mode header h1 { color: #111111; }
+    body.light-mode header p { color: #3c64c8; }
+    body.light-mode .note { color: #5c6b89; }
+    body.light-mode .card {
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+    }
+    body.light-mode .field label { color: #3c64c8; }
+    body.light-mode input[type="text"],
+    body.light-mode input[type="email"],
+    body.light-mode textarea {
+      background: rgba(0, 0, 0, 0.02);
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      color: #111111;
+    }
+    body.light-mode input[type="text"]:focus,
+    body.light-mode input[type="email"]:focus,
+    body.light-mode textarea:focus {
+      background: #ffffff;
+      border-color: #3c64c8;
+    }
+    body.light-mode input::placeholder,
+    body.light-mode textarea::placeholder { color: rgba(0, 0, 0, 0.35); }
+    body.light-mode .divider { background: rgba(0, 0, 0, 0.08); }
+    body.light-mode .email-option .pill {
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      background: rgba(0, 0, 0, 0.02);
+      color: #555555;
+    }
+    body.light-mode .email-option input[type="radio"]:checked + .pill {
+      border-color: #3c64c8;
+      background: rgba(60, 100, 200, 0.08);
+      color: #3c64c8;
+    }
+    body.light-mode .email-option .pill:hover { border-color: #3c64c8; color: #3c64c8; }
+    body.light-mode .openbtn {
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      color: #333333;
+    }
+    body.light-mode .openbtn:hover { background: rgba(60, 100, 200, 0.1); color: #3c64c8; }
+    
     .social-icons {
       display: flex;
       gap: 12px;
       justify-content: center;
       flex-wrap: wrap;
     }
-
     .social-icons a {
       color: #8b9fcf;
       font-size: 1.1rem;
@@ -153,14 +102,11 @@ body.light-mode .openbtn:hover {
       transition: color 0.2s, border-color 0.2s, background 0.2s;
       text-decoration: none;
     }
-
     .social-icons a:hover {
       color: #fff;
       border-color: rgba(150,130,230,0.6);
       background: rgba(120,90,220,0.14);
     }
-
-    /* ── Open button ── */
     .openbtn {
       position: fixed;
       top: 18px; left: 18px;
@@ -176,10 +122,7 @@ body.light-mode .openbtn:hover {
       transition: background 0.2s, color 0.2s;
       backdrop-filter: blur(6px);
     }
-
     .openbtn:hover { background: rgba(120,90,220,0.25); color: #fff; }
-
-    /* ── Overlay ── */
     .overlay {
       display: none;
       position: fixed;
@@ -187,9 +130,7 @@ body.light-mode .openbtn:hover {
       background: rgba(0,0,0,0.45);
       z-index: 99;
     }
-    .overlay.show { display: block; }
-
-    /* ── Main content ── */
+    .overlay.show { block; }
     #main {
       position: relative;
       z-index: 1;
@@ -201,12 +142,7 @@ body.light-mode .openbtn:hover {
       padding: 60px 24px;
       transition: margin-left 0.3s ease;
     }
-
-    header {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-
+    header { text-align: center; margin-bottom: 48px; }
     header h1 {
       font-family: 'Raleway', sans-serif;
       font-weight: 700;
@@ -215,15 +151,12 @@ body.light-mode .openbtn:hover {
       color: #fff;
       margin-bottom: 12px;
     }
-
     header p {
       font-size: 1rem;
       font-weight: 300;
       color: #8b9fcf;
       letter-spacing: 0.5px;
     }
-
-    /* ── Form card ── */
     .card {
       width: 100%;
       max-width: 560px;
@@ -233,9 +166,7 @@ body.light-mode .openbtn:hover {
       padding: 44px 48px;
       backdrop-filter: blur(10px);
     }
-
     .field { margin-bottom: 24px; }
-
     .field label {
       display: block;
       font-size: 0.78rem;
@@ -245,7 +176,6 @@ body.light-mode .openbtn:hover {
       color: #7b8fc0;
       margin-bottom: 8px;
     }
-
     input[type="text"],
     input[type="email"],
     textarea {
@@ -260,34 +190,26 @@ body.light-mode .openbtn:hover {
       outline: none;
       transition: border-color 0.25s, background 0.25s;
     }
-
     input[type="text"]:focus,
     input[type="email"]:focus,
     textarea:focus {
       border-color: rgba(150, 130, 230, 0.6);
       background: rgba(255,255,255,0.07);
     }
-
-    input::placeholder,
-    textarea::placeholder { color: rgba(180, 190, 225, 0.3); }
-
+    input::placeholder, textarea::placeholder { color: rgba(180, 190, 225, 0.3); }
     textarea {
       resize: vertical;
       min-height: 130px;
       line-height: 1.6;
     }
-
     .divider {
       height: 1px;
       background: rgba(120, 140, 210, 0.15);
       margin: 32px 0;
     }
-
     .email-toggle { display: flex; gap: 12px; }
-
     .email-option { flex: 1; cursor: pointer; }
     .email-option input[type="radio"] { display: none; }
-
     .email-option .pill {
       display: block;
       text-align: center;
@@ -301,18 +223,15 @@ body.light-mode .openbtn:hover {
       word-break: break-all;
       line-height: 1.4;
     }
-
     .email-option input[type="radio"]:checked + .pill {
       border-color: rgba(150, 120, 240, 0.65);
       background: rgba(120, 90, 220, 0.14);
       color: #c5b8f7;
     }
-
     .email-option .pill:hover {
       border-color: rgba(150, 130, 230, 0.4);
       color: #c5b8f7;
     }
-
     .pill-label {
       display: block;
       font-size: 0.68rem;
@@ -321,7 +240,6 @@ body.light-mode .openbtn:hover {
       margin-bottom: 4px;
       opacity: 0.65;
     }
-
     .submit-btn {
       width: 100%;
       margin-top: 8px;
@@ -338,27 +256,22 @@ body.light-mode .openbtn:hover {
       cursor: pointer;
       transition: opacity 0.2s, transform 0.15s;
     }
-
     .submit-btn:hover { opacity: 0.88; transform: translateY(-1px); }
     .submit-btn:active { transform: scale(0.99); }
-
     .note {
       text-align: center;
       margin-top: 20px;
       font-size: 0.8rem;
       color: #5a6a9a;
     }
-
     @media (max-width: 540px) {
       .card { padding: 32px 20px; }
       .email-toggle { flex-direction: column; }
     }
-
-     /* Language Switcher Button Component */
     .lang-toggle-btn {
       position: fixed;
       top: 16px;
-      right: 70px; /* Δίπλα από το Theme Toggle */
+      right: 70px;
       z-index: 1000;
       background: rgba(20, 28, 50, 0.75);
       border: 1px solid rgba(120, 140, 210, 0.3);
@@ -375,14 +288,11 @@ body.light-mode .openbtn:hover {
       backdrop-filter: blur(6px);
       letter-spacing: 0.05em;
     }
-
     .lang-toggle-btn:hover {
       border-color: rgba(150, 130, 230, 0.6);
       color: #fff;
       background: rgba(120, 90, 220, 0.18);
     }
-
-    /* Light mode adjustments για το Language Button */
     body.light-mode .lang-toggle-btn {
       background: rgba(240,243,252,0.85);
       border-color: rgba(80,100,200,0.25);
@@ -395,22 +305,19 @@ body.light-mode .openbtn:hover {
   </style>
 </head>
 <body>
-  <!-- Neural Network Background -->
   <canvas id="mlp-bg"></canvas>
 
-
-<!-- Sidebar -->
 <div id="mySidebar" class="sidebar">
   <div class="sidebar-content">
     <div class="nav-links" id="sidebar-nav-links">
-      <a href="home.html">Home</a>
-      <a href="thesis.html">Research & Dissertations</a>
-      <a href="projects.html">Engineering Portfolio, Projects and Research</a>
-      <a href="autobiography.html">Auto-Biography</a>
-      <a href="contact.html" class="active">Contact</a>
+      <a href="home.html" data-i18n="nav-home">Home</a>
+      <a href="thesis.html" data-i18n="nav-research">Research & Dissertations</a>
+      <a href="projects.html" data-i18n="nav-projects">Engineering Portfolio, Projects and Research</a>
+      <a href="autobiography.html" data-i18n="nav-bio">Auto-Biography</a>
+      <a href="contact.html" class="active" data-i18n="nav-contact">Contact</a>
     </div>
     <div class="sidebar-footer">
-      <h3>Contact</h3>
+      <h3 data-i18n="footer-contact">Contact</h3>
       <div class="social-icons">
         <a href="mailto:elstefanosvks7@gmail.com" title="Gmail"><i class="fa-regular fa-envelope"></i></a>
         <a href="mailto:stefvoikos@netmode.ntua.gr" title="NTUA Email"><i class="fa-regular fa-envelope"></i></a>
@@ -423,94 +330,625 @@ body.light-mode .openbtn:hover {
   </div>
 </div>
 
-<!-- Main -->
 <div id="main">
-  <!-- Toggle button -->
-<button class="openbtn" onclick="toggleNav()">&#9776;</button>
+  <button class="openbtn" onclick="toggleNav()">&#9776;</button>
     
-    <button id="theme-toggle" class="theme-btn" onclick="toggleTheme()">
-      <i class="fa-solid fa-moon"></i>
-    </button>
-    <button id="language-toggle" class="lang-toggle-btn" onclick="switchLanguage()">
-           <i class="fa-solid fa-globe"></i> <span>GR</span>
-      </button>
-    <header class="header">
-    <h1 class="fade-in">Stefanos Voikos</h1>
-    <p class="fade-in delay-1">Electrical and Computer Engineer | Data Scientist | Network Enginnering | ML Enginnering </p>
-    
+  <button id="theme-toggle" class="theme-btn" onclick="toggleTheme()">
+    <i class="fa-solid fa-moon"></i>
+  </button>
+  
+  <div class="lang-dropdown-wrapper">
+      <i class="fa-solid fa-globe"></i>
+      <select id="language-selector" class="lang-toggle-select" onchange="translatePage(this.value)">
+        <option value="en">English</option>
+        <option value="el">Ελληνικά</option>
+        <option value="de">Deutsch</option>
+        <option value="fr">Français</option>
+        <option value="it">Italiano</option>
+        <option value="es">Español</option>
+        <option value="ru">Русский</option>
+        <option value="pt">Português</option>
+        <option value="pl">Polski</option>
+        <option value="sv">Svenska</option>
+        <option value="sr">Српски</option>
+        <option value="bg">Български</option>
+        <option value="ro">Română</option>
+        <option value="sq">Shqip</option>
+        <option value="fa">فارسی</option>
+        <option value="ar">العربية</option>
+        <option value="zh">中文</option>
+        <option value="ja">日本語</option>
+        <option value="hi">हिन्दी</option>
+      </select>
+    </div>
+
+  <header class="header">
+    <h1 class="fade-in" data-i18n="meta-title">Stefanos Voikos</h1>
+    <p class="fade-in delay-1" data-i18n="header-sub">Electrical and Computer Engineer | Data Scientist | Network Engineering | ML Engineering </p>
   </header>
 
-  <h2 class="fade-in">Get in Touch</h2>
+  <h2 class="fade-in" data-i18n="contact-heading">Get in Touch</h2>
   
   <div class="card">
     <form id="contactForm" action="https://formspree.io/f/xwvjenlq" method="POST">
 
       <div class="field">
-        <label for="name">Your Name</label>
-        <input type="text" id="name" name="name" placeholder="John Doe" required />
+        <label for="name" data-i18n="label-name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="John Doe" data-i18n-ph="ph-name" required />
       </div>
 
       <div class="field">
-        <label for="sender">Your Email</label>
-        <input type="email" id="sender" name="email" placeholder="you@example.com" required />
+        <label for="sender" data-i18n="label-email">Your Email</label>
+        <input type="email" id="sender" name="email" placeholder="you@example.com" data-i18n-ph="ph-email" required />
       </div>
 
       <div class="field">
-        <label for="subject">Subject</label>
-        <input type="text" id="subject" name="subject" placeholder="Research collaboration, inquiry…" required />
+        <label for="subject" data-i18n="label-subject">Subject</label>
+        <input type="text" id="subject" name="subject" placeholder="Research collaboration, inquiry…" data-i18n-ph="ph-subject" required />
       </div>
 
       <div class="field">
-        <label for="message">Message</label>
-        <textarea id="message" name="message" placeholder="Write your message here…" required></textarea>
+        <label for="message" data-i18n="label-message">Message</label>
+        <textarea id="message" name="message" placeholder="Write your message here…" data-i18n-ph="ph-message" required></textarea>
       </div>
 
       <div class="divider"></div>
 
       <div class="field">
-      <label>Send To</label>
-      <div class="email-toggle">
-        <label class="email-option">
-          <input type="radio" name="recipient" value="elstefanosvks7@gmail.com" checked />
-          <span class="pill">
-            <span class="pill-label">Personal</span>
-            elstefanosvks7@gmail.com
-          </span>
-        </label>
-        <label class="email-option">
-          <input type="radio" name="recipient" value="stefvoikos@netmode.ntua.gr" />
-          <span class="pill">
-            <span class="pill-label">Academic</span>
-            stefvoikos@netmode.ntua.gr
-          </span>
-        </label>
+        <label data-i18n="label-sendto">Send To</label>
+        <div class="email-toggle">
+          <label class="email-option">
+            <input type="radio" name="recipient" value="elstefanosvks7@gmail.com" checked />
+            <span class="pill">
+              <span class="pill-label" data-i18n="pill-personal">Personal</span>
+              elstefanosvks7@gmail.com
+            </span>
+          </label>
+          <label class="email-option">
+            <input type="radio" name="recipient" value="stefvoikos@netmode.ntua.gr" />
+            <span class="pill">
+              <span class="pill-label" data-i18n="pill-academic">Academic</span>
+              stefvoikos@netmode.ntua.gr
+            </span>
+          </label>
+        </div>
       </div>
-    </div>
 
       <input type="hidden" name="_replyto" id="replyto" value="elstefanosvks7@gmail.com" />
       <input type="hidden" name="_subject" value="New message from your website" />
-      <button type="submit" class="submit-btn">Send Message</button>
+      <button type="submit" class="submit-btn" data-i18n="btn-send">Send Message</button>
 
     </form>
   </div>
 
-  <p class="note">Responses within 1–2 business days</p>
+  <p class="note" data-i18n="note-response">Responses within 1–2 business days</p>
 </div>
-  <script src="script.js"></script>
+
   <script>
-   function switchLanguage() {
-      localStorage.setItem('preferredLang', 'gr');
-      window.location.href = 'contact_gr.html';
+    // Embedded Multi-Language Dictionary Bundle
+    window.i18nData = {
+      en: {
+        "meta-title": "Stefanos Voikos",
+        "nav-home": "Home",
+        "nav-research": "Research & Dissertations",
+        "nav-projects": "Engineering Portfolio, Projects and Research",
+        "nav-bio": "Auto-Biography",
+        "nav-contact": "Contact",
+        "footer-contact": "Contact",
+        "header-sub": "Electrical and Computer Engineer | Data Scientist | Network Engineering | ML Engineering",
+        "contact-heading": "Get in Touch",
+        "label-name": "Your Name",
+        "ph-name": "John Doe",
+        "label-email": "Your Email",
+        "ph-email": "you@example.com",
+        "label-subject": "Subject",
+        "ph-subject": "Research collaboration, inquiry…",
+        "label-message": "Message",
+        "ph-message": "Write your message here…",
+        "label-sendto": "Send To",
+        "pill-personal": "Personal",
+        "pill-academic": "Academic",
+        "btn-send": "Send Message",
+        "note-response": "Responses within 1–2 business days"
+      },
+      el: {
+        "meta-title": "Στέφανος Βόικος",
+        "nav-home": "Αρχική",
+        "nav-research": "Έρευνα & Διατριβές",
+        "nav-projects": "Μηχανικό Portfolio, Έργα και Έρευνα",
+        "nav-bio": "Αυτοβιογραφία",
+        "nav-contact": "Επικοινωνία",
+        "footer-contact": "Επικοινωνία",
+        "header-sub": "Ηλεκτρολόγος Μηχανικός και Μηχανικός Υπολογιστών | Data Scientist | Network Engineering | ML Engineering",
+        "contact-heading": "Επικοινωνήστε Μαζί Μου",
+        "label-name": "Το Όνομά Σας",
+        "ph-name": "Γιάννης Παπαδόπουλος",
+        "label-email": "Το Email Σας",
+        "ph-email": "you@example.com",
+        "label-subject": "Θέμα",
+        "ph-subject": "Ερευνητική συνεργασία, ερώτηση…",
+        "label-message": "Μήνυμα",
+        "ph-message": "Γράψτε το μήνυμά σας εδώ…",
+        "label-sendto": "Αποστολή Προς",
+        "pill-personal": "Προσωπικό",
+        "pill-academic": "Ακαδημαϊκό",
+        "btn-send": "Αποστολή Μηνύματος",
+        "note-response": "Απαντήσεις εντός 1-2 εργάσιμων ημερών"
+      },
+      de: {
+        "meta-title": "Stefanos Voikos",
+        "nav-home": "Startseite",
+        "nav-research": "Forschung & Dissertationen",
+        "nav-projects": "Ingenieur-Portfolio, Projekte und Forschung",
+        "nav-bio": "Autobiographie",
+        "nav-contact": "Kontakt",
+        "footer-contact": "Kontakt",
+        "header-sub": "Elektro- und Informationstechniker | Data Scientist | Netzwerkingenieurwesen | ML-Ingenieurwesen",
+        "contact-heading": "Kontaktieren Sie mich",
+        "label-name": "Ihr Name",
+        "ph-name": "Max Mustermann",
+        "label-email": "Ihre E-Mail",
+        "ph-email": "ihre@adresse.com",
+        "label-subject": "Betreff",
+        "ph-subject": "Forschungskooperation, Anfrage…",
+        "label-message": "Nachricht",
+        "ph-message": "Schreiben Sie Ihre Nachricht hier…",
+        "label-sendto": "Senden an",
+        "pill-personal": "Privat",
+        "pill-academic": "Akademisch",
+        "btn-send": "Nachricht senden",
+        "note-response": "Antwort innerhalb von 1–2 Werktagen"
+      },
+      fr: {
+        "meta-title": "Stefanos Voikos",
+        "nav-home": "Accueil",
+        "nav-research": "Recherche & Dissertations",
+        "nav-projects": "Portfolio d'Ingénierie, Projets et Recherche",
+        "nav-bio": "Autobiographie",
+        "nav-contact": "Contact",
+        "footer-contact": "Contact",
+        "header-sub": "Ingénieur Électricien et Informaticien | Data Scientist | Ingénierie Réseau | Ingénierie ML",
+        "contact-heading": "Contactez-moi",
+        "label-name": "Votre Nom",
+        "ph-name": "Jean Dupont",
+        "label-email": "Votre Email",
+        "ph-email": "vous@exemple.com",
+        "label-subject": "Objet",
+        "ph-subject": "Collaboration de recherche, demande…",
+        "label-message": "Message",
+        "ph-message": "Écrivez votre message ici…",
+        "label-sendto": "Envoyer à",
+        "pill-personal": "Personnel",
+        "pill-academic": "Académique",
+        "btn-send": "Envoyer le Message",
+        "note-response": "Réponse sous 1 à 2 jours ouvrables"
+      },
+      it: {
+        "meta-title": "Stefanos Voikos",
+        "nav-home": "Home",
+        "nav-research": "Ricerca & Dissertazioni",
+        "nav-projects": "Portfolio di Ingegneria, Progetti e Ricerca",
+        "nav-bio": "Autobiografia",
+        "nav-contact": "Contatti",
+        "footer-contact": "Contatti",
+        "header-sub": "Ingegnere Elettrico e Informatico | Data Scientist | Ingegneria di Rete | Ingegneria ML",
+        "contact-heading": "Mettiti in contatto",
+        "label-name": "Il Tuo Nome",
+        "ph-name": "Mario Rossi",
+        "label-email": "La Tua Email",
+        "ph-email": "tu@esempio.com",
+        "label-subject": "Oggetto",
+        "ph-subject": "Collaborazione di ricerca, informazioni…",
+        "label-message": "Messaggio",
+        "ph-message": "Scrivi il tuo messaggio qui…",
+        "label-sendto": "Invia a",
+        "pill-personal": "Personale",
+        "pill-academic": "Accademico",
+        "btn-send": "Invia Messaggio",
+        "note-response": "Risposta entro 1-2 giorni lavorativi"
+      },
+      es: {
+        "meta-title": "Stefanos Voikos",
+        "nav-home": "Inicio",
+        "nav-research": "Investigación y Tesis",
+        "nav-projects": "Portafolio de Ingeniería, Proyectos e Investigación",
+        "nav-bio": "Autobiografía",
+        "nav-contact": "Contacto",
+        "footer-contact": "Contacto",
+        "header-sub": "Ingeniero Eléctrico y de Computación | Científico de Datos | Ingeniería de Redes | Ingeniería de ML",
+        "contact-heading": "Ponerse en contacto",
+        "label-name": "Su Nombre",
+        "ph-name": "Juan Pérez",
+        "label-email": "Su Correo Electrónico",
+        "ph-email": "usted@ejemplo.com",
+        "label-subject": "Asunto",
+        "ph-subject": "Colaboración de investigación, consulta…",
+        "label-message": "Mensaje",
+        "ph-message": "Escriba su message aquí…",
+        "label-sendto": "Enviar a",
+        "pill-personal": "Personal",
+        "pill-academic": "Académico",
+        "btn-send": "Enviar Mensaje",
+        "note-response": "Respuestas dentro de 1–2 días hábiles"
+      },
+      ru: {
+        "meta-title": "Стефанос Воикос",
+        "nav-home": "Главная",
+        "nav-research": "Исследования и диссертации",
+        "nav-projects": "Инженерное портфолио, проекты и исследования",
+        "nav-bio": "Автобиография",
+        "nav-contact": "Контакты",
+        "footer-contact": "Контакты",
+        "header-sub": "Инженер-электрик и вычислительной техники | Дата-сайентист | Сетевая инженерия | Инженерия ML",
+        "contact-heading": "Связаться со мной",
+        "label-name": "Ваше Имя",
+        "ph-name": "Иван Иванов",
+        "label-email": "Ваш Email",
+        "ph-email": "you@example.com",
+        "label-subject": "Тема",
+        "ph-subject": "Научное сотрудничество, запрос…",
+        "label-message": "Сообщение",
+        "ph-message": "Напишите ваше сообщение здесь…",
+        "label-sendto": "Кому отправить",
+        "pill-personal": "Личный",
+        "pill-academic": "Академический",
+        "btn-send": "Отправить сообщение",
+        "note-response": "Ответ в течение 1–2 рабочих дней"
+      },
+      pt: {
+        "meta-title": "Stefanos Voikos",
+        "nav-home": "Início",
+        "nav-research": "Pesquisa e Dissertações",
+        "nav-projects": "Portfólio de Engenharia, Projetos e Pesquisa",
+        "nav-bio": "Autobiografia",
+        "nav-contact": "Contacto",
+        "footer-contact": "Contacto",
+        "header-sub": "Engenheiro Eletrotécnico e de Computadores | Cientista de Dados | Engenharia de Redes | Engenharia de ML",
+        "contact-heading": "Entre em Contacto",
+        "label-name": "Seu Nome",
+        "ph-name": "João Silva",
+        "label-email": "Seu Email",
+        "ph-email": "voce@exemplo.com",
+        "label-subject": "Assunto",
+        "ph-subject": "Colaboração em pesquisa, dúvida…",
+        "label-message": "Mensagem",
+        "ph-message": "Escreva sua mensagem aqui…",
+        "label-sendto": "Enviar Para",
+        "pill-personal": "Pessoal",
+        "pill-academic": "Académico",
+        "btn-send": "Enviar Mensagem",
+        "note-response": "Respostas dentro de 1 a 2 dias úteis"
+      },
+      pl: {
+        "meta-title": "Stefanos Voikos",
+        "nav-home": "Strona główna",
+        "nav-research": "Badania i rozprawy",
+        "nav-projects": "Portfolio inżynierskie, projekty i badania",
+        "nav-bio": "Autobiografia",
+        "nav-contact": "Kontakt",
+        "footer-contact": "Kontakt",
+        "header-sub": "Inżynier Elektryk i Komputerowy | Data Scientist | Inżynieria Sieciowa | Inżynieria ML",
+        "contact-heading": "Skontaktuj się ze mną",
+        "label-name": "Twoje Imię",
+        "ph-name": "Jan Kowalski",
+        "label-email": "Twój Email",
+        "ph-email": "ty@example.com",
+        "label-subject": "Temat",
+        "ph-subject": "Współpraca badawcza, zapytanie…",
+        "label-message": "Wiadomość",
+        "ph-message": "Napisz swoją wiadomość tutaj…",
+        "label-sendto": "Wyślij do",
+        "pill-personal": "Prywatny",
+        "pill-academic": "Akademicki",
+        "btn-send": "Wyślij Wiadomość",
+        "note-response": "Odpowiedź w ciągu 1–2 dni roboczych"
+      },
+      sv: {
+        "meta-title": "Stefanos Voikos",
+        "nav-home": "Hem",
+        "nav-research": "Forskning & Avhandlingar",
+        "nav-projects": "Ingenjörsportfölj, projekt och forskning",
+        "nav-bio": "Autobiografi",
+        "nav-contact": "Kontakt",
+        "footer-contact": "Kontakt",
+        "header-sub": "Elektro- och datatekniker | Data Scientist | Nätverksteknik | ML-teknik",
+        "contact-heading": "Hör av dig",
+        "label-name": "Ditt Namn",
+        "ph-name": "Sven Svensson",
+        "label-email": "Din E-post",
+        "ph-email": "du@example.com",
+        "label-subject": "Ämne",
+        "ph-subject": "Forskningssamarbete, förfrågan…",
+        "label-message": "Meddelande",
+        "ph-message": "Skriv ditt meddelande här…",
+        "label-sendto": "Skicka till",
+        "pill-personal": "Personlig",
+        "pill-academic": "Akademisk",
+        "btn-send": "Skicka meddelande",
+        "note-response": "Svar inom 1–2 arbetsdagar"
+      },
+      sr: {
+        "meta-title": "Стефанос Воикос",
+        "nav-home": "Почетна",
+        "nav-research": "Истраживања и дисертације",
+        "nav-projects": "Инжењерски портфолио, пројекти и истраживања",
+        "nav-bio": "Аутобиографија",
+        "nav-contact": "Контакт",
+        "footer-contact": "Контакт",
+        "header-sub": "Инжењер електротехнике и рачунарства | Дата Сциентист | Мрежни инжењеринг | МЛ инжењеринг",
+        "contact-heading": "Ступите у контакт",
+        "label-name": "Ваше Име",
+        "ph-name": "Марко Марковић",
+        "label-email": "Ваша Е-маил адреса",
+        "ph-email": "vi@example.com",
+        "label-subject": "Предмет",
+        "ph-subject": "Истраживачка сарадња, упит…",
+        "label-message": "Порука",
+        "ph-message": "Напишите своју поруку овде…",
+        "label-sendto": "Пошаљи на",
+        "pill-personal": "Лични",
+        "pill-academic": "Академски",
+        "btn-send": "Пошаљи поруку",
+        "note-response": "Одговор у року од 1-2 радна дана"
+      },
+      bg: {
+        "meta-title": "Стефанос Воикос",
+        "nav-home": "Начало",
+        "nav-research": "Изследвания и дисертации",
+        "nav-projects": "Инженерен портфолио, проекти и изследвания",
+        "nav-bio": "Автобиография",
+        "nav-contact": "Контакт",
+        "footer-contact": "Контакт",
+        "header-sub": "Електроинженер и компютърен инженер | Учен по данни | Мрежово инженерство | ML инженерство",
+        "contact-heading": "Свържете се с мен",
+        "label-name": "Вашето Име",
+        "ph-name": "Иван Иванов",
+        "label-email": "Вашият Имейл",
+        "ph-email": "vie@example.com",
+        "label-subject": "Относно",
+        "ph-subject": "Изследователско сътрудничество, запитване…",
+        "label-message": "Съобщение",
+        "ph-message": "Напишете вашето съобщение тук…",
+        "label-sendto": "Изпрати до",
+        "pill-personal": "Личен",
+        "pill-academic": "Академичен",
+        "btn-send": "Изпрати съобщение",
+        "note-response": "Отговор в рамките на 1–2 работни дни"
+      },
+      ro: {
+        "meta-title": "Stefanos Voikos",
+        "nav-home": "Acasă",
+        "nav-research": "Cercetare și Teze",
+        "nav-projects": "Portofoliu de Inginerie, Proiecte și Cercetare",
+        "nav-bio": "Autobiografie",
+        "nav-contact": "Contact",
+        "footer-contact": "Contact",
+        "header-sub": "Inginer Electrician și de Calculatoare | Data Scientist | Inginerie de Rețea | Inginerie ML",
+        "contact-heading": "Contactați-mă",
+        "label-name": "Numele Dvs.",
+        "ph-name": "Ion Popescu",
+        "label-email": "Email-ul Dvs.",
+        "ph-email": "dvs@example.com",
+        "label-subject": "Subiect",
+        "ph-subject": "Colaborare în cercetare, întrebare…",
+        "label-message": "Mesaj",
+        "ph-message": "Scrieți mesajul dvs. aici…",
+        "label-sendto": "Trimite Către",
+        "pill-personal": "Personal",
+        "pill-academic": "Academic",
+        "btn-send": "Trimite Mesaj",
+        "note-response": "Răspuns în termen de 1-2 zile lucrătoare"
+      },
+      sq: {
+        "meta-title": "Stefanos Voikos",
+        "nav-home": "Ballina",
+        "nav-research": "Kërkim & Disertacione",
+        "nav-projects": "Portfolio Inxhinierike, Projekte dhe Kërkim",
+        "nav-bio": "Autobiografi",
+        "nav-contact": "Kontakt",
+        "footer-contact": "Kontakt",
+        "header-sub": "Inxhinier Elektrik dhe Kompjuterik | Data Scientist | Inxhinieri Rrjeti | Inxhinieri ML",
+        "contact-heading": "Na Kontaktoni",
+        "label-name": "Emri Juaj",
+        "ph-name": "Filan Fisteku",
+        "label-email": "Email-i Juaj",
+        "ph-email": "ju@example.com",
+        "label-subject": "Subjekti",
+        "ph-subject": "Bashkëpunim kërkimor, pyetje…",
+        "label-message": "Mesazhi",
+        "ph-message": "Shkruani mesazhin tuaj këtu…",
+        "label-sendto": "Dërgoji",
+        "pill-personal": "Personal",
+        "pill-academic": "Akademik",
+        "btn-send": "Dërgo Mesaj",
+        "note-response": "Përgjigjet brenda 1-2 ditëve të punës"
+      },
+      fa: {
+        "meta-title": "استفانوس وویکوس",
+        "nav-home": "خانه",
+        "nav-research": "تحقیقات و پایان‌نامه‌ها",
+        "nav-projects": "پورتفولیو مهندسی، پروژه‌ها و تحقیقات",
+        "nav-bio": "زندگینامه",
+        "nav-contact": "تماس",
+        "footer-contact": "تماس",
+        "header-sub": "مهندس برق و کامپیوتر | دانشمند داده | مهندسی شبکه | مهندسی یادگیری ماشین",
+        "contact-heading": "با من در ارتباط باشید",
+        "label-name": "نام شما",
+        "ph-name": "علی علوی",
+        "label-email": "ایمیل شما",
+        "ph-email": "you@example.com",
+        "label-subject": "موضوع",
+        "ph-subject": "همکاری پژوهشی، پرسش…",
+        "label-message": "پیام",
+        "ph-message": "پیام خود را اینجا بنویسید…",
+        "label-sendto": "ارسال به",
+        "pill-personal": "شخصی",
+        "pill-academic": "دانشگاهی",
+        "btn-send": "ارسال پیام",
+        "note-response": "پاسخگویی ظرف ۱ الی ۲ روز کاری"
+      },
+      ar: {
+        "meta-title": "ستيفانوس فويكوس",
+        "nav-home": "الرئيسية",
+        "nav-research": "الأبحاث والرسائل العلمية",
+        "nav-projects": "الملف الهندسي، المشاريع والأبحاث",
+        "nav-bio": "السيرة الذاتية",
+        "nav-contact": "اتصل بي",
+        "footer-contact": "اتصل بي",
+        "header-sub": "مهندس كهرباء وحاسوب | عالم بيانات | هندسة الشبكات | هندسة تعلم الآلة",
+        "contact-heading": "تواصل معي",
+        "label-name": "الاسم",
+        "ph-name": "أحمد محمد",
+        "label-email": "البريد الإلكتروني",
+        "ph-email": "you@example.com",
+        "label-subject": "الموضوع",
+        "ph-subject": "تعاون بحثي، استفسار…",
+        "label-message": "الرسالة",
+        "ph-message": "اكتب رسالتك هنا…",
+        "label-sendto": "إرسال إلى",
+        "pill-personal": "شخصي",
+        "pill-academic": "أكاديمي",
+        "btn-send": "إرسال الرسالة",
+        "note-response": "الرد خلال يومين عمل كحد أقصى"
+      },
+      zh: {
+        "meta-title": "斯特凡諾斯·沃伊科斯",
+        "nav-home": "首页",
+        "nav-research": "研究与论文",
+        "nav-projects": "工程作品集、项目与研究",
+        "nav-bio": "个人自传",
+        "nav-contact": "联系方式",
+        "footer-contact": "联系方式",
+        "header-sub": "电子与计算机工程师 | 数据科学家 | 网络工程 | 机器学习工程",
+        "contact-heading": "取得联系",
+        "label-name": "您的姓名",
+        "ph-name": "张三",
+        "label-email": "您的邮箱",
+        "ph-email": "you@example.com",
+        "label-subject": "主题",
+        "ph-subject": "研究合作、咨询…",
+        "label-message": "留言内容",
+        "ph-message": "在此处填写您的留言…",
+        "label-sendto": "发送至",
+        "pill-personal": "个人邮箱",
+        "pill-academic": "学术邮箱",
+        "btn-send": "发送消息",
+        "note-response": "我们将在1-2个工作日内回复"
+      },
+      ja: {
+        "meta-title": "ステファノス・ヴォイコス",
+        "nav-home": "ホーム",
+        "nav-research": "研究・学位論文",
+        "nav-projects": "エンジニアリングポートフォリオ・プロジェクト・研究",
+        "nav-bio": "自伝",
+        "nav-contact": "お問い合わせ",
+        "footer-contact": "お問い合わせ",
+        "header-sub": "電気電子・コンピュータエンジニア | データサイエンティスト | ネットワークエンジニアリング | MLエンジニアリング",
+        "contact-heading": "お問い合わせ",
+        "label-name": "お名前",
+        "ph-name": "山田 太郎",
+        "label-email": "メールアドレス",
+        "ph-email": "you@example.com",
+        "label-subject": "件名",
+        "ph-subject": "共同研究のご提案、ご質問など…",
+        "label-message": "メッセージ",
+        "ph-message": "こちらにメッセージをご記入ください…",
+        "label-sendto": "宛先",
+        "pill-personal": "個人用",
+        "pill-academic": "大学・研究用",
+        "btn-send": "メッセージを送信",
+        "note-response": "通常1〜2営業日以内にご返信いたします"
+      },
+      hi: {
+        "meta-title": "स्टेफानोस वोइकोस",
+        "nav-home": "होम",
+        "nav-research": "अनुसंधान और शोधप्रबंध",
+        "nav-projects": "इंजीनियरिंग पोर्टफोलियो, परियोजनाएं और अनुसंधान",
+        "nav-bio": "आत्मकथा",
+        "nav-contact": "संपर्क",
+        "footer-contact": "संपर्क",
+        "header-sub": "इलेक्ट्रिकल और कंप्यूटर इंजीनियर | डेटा साइंटिस्ट | नेटवर्क इंजीनियरिंग | एमएल इंजीनियरिंग",
+        "contact-heading": "संपर्क करें",
+        "label-name": "आपका नाम",
+        "ph-name": "राहुल कुमार",
+        "label-email": "आपकी ईमेल आईडी",
+        "ph-email": "you@example.com",
+        "label-subject": "विषय",
+        "ph-subject": "अनुसंधान सहयोग, पूछताछ…",
+        "label-message": "संदेश",
+        "ph-message": "अपना संदेश यहाँ लिखें…",
+        "label-sendto": "किसे भेजें",
+        "pill-personal": "व्यक्तिगत",
+        "pill-academic": "शैक्षणिक",
+        "btn-send": "संदेश भेजें",
+        "note-response": "1-2 कार्य दिवसों के भीतर प्रतिक्रिया"
+      }
+    };
+
+    const languages = ["en", "el", "de", "fr", "it", "es", "ru", "pt", "pl", "sv", "sr", "bg", "ro", "sq", "fa", "ar", "zh", "ja", "hi"];
+
+    let d3NodeTextSelection;
+    
+    function translatePage(lang) {
+      // Safe fallback mechanism if translations are not yet provided for all 20 options
+      const dict = i18nData[lang] || i18nData["en"];
+      localStorage.setItem('preferredLang', lang);
+      document.getElementById("language-selector").value = lang;
+
+      // Translate standard text arrays
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (dict[key]) el.textContent = dict[key];
+      });
+
+      // Handle HTML paragraph blocks cleanly
+      if (dict["about-p1"]) document.getElementById("about-p1").innerHTML = dict["about-p1"];
+      if (dict["about-p2"]) document.getElementById("about-p2").innerHTML = dict["about-p2"];
+      
+      // Update interactive tooltip base strings
+      const currentTip = document.getElementById("graph-tip");
+      if (currentTip && dict["tip-default"]) currentTip.innerHTML = dict["tip-default"];
+
+      // Reactive update to the live D3 Canvas strings safely
+      if (d3NodeTextSelection) {
+        d3NodeTextSelection.text(d => dict[d.i18nKey] || d.id);
+      }
+    }
+    
+    function applyTranslations(lang) {
+      if (!window.i18nData || !window.i18nData[lang]) return;
+      const data = window.i18nData[lang];
+
+      // Standard text translation mapping
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (data[key]) el.innerHTML = data[key];
+      });
+
+      // Placeholder element text mapping
+      document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+        const key = el.getAttribute('data-i18n-ph');
+        if (data[key]) el.setAttribute('placeholder', data[key]);
+      });
+
+      // Update interactive global buttons
+      document.getElementById('current-lang-label').innerText = lang.toUpperCase();
+      document.documentElement.setAttribute('lang', lang);
+      
+      updateLinksToLanguage(lang);
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      // Καθορίζουμε ρητά ότι βρισκόμαστε στο αγγλικό configuration
-      localStorage.setItem('preferredLang', 'en');
-      updateLinksToLanguage('en');
-    });
+    function switchLanguage() {
+      let currentLang = localStorage.getItem('preferredLang') || 'en';
+      let nextIndex = (languages.indexOf(currentLang) + 1) % languages.length;
+      let nextLang = languages[nextIndex];
+      
+      localStorage.setItem('preferredLang', nextLang);
+      applyTranslations(nextLang);
+    }
 
     function updateLinksToLanguage(lang) {
-      const suffix = lang === 'gr' ? '_gr.html' : '.html';
+      const suffix = lang === 'en' ? '.html' : `_${lang}.html`;
       const navLinks = document.querySelectorAll('#sidebar-nav-links a');
       const files = ['home', 'thesis', 'projects', 'autobiography', 'contact'];
       
@@ -519,20 +957,15 @@ body.light-mode .openbtn:hover {
           link.setAttribute('href', files[index] + suffix);
         }
       });
-
-      const ctaResearch = document.getElementById('cta-research');
-      const ctaProjects = document.getElementById('cta-projects');
-      if(ctaResearch) ctaResearch.setAttribute('href', 'thesis' + suffix);
-      if(ctaProjects) ctaProjects.setAttribute('href', 'projects' + suffix);
     }
-  </script>
-  <script src="background_contact.js"></script>
-  <script>
+
     document.addEventListener("DOMContentLoaded", () => {
+      const savedLang = localStorage.getItem('preferredLang') || 'en';
+      applyTranslations(savedLang);
+
+      // Formspree routing setup
       const contactForm = document.getElementById("contactForm");
       const recipientRadios = document.querySelectorAll('input[name="recipient"]');
-    
-      // Mapping των emails με τα αντίστοιχα Formspree Links σας
       const formspreeEndpoints = {
         "elstefanosvks7@gmail.com": "https://formspree.io/f/xwvjenlq",
         "stefvoikos@netmode.ntua.gr": "https://formspree.io/f/maqzwdba"
@@ -542,15 +975,14 @@ body.light-mode .openbtn:hover {
         radio.addEventListener("change", (e) => {
           const selectedEmail = e.target.value;
           const newEndpoint = formspreeEndpoints[selectedEmail];
-          
           if (newEndpoint) {
-            // Αλλάζει δυναμικά το action attribute της φόρμας
             contactForm.setAttribute("action", newEndpoint);
-            console.log(`Formspree target updated to: ${newEndpoint}`); // Για δικό σου debugging
           }
         });
       });
     });
   </script>
+  <script src="script.js"></script>
+  <script src="background_contact.js"></script>
 </body>
 </html>
