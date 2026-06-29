@@ -290,7 +290,7 @@
 
   <script>
     // Global Translation Dictionary Bundle
-    window.i18nData = {
+    const i18nData = {
       en: {
         "meta-title": "Stefanos Voikos",
         "nav-home": "Home",
@@ -695,8 +695,8 @@
     const languages = ["en", "el", "de", "fr", "it", "es", "ru", "pt", "pl", "sv", "sr", "bg", "ro", "sq", "fa", "ar", "zh", "ja", "hi"];
 
     function applyTranslations(lang) {
-      if (!window.i18nData || !window.i18nData[lang]) return;
-      const data = window.i18nData[lang];
+      if (!i18nData || !i18nData[lang]) return;
+      const data = i18nData[lang];
 
       // Translate all marked texts
       document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -720,12 +720,7 @@
       
       // Update the navigation links to use the correct matching files (_gr.html or .html)
       updateLinksToLanguage(savedLang);
-    });
-
-    let d3NodeTextSelection; 
-
-    // --- Master Translation Execution Engine ---
-    let d3NodeTextSelection; 
+    }); 
 
     // --- Master Translation Execution Engine ---
     function translatePage(lang) {
