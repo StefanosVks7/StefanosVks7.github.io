@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!-- <title>Stefanos Voikos | ECE & ML Researcher</title> -->
   <meta name="description" content="Official portfolio of Stefanos Voikos, Research Assistant at NTUA. Exploring 6G networks, Machine Learning, and Federated Learning.">
   <meta name="keywords" content="Stefanos Voikos, Στέφανος Βόικος, NTUA, 6G, Federated Learning, NETMODE, ECE">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="icon.png">
-  <title>Stefanos Voikos</title>
+  <title data-i18n="meta-title">Stefanos Voikos</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
@@ -18,18 +17,17 @@
       z-index: -1;
       background: black;
     }
-      .paper-entry {
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-}
+    .paper-entry {
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
     .social-icons {
       display: flex;
       gap: 12px;
       justify-content: center;
       flex-wrap: wrap;
     }
-
     .social-icons a {
       color: #8b9fcf;
       font-size: 1.1rem;
@@ -40,84 +38,69 @@
       transition: color 0.2s, border-color 0.2s, background 0.2s;
       text-decoration: none;
     }
-
     .social-icons a:hover {
       color: #fff;
       border-color: rgba(150,130,230,0.6);
       background: rgba(120,90,220,0.14);
     }
     .fixed-bg {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    z-index: -1;
-    transition: opacity 1s ease;
-    background-size: cover;
-    background-position: center;
-}
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+      transition: opacity 1s ease;
+      background-size: cover;
+      background-position: center;
+    }
     body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Ensure the path to your image is correct */
-    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('your_actual_photo.jpg'); 
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    z-index: -2; 
-}
-
-/* Ensure the canvas doesn't block the photo if it's black */
-#mlp-bg {
-    opacity: 0.3; /* This lets the photo show through the neural network lines */
-}
-    /* Το εφέ της σταθερής φωτογραφίας στο φόντο */
-.bio-hero-image {
-    height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-align: center;
-}
-
-.bio-section {
-    padding: 100px 20px;
-    display: flex;
-    justify-content: center;
-}
-
-/* "Glassmorphism" Card */
-.bio-card {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    padding: 40px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    max-width: 700px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-}
-
-/* Animation για το Reveal καθώς σκρολάρεις */
-.reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease-out;
-}
-
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-    /* Language Switcher Button Component */
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('your_actual_photo.jpg'); 
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      z-index: -2; 
+    }
+    #mlp-bg {
+      opacity: 0.3; 
+    }
+    .bio-hero-image {
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+    }
+    .bio-section {
+      padding: 100px 20px;
+      display: flex;
+      justify-content: center;
+    }
+    .bio-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      max-width: 700px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
     .lang-toggle-btn {
       position: fixed;
       top: 16px;
-      right: 70px; /* Δίπλα από το Theme Toggle */
+      right: 70px; 
       z-index: 1000;
       background: rgba(20, 28, 50, 0.75);
       border: 1px solid rgba(120, 140, 210, 0.3);
@@ -134,14 +117,11 @@
       backdrop-filter: blur(6px);
       letter-spacing: 0.05em;
     }
-
     .lang-toggle-btn:hover {
       border-color: rgba(150, 130, 230, 0.6);
       color: #fff;
       background: rgba(120, 90, 220, 0.18);
     }
-
-    /* Light mode adjustments για το Language Button */
     body.light-mode .lang-toggle-btn {
       background: rgba(240,243,252,0.85);
       border-color: rgba(80,100,200,0.25);
@@ -154,123 +134,513 @@
   </style>
 </head>
 <body>
-  <!-- Neural Network Background -->
   <canvas id="background"></canvas>
 
-    <!-- Sidebar -->
-    <div id="mySidebar" class="sidebar">
-        <div class="sidebar-content">
-            <!-- Navigation Links -->
-            <div class="nav-links">
-                <a href="home.html">Home</a>
-                <a href="thesis.html">Research & Dissertations</a>
-                <a href="projects.html">Engineering Portfolio, Projects and Research</a>
-                <a href="autobiography.html">Auto-Biography</a>
-                <a href="contact.html">Contact</a>
-            </div>
-            
-            <!-- Social Media Section at Bottom -->
-            <div class="sidebar-footer">
-                <h3>Contact</h3>
-                <div class="social-icons">
-                    <a href="mailto:elstefanosvks7@gmail.com" target="_blank"><i class="fa-regular fa-envelope"></i></a>
-                    <a href="mailto:stefvoikos@netmode.ntua.gr" target="_blank"><i class="fa-regular fa-envelope"></i></a>
-                    <a href="https://www.instagram.com/stefanos_vks7/" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/profile.php?id=100054974571442" target="_blank"><i class="fab fa-facebook"></i></a>
-                    <!-- <a href="https://github.com/StefanosVks7" target="_blank"><i class="fab fa-github"></i></a>-->
-                    <a href="https://github.com/StefanosVks7" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/stefanos-voikos-3a5b98216/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
+  <div id="mySidebar" class="sidebar">
+    <div class="sidebar-content">
+      <div class="nav-links" id="sidebar-nav-links">
+        <a href="home.html" data-i18n="nav-home">Home</a>
+        <a href="thesis.html" data-i18n="nav-research">Research & Dissertations</a>
+        <a href="projects.html" data-i18n="nav-projects">Engineering Portfolio, Projects and Research</a>
+        <a href="autobiography.html" class="active" data-i18n="nav-bio">Auto-Biography</a>
+        <a href="contact.html" data-i18n="nav-contact">Contact</a>
+      </div>
+      <div class="sidebar-footer">
+        <h3 data-i18n="footer-contact">Contact</h3>
+        <div class="social-icons">
+          <a href="mailto:elstefanosvks7@gmail.com" target="_blank"><i class="fa-regular fa-envelope"></i></a>
+          <a href="mailto:stefvoikos@netmode.ntua.gr" target="_blank"><i class="fa-regular fa-envelope"></i></a>
+          <a href="https://www.instagram.com/stefanos_vks7/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/profile.php?id=100054974571442" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://github.com/StefanosVks7" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/stefanos-voikos-3a5b98216/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
         </div>
+      </div>
     </div>
+  </div>
 
-<!-- Projects Section -->
-    <div id="main">
+  <div id="main">
     <button class="openbtn" onclick="toggleNav()">&#9776;</button>
 
-      <button id="language-toggle" class="lang-toggle-btn" onclick="switchLanguage()">
-           <i class="fa-solid fa-globe"></i> <span>GR</span>
-      </button>
+    <button id="language-toggle" class="lang-toggle-btn" onclick="switchLanguage()">
+      <i class="fa-solid fa-globe"></i> <span id="current-lang-label">EN</span>
+    </button>
     <button id="theme-toggle" class="theme-btn" onclick="toggleTheme()">
       <i class="fa-solid fa-moon"></i>
     </button>
       
     <div class="bio-hero-image">
-        <div class="hero-text fade-in">
-            <h1>Stefanos Voikos</h1>
-            <p class="hero-subtitle">From the fields of Chaidari to the Labs of NTUA</p>
-        </div>
+      <div class="hero-text fade-in">
+        <h1 data-i18n="hero-title">Stefanos Voikos</h1>
+        <p class="hero-subtitle" data-i18n="hero-subtitle">From the fields of Chaidari to the Labs of NTUA</p>
+      </div>
     </div>
 
     <section class="bio-section reveal">
-        <div class="bio-card">
-            <h2>Origins & Foundations</h2>
-            <p>Raised in <strong>Chaidari</strong>, my journey began with a balance of rigorous study and competitive sports. My ancestry instilled in me a deep respect for perseverance—a trait that led me through the demanding halls of Electrical Engineering at NTUA.</p>
-        </div>
+      <div class="bio-card">
+        <h2 data-i18n="sec1-title">Origins & Foundations</h2>
+        <p data-i18n="sec1-text">Raised in <strong>Chaidari</strong>, my journey began with a balance of rigorous study and competitive sports. My ancestry instilled in me a deep respect for perseverance—a trait that led me through the demanding halls of Electrical Engineering at NTUA.</p>
+      </div>
     </section>
 
     <section class="bio-section reveal">
-    <div class="bio-card">
-        <h2>The Artistic Spirit</h2>
-        <p>
-            Beyond the structured world of optimization, I find expression in <strong>fine arts and painting</strong>. 
-            From the meticulous detail required in <strong>portrait drawing</strong> to the bold, social commentary of 
-            <strong>street-style art and Banksy-inspired works</strong>, painting allows me to view the world through 
-            a different lens. 
-        </p>
-        <p>
-            Whether I am capturing the serenity of a <strong>landscape</strong> or experimenting with handmade textures 
-            και coloring, art serves as a vital counterweight to my technical research. It reminds me that 
-            innovation often requires the same "blank canvas" thinking found in a studio—blending creativity 
-            with the discipline I've carried from my years in gymnastics.
-        </p>
-        </div>
+      <div class="bio-card">
+        <h2 data-i18n="sec2-title">The Artistic Spirit</h2>
+        <p data-i18n="sec2-text1">Beyond the structured world of optimization, I find expression in <strong>fine arts and painting</strong>. From the meticulous detail required in <strong>portrait drawing</strong> to the bold, social commentary of <strong>street-style art and Banksy-inspired works</strong>, painting allows me to view the world through a different lens.</p>
+        <p data-i18n="sec2-text2">Whether I am capturing the serenity of a <strong>landscape</strong> or experimenting with handmade textures and coloring, art serves as a vital counterweight to my technical research. It reminds me that innovation often requires the same "blank canvas" thinking found in a studio—blending creativity with the discipline I've carried from my years in gymnastics.</p>
+      </div>
     </section>
     
     <section class="bio-section reveal">
-    <div class="bio-card">
-        <h2>Sportsmanship & Community</h2>
-            <p>
-                My discipline wasn't built in a lab, but on the courts and fields. Having played basketball for 
-                <strong>Dafni Dafniou</strong> and football with friends, I learned early on that success is a 
-                team effort. I believe that <strong>precision in time scheduling</strong> and strategic thinking 
-                are as vital in a 6G network as they are in a fast break.
-            </p>
-            <p>
-                Beyond sports, I am deeply committed to the environment. Whether it’s <strong>hiking</strong> 
-                mountain trails, participating in <strong>volunteer landscape cleanups</strong>, or the 
-                patient practice of <strong>herb collecting</strong> in the summer, nature is where I recharge. 
-                These activities, along with a love for <strong>ping pong and billiards</strong>, keep my mind 
-                sharp and my perspective grounded.
-            </p>
-        </div>
+      <div class="bio-card">
+        <h2 data-i18n="sec3-title">Sportsmanship & Community</h2>
+        <p data-i18n="sec3-text1">My discipline wasn't built in a lab, but on the courts and fields. Having played basketball for <strong>Dafni Dafniou</strong> and football with friends, I learned early on that success is a team effort. I believe that <strong>precision in time scheduling</strong> and strategic thinking are as vital in a 6G network as they are in a fast break.</p>
+        <p data-i18n="sec3-text2">Beyond sports, I am deeply committed to the environment. Whether it’s <strong>hiking</strong> mountain trails, participating in <strong>volunteer landscape cleanups</strong>, or the patient practice of <strong>herb collecting</strong> in the summer, nature is where I recharge. These activities, along with a love for <strong>ping pong and billiards</strong>, keep my mind sharp and my perspective grounded.</p>
+      </div>
     </section>
 
     <section class="bio-section reveal">
-        <div class="bio-card">
-            <h2>Creative Sanctuary</h2>
-            <p>Beyond the code and the mathematical proofs, <strong>Music</strong> remains my creative sanctuary. It provides the necessary relaxation to maintain mental clarity, ensuring a balanced lifestyle focused on continuous growth.</p>
-        </div>
+      <div class="bio-card">
+        <h2 data-i18n="sec4-title">Creative Sanctuary</h2>
+        <p data-i18n="sec4-text">Beyond the code and the mathematical proofs, <strong>Music</strong> remains my creative sanctuary. It provides the necessary relaxation to maintain mental clarity, ensuring a balanced lifestyle focused on continuous growth.</p>
+      </div>
     </section>
-</div>
-<script src="script.js"></script>
- <!-- <script src="script.js"></script> -->
-    <script src="background_autobiography.js"></script>
-   <script>
-    function switchLanguage() {
-      localStorage.setItem('preferredLang', 'gr');
-      window.location.href = 'autobiography_gr.html';
+  </div>
+
+  <script>
+    // Global Translation Dictionary Bundle
+    window.i18nData = {
+      en: {
+        "meta-title": "Stefanos Voikos",
+        "nav-home": "Home",
+        "nav-research": "Research & Dissertations",
+        "nav-projects": "Engineering Portfolio, Projects and Research",
+        "nav-bio": "Auto-Biography",
+        "nav-contact": "Contact",
+        "footer-contact": "Contact",
+        "hero-title": "Stefanos Voikos",
+        "hero-subtitle": "From the fields of Chaidari to the Labs of NTUA",
+        "sec1-title": "Origins & Foundations",
+        "sec1-text": "Raised in <strong>Chaidari</strong>, my journey began with a balance of rigorous study and competitive sports. My ancestry instilled in me a deep respect for perseverance—a trait that led me through the demanding halls of Electrical Engineering at NTUA.",
+        "sec2-title": "The Artistic Spirit",
+        "sec2-text1": "Beyond the structured world of optimization, I find expression in <strong>fine arts and painting</strong>. From the meticulous detail required in <strong>portrait drawing</strong> to the bold, social commentary of <strong>street-style art and Banksy-inspired works</strong>, painting allows me to view the world through a different lens.",
+        "sec2-text2": "Whether I am capturing the serenity of a <strong>landscape</strong> or experimenting with handmade textures and coloring, art serves as a vital counterweight to my technical research. It reminds me that innovation often requires the same \"blank canvas\" thinking found in a studio—blending creativity with the discipline I've carried from my years in gymnastics.",
+        "sec3-title": "Sportsmanship & Community",
+        "sec3-text1": "My discipline wasn't built in a lab, but on the courts and fields. Having played basketball for <strong>Dafni Dafniou</strong> and football with friends, I learned early on that success is a team effort. I believe that <strong>precision in time scheduling</strong> and strategic thinking are as vital in a 6G network as they are in a fast break.",
+        "sec3-text2": "Beyond sports, I am deeply committed to the environment. Whether it’s <strong>hiking</strong> mountain trails, participating in <strong>volunteer landscape cleanups</strong>, or the patient practice of <strong>herb collecting</strong> in the summer, nature is where I recharge. These activities, along with a love for <strong>ping pong and billiards</strong>, keep my mind sharp and my perspective grounded.",
+        "sec4-title": "Creative Sanctuary",
+        "sec4-text": "Beyond the code and the mathematical proofs, <strong>Music</strong> remains my creative sanctuary. It provides the necessary relaxation to maintain mental clarity, ensuring a balanced lifestyle focused on continuous growth."
+      },
+      el: {
+        "meta-title": "Στέφανος Βόικος",
+        "nav-home": "Αρχική",
+        "nav-research": "Έρευνα & Διατριβές",
+        "nav-projects": "Μηχανικό Portfolio, Έργα και Έρευνα",
+        "nav-bio": "Αυτοβιογραφία",
+        "nav-contact": "Επικοινωνία",
+        "footer-contact": "Επικοινωνία",
+        "hero-title": "Στέφανος Βόικος",
+        "hero-subtitle": "Από τις αλάνες του Χαϊδαρίου στα Εργαστήρια του ΕΜΠ",
+        "sec1-title": "Ρίζες & Θεμέλια",
+        "sec1-text": "Μεγαλώνοντας στο <strong>Χαϊδάρι</strong>, το ταξίδι μου ξεκίνησε με μια ισορροπία ανάμεσα στη συστηματική μελέτη και τον πρωταθλητισμό. Οι ρίζες μου μού μετέδωσαν έναν βαθύ σεβασμό για την επιμονή—ένα χαρακτηριστικό που με οδήγησε στις απαιτητικές αίθουσες της σχολής Ηλεκτρολόγων Μηχανικών του ΕΜΠ.",
+        "sec2-title": "Το Καλλιτεχνικό Πνεύμα",
+        "sec2-text1": "Πέρα από τον δομημένο κόσμο της βελτιστοποίησης, βρίσκω έκφραση στις <strong>καλές τέχνες και τη ζωγραφική</strong>. Από τη σχολαστική λεπτομέρεια που απαιτεί η <strong>σχεδίαση πορτρέτων</strong> έως την τολμηρή, κοινωνική κριτική της <strong>τέχνης του δρόμου και των έργων εμπνευσμένων από τον Banksy</strong>, η ζωγραφική μου επιτρέπει να βλέπω τον κόσμο μέσα από ένα διαφορετικό πρίσμα.",
+        "sec2-text2": "Είτε αποτυπώνω τη γαλήνη ενός <strong>τοπίου</strong> είτε πειραματίζομαι με χειροποίητες υφές και χρώματα, η τέχνη λειτουργεί ως ζωτικό αντίβαρο στην τεχνική μου έρευνα. Μου θυμίζει ότι η καινοτομία απαιτεί συχνά την ίδια ελεύθερη σκέψη του «λευκού καμβά» που συναντά κανείς σε ένα εργαστήριο τέχνης—συνδυάζοντας τη δημιουργικότητα με την πειθαρχία που κρατώ από τα χρόνια μου στη γυμναστική.",
+        "sec3-title": "Αθλητισμός & Κοινότητα",
+        "sec3-text1": "Η πειθαρχία μου δεν χτίστηκε σε ένα εργαστήριο, αλλά στα γήπεδα. Παίζοντας μπάσκετ για τη <strong>Δάφνη Δαφνίου</strong> και ποδόσφαιρο με φίλους, έμαθα νωρίς ότι η επιτυχία είναι ομαδική προσπάθεια. Πιστεύω ότι η <strong>ακρίβεια στον χρονικό προγραμματισμό</strong> και η στρατηγική σκέψη είναι εξίσου ζωτικής σημασίας σε ένα δίκτυο 6G όσο και σε έναν αιφνιδιασμό στο γήπεδο.",
+        "sec3-text2": "Πέρα από τον αθλητισμό, είμαι βαθιά αφοσιωμένος στο περιβάλλον. Είτε πρόκειται για <strong>πεζοπορία</strong> σε ορεινά μονοπάτια, είτε για συμμετοχή σε <strong>εθελοντικούς καθαρισμούς τοπίων</strong>, είτε για την υπομονετική πρακτική της <strong>συλλογής βοτάνων</strong> το καλοκαίρι, η φύση είναι το μέρος όπου γεμίζω τις μπαταρίες μου. Αυτές οι δραστηριότητες, μαζί με την αγάπη για το <strong>πινγκ-πονγκ και το μπιλιάρδο</strong>, κρατούν το μυαλό μου σε εγρήγορση και την οπτική μου γειωμένη.",
+        "sec4-title": "Δημιουργικό Καταφύγιο",
+        "sec4-text": "Πίσω από τον κώδικα και τις μαθηματικές αποδείξεις, η <strong>Μουσική</strong> παραμένει το δημιουργικό μου καταφύγιο. Προσφέρει την απαραίτητη χαλάρωση για τη διατήρηση της πνευματικής διαύγειας, εξασφαλίζοντας έναν ισορροπημένο τρόπο ζωής προσανατολισμένο στη συνεχή εξέλιξη."
+      },
+      de: {
+        "meta-title": "Stefanos Voikos",
+        "nav-home": "Startseite",
+        "nav-research": "Forschung & Dissertationen",
+        "nav-projects": "Ingenieur-Portfolio, Projekte und Forschung",
+        "nav-bio": "Autobiographie",
+        "nav-contact": "Kontakt",
+        "footer-contact": "Kontakt",
+        "hero-title": "Stefanos Voikos",
+        "hero-subtitle": "Von den Feldern Chaidaris zu den Labors der NTUA",
+        "sec1-title": "Herkunft & Fundamente",
+        "sec1-text": "Aufgewachsen in <strong>Chaidari</strong>, begann meine Reise mit einer Balance aus intensivem Studium und Leistungssport. Meine Vorfahren haben mir tiefen Respekt vor Ausdauer eingeflößt – eine Eigenschaft, die mich durch die anspruchsvollen Hallen der Elektrotechnik an der NTUA führte.",
+        "sec2-title": "Der künstlerische Geist",
+        "sec2-text1": "Abseits der strukturierten Welt der Optimierung finde ich Ausdruck in der <strong>bildenden Kunst und Malerei</strong>. Von den akribischen Details, die beim <strong>Porträtzeichnen</strong> erforderlich sind, bis hin zum kühnen, sozialen Kommentar von <strong>Street-Art und von Banksy inspirierten Werken</strong>, ermöglicht mir die Malerei, die Welt aus einer anderen Perspektive zu sehen.",
+        "sec2-text2": "Ob ich die Gelassenheit einer <strong>Landschaft</strong> einfange oder mit handgemachten Texturen und Farben experimentiere, Kunst dient als wichtiges Gegengewicht zu meiner technischen Forschung. Sie erinnert mich daran, dass Innovation oft das gleiche Denken auf einem \"leeren Blatt\" erfordert wie in einem Atelier – die Kombination von Kreativität mit der Disziplin, die ich aus meinen Jahren im Turnen mitbringe.",
+        "sec3-title": "Sportsgeist & Gemeinschaft",
+        "sec3-text1": "Meine Disziplin wurde nicht in einem Labor aufgebaut, sondern auf den Plätzen und Feldern. Da ich Basketball für <strong>Dafni Dafniou</strong> und Fußball mit Freunden gespielt habe, lernte ich früh, dass Erfolg eine Teamleistung ist. Ich glaube, dass <strong>Präzision in der Zeitplanung</strong> und strategisches Denken in einem 6G-Netzwerk ebenso wichtig sind wie bei einem Fastbreak.",
+        "sec3-text2": "Über den Sport hinaus engagiere ich mich deeply für die Umwelt. Ob beim <strong>Wandern</strong> auf Bergpfaden, bei <strong>ehrenamtlichen Landschaftssäuberungen</strong> oder dem geduldigen Sammeln von <strong>Kräutern</strong> im Sommer – in der Natur tanke ich neue Energie. Diese Aktivitäten, zusammen mit einer Liebe zu <strong>Ping-Pong und Billard</strong>, halten meinen Geist scharf und meine Perspektive geerdet.",
+        "sec4-title": "Kreativer Zufluchtsort",
+        "sec4-text": "Hinter dem Code und den mathematischen Beweisen bleibt die <strong>Musik</strong> mein kreativer Zufluchtsort. Sie sorgt für die nötige Entspannung, um geistige Klarheit zu bewahren, und sorgt für einen ausgewogenen Lebensstil, der auf kontinuierliches Wachstum ausgerichtet ist."
+      },
+      fr: {
+        "meta-title": "Stefanos Voikos",
+        "nav-home": "Accueil",
+        "nav-research": "Recherche & Dissertations",
+        "nav-projects": "Portfolio d'Ingénierie, Projets et Recherche",
+        "nav-bio": "Autobiographie",
+        "nav-contact": "Contact",
+        "footer-contact": "Contact",
+        "hero-title": "Stefanos Voikos",
+        "hero-subtitle": "Des terrains de Chaidari aux laboratoires de l'NTUA",
+        "sec1-title": "Origines & Fondations",
+        "sec1-text": "Ayant grandi à <strong>Chaidari</strong>, mon parcours a débuté par un équilibre entre des études rigoureuses et le sport de compétition. Mes ancêtres m'ont insufflé un profond respect pour la persévérance — un trait qui m'a guidé à travers les couloirs exigeants du génie électrique à l'NTUA.",
+        "sec2-title": "L'Esprit Artistique",
+        "sec2-text1": "Au-delà du monde structuré de l'optimisation, je trouve mon expression dans les <strong>beaux-arts et la peinture</strong>. Du détail méticuleux requis dans le <strong>dessin de portrait</strong> au commentaire social audacieux du <strong>street-art et des œuvres inspirées de Banksy</strong>, la peinture me permet de voir le monde sous un autre angle.",
+        "sec2-text2": "Qu'il s'agisse de capturer la sérénité d'un <strong>paysage</strong> ou d'expérimenter des textures artisanales et des couleurs, l'art est un contrepoids vital à mes recherches techniques. Il me rappelle que l'innovation exige souvent la même pensée de \"page blanche\" que celle que l'on trouve dans un atelier — mêlant la créativité à la discipline que j'ai acquise au cours de mes années de gymnastique.",
+        "sec3-title": "Esprit Sportif & Communauté",
+        "sec3-text1": "Ma discipline ne s'est pas construite dans un laboratoire, mais sur les terrains de sport. Ayant joué au basket pour <strong>Dafni Dafniou</strong> et au football avec des amis, j'ai appris très tôt que le succès est un effort d'équipe. Je pense que la <strong>précision du calendrier</strong> et la pensée stratégique sont aussi vitales dans un réseau 6G que dans une contre-attaque.",
+        "sec3-text2": "Au-delà du sport, je suis profondément engagé envers l'environnement. Qu'il s'agisse de <strong>randonnées</strong> sur les sentiers de montagne, de participation à des <strong>nettoyages bénévoles de paysages</strong> ou de la cueillette patiente d'<strong>herbes</strong> en été, la nature est l'endroit où je me ressource. Ces activités, ainsi qu'une passion pour le <strong>ping-pong et le billard</strong>, gardent mon esprit vif et mes perspectives ancrées.",
+        "sec4-title": "Sanctuaire Créatif",
+        "sec4-text": "Au-delà du code et des preuves mathématiques, la <strong>Musique</strong> reste mon sanctuaire créatif. Elle m'apporte la relaxation nécessaire pour maintenir une clarté mentale, assurant un mode de vida équilibré et axé sur une croissance continue."
+      },
+      it: {
+        "meta-title": "Stefanos Voikos",
+        "nav-home": "Home",
+        "nav-research": "Ricerca & Dissertazioni",
+        "nav-projects": "Portfolio di Ingegneria, Progetti e Ricerca",
+        "nav-bio": "Autobiografia",
+        "nav-contact": "Contatti",
+        "footer-contact": "Contatti",
+        "hero-title": "Stefanos Voikos",
+        "hero-subtitle": "Dai campi di Chaidari ai laboratori dell'NTUA",
+        "sec1-title": "Origini e Fondamenta",
+        "sec1-text": "Cresciuto a <strong>Chaidari</strong>, il mio percorso è iniziato con un equilibrio tra studio rigoroso e sport agonistici. I miei antenati mi hanno instillato un profondo rispetto per la perseveranza, un tratto che mi ha guidato attraverso i severi corridoi dell'Ingegneria Elettrica all'NTUA.",
+        "sec2-title": "Lo Spirito Artistico",
+        "sec2-text1": "Oltre al mondo strutturato dell'ottimizzazione, trovo espressione nelle <strong>belle arti e nella pittura</strong>. Dettagli meticolosi richiesti nel <strong>disegno di ritratti</strong> fino al commento sociale e audace della <strong>street-art e delle opere ispirate a Banksy</strong>, la pittura mi permette di vedere il mondo attraverso una lente diversa.",
+        "sec2-text2": "Che si tratti di catturare la serenità di un <strong>paesaggio</strong> o di sperimentare con textures artigianali e colori, l'arte funge da contrappeso vitale alla mia ricerca tecnica. Mi ricorda che l'innovazione spesso richiede lo stesso pensiero da \"tela bianca\" che si trova in uno studio, unendo la creatività con la disciplina che porto con me dagli anni di ginnastica.",
+        "sec3-title": "Spirito Sportivo e Comunità",
+        "sec3-text1": "La mia disciplina non è stata costruita in un laboratorio, ma sui campi da gioco. Avendo giocato a basket per il <strong>Dafni Dafniou</strong> e a calcio con gli amici, ho imparato presto che il successo è un lavoro di squadra. Credo che la <strong>precisione nella gestione del tempo</strong> e il pensiero strategico siano vitali in una rete 6G quanto lo sono in un contropiede.",
+        "sec3-text2": "Oltre allo sport, sono profondamente dedito all'ambiente. Che si tratti di <strong>escursioni</strong> sui sentieri di montagna, di partecipare a <strong>pulizie volontarie del paesaggio</strong>, o della paziente raccolta estiva di <strong>erbe aromatiche</strong>, la natura è il luogo in cui mi ricarico. Queste attività, insieme alla passione per il <strong>ping pong e il biliardo</strong>, mantengono la mia mente lucida e la mia prospettiva radicata.",
+        "sec4-title": "Santuario Creativo",
+        "sec4-text": "Oltre al codice e alle dimostrazioni matematiche, la <strong>Musica</strong> rimane il mio santuario creativo. Fornisce il relax necessario per mantenere la chiarezza mentale, garantendo uno stile di vita equilibrato incentrato sulla crescita continua."
+      },
+      es: {
+        "meta-title": "Stefanos Voikos",
+        "nav-home": "Inicio",
+        "nav-research": "Investigación y Tesis",
+        "nav-projects": "Portafolio de Ingeniería, Proyectos e Investigación",
+        "nav-bio": "Autobiografía",
+        "nav-contact": "Contacto",
+        "footer-contact": "Contacto",
+        "hero-title": "Stefanos Voikos",
+        "hero-subtitle": "De los campos de Chaidari a los laboratorios de la NTUA",
+        "sec1-title": "Orígenes y Fundamentos",
+        "sec1-text": "Criado en <strong>Chaidari</strong>, mi viaje comenzó con un equilibrio entre el estudio riguroivo y los deportes competitivos. Mis antepasados me inculcaron un profundo respeto por la perseverancia, un rasgo que me guió a través de las exigentes aulas de Ingeniería Eléctrica en la NTUA.",
+        "sec2-title": "El Espíritu Artístico",
+        "sec2-text1": "Más allá del estructurado mundo de la optimización, encuentro expresión en las <strong>bellas artes y la pintura</strong>. Desde el meticuloso detalle requerido en el <strong>dibujo de retratos</strong> hasta el audaz comentario social del <strong>arte callejero y las obras inspiradas en Banksy</strong>, la pintura me permite ver el mundo a través de un lente diferente.",
+        "sec2-text2": "Ya sea capturando la serenidad de un <strong>paisaje</strong> o experimentando con texturas hechas a mano y colores, el arte sirve como un contrapeso vital para mi investigación técnica. Me recuerda que la innovación a menudo requiere el mismo pensamiento de \"lienzo en blanco\" que se encuentra en un estudio, combinando la creatividad con la disciplina que arrastro desde mis años en la gimnasia.",
+        "sec3-title": "Espíritu Deportivo y Comunidad",
+        "sec3-text1": "Mi disciplina no se construyó en un laboratorio, sino en las canchas y campos de juego. Habiendo jugado baloncesto para el <strong>Dafni Dafniou</strong> y fútbol con amigos, aprendí temprano que el éxito es un esfuerzo de equipo. Creo que la <strong>precisión en la programación del tiempo</strong> y el pensamiento estratégico son tan vitales en una red 6G como en un contraataque.",
+        "sec3-text2": "Más allá de los deportes, estoy profundamente comprometido con el medio ambiente. Ya sea haciendo <strong>senderismo</strong> por senderos de montaña, participando en <strong>limpiezas voluntarias de paisajes</strong> o con la práctica paciente de recolectar <strong>hierbas</strong> en verano, la naturaleza es donde me recargo. Estas actividades, junto con el amor por el <strong>ping pong y el billar</strong>, mantienen mi mente aguda y mi perspectiva conectada a la tierra.",
+        "sec4-title": "Santuario Creativo",
+        "sec4-text": "Más allá del código y las demostraciones matemáticas, la <strong>Música</strong> sigue siendo mi santuario creativo. Aporta la relajación necesaria para mantener la claridad mental, asegurando un estilo de vida equilibrado centrado en el crecimiento continuo."
+      },
+      ru: {
+        "meta-title": "Стефанос Воикос",
+        "nav-home": "Главная",
+        "nav-research": "Исследования и диссертации",
+        "nav-projects": "Инженерное портфолио, проекты и исследования",
+        "nav-bio": "Автобиография",
+        "nav-contact": "Контакты",
+        "footer-contact": "Контакты",
+        "hero-title": "Стефанос Воикос",
+        "hero-subtitle": "От полей Хайдари до лабораторий NTUA",
+        "sec1-title": "Происхождение и основы",
+        "sec1-text": "Выросший в <strong>Хайдари</strong>, мой путь начался с баланса между строгой учебой и соревновательным спортом. Мои предки привили мне глубокое уважение к упорству — качеству, которое провело меня через требовательные залы электротехники в NTUA.",
+        "sec2-title": "Художественный дух",
+        "sec2-text1": "Помимо структурированного мира оптимизации, я нахожу самовыражение в <strong>изобразительном искусстве и живописи</strong>. От тщательной детализации, требуемой в <strong>рисовании портретов</strong>, до смелых социальных комментариев в <strong>стрит-арте и работах, вдохновленных Бэнкси</strong>, живопись позволяет мне смотреть на мир под другим углом.",
+        "sec2-text2": "Будь то запечатление безмятежности <strong>пейзажа</strong> или эксперименты с текстурами ручной работы и цветом, искусство служит жизненно важным противовесом моим техническим исследованиям. Оно напоминает мне, что инновации часто требуют того же мышления с «чистого листа», которое присуще художественной студии — сочетания творчества с дисциплиной, которую я вынес из лет занятий гимнастикой.",
+        "sec3-title": "Спортивное мастерство и сообщество",
+        "sec3-text1": "Моя дисциплина ковалась не в лаборатории, а на спортивных площадках и полях. Играя в баскетбол за <strong>Дафни Дафниу</strong> и в футбол с друзьями, я рано понял, что успех — это командная работа. Я верю, что <strong>точность в планировании времени</strong> и стратегическое мышление так же важны в сетях 6G, как и в быстром прорыве на игре.",
+        "sec3-text2": "Помимо спорта, я глубоко предан заботе об окружающей среде. Будь то <strong>пешие прогулки</strong> по горным тропам, участие в <strong>волонтерских уборках природы</strong> или терпеливый сбор <strong>трав</strong> летом, природа — это то место, где я восстанавливаю силы. Эти увлечения, наряду с любовью к <strong>пинг-понгу и бильярду</strong>, держат мой ум в тонусе, а взгляд — приземленным.",
+        "sec4-title": "Творческое убежище",
+        "sec4-text": "За рамками программного кода и математических доказательств, <strong>Музыка</strong> остается моим творческим убежищем. Она дает необходимое расслабление для поддержания ясности ума, обеспечивая сбалансированный образ жизни, ориентированный на непрерывный рост."
+      },
+      pt: {
+        "meta-title": "Stefanos Voikos",
+        "nav-home": "Início",
+        "nav-research": "Pesquisa e Dissertações",
+        "nav-projects": "Portfólio de Engenharia, Projetos e Pesquisa",
+        "nav-bio": "Autobiografia",
+        "nav-contact": "Contacto",
+        "footer-contact": "Contacto",
+        "hero-title": "Stefanos Voikos",
+        "hero-subtitle": "Dos campos de Chaidari aos laboratórios da NTUA",
+        "sec1-title": "Origens & Fundações",
+        "sec1-text": "Criado em <strong>Chaidari</strong>, a minha jornada começou com um equilíbrio entre o estudo rigoroso e os desportos competitivos. Os meus antepassados incutiram-me um profundo respeito pela perseverança — uma característica que me guiou através dos exigentes corredores de Engenharia Eletrotécnica na NTUA.",
+        "sec2-title": "O Espírito Artístico",
+        "sec2-text1": "Além do mundo estruturado da otimização, encontro expressão nas <strong>belas artes e na pintura</strong>. Desde o detalhe meticuloso exigido no <strong>desenho de retratos</strong> até à crítica social ousada da <strong>arte urbana e obras inspiradas em Banksy</strong>, a pintura permite-me ver o mundo através de uma lente diferente.",
+        "sec2-text2": "Seja a capturar a serenidade de uma <strong>paisagem</strong> ou a experimentar texturas artesanais e cores, a arte serve como um contrapeso vital para a minha investigação técnica. Lembra-me que a inovação exige muitas vezes o mesmo pensamento de \"tela em branco\" encontrado num estúdio — misturando criatividade com a disciplina que trago dos meus anos na ginástica.",
+        "sec3-title": "Desportivismo & Comunidade",
+        "sec3-text1": "A minha disciplina não foi construída num laboratório, mas nos campos de jogos. Tendo jogado basquetebol pelo <strong>Dafni Dafniou</strong> e futebol com amigos, aprendi cedo que o sucesso é um esforço de equipa. Acredito que a <strong>precisão no planeamento do tempo</strong> e o pensamento estratégico são tão vitais numa rede 6G quanto num contra-ataque.",
+        "sec3-text2": "Além do desporto, sou profundamente comprometido com o meio ambiente. Seja a fazer <strong>caminhadas</strong> em trilhos de montanha, a participar em <strong>limpezas voluntárias da Natureza</strong> ou na prática paciente de colher <strong>ervas aromáticas</strong> no verão, a natureza é onde recarrego energias. Estas atividades, a par do amor pelo <strong>ping-pong e bilhar</strong>, mantêm a minha mente afiada e o meu foco equilibrado.",
+        "sec4-title": "Santuário Criativo",
+        "sec4-text": "Além do código e das demonstrações matemáticas, a <strong>Música</strong> continua a ser o meu santuário criativo. Proporciona o relaxamento necessário para manter a clareza mental, garantindo um estilo de vida equilibrado focado no crescimento contínuo."
+      },
+      pl: {
+        "meta-title": "Stefanos Voikos",
+        "nav-home": "Strona główna",
+        "nav-research": "Badania i rozprawy",
+        "nav-projects": "Portfolio inżynierskie, projekty i badania",
+        "nav-bio": "Autobiografia",
+        "nav-contact": "Kontakt",
+        "footer-contact": "Kontakt",
+        "hero-title": "Stefanos Voikos",
+        "hero-subtitle": "Z boisk Chaidari do laboratoriów NTUA",
+        "sec1-title": "Pochodzenie i fundamenty",
+        "sec1-text": "Wychowany w <strong>Chaidari</strong>, moją podróż zacząłem od balansu pomiędzy rygorystyczną nauką a sportem wyczynowym. Moi przodkowie zaszczepili we mnie głęboki szacunek do wytrwałości — cechy, która prowadziła mnie przez wymagające sale wydziału Elektrotechniki na NTUA.",
+        "sec2-title": "Artystyczny duch",
+        "sec2-text1": "Poza uporządkowanym światem optymalizacji odnajduję ekspresję w <strong>sztukach pięknych i malarstwie</strong>. Od skrupulatnych detali wymaganych przy <strong>rysowaniu portretów</strong> po odważny komentarz społeczny w <strong>sztuce ulicznej i dziełach inspirowanych Banksym</strong>, malarstwo pozwala mi widzieć świat z zupełnie innej perspektywy.",
+        "sec2-text2": "Niezależnie od tego, czy uwieczniam spokój <strong>krajobrazu</strong>, czy eksperymentuję z ręcznie robionymi teksturami i kolorami, sztuka stanowi istotną przeciwwagę dla moich badań technicznych. Przypomina mi, że innowacja często wymaga takiego samego podejścia typu „czysta karta”, jakie można znaleźć w pracowni malarskiej — łącząc kreatywność z dyscypliną, którą wyniosłem z lat spędzonych na gimnastyce.",
+        "sec3-title": "Duch sportu i społeczność",
+        "sec3-text1": "Moja dyscyplina nie powstała w laboratorium, ale na boiskach i kortach. Grając w koszykówkę w <strong>Dafni Dafniou</strong> i w piłkę nożną z przyjaciółmi, wcześnie nauczyłem się, że sukces to praca zespołowa. Wierzę, że <strong>precyzja w planowaniu czasu</strong> i strategiczne myślenie są tak samo kluczowe w sieciach 6G, jak podczas szybkiego ataku na boisku.",
+        "sec3-text2": "Poza sportem głęboko angażuję się w działania na rzecz środowiska. Niezależnie od tego, czy są to <strong>wędrówki</strong> górskimi szlakami, udział w <strong>wolontariacie sprzątania zieleni</strong>, czy też cierpliwe letnie <strong>zbieranie ziół</strong>, natura jest miejscem, w którym ładuję baterie. Aktywności te, wraz z miłością do <strong>ping-ponga i bilarda</strong>, pozwalają mi zachować trzeźwość umysłu i stabilną perspektywę.",
+        "sec4-title": "Twórcze sanktuarium",
+        "sec4-text": "Poza kodem i dowodami matematycznymi, <strong>Muzyka</strong> pozostaje moim twórczym sanktuarium. Zapewnia relaks niezbędny do zachowania jasności umysłu, gwarantując zrównoważony styl życia zorientowany na ciągły rozwój."
+      },
+      sv: {
+        "meta-title": "Stefanos Voikos",
+        "nav-home": "Hem",
+        "nav-research": "Forskning & Avhandlingar",
+        "nav-projects": "Ingenjörsportfölj, projekt och forskning",
+        "nav-bio": "Autobiografi",
+        "nav-contact": "Kontakt",
+        "footer-contact": "Kontakt",
+        "hero-title": "Stefanos Voikos",
+        "hero-subtitle": "Från fälten i Chaidari till laboratorierna på NTUA",
+        "sec1-title": "Ursprung & Grundvalar",
+        "sec1-text": "Uppvuxen i <strong>Chaidari</strong>, började min resa med en balans mellan rigorösa studier och tävlingsidrott. Mina förfäder ingav mig en djup respekt för uthållighet – en egenskap som ledde mig genom de krävande korridorerna inom elektroteknik på NTUA.",
+        "sec2-title": "Den konstnärliga åndan",
+        "sec2-text1": "Bortom optimeringens strukturerade värld finner jag uttryck i <strong>konst och målning</strong>. Från de noggranna detaljerna som krävs vid <strong>porträtteckning</strong> till den djärva, sociala kommentaren i <strong>gatukonst och Banksy-inspirerade verk</strong>, tillåter målning mig att se världen genom en annan lins.",
+        "sec2-text2": "Oavsett om jag fångar lugnet i ett <strong>landskap</strong> eller experimenterar med handgjorda texturer och färgläggning, fungerar konst som en viktig motvikt till min tekniska forskning. Det påminner mig om att innovation ofta kräver samma \"tomma duk\"-tänkande som finns i en studio – att blanda kreativitet med den disciplin jag bär med mig från mina år inom gymnastik.",
+        "sec3-title": "Aktivt idrottande & Gemenskap",
+        "sec3-text1": "Min disciplin byggdes inte i ett labb, utan på spelplanerna och banorna. Efter att ha spelat basket för <strong>Dafni Dafniou</strong> och fotboll med vänner, lärde jag mig tidigt att framgång är ett lagarbete. Jag tror att <strong>precision i tidsplanering</strong> och strategiskt tänkande är lika viktigt i ett 6G-nätverk som i ett snabbt uppspel.",
+        "sec3-text2": "Bortom sporten är jag djupt engagerad i miljön. Oavsett om det handlar om att <strong>vandra</strong> på bergsleder, delta i <strong>volontärarbeten för landskapsstädning</strong>, eller den tålmodiga sommarövningen av <strong>örtsamling</strong>, är naturen där jag laddar om. Dessa aktiviteter, tillsammans med en kärlek till <strong>pingis och biljard</strong>, håller mitt sinne skarpt och mitt perspektiv grundat.",
+        "sec4-title": "Kreativ fristad",
+        "sec4-text": "Bortom koden och de matematiska bevisen förblir <strong>Musik</strong> min kreativa fristad. Det ger den nödvändiga avslappningen för att bibehålla mental klarhet, vilket säkerställer en balanserad livsstil fokuserad på kontinuerlig tillväxt."
+      },
+      sr: {
+        "meta-title": "Стефанос Воикос",
+        "nav-home": "Почетна",
+        "nav-research": "Истраживања и дисертације",
+        "nav-projects": "Инжењерски портфолио, пројекти и истраживања",
+        "nav-bio": "Аутобиографија",
+        "nav-contact": "Контакт",
+        "footer-contact": "Контакт",
+        "hero-title": "Стефанос Воикос",
+        "hero-subtitle": "Од терена Хаидарија до лабораторија НТУА",
+        "sec1-title": "Порекло и основи",
+        "sec1-text": "Одрастајући у <strong>Хаидарију</strong>, моје путовање је почело балансом између ригорозних студија и такмичарског спорта. Моје порекло ми је усадило дубоко поштовање према истрајности — особини која ме је водила кроз захтевне сале електротехнике на НТУА.",
+        "sec2-title": "Уметнички дух",
+        "sec2-text1": "Изван структурираног света оптимизације, проналазим израз у <strong>ликовној уметности и сликарству</strong>. Од педантних детаља потребних за <strong>цртање портрета</strong> до смеле друштвене критике у <strong>уличној уметности и делима инспирисаним Бенксијем</strong>, сликање ми омогућава да посматрам свет из другачијег угла.",
+        "sec2-text2": "Било да бележим спокој <strong>пејзажа</strong> или експериментишем са ручно рађеним текстурама и бојама, уметност служи као витална противтежа мом техничком истраживању. Подсећа ме да иновација често захтева исто размишљање о „празном платну“ као у уметничком студију — спајајући креативност са дисциплином коју носим из година бављења гимнастиком.",
+        "sec3-title": "Спортски дух и заједница",
+        "sec3-text1": "Моја дисциплина није изграђена у лабораторији, већ на теренима. Играјући кошарку за <strong>Дафни Дафниу</strong> и фудбал са пријатељима, рано сам научио да је успех тимски рад. Верујем да су <strong>прецизност у планирању времена</strong> и стратешко размишљање једнако важни у 6Г мрежи као и у брзом контранападу.",
+        "sec3-text2": "Поред спорта, дубоко сам посвећен животној средини. Било да је у питању <strong>планинарење</strong>, учешће у <strong>акцијама чишћења природе</strong> или стрпљиво летње <strong>сакупљање биљака</strong>, природа је место где пуним батерије. Ове активности, заједно са љубављу према <strong>пинг-понгу и билијару</strong>, држе мој ум оштрим и моју перспективу уземљеном.",
+        "sec4-title": "Креативно уточиште",
+        "sec4-text": "Иза кодова и математичких доказа, <strong>Музика</strong> остаје моје креативно уточиште. Пружа неопходну релаксацију за одржавање менталне јасности, осигуравајући избалансиран начин живота усмерен на континуирани раст."
+      },
+      bg: {
+        "meta-title": "Стефанос Воикос",
+        "nav-home": "Начало",
+        "nav-research": "Изследвания и дисертации",
+        "nav-projects": "Инженерен портфолио, проекти и изследвания",
+        "nav-bio": "Автобиография",
+        "nav-contact": "Контакт",
+        "footer-contact": "Контакт",
+        "hero-title": "Стефанос Воикос",
+        "hero-subtitle": "От игрищата на Хайдари до лабораториите на NTUA",
+        "sec1-title": "Произход и основи",
+        "sec1-text": "Израснал в <strong>Хайдари</strong>, моето пътуване започна с баланс между строго обучение и състезателен спорт. Моите предци ми вдъхнаха дълбок респект към постоянството — черта, която ме преведе през взискателните зали по електротехника в NTUA.",
+        "sec2-title": "Художественият дух",
+        "sec2-text1": "Извън структурирания свят на оптимизацията, намирам израз в <strong>изящните изкуства и живописта</strong>. От щателния детайл, изискван при <strong>рисуването на портрети</strong>, до смелия социален коментар в <strong>стрийт арта и творбите, вдъхновени от Банкси</strong>, рисуването ми позволява да виждам света през различна леща.",
+        "sec2-text2": "Независимо дали улавям спокойствието на даден <strong>пейзаж</strong> или експериментирам с ръчно изработени текстури и цветове, изкуството служи като жизненоважен противовес на техническите ми изследвания. То ми напомня, че иновациите често изискват същото мислене за „чисто платно“, каквото има в едно студио — съчетавайки креативността с дисциплината, която нося от годините си в гимнастиката.",
+        "sec3-title": "Спортен дух и общност",
+        "sec3-text1": "Моята дисциплина не беше изградена в лаборатория, а на спортните игрища. Играейки баскетбол за <strong>Дафни Дафниу</strong> и футбол с приятели, разбрах рано, че успехът е екипно усилие. Вярвам, че <strong>прецизността в планирането на времето</strong> и стратегическото мислене са толкова жизненоважни в 6G мрежата, колкото и при бърза контраатака.",
+        "sec3-text2": "Освен спорта, съм дълбоко ангажиран с околната среда. Независимо дали става въпрос за <strong>планински преходи</strong>, участие в <strong>доброволчески почиствания на природата</strong> или търпеливото лятно <strong>събиране на билки</strong>, природата е мястото, където презареждам. Тези дейности, заедно с любовта към <strong>пинг-понга и билярда</strong>, поддържат ума ми остър и перспективата ми заземена.",
+        "sec4-title": "Творческо убежище",
+        "sec4-text": "Отвъд кода и математическите доказателства, <strong>Музиката</strong> остава моето творческо убежище. Тя осигурява необходимата релаксация за поддържане на умствена яснота, осигурявайки балансиран начин на живот, насочен към непрекъснат растеж."
+      },
+      ro: {
+        "meta-title": "Stefanos Voikos",
+        "nav-home": "Acasă",
+        "nav-research": "Cercetare și Teze",
+        "nav-projects": "Portofoliu de Inginerie, Proiecte și Cercetare",
+        "nav-bio": "Autobiografie",
+        "nav-contact": "Contact",
+        "footer-contact": "Contact",
+        "hero-title": "Stefanos Voikos",
+        "hero-subtitle": "De la terenurile din Chaidari la laboratoarele NTUA",
+        "sec1-title": "Origini și Fundamente",
+        "sec1-text": "Crescut în <strong>Chaidari</strong>, călătoria mea a început cu un echilibru între studiul riguros și sportul de performanță. Strămoșii mei mi-au insuflat un respect profund pentru perseverență — o trăsătură care m-a ghidat prin sălile exigente ale Ingineriei Electrice de la NTUA.",
+        "sec2-title": "Esperitul Artistic",
+        "sec2-text1": "Dincolo de lumea structurată a optimizării, îmi găsesc exprimarea în <strong>artele frumoase și pictură</strong>. De la detaliul meticulos cerut în <strong>desenul de portret</strong> până la comentariul social îndrăzneț al <strong>artei stradale și al lucrărilor inspirate de Banksy</strong>, pictura îmi permite să privesc lumea printr-o altă lentilă.",
+        "sec2-text2": "Fie că surprind seninătatea unui <strong>peisaj</strong> sau experimentez cu texturi realizate manual și culori, arta servește ca un contraponderal vital pentru cercetarea mea tehnică. Îmi amintește că inovația necesită adesea aceeași gândire de „pânză albă” găsită într-un studio — îmbinând creativitatea cu disciplina pe care am acumulat-o în anii mei de gimnastică.",
+        "sec3-title": "Spirit Sportiv și Comunitate",
+        "sec3-text1": "Disciplina mea nu a fost construită într-un laborator, ci pe terenurile de sport. Jucând baschet pentru <strong>Dafni Dafniou</strong> și fotbal cu prietenii, am învățat de devreme că succesul este un efort de echipă. Cred că <strong>precizia în gestionarea timpului</strong> și gândirea strategică sunt la fel de vitale într-o rețea 6G ca și într-un contraatac rapid.",
+        "sec3-text2": "Dincolo de sport, sunt profund dedicat mediului înconjurător. Fie că este vorba despre <strong>drumeții</strong> pe poteci de munte, participarea la <strong>ecologizări voluntare ale naturii</strong> sau practica răbdătoare a <strong>colectării de plante medicinale</strong> în timpul verii, natura este locul în care mă reîncarc. Aceste activități, împreună cu pasiunea pentru <strong>ping-pong și biliard</strong>, îmi mențin mintea ageră și perspectiva ancorată în realitate.",
+        "sec4-title": "Sanctuar Creativ",
+        "sec4-text": "Dincolo de cod și demonstrații matematice, <strong>Muzica</strong> rămâne sanctuarul meu creativ. Oferă relaxarea necesară pentru a menține claritatea mentală, asigurând un stil de viață echilibrat, axat pe o creștere continuă."
+      },
+      sq: {
+        "meta-title": "Stefanos Voikos",
+        "nav-home": "Ballina",
+        "nav-research": "Kërkim & Disertacione",
+        "nav-projects": "Portfolio Inxhinierike, Projekte dhe Kërkim",
+        "nav-bio": "Autobiografi",
+        "nav-contact": "Kontakt",
+        "footer-contact": "Kontakt",
+        "hero-title": "Stefanos Voikos",
+        "hero-subtitle": "Nga fushat e Chaidarit në Laboratorët e NTUA",
+        "sec1-title": "Origjina & Themelet",
+        "sec1-text": "I rritur në <strong>Chaidari</strong>, udhëtimi im filloi me një ekuilibër midis studimit rigoroz dhe sportit konkurrues. Paraardhësit e mi më rrënjosën një respekt të thellë për këmbënguljen – një tipar që më udhëhoqi nëpër sallat kërkuese të Inxhinierisë Elektrike në NTUA.",
+        "sec2-title": "Shpirti Artistik",
+        "sec2-text1": "Përtej botës së strukturuar të optimizimit, unë gjej shprehje në <strong>artin pamor dhe pikturë</strong>. Nga detajet e imta që kërkohen në <strong>vizatimin e portreteve</strong> e deri te komentet e guximshme shoqërore të <strong>artit të rrugës dhe veprave të frymëzuara nga Banksy</strong>, piktura më lejon ta shoh botën përmes një lenteje tjetër.",
+        "sec2-text2": "Pavarësisht nëse jam duke kapur qetësinë e një <strong>peizazhi</strong> apo duke eksperimentuar me tekstura të punuara me dorë dhe ngjyrosje, arti shërben si një kundërpeshë jetike për kërkimin tim teknik. Më kujton se inovacioni shpesh kërkon të njëjtin mendim të \"pëlhurës së zbrazët\" që gjendet në një studio – duke ndërthurur krijimtarinë me disiplinën që kam mbartur nga vitet e mia në gjimnastikë.",
+        "sec3-title": "Sporti & Komuniteti",
+        "sec3-text1": "Disiplina ime nuk u ndërtua në një laborator, por në fusha e pallate sporti. Duke luajtur basketboll për <strong>Dafni Dafniou</strong> dhe futboll me miqtë, mësova herët se suksesi është një përpjekje ekipore. Besoj se <strong>saktësia në planifikimin e kohës</strong> dhe mendimi strategjik janë po aq vitale në një rrjet 6G sa në një sulm të shpejtë.",
+        "sec3-text2": "Përtej sportit, jam thellësisht i përkushtuar ndaj mjedisit. Pavarësisht nëse bëhet fjalë për <strong>ecje</strong> në shtigje malesh, pjesëmarrje në <strong>pastrime vullnetare të peizazhit</strong>, apo praktikë e durueshme e <strong>mbledhjes së barishteve</strong> në verë, natyra është vendi ku unë rimbushem. Këto aktivitete, së bashku me dashurinë për <strong>ping-pongun dhe biliardon</strong>, e mbajnë mendjen time të mprehtë dhe këndvështrimin tim të tokëzuar.",
+        "sec4-title": "Sanktuari Krijues",
+        "sec4-text": "Përtej kodit dhe provave matematike, <strong>Muzika</strong> mbetet sanktuari im krijues. Ajo ofron relaksimin e nevojshëm për të ruajtur qartësinë mendore, duke siguruar një stil jetese të ekuilibruar të fokusuar në rritjen e vazhdueshme."
+      },
+      fa: {
+        "meta-title": "استفانوس وویکوس",
+        "nav-home": "خانه",
+        "nav-research": "تحقیقات و پایان‌نامه‌ها",
+        "nav-projects": "پورتفولیو مهندسی، پروژه‌ها و تحقیقات",
+        "nav-bio": "زندگینامه",
+        "nav-contact": "تماس",
+        "footer-contact": "تماس",
+        "hero-title": "استفانوس وویکوس",
+        "hero-subtitle": "از زمین‌های خایداری تا آزمایشگاه‌های NTUA",
+        "sec1-title": "اصالت و پایه‌ها",
+        "sec1-text": "بزرگ شده در <strong>خایداری</strong>، مسیر من با تعادلی میان مطالعه دقیق و ورزش حرفه‌ای آغاز شد. نیاکانم در من احترامی عمیق برای پشتکار نهادینه کردند؛ ویژگی برجسته‌ای که مرا در تالارهای دشوار مهندسی برق دانشگاه NTUA هدایت کرد.",
+        "sec2-title": "روحیه هنری",
+        "sec2-text1": "فراتر از دنیای ساختاریافته بهینه‌سازی، من هنر خود را در <strong>هنرهای زیبا و نقاشی</strong> ابراز می‌کنم. از جزئیات ظریف مورد نیاز در <strong>طراحی چهره</strong> گرفته تا بیانیه‌های جسورانه اجتماعی در <strong>هنر خیابانی و آثار الهام‌گرفته از بنکسی</strong>، نقاشی به من اجازه می‌دهد دنیا را از زاویه دیگری ببینم.",
+        "sec2-text2": "چه در حال ثبت آرامش یک <strong>منظره</strong> باشم و چه در حال آزمایش با بافت‌های دست‌ساز و رنگ‌آمیزی، هنر به عنوان وزنه تعادل حیاتی برای تحقیقات فنی من عمل می‌کند. این به من یادآوری می‌کند که نوآوری اغلب به همان تفکر «بوم خالی» نیاز دارد که در یک استودیوی هنری یافت می‌شود؛ ترکیب خلاقیت با انضباطی که از سال‌های ژیمناستیک به همراه دارم.",
+        "sec3-title": "منش ورزشی و جامعه",
+        "sec3-text1": "انضباط من در آزمایشگاه ساخته نشد، بلکه در زمین‌ها و سالن‌های ورزشی شکل گرفت. با بازی بسکتبال برای <strong>دافنی دافنیو</strong> و فوتبال با دوستانم، زود آموختم که موفقیت یک تلاش تیمی است. من باور دارم که <strong>دقت در برنامه‌ریزی زمانی</strong> و تفکر استراتژیک در یک شبکه 6G همان‌قدر حیاتی هستند که در یک ضدحمله سریع در زمین بازی.",
+        "sec3-text2": "فراتر از ورزش، من عمیقاً به محیط زیست متعهدم. چه <strong>کوهنوردی</strong> در مسیرهای کوهستانی، چه مشارکت در <strong>پاکسازی داوطلبانه طبیعت</strong> و چه تمرین صبورانه <strong>جمع‌آوری گیاهان دارویی</strong> در تابستان، طبیعت جایی است که من در آن انرژی دوباره می‌گیرم. این فعالیت‌ها در کنار علاقه‌ام به <strong>پینگ‌پنگ و بیلیارد</strong>، ذهن مرا تیزبین و نگاهم را واقع‌بین نگه می‌دارند.",
+        "sec4-title": "پناهگاه خلاق",
+        "sec4-text": "فراتر از کدهای برنامه‌نویسی و اثبات‌های ریاضی، <strong>موسیقی</strong> به عنوان پناهگاه خلاق من باقی می‌ماند. موسیقی آرامش لازم برای حفظ وضوح ذهنی را فراهم می‌کند و سبک زندگی متوازنی را با تمرکز بر رشد مداوم تضمین می‌نماید."
+      },
+      ar: {
+        "meta-title": "ستيفانوس فويكوس",
+        "nav-home": "الرئيسية",
+        "nav-research": "الأبحاث والرسائل العلمية",
+        "nav-projects": "الملف الهندسي، المشاريع والأبحاث",
+        "nav-bio": "السيرة الذاتية",
+        "nav-contact": "اتصل بي",
+        "footer-contact": "اتصل بي",
+        "hero-title": "ستيفانوس فويكوس",
+        "hero-subtitle": "من ملاعب خايداري إلى مختبرات جامعة NTUA",
+        "sec1-title": "الأصول والأسس",
+        "sec1-text": "نشأتُ في <strong>خايداري</strong>، وبدأت رحلتي بالتوازن بين الدراسة الصارمة والرياضة التنافسية. لقد غرس فيّ أجدادي احترامًا عميقًا للمثابرة — وهي السمة التي قادتني عبر قاعات الهندسة الكهربائية المتطلبة في NTUA.",
+        "sec2-title": "الروح الفنية",
+        "sec2-text1": "بعيدًا عن عالم الأمثلة المنظم، أجد تعبيري في <strong>الفنون الجميلة والرسم</strong>. من التفاصيل الدقيقة المطلوبة في <strong>رسم الصور الشخصية (البورتريه)</strong> إلى النقد الاجتماعي الجريء في <strong>فن الشارع والأعمال المستوحاة من بانكسي</strong>، يتيح لي الرسم رؤية العالم من منظور مختلف.",
+        "sec2-text2": "سواء كنتُ ألتقط هدوء <strong>المناظر الطبيعية</strong> أو أختبر قوامًا مصنوعًا يدويًا وتلوينًا، فإن الفن يمثل ثقلاً موازنًا حيويًا لأبحاث التقنية. إنه يذكرني بأن الابتكار غالبًا ما يتطلب نفس تفكير \"اللوحة البيضاء\" الموجود في استوديو الفن — مزج الإبداع بالانضباط الذي حملته من سنواتي في الجمباز.",
+        "sec3-title": "الروح الرياضية والمجتمع",
+        "sec3-text1": "لم تُبنَ غريزة الانضباط لدي في مختبر، بل في الملاعب والساحات. بعد أن لعبت كرة السلة لصالح <strong>دافني دافنيو</strong> وكرة القدم مع الأصدقاء، تعلمت مبكرًا أن النجاح جهد جماعي. أعتقد أن <strong>الدقة في جدولة الوقت</strong> والتفكير الاستراتيجي أمران حيويان في شبكة الـ 6G تمامًا كما هما في الهجوم السريع بالملاعب.",
+        "sec3-text2": "بعيدًا عن الرياضة، أنا ملتزم بشدة تجاه البيئة. سواء كان ذلك عبر <strong>المشي لمسافات طويلة</strong> في المسارات الجبلية، أو المشاركة في <strong>حملات تنظيف الطبيعة التطوعية</strong>، أو الممارسة الصبورة لـ <strong>جمع الأعشاب</strong> في الصيف، فإن الطبيعة هي المكان الذي أستعيد فيه نشاطي. هذه الأنشطة، إلى جانب شغفي بـ <strong>تنس الطاولة والبلياردو</strong>، تبقي عقلي حادًا ونظرتي متزنة.",
+        "sec4-title": "الملاذ الإبداعي",
+        "sec4-text": "ما وراء الأكواد البرمجية والبراهين الرياضية، تظل <strong>الموسيقى</strong> ملاذي الإبداعي. إنها توفر الاسترخاء اللازم للحفاظ على الوضوح العقلي، مما يضمن أسلوب حياة متوازنًا يركز على النمو المستمر."
+      },
+      zh: {
+        "meta-title": "斯特凡诺斯·沃伊科斯",
+        "nav-home": "首页",
+        "nav-research": "研究与论文",
+        "nav-projects": "工程作品集、项目与研究",
+        "nav-bio": "个人自传",
+        "nav-contact": "联系方式",
+        "footer-contact": "联系方式",
+        "hero-title": "斯特凡诺斯·沃伊科斯",
+        "hero-subtitle": "从海达里的绿茵场到雅典理工（NTUA）的实验室",
+        "sec1-title": "起源与根基",
+        "sec1-text": "在<strong>海达里</strong>长大的过程中，我的旅程始于严谨学术与竞技体育之间的平衡。先辈们赋予了我对坚韧的深刻理解——正是这一品质指引我走过雅典理工（NTUA）充满挑战的电子工程大厅。",
+        "sec2-title": "艺术精神",
+        "sec2-text1": "在结构化的最优化算法世界之外，我在<strong>美术与绘画</strong>中找到了表达自我的方式。从<strong>肖像素描</strong>所需的严苛细节，到<strong>街头艺术与班克斯（Banksy）风格作品</strong>中大胆的社会评论，绘画让我能够通过截然不同的视角观察世界。",
+        "sec2-text2": "无论是捕捉<strong>风景</strong>的宁静，还是尝试纯手工纹理与色彩，艺术始终是我技术研究的重要平衡点。它提醒我，创新往往需要像画室里面对“白幅画布”一样的开阔思维——将创造力与我多年体操生涯中沉淀下来的自律完美融合。",
+        "sec3-title": "体育精神与社区",
+        "sec3-text1": "我的自律精神并非诞生于实验室，而是建构在球场与赛道上。曾为 <strong>Dafni Dafniou</strong> 效力篮球以及与朋友们踢足球的经历，让我很早就明白成功是一项团队协作。我相信，<strong>精准的时间规划</strong>和战略思维在 6G 网络中与在篮球快攻中同样至关重要。",
+        "sec3-text2": "除了体育，我也对环境抱有深深的责任感。无论是徒步登山、参与<strong>志愿者景观清理活动</strong>，还是夏季耐心<strong>采集草药</strong>的习俗，大自然都是我重新充电的圣地。这些活动，配合对<strong> table tennis 和桌球</strong>的热爱，让我保持敏锐的思维与务实的心态。",
+        "sec4-title": "创意圣殿",
+        "sec4-text": "在复杂的代码与数学证明之外，<strong>音乐</strong>永远是我的创意圣殿。它带来了维持头脑清明所需的绝对放松，确保了专注于持续成长的平衡生活方式。"
+      },
+      ja: {
+        "meta-title": "ステファノス・ヴォイコス",
+        "nav-home": "ホーム",
+        "nav-research": "研究・学位論文",
+        "nav-projects": "エンジニアリングポートフォリオ・プロジェクト・研究",
+        "nav-bio": "自伝",
+        "nav-contact": "お問い合わせ",
+        "footer-contact": "お問い合わせ",
+        "hero-title": "ステファノス・ヴォイコス",
+        "hero-subtitle": "ハイダリのグラウンドからNTUAの研究所へ",
+        "sec1-title": "ルーツと基盤",
+        "sec1-text": "<strong>ハイダリ</strong>で育った私の旅は、厳格な学問と競争の激しいスポーツのバランスから始まりました。先祖から受け継いだ粘り強さへの深い敬意は、NTUAの電気工学という過酷な試練の場を突き進む原動力となりました。",
+        "sec2-title": "芸術的感性",
+        "sec2-text1": "最適化アルゴリズムという構造化された世界を超えて、私は<strong>美術や絵画</strong>に表現の場を見出しています。<strong>ポートレートデッサン</strong>に求められる緻密なディテールから、<strong>ストリートアートやバンクシーにインスパイアされた作品</strong>の対社会的なメッセージ性まで、絵画は私に異なる視点を与えてくれます。",
+        "sec2-text2": "<strong>風景</strong>の静けさを切り取る時も、ハンドメイドの質感や色彩を実験する時も、アートは技術研究に対する重要な精神的バランスを保ってくれます。革新には、アトリエにある「真っ白なキャンバス」と同じ自由な思考が必要であることを思い出させてくれます。それは器械体操の時代から培った規律と創造性の融合です。",
+        "sec3-title": "スポーツマンシップとコミュニティ",
+        "sec3-text1": "私の規律はラボではなく、コートやフィールドで培われました。<strong>Dafni Dafniou</strong>でのバスケットボールや、友人とのサッカーを通じて、成功はチームの努力によるものであると早くから学びました。6Gネットワークにおける<strong>正確なタイムスケジューリング</strong>と戦略的思考は、バスケのファストブレイク（速攻）と同じくらい重要であると信じています。",
+        "sec3-text2": "スポーツ以外にも、環境保護活動に深くコミットしています。山のトレイルを<strong>ハイキング</strong>したり、<strong>景観クリーンアップのボランティア</strong>に参加したり、夏に根気強く<strong>薬草を採集</strong>したりと、大自然は私をリフレッシュさせてくれる場所です。これらの活動は、<strong>卓球やビリヤード</strong>への愛着とともに、私の思考を鋭くし、視野を広げてくれます。",
+        "sec4-title": "クリエイティブな聖域",
+        "sec4-text": "コードや数学的証明の向こう側で、<strong>音楽</strong>は常に私のクリエイティブな聖域です。それは精神的な明晰さを維持するための不可欠なリラクゼーションを提供し、継続的な成長に焦点を当てたバランスの取れたライフスタイルを支えています。"
+      },
+      hi: {
+        "meta-title": "स्टेफानोस वोइकोस",
+        "nav-home": "होम",
+        "nav-research": "अनुसंधान और शोधप्रबंध",
+        "nav-projects": "इंजीनियरिंग पोर्टफोलियो, परियोजनाएं और अनुसंधान",
+        "nav-bio": "आत्मकथा",
+        "nav-contact": "संपर्क",
+        "footer-contact": "संपर्क",
+        "hero-title": "स्टेफानोस वोइकोस",
+        "hero-subtitle": "खैदारी के मैदानों से लेकर NTUA की प्रयोगशालाओं तक",
+        "sec1-title": "मूल और नींव",
+        "sec1-text": "<strong>खैदारी</strong> में पले-बढ़े, मेरी यात्रा कठोर अध्ययन और प्रतिस्पर्धी खेलों के संतुलन के साथ शुरू हुई। मेरे पूर्वजों ने मुझमें दृढ़ता के प्रति गहरा सम्मान पैदा किया—एक ऐसा गुण जिसने मुझे NTUA में इलेक्ट्रिकल इंजीनियरिंग के कठिन रास्तों पर आगे बढ़ाया।",
+        "sec2-title": "कलात्मक भावना",
+        "sec2-text1": "ऑप्टिमाइज़ेशन की संरचित दुनिया से परे, मुझे <strong>ललित कला और पेंटिंग</strong> में अभिव्यक्ति मिलती है। <strong>पोर्ट्रेट ड्राइंग</strong> में आवश्यक सूक्ष्म विवरणों से लेकर <strong>स्ट्रीट-स्टाइल आर्ट और बैंक्सी से प्रेरित कार्यों</strong> की साहसिक सामाजिक टिप्पणियों तक, पेंटिंग मुझे दुनिया को एक अलग नजरिए से देखने की अनुमति देती है।",
+        "sec2-text2": "चाहे मैं किसी <strong>परिदृश्य</strong> की शांति को कैद कर रहा हूँ या हस्तनिर्मित बनावट और रंगों के साथ प्रयोग कर रहा हूँ, कला मेरे तकनीकी अनुसंधान के लिए एक महत्वपूर्ण संतुलन के रूप में कार्य करती है। यह मुझे याद दिलाती है कि नवाचार के लिए अक्सर उसी \"कोरे कैनवास\" वाली सोच की आवश्यकता होती है जो एक स्टूडियो में पाई जाती है—जिमनास्टिक के मेरे वर्षों से मिली अनुशासन भावना के साथ रचनात्मकता का मिश्रण।",
+        "sec3-title": "खेल भावना और समुदाय",
+        "sec3-text1": "मेरा अनुशासन किसी लैब में नहीं, बल्कि कोर्ट और मैदानों पर बना है। <strong>दफनी दफनीउ (Dafni Dafniou)</strong> के लिए बास्केटबॉल खेलने और दोस्तों के साथ फुटबॉल खेलने के बाद, मैंने जल्दी ही सीख लिया था कि सफलता एक सामूहिक प्रयास है। मेरा मानना है कि 6G नेटवर्क में <strong>सटीक समय निर्धारण (टाइम शेड्यूलिंग)</strong> और रणनीतिक सोच उतनी ही महत्वपूर्ण है जितनी कि खेल में एक फास्ट ब्रेक में।",
+        "sec3-text2": "खेलों से परे, मैं पर्यावरण के प्रति गहराई से प्रतिबद्ध हूँ। चाहे वह पहाड़ी रास्तों पर <strong>हाइकिंग</strong> करना हो, <strong>स्वैच्छिक स्वच्छता अभियानों</strong> में भाग लेना हो, या गर्मियों में धैर्यपूर्वक <strong>जड़ी-बूटियों को इकट्ठा करने</strong> का अभ्यास हो, प्रकृति वह जगह है जहाँ मैं खुद को फिर से ऊर्जावान पाता हूँ। ये गतिविधियाँ, <strong>पिंग पोंग और बिलियर्ड्स</strong> के प्रति प्रेम के साथ, मेरे दिमाग को तेज और मेरे दृष्टिकोण को जमीन से जोड़े रखती हैं।",
+        "sec4-title": "रचनात्मक अभयारण्य",
+        "sec4-text": "कोड और गणितीय प्रमाणों से परे, <strong>संगीत</strong> मेरा रचनात्मक अभयारण्य बना हुआ है। यह मानसिक स्पष्टता बनाए रखने के लिए आवश्यक विश्राम प्रदान करता है, जिससे निरंतर विकास पर केंद्रित एक संतुलित जीवन शैली सुनिश्चित होती है।"
+      }
+    };
+
+    const languages = ["en", "el", "de", "fr", "it", "es", "ru", "pt", "pl", "sv", "sr", "bg", "ro", "sq", "fa", "ar", "zh", "ja", "hi"];
+
+    function applyTranslations(lang) {
+      if (!window.i18nData || !window.i18nData[lang]) return;
+      const data = window.i18nData[lang];
+
+      // Translate all marked texts
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (data[key]) el.innerHTML = data[key];
+      });
+
+      // Update structural language identifiers
+      document.getElementById('current-lang-label').innerText = lang.toUpperCase();
+      document.documentElement.setAttribute('lang', lang);
+      
+      updateLinksToLanguage(lang);
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      // Καθορίζουμε ρητά ότι βρισκόμαστε στο αγγλικό configuration
-      localStorage.setItem('preferredLang', 'en');
-      updateLinksToLanguage('en');
-    });
+    function switchLanguage() {
+      let currentLang = localStorage.getItem('preferredLang') || 'en';
+      let nextIndex = (languages.indexOf(currentLang) + 1) % languages.length;
+      let nextLang = languages[nextIndex];
+      
+      localStorage.setItem('preferredLang', nextLang);
+      applyTranslations(nextLang);
+    }
 
     function updateLinksToLanguage(lang) {
-      const suffix = lang === 'gr' ? '_gr.html' : '.html';
+      const suffix = lang === 'en' ? '.html' : `_${lang}.html`;
       const navLinks = document.querySelectorAll('#sidebar-nav-links a');
       const files = ['home', 'thesis', 'projects', 'autobiography', 'contact'];
       
@@ -279,13 +649,15 @@
           link.setAttribute('href', files[index] + suffix);
         }
       });
-
-      const ctaResearch = document.getElementById('cta-research');
-      const ctaProjects = document.getElementById('cta-projects');
-      if(ctaResearch) ctaResearch.setAttribute('href', 'thesis' + suffix);
-      if(ctaProjects) ctaProjects.setAttribute('href', 'projects' + suffix);
     }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Pull preferences safely across the active user session
+      const savedLang = localStorage.getItem('preferredLang') || 'en';
+      applyTranslations(savedLang);
+    });
   </script>
+  <script src="script.js"></script>
+  <script src="background_autobiography.js"></script>
 </body>
 </html>
-
