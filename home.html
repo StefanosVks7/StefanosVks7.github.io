@@ -93,10 +93,18 @@
       stroke-width: 2px;
       transition: r 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), stroke-width 0.3s, filter 0.3s, opacity 0.3s;
     }
-    .node text {
+    /* .node text {
       font-family: system-ui, -apple-system, sans-serif;
       font-size: 11px;
       fill: #94a3b8;
+      pointer-events: none;
+      user-select: none;
+      transition: fill 0.3s, font-size 0.3s, opacity 0.3s;
+    } */
+    .node text {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 11px;
+      fill: currentColor; /* Inherits system text colors across dark/light transitions */
       pointer-events: none;
       user-select: none;
       transition: fill 0.3s, font-size 0.3s, opacity 0.3s;
@@ -918,16 +926,34 @@
         .style("font-weight", d => d.group === "core" || d.group === "pillar" ? "600" : "400")
         .style("fill", d => d.group === "core" ? "#fff" : "#cbd5e1");
 
+      // simulation.on("tick", () => {
+      //   link
+      //     .attr("x1", d => d.source.x)
+      //     .attr("y1", d => d.source.y)
+      //     .attr("x2", d => d.target.x)
+      //     .attr("y2", d => d.target.y);
+
+      //   node.attr("transform", d => `translate(${d.x},${d.y})`);
+      // });
+
+      // ... (Keep simulation, link, and node definitions the same)
+
       simulation.on("tick", () => {
+        // Enriched Bounding Box Logic: Prevents nodes from bouncing outside the container viewport
+        const padding = 30;
+        
         link
-          .attr("x1", d => d.source.x)
-          .attr("y1", d => d.source.y)
-          .attr("x2", d => d.target.x)
-          .attr("y2", d => d.target.y);
+          .attr("x1", d => Math.max(padding, Math.min(width - padding, d.source.x)))
+          .attr("y1", d => Math.max(padding, Math.min(height - padding, d.source.y)))
+          .attr("x2", d => Math.max(padding, Math.min(width - padding, d.target.x)))
+          .attr("y2", d => Math.max(padding, Math.min(height - padding, d.target.y)));
 
-        node.attr("transform", d => `translate(${d.x},${d.y})`);
+        node.attr("transform", d => {
+          d.x = Math.max(padding, Math.min(width - padding, d.x));
+          d.y = Math.max(padding, Math.min(height - padding, d.y));
+          return `translate(${d.x},${d.y})`;
+        });
       });
-
       // Neighborhood structural lookup validation engine
       function isNeighbor(a, b) {
         return links.some(l => 
