@@ -20,6 +20,63 @@
       background: black;
     }
 
+    /* Premium CTA Button Base */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Space for an icon */
+  padding: 12px 28px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Primary Button (e.g., View My Research) - Deep Cyber Velvet */
+#cta-research {
+  background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+}
+
+#cta-research:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(124, 58, 237, 0.6);
+  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+}
+
+/* Secondary Button (e.g., See Projects) - Clean Glassmorphism */
+#cta-projects {
+  background: rgba(255, 255, 255, 0.03);
+  color: #cbd5e1;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  backdrop-filter: blur(8px);
+}
+
+#cta-projects:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  border-color: rgba(56, 189, 248, 0.5);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+}
+
+/* Light Mode Overrides for Balance */
+body.light-mode #cta-projects {
+  background: rgba(0, 0, 0, 0.02);
+  color: #334155;
+  border-color: rgba(51, 65, 85, 0.2);
+}
+body.light-mode #cta-projects:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: #0f172a;
+}
     .social-icons {
       display: flex;
       gap: 12px;
@@ -261,9 +318,15 @@
         <div class="graph-tooltip" id="graph-tip"></div>
       </div>
 
-      <div class="cta-container">
-        <a href="thesis.html" class="btn" id="cta-research" data-i18n="cta-research">View My Research</a>
-        <a href="projects.html" class="btn" id="cta-projects" data-i18n="cta-projects">See Projects</a>
+      <div class="cta-container" style="display: flex; gap: 16px; justify-content: center; margin-top: 30px;">
+        <a href="thesis.html" class="btn" id="cta-research">
+          <i class="fa-solid fa-atom animate-pulse"></i> 
+          <span data-i18n="cta-research">View My Research</span>
+        </a>
+        <a href="projects.html" class="btn" id="cta-projects">
+          <i class="fa-solid fa-code"></i> 
+          <span data-i18n="cta-projects">See Projects</span>
+        </a>
       </div>
     </section>
   </div>
