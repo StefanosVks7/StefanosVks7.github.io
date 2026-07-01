@@ -244,6 +244,80 @@ body.light-mode #cta-projects:hover {
       background: #ffffff;
       color: #333333;
     }
+
+    /* Chatbot availability badge */
+.chatbot-availability {
+  position: fixed;
+  right: 24px;
+  bottom: 96px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 280px;
+  padding: 12px 16px;
+  border-radius: 18px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.35;
+  color: #e5e7eb;
+  background: rgba(15, 23, 42, 0.88);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+}
+
+.chatbot-availability-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  flex: 0 0 auto;
+  box-shadow: 0 0 14px currentColor;
+}
+
+.chatbot-availability.available .chatbot-availability-dot {
+  color: #22c55e;
+  background: #22c55e;
+}
+
+.chatbot-availability.unavailable .chatbot-availability-dot {
+  color: #f59e0b;
+  background: #f59e0b;
+}
+
+.chatbot-availability strong {
+  display: block;
+  margin-bottom: 2px;
+  color: #ffffff;
+}
+
+.chatbot-availability a {
+  color: #93c5fd;
+  text-decoration: none;
+}
+
+.chatbot-availability a:hover {
+  text-decoration: underline;
+}
+
+body.light-mode .chatbot-availability {
+  color: #334155;
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(51, 65, 85, 0.15);
+}
+
+body.light-mode .chatbot-availability strong {
+  color: #0f172a;
+}
+
+@media (max-width: 640px) {
+  .chatbot-availability {
+    left: 16px;
+    right: 16px;
+    bottom: 88px;
+    max-width: none;
+  }
+}
   </style>
 </head>
 <body>
@@ -329,8 +403,14 @@ body.light-mode #cta-projects:hover {
         </a>
       </div>
     </section>
+    <div id="chatbot-availability" class="chatbot-availability" aria-live="polite">
+      <span class="chatbot-availability-dot"></span>
+      <span id="chatbot-availability-text">
+        Checking chatbot availability...
+      </span>
+    </div>
   </div>
-
+  
   <script src="script.js"></script>
   <script src="background_home.js"></script>
 
@@ -1052,5 +1132,157 @@ body.light-mode #cta-projects:hover {
       translatePage(savedLang);
     });
   </script>
+  <script>
+  /*
+    Chatbot Availability Settings
+    Timezone: Europe/Athens
+    Days: 1 = Monday, 2 = Tuesday, ..., 5 = Friday
+    Hours are 24-hour local time in the selected timezone.
+  */
+  const CHATBOT_AVAILABILITY = {
+    timezone: "Europe/Athens",
+    availableDays: [1, 2, 3, 4, 5],
+    startHour: 9,
+    startMinute: 0,
+    endHour: 17,
+    endMinute: 0,
+
+    availableTitle: "Chatbot available now",
+    availableMessage: "Ask me about Stefanos Voikos, 6G networks, machine learning, and federated learning.",
+
+    unavailableTitle: "Chatbot currently unavailable",
+    unavailableMessage: "Please contact me by email and I will reply as soon as possible.",
+    fallbackEmail: "mailto:elstefanosvks7@gmail.com"
+  };
+
+  function getTimePartsInTimezone(timezone) {
+    const parts = new Intl.DateTimeFormat("en-GB", {
+      timeZone: timezone,
+      weekday: "short",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false
+    }).formatToParts(new Date());
+
+    const values = {};
+    parts.forEach(part => {
+      values[part.type] = part.value;
+    });
+
+    const weekdayMap = {
+      Mon: 1,
+      Tue: 2,
+      Wed: 3,
+      Thu: 4,
+      Fri: 5,
+      Sat: 6,
+      Sun: 7
+    };
+
+    return {
+      day: weekdayMap[values.weekday],
+      hour: Number(values.hour),
+      minute: Number(values.minute)
+    };
+  }
+
+  function isChatbotAvailable() {
+    const now = getTimePartsInTimezone(CHATBOT_AVAILABILITY.timezone);
+
+    if (!CHATBOT_AVAILABILITY.availableDays.includes(now.day)) {
+      return false;
+    }
+
+    const currentMinutes = now.hour * 60 + now.minute;
+    const startMinutes = CHATBOT_AVAILABILITY.startHour * 60 + CHATBOT_AVAILABILITY.startMinute;
+    const endMinutes = CHATBOT_AVAILABILITY.endHour * 60 + CHATBOT_AVAILABILITY.endMinute;
+
+    return currentMinutes >= startMinutes && currentMinutes < endMinutes;
+  }
+
+  function updateAvailabilityBadge(available) {
+    const badge = document.getElementById("chatbot-availability");
+    const text = document.getElementById("chatbot-availability-text");
+
+    if (!badge || !text) return;
+
+    badge.classList.toggle("available", available);
+    badge.classList.toggle("unavailable", !available);
+
+    if (available) {
+      text.innerHTML = `
+        <strong>${CHATBOT_AVAILABILITY.availableTitle}</strong>
+        ${CHATBOT_AVAILABILITY.availableMessage}
+      `;
+    } else {
+      text.innerHTML = `
+        <strong>${CHATBOT_AVAILABILITY.unavailableTitle}</strong>
+        ${CHATBOT_AVAILABILITY.unavailableMessage}
+        <br>
+        <a href="${CHATBOT_AVAILABILITY.fallbackEmail}">Send an email</a>
+      `;
+    }
+  }
+
+  function loadChatbaseWidget() {
+    if (window.chatbase && window.chatbase("getState") === "initialized") {
+      return;
+    }
+
+    window.chatbase = (...args) => {
+      if (!window.chatbase.q) {
+        window.chatbase.q = [];
+      }
+      window.chatbase.q.push(args);
+    };
+
+    window.chatbase = new Proxy(window.chatbase, {
+      get(target, prop) {
+        if (prop === "q") {
+          return target.q;
+        }
+        return (...args) => target(prop, ...args);
+      }
+    });
+
+    const script = document.createElement("script");
+    script.src = "https://www.chatbase.co/embed.min.js";
+
+    /*
+      Replace YOUR_CHATBASE_CHATBOT_ID with your actual Chatbase chatbot ID.
+      You can find it in Chatbase under:
+      Deploy / Embed / Chat widget
+    */
+    script.id = "YOUR_CHATBASE_CHATBOT_ID";
+    script.domain = "www.chatbase.co";
+
+    document.body.appendChild(script);
+  }
+
+  function initializeAvailabilityAwareChatbot() {
+    const available = isChatbotAvailable();
+
+    updateAvailabilityBadge(available);
+
+    if (available) {
+      loadChatbaseWidget();
+    }
+
+    setInterval(() => {
+      const currentlyAvailable = isChatbotAvailable();
+      updateAvailabilityBadge(currentlyAvailable);
+
+      if (currentlyAvailable) {
+        loadChatbaseWidget();
+      }
+    }, 60 * 1000);
+  }
+
+  if (document.readyState === "complete") {
+    initializeAvailabilityAwareChatbot();
+  } else {
+    window.addEventListener("load", initializeAvailabilityAwareChatbot);
+  }
+</script>
 </body>
 </html>
