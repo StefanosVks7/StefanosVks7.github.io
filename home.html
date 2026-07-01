@@ -403,12 +403,9 @@ body.light-mode .chatbot-availability strong {
         </a>
       </div>
     </section>
-    <div id="chatbot-availability" class="chatbot-availability" aria-live="polite">
-      <span class="chatbot-availability-dot"></span>
-      <span id="chatbot-availability-text">
-        Checking chatbot availability...
-      </span>
-    </div>
+    <div id="chatbox"></div>
+    <input type="text" id="userInput" placeholder="Ask something...">
+    <button onclick="sendMessage()">Send</button>
   </div>
   
   <script src="script.js"></script>
@@ -1133,156 +1130,22 @@ body.light-mode .chatbot-availability strong {
     });
   </script>
   <script>
-  /*
-    Chatbot Availability Settings
-    Timezone: Europe/Athens
-    Days: 1 = Monday, 2 = Tuesday, ..., 5 = Friday
-    Hours are 24-hour local time in the selected timezone.
-  */
-  const CHATBOT_AVAILABILITY = {
-    timezone: "Europe/Athens",
-    availableDays: [1, 2, 3, 4, 5],
-    startHour: 9,
-    startMinute: 0,
-    endHour: 17,
-    endMinute: 0,
-
-    availableTitle: "Chatbot available now",
-    availableMessage: "Ask me about Stefanos Voikos, 6G networks, machine learning, and federated learning.",
-
-    unavailableTitle: "Chatbot currently unavailable",
-    unavailableMessage: "Please contact me by email and I will reply as soon as possible.",
-    fallbackEmail: "mailto:elstefanosvks7@gmail.com"
-  };
-
-  function getTimePartsInTimezone(timezone) {
-    const parts = new Intl.DateTimeFormat("en-GB", {
-      timeZone: timezone,
-      weekday: "short",
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: false
-    }).formatToParts(new Date());
-
-    const values = {};
-    parts.forEach(part => {
-      values[part.type] = part.value;
-    });
-
-    const weekdayMap = {
-      Mon: 1,
-      Tue: 2,
-      Wed: 3,
-      Thu: 4,
-      Fri: 5,
-      Sat: 6,
-      Sun: 7
-    };
-
-    return {
-      day: weekdayMap[values.weekday],
-      hour: Number(values.hour),
-      minute: Number(values.minute)
-    };
-  }
-
-  function isChatbotAvailable() {
-    const now = getTimePartsInTimezone(CHATBOT_AVAILABILITY.timezone);
-
-    if (!CHATBOT_AVAILABILITY.availableDays.includes(now.day)) {
-      return false;
-    }
-
-    const currentMinutes = now.hour * 60 + now.minute;
-    const startMinutes = CHATBOT_AVAILABILITY.startHour * 60 + CHATBOT_AVAILABILITY.startMinute;
-    const endMinutes = CHATBOT_AVAILABILITY.endHour * 60 + CHATBOT_AVAILABILITY.endMinute;
-
-    return currentMinutes >= startMinutes && currentMinutes < endMinutes;
-  }
-
-  function updateAvailabilityBadge(available) {
-    const badge = document.getElementById("chatbot-availability");
-    const text = document.getElementById("chatbot-availability-text");
-
-    if (!badge || !text) return;
-
-    badge.classList.toggle("available", available);
-    badge.classList.toggle("unavailable", !available);
-
-    if (available) {
-      text.innerHTML = `
-        <strong>${CHATBOT_AVAILABILITY.availableTitle}</strong>
-        ${CHATBOT_AVAILABILITY.availableMessage}
-      `;
-    } else {
-      text.innerHTML = `
-        <strong>${CHATBOT_AVAILABILITY.unavailableTitle}</strong>
-        ${CHATBOT_AVAILABILITY.unavailableMessage}
-        <br>
-        <a href="${CHATBOT_AVAILABILITY.fallbackEmail}">Send an email</a>
-      `;
-    }
-  }
-
-  function loadChatbaseWidget() {
-    if (window.chatbase && window.chatbase("getState") === "initialized") {
-      return;
-    }
-
-    window.chatbase = (...args) => {
-      if (!window.chatbase.q) {
-        window.chatbase.q = [];
-      }
-      window.chatbase.q.push(args);
-    };
-
-    window.chatbase = new Proxy(window.chatbase, {
-      get(target, prop) {
-        if (prop === "q") {
-          return target.q;
+        async function sendMessage() {
+            const input = document.getElementById('userInput').value;
+            const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                    'Authorization': 'Bearer YOUR_OPENROUTER_API_KEY',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    model: 'deepseek/deepseek-r1:free',
+                    messages: [{ role: 'user', content: input }]
+                })
+            });
+            const data = await response.json();
+            document.getElementById('chatbox').innerHTML += `<p>${data.choices[0].message.content}</p>`;
         }
-        return (...args) => target(prop, ...args);
-      }
-    });
-
-    const script = document.createElement("script");
-    script.src = "https://www.chatbase.co/embed.min.js";
-
-    /*
-      Replace YOUR_CHATBASE_CHATBOT_ID with your actual Chatbase chatbot ID.
-      You can find it in Chatbase under:
-      Deploy / Embed / Chat widget
-    */
-    script.id = "NCZ6RbWBoXMqeXnJlRU4v";
-    script.domain = "www.chatbase.co";
-
-    document.body.appendChild(script);
-  }
-
-  function initializeAvailabilityAwareChatbot() {
-    const available = isChatbotAvailable();
-
-    updateAvailabilityBadge(available);
-
-    if (available) {
-      loadChatbaseWidget();
-    }
-
-    setInterval(() => {
-      const currentlyAvailable = isChatbotAvailable();
-      updateAvailabilityBadge(currentlyAvailable);
-
-      if (currentlyAvailable) {
-        loadChatbaseWidget();
-      }
-    }, 60 * 1000);
-  }
-
-  if (document.readyState === "complete") {
-    initializeAvailabilityAwareChatbot();
-  } else {
-    window.addEventListener("load", initializeAvailabilityAwareChatbot);
-  }
-</script>
+    </script>
 </body>
 </html>
