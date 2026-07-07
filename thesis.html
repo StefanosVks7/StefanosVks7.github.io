@@ -845,7 +845,7 @@
       dropdown.innerHTML = '';
       languages.forEach(lang => {
         const btn = document.createElement('button');
-        btn.textContent = lang.name;
+        btn.innerHTML = lang.name;
         btn.setAttribute('onclick', `setLanguage('${lang.code}')`);
         btn.id = `lang-btn-${lang.code}`;
         dropdown.appendChild(btn);
@@ -875,7 +875,7 @@
       // Translate standard text arrays
       document.querySelectorAll("[data-i18n]").forEach(el => {
         const key = el.getAttribute("data-i18n");
-        if (dict[key]) el.textContent = dict[key];
+        if (dict[key]) el.innerHTML = dict[key];
       });
 
       // Handle HTML paragraph blocks cleanly
@@ -910,7 +910,7 @@
       
       const currentLangLabel = document.getElementById('current-lang-label');
       if (currentLangLabel) {
-        currentLangLabel.textContent = lang.toUpperCase();
+        currentLangLabel.innerHTML = lang.toUpperCase();
       }
 
       languages.forEach(l => {
