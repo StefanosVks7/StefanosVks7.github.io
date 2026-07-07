@@ -404,23 +404,21 @@ body.light-mode .chatbot-availability strong {
       </div>
       <h2 data-i18n="services-title" style="text-align: center; margin-bottom: 30px;">Professional Focus</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-          
-          <!-- Academic Consulting Card -->
-          <div style="background: rgba(255,255,255,0.03); padding: 25px; border-radius: 20px; border: 1px solid rgba(139, 92, 246, 0.2); backdrop-filter: blur(10px);">
-              <i class="fa-solid fa-microchip" style="color: #8b5cf6; font-size: 2rem; margin-bottom: 15px;"></i>
-              <h3 style="color: #fff;">Academic Consulting</h3>
-              <p style="color: #94a3b8; font-size: 0.9rem;">Expertise in 6G wireless architecture, Federated Learning optimization, and complex Python simulations.</p>
-              <a href="thesis.html" style="color: #38bdf8; text-decoration: none; font-weight: 600;">Explore Research &rarr;</a>
-          </div>
-  
-          <!-- Technical Services Card -->
-          <div style="background: rgba(255,255,255,0.03); padding: 25px; border-radius: 20px; border: 1px solid rgba(56, 189, 248, 0.2); backdrop-filter: blur(10px);">
-              <i class="fa-solid fa-screwdriver-wrench" style="color: #38bdf8; font-size: 2rem; margin-bottom: 15px;"></i>
-              <h3 style="color: #fff;">Technical Services (betterPC)</h3>
-              <p style="color: #94a3b8; font-size: 0.9rem;">High-performance PC building, hardware diagnostic services, and tailored tech consulting for the Greek market.</p>
-              <a href="https://betterpcgreece.github.io" style="color: #38bdf8; text-decoration: none; font-weight: 600;">Visit betterPC &rarr;</a>
-          </div>
-      </div>
+            
+            <div style="background: rgba(255,255,255,0.03); padding: 25px; border-radius: 20px; border: 1px solid rgba(139, 92, 246, 0.2); backdrop-filter: blur(10px);">
+                <i class="fa-solid fa-microchip" style="color: #8b5cf6; font-size: 2rem; margin-bottom: 15px;"></i>
+                <h3 data-i18n="acad-title" style="color: #fff;">Academic Consulting</h3>
+                <p data-i18n="acad-desc" style="color: #94a3b8; font-size: 0.9rem;">Expertise in 6G wireless architecture, Federated Learning optimization, and complex Python simulations.</p>
+                <a href="thesis.html" data-i18n="acad-link" style="color: #38bdf8; text-decoration: none; font-weight: 600;">Explore Research &rarr;</a>
+            </div>
+    
+            <div style="background: rgba(255,255,255,0.03); padding: 25px; border-radius: 20px; border: 1px solid rgba(56, 189, 248, 0.2); backdrop-filter: blur(10px);">
+                <i class="fa-solid fa-screwdriver-wrench" style="color: #38bdf8; font-size: 2rem; margin-bottom: 15px;"></i>
+                <h3 data-i18n="tech-title" style="color: #fff;">Technical Services (betterPC)</h3>
+                <p data-i18n="tech-desc" style="color: #94a3b8; font-size: 0.9rem;">High-performance PC building, hardware diagnostic services, and tailored tech consulting for the Greek market.</p>
+                <a href="https://betterpcgreece.github.io" data-i18n="tech-link" style="color: #38bdf8; text-decoration: none; font-weight: 600;">Visit betterPC &rarr;</a>
+            </div>
+        </div>
     </section>
     <!-- <div id="chatbox"></div>
     <input type="text" id="userInput" placeholder="Ask something...">
@@ -457,7 +455,14 @@ body.light-mode .chatbot-availability strong {
     "node-res": "Resource Allocation",
     "node-dist": "Distributed Intelligence",
     "node-tools": "CVXPY / Gurobi",
-    "node-ds": "Python / Data Science"
+    "node-ds": "Python / Data Science",
+    "services-title": "Professional Focus",
+    "acad-title": "Academic Consulting",
+    "acad-desc": "Expertise in 6G wireless architecture, Federated Learning optimization, and complex Python simulations.",
+    "acad-link": "Explore Research →",
+    "tech-title": "Technical Services (betterPC)",
+    "tech-desc": "High-performance PC building, hardware diagnostic services, and tailored tech consulting for the Greek market.",
+    "tech-link": "Visit betterPC →"
   },
   el: {
     "meta-title": "Στέφανος Βόικος",
@@ -483,7 +488,14 @@ body.light-mode .chatbot-availability strong {
     "node-res": "Κατανομή Πόρων",
     "node-dist": "Κατανεμημένη Νοημοσύνη",
     "node-tools": "CVXPY / Gurobi",
-    "node-ds": "Python / Επιστήμη Δεδομένων"
+    "node-ds": "Python / Επιστήμη Δεδομένων",
+    "services-title": "Επαγγελματική Εστίαση",
+    "acad-title": "Ακαδημαϊκή Συμβουλευτική",
+    "acad-desc": "Εμπειρία σε αρχιτεκτονική 6G, βελτιστοποίηση Federated Learning και πολύπλοκες προσομοιώσεις Python.",
+    "acad-link": "Δείτε την Έρευνα →",
+    "tech-title": "Τεχνικές Υπηρεσίες (betterPC)",
+    "tech-desc": "PC building υψηλών επιδόσεων, διαγνωστικοί έλεγχοι hardware και τεχνικό consulting για την ελληνική αγορά.",
+    "tech-link": "Επίσκεψη στο betterPC →"
   },
   de: {
     "meta-title": "Stefanos Voikos",
@@ -509,7 +521,14 @@ body.light-mode .chatbot-availability strong {
     "node-res": "Ressourcenallokation",
     "node-dist": "Verteilte Intelligenz",
     "node-tools": "CVXPY / Gurobi",
-    "node-ds": "Python / Datenwissenschaft"
+    "node-ds": "Python / Datenwissenschaft",
+    "services-title": "Beruflicher Schwerpunkt",
+    "acad-title": "Akademische Beratung",
+    "acad-desc": "Expertise in 6G-Netzwerkarchitektur, Federated Learning-Optimierung und Python-Simulationen.",
+    "acad-link": "Forschung ansehen →",
+    "tech-title": "Technische Dienste (betterPC)",
+    "tech-desc": "High-Performance PC-Bau, Hardware-Diagnose und technisches Consulting.",
+    "tech-link": "betterPC besuchen →"
   },
   fr: {
     "meta-title": "Stefanos Voikos",
@@ -535,7 +554,14 @@ body.light-mode .chatbot-availability strong {
     "node-res": "Allocation des Ressources",
     "node-dist": "Intelligence Distribuée",
     "node-tools": "CVXPY / Gurobi",
-    "node-ds": "Python / Science des Données"
+    "node-ds": "Python / Science des Données",
+    "services-title": "Focus Professionnel",
+    "acad-title": "Conseil Académique",
+    "acad-desc": "Expertise en architecture réseau 6G, optimisation de Federated Learning et simulations Python.",
+    "acad-link": "Voir la recherche →",
+    "tech-title": "Services Techniques (betterPC)",
+    "tech-desc": "Montage PC haute performance, diagnostic matériel et conseil technique pour le marché grec.",
+    "tech-link": "Visiter betterPC →"
   },
   it: {
     "meta-title": "Stefanos Voikos",
@@ -561,7 +587,14 @@ body.light-mode .chatbot-availability strong {
     "node-res": "Allocazione Risorse",
     "node-dist": "Intelligenza Distribuita",
     "node-tools": "CVXPY / Gurobi",
-    "node-ds": "Python / Scienza dei Dati"
+    "node-ds": "Python / Scienza dei Dati",
+    "services-title": "Focus Professionale",
+        "acad-title": "Consulenza Accademica",
+        "acad-desc": "Competenza in architettura 6G, ottimizzazione Federated Learning e simulazioni Python.",
+        "acad-link": "Vedi Ricerca →",
+        "tech-title": "Servizi Tecnici (betterPC)",
+        "tech-desc": "Assemblaggio PC ad alte prestazioni, diagnostica hardware e consulenza tecnica.",
+        "tech-link": "Visita betterPC →"
   },
   es: {
     "meta-title": "Stefanos Voikos",
@@ -587,7 +620,14 @@ body.light-mode .chatbot-availability strong {
     "node-res": "Asignación de Recursos",
     "node-dist": "Inteligencia Distribuída",
     "node-tools": "CVXPY / Gurobi",
-    "node-ds": "Python / Ciencia de Datos"
+    "node-ds": "Python / Ciencia de Datos",
+    "services-title": "Enfoque Profesional",
+        "acad-title": "Consultoría Académica",
+        "acad-desc": "Experiencia en arquitectura 6G, optimización de Federated Learning y simulaciones Python.",
+        "acad-link": "Ver Investigación →",
+        "tech-title": "Servicios Técnicos (betterPC)",
+        "tech-desc": "Ensamblaje de PC de alto rendimiento, diagnóstico de hardware y consultoría técnica.",
+        "tech-link": "Visitar betterPC →"
   },
   ru: {
     "meta-title": "Стефанос Воикос",
@@ -613,7 +653,14 @@ body.light-mode .chatbot-availability strong {
     "node-res": "Выделение ресурсов",
     "node-dist": "Распределенный интеллект",
     "node-tools": "CVXPY / Gurobi",
-    "node-ds": "Python / Наука о Данных"
+    "node-ds": "Python / Наука о Данных",
+    "services-title": "Профессиональный фокус",
+        "acad-title": "Академический консалтинг",
+        "acad-desc": "Опыт в архитектуре 6G, оптимизации Federated Learning и симуляциях на Python.",
+        "acad-link": "Исследование →",
+        "tech-title": "Технические услуги (betterPC)",
+        "tech-desc": "Сборка мощных ПК, диагностика оборудования и технический консалтинг.",
+        "tech-link": "Перейти на betterPC →"
   },
   pt: {
     "meta-title": "Stefanos Voikos",
@@ -639,7 +686,14 @@ body.light-mode .chatbot-availability strong {
     "node-res": "Alocação de Recursos",
     "node-dist": "Inteligência Distribuída",
     "node-tools": "CVXPY / Gurobi",
-    "node-ds": "Python / Ciência de Dados"
+    "node-ds": "Python / Ciência de Dados",
+    "services-title": "Foco Profissional",
+        "acad-title": "Consultoria Acadêmica",
+        "acad-desc": "Especialização em arquitetura 6G, otimização de Federated Learning e simulações em Python.",
+        "acad-link": "Ver Pesquisa →",
+        "tech-title": "Serviços Técnicos (betterPC)",
+        "tech-desc": "Montagem de PCs de alto desempenho, diagnóstico de hardware e consultoria técnica.",
+        "tech-link": "Visitar betterPC →"
   },
   pl: {
     "meta-title": "Stefanos Voikos",
@@ -665,7 +719,14 @@ body.light-mode .chatbot-availability strong {
     "node-res": "Alokacja zasobów",
     "node-dist": "Inteligencja Rozproszona",
     "node-tools": "CVXPY / Gurobi",
-    "node-ds": "Python / Nauka o Danych"
+    "node-ds": "Python / Nauka o Danych",
+    "services-title": "Profil Zawodowy",
+        "acad-title": "Doradztwo Akademickie",
+        "acad-desc": "Doświadczenie w architekturze 6G, optymalizacji Federated Learning i symulacjach w Pythonie.",
+        "acad-link": "Zobacz badania →",
+        "tech-title": "Usługi Techniczne (betterPC)",
+        "tech-desc": "Budowa wydajnych komputerów PC, diagnostyka sprzętu i doradztwo techniczne.",
+        "tech-link": "Odwiedź betterPC →"
   },
   sv: {
     "meta-title": "Stefanos Voikos",
@@ -691,7 +752,14 @@ body.light-mode .chatbot-availability strong {
     "node-res": "Resursallokering",
     "node-dist": "Distribuerad intelligens",
     "node-tools": "CVXPY / Gurobi",
-    "node-ds": "Python / Datavetenskap"
+    "node-ds": "Python / Datavetenskap",
+    "services-title": "Professionellt fokus",
+        "acad-title": "Akademisk rådgivning",
+        "acad-desc": "Expertis inom 6G-nätverksarkitektur, optimering av federated learning och Python-simuleringar.",
+        "acad-link": "Se forskning →",
+        "tech-title": "Tekniska tjänster (betterPC)",
+        "tech-desc": "Byggnation av högpresterande PC, hårdvarudiagnostik och teknisk rådgivning.",
+        "tech-link": "Besök betterPC →"
   },
   sr: {
     "meta-title": "Стефанос Воикос",
@@ -717,7 +785,14 @@ body.light-mode .chatbot-availability strong {
     "node-res": "Алокација ресурса",
     "node-dist": "Дистрибуирана интелигенција",
     "node-tools": "CVXPY / Gurobi",
-    "node-ds": "Python / Наука о Подацима"
+    "node-ds": "Python / Наука о Подацима",
+    "services-title": "Професионални фокус",
+        "acad-title": "Академско саветовање",
+        "acad-desc": "Експертиза у архитектури 6G мрежа, оптимизацији Federated Learning-а и Python симулацијама.",
+        "acad-link": "Погледајте истраживање →",
+        "tech-title": "Техничке услуге (betterPC)",
+        "tech-desc": "Склапање рачунара високих перформанси, хардверска дијагностика и техничко саветовање.",
+        "tech-link": "Посетите betterPC →"
   },
   bg: {
     "meta-title": "Стефанос Воикос",
@@ -743,7 +818,14 @@ body.light-mode .chatbot-availability strong {
     "node-res": "Разпределение на ресурси",
     "node-dist": "Разпределен интелект",
     "node-tools": "CVXPY / Gurobi",
-    "node-ds": "Python / Наука за Данни"
+    "node-ds": "Python / Наука за Данни",
+    "services-title": "Професионален фокус",
+        "acad-title": "Академично консултиране",
+        "acad-desc": "Експертиза в 6G мрежова архитектура, оптимизация на Federated Learning и Python симулации.",
+        "acad-link": "Вижте изследванията →",
+        "tech-title": "Технически услуги (betterPC)",
+        "tech-desc": "Сглобяване на мощни компютри, хардуерна диагностика и технически консултации.",
+        "tech-link": "Посетете betterPC →"
   },
   ro: {
     "meta-title": "Stefanos Voikos",
@@ -769,7 +851,14 @@ body.light-mode .chatbot-availability strong {
     "node-res": "Alocare de Resurse",
     "node-dist": "Inteligență Distribuită",
     "node-tools": "CVXPY / Gurobi",
-    "node-ds": "Python / Știința Datelor"
+    "node-ds": "Python / Știința Datelor",
+    "services-title": "Focus Profesional",
+        "acad-title": "Consultanță Academică",
+        "acad-desc": "Expertiză în arhitectura rețelelor 6G, optimizarea Federated Learning și simulări Python.",
+        "acad-link": "Vezi cercetarea →",
+        "tech-title": "Servicii Tehnice (betterPC)",
+        "tech-desc": "Construcție PC de înaltă performanță, diagnosticare hardware și consultanță tehnică.",
+        "tech-link": "Vizitează betterPC →"
   },
   sq: {
     "meta-title": "Stefanos Voikos",
@@ -795,7 +884,14 @@ body.light-mode .chatbot-availability strong {
     "node-res": "Alokimi i Burimeve",
     "node-dist": "Inteligjencë e Shpërndarë",
     "node-tools": "CVXPY / Gurobi",
-    "node-ds": "Python / Shkenca e të Dhënave"
+    "node-ds": "Python / Shkenca e të Dhënave",
+    "services-title": "Fokus Profesional",
+        "acad-title": "Konsulencë Akademike",
+        "acad-desc": "Ekspertizë në arkitekturën e rrjeteve 6G, optimizimin e Federated Learning dhe simulimet Python.",
+        "acad-link": "Shiko kërkimin →",
+        "tech-title": "Shërbime Teknike (betterPC)",
+        "tech-desc": "Ndërtim i kompjuterëve me performancë të lartë, diagnostikim hardware dhe konsulencë teknike.",
+        "tech-link": "Vizito betterPC →"
   },
   fa: {
     "meta-title": "استفانوس وویکوس",
@@ -821,7 +917,14 @@ body.light-mode .chatbot-availability strong {
     "node-res": "تخصیص منابع",
     "node-dist": "هوش توزیع‌شده",
     "node-tools": "CVXPY / Gurobi",
-    "node-ds": "پایتون / علوم داده"
+    "node-ds": "پایتون / علوم داده",
+    "services-title": "تمرکز حرفه‌ای",
+        "acad-title": "مشاوره آکادمیک",
+        "acad-desc": "تخصص در معماری شبکه 6G، بهینه‌سازی یادگیری فدرال (Federated Learning) و شبیه‌سازی‌های پایتون.",
+        "acad-link": "مشاهده پژوهش →",
+        "tech-title": "خدمات فنی (betterPC)",
+        "tech-desc": "اسمبل کامپیوترهای با عملکرد بالا، عیب‌یابی سخت‌افزار و مشاوره فنی.",
+        "tech-link": "بازدید از betterPC →"
   },
   ar: {
     "meta-title": "ستيفانوس فويكوس",
@@ -847,7 +950,14 @@ body.light-mode .chatbot-availability strong {
     "node-res": "تخصيص الموارد",
     "node-dist": "الذكاء الموزع",
     "node-tools": "CVXPY / Gurobi",
-    "node-ds": "باثيون / علم البيانات"
+    "node-ds": "باثيون / علم البيانات",
+    "services-title": "التركيز المهني",
+        "acad-title": "استشارات أكاديمية",
+        "acad-desc": "خبرة في هندسة شبكات الجيل السادس (6G)، وتحسين التعلم الاتحادي (Federated Learning)، ومحاكاة بايثون.",
+        "acad-link": "عرض الأبحاث →",
+        "tech-title": "خدمات تقنية (betterPC)",
+        "tech-desc": "تجميع أجهزة كمبيوتر عالية الأداء، فحص الأجهزة، واستشارات تقنية.",
+        "tech-link": "زيارة betterPC →"
   },
   zh: {
     "meta-title": "斯特凡诺斯·沃伊科斯",
@@ -873,7 +983,14 @@ body.light-mode .chatbot-availability strong {
     "node-res": "资源分配",
     "node-dist": "分布式智能",
     "node-tools": "CVXPY / Gurobi",
-    "node-ds": "Python / 数据科学"
+    "node-ds": "Python / 数据科学",
+    "services-title": "职业方向",
+        "acad-title": "学术咨询",
+        "acad-desc": "专注于6G网络架构、联邦学习优化及Python仿真。",
+        "acad-link": "查看研究 →",
+        "tech-title": "技术服务 (betterPC)",
+        "tech-desc": "高性能PC组装、硬件诊断及技术咨询服务。",
+        "tech-link": "访问 betterPC →"
   },
   ja: {
     "meta-title": "ステファノス・ヴォイコス",
@@ -899,7 +1016,14 @@ body.light-mode .chatbot-availability strong {
     "node-res": "リソース割り当て",
     "node-dist": "分散型インテリジェンス",
     "node-tools": "CVXPY / Gurobi",
-    "node-ds": "Python / データサイエンス"
+    "node-ds": "Python / データサイエンス",
+    "services-title": "専門分野",
+        "acad-title": "学術コンサルティング",
+        "acad-desc": "6Gネットワークアーキテクチャ、連合学習の最適化、およびPythonシミュレーションの専門知識。",
+        "acad-link": "研究を見る →",
+        "tech-title": "技術サービス (betterPC)",
+        "tech-desc": "高性能PCの構築、ハードウェア診断、および技術コンサルティング。",
+        "tech-link": "betterPCにアクセス →"
   },
   hi: {
     "meta-title": "स्टेफानोस वोइकोस",
@@ -925,7 +1049,14 @@ body.light-mode .chatbot-availability strong {
     "node-res": "संसाधन आवंटन",
     "node-dist": "वितरित इंटेलिजेंस",
     "node-tools": "CVXPY / Gurobi",
-    "node-ds": "पायथन / डेटा विज्ञान"
+    "node-ds": "पायथन / डेटा विज्ञान",
+    "services-title": "व्यावसायिक फोकस",
+        "acad-title": "अकादमिक परामर्श",
+        "acad-desc": "6G नेटवर्क आर्किटेक्चर, फेडरेटेड लर्निंग ऑप्टिमाइज़ेशन और पायथन सिमुलेशन में विशेषज्ञता।",
+        "acad-link": "अनुसंधान देखें →",
+        "tech-title": "तकनीकी सेवाएँ (betterPC)",
+        "tech-desc": "उच्च-प्रदर्शन पीसी निर्माण, हार्डवेयर डायग्नोस्टिक्स और तकनीकी परामर्श।",
+        "tech-link": "betterPC पर जाएँ →"
   }
 };
 
