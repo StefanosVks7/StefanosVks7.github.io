@@ -198,6 +198,81 @@
       background: #ffffff;
       color: #333333;
     }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 25px;
+      border-radius: 15px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card:hover {
+      transform: translateY(-12px);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: #007bff;
+      box-shadow: 0 15px 30px rgba(0, 123, 255, 0.2);
+    }
+
+    .category-tag {
+      display: inline-block;
+      background: #007bff;
+      font-size: 0.7rem;
+      padding: 4px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    .tech-stack { margin-top: 15px; }
+    
+    .tech-stack span {
+      display: inline-block;
+      padding: 5px 12px;
+      margin: 4px;
+      background: rgba(0, 123, 255, 0.1);
+      border: 1px solid #007bff;
+      color: #fff;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      transition: 0.3s;
+    }
+
+    .tech-stack span:hover {
+      background: #007bff;
+      transform: scale(1.05);
+    }
+
+    .project-card h3 { margin: 10px 0; font-size: 1.2rem; }
+    .project-card p { font-size: 0.9rem; color: #ccc; line-height: 1.5; }
+
+    .project-links {
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .project-links a {
+        color: #007bff;
+        text-decoration: none;
+        font-size: 0.85rem;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+    
+    .project-links a:hover {
+        color: #fff;
+    }
   </style>
 </head>
 <body>
@@ -394,15 +469,22 @@
                     <div class="tech-stack">
                         <span>Python</span> <span>Vue.js</span> <span>Docker</span> <span>D3.js</span> <span>Linux VMs</span> <span>Virtual Objects</span>
                     </div>
+                    <div class="project-links">
+                        <a href="https://dimat-project.eu" target="_blank"><i class="fas fa-external-link-alt"></i>View Platform</a>
+                    </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card highlight-card">
                     <span class="category-tag" data-i18n="tag-6g">6G Research</span>
                     <h3 data-i18n="proj2-title">Hexa-X-II & 6G Architecture</h3>
                     <p data-i18n="proj2-desc">Participation in the design of 6G network architecture, focusing on the integration of computing resources and network (Compute-Network Integration).</p>
                     <div class="tech-stack">
                         <span>6G</span> <span>Resource Allocation</span> <span>Optimization</span>
                     </div>
+                    <div class="project-links">
+                        <a href="https://hexa-x-ii.eu/" target="_blank"><i class="fas fa-external-link-alt"></i>View Platform</a>
+                    </div>
+                  
                 </div>
             </div>
         </section>
