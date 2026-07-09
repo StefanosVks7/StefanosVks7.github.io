@@ -289,12 +289,30 @@ section {
   color: inherit;
 }
 
+/* Προσθήκη κίνησης στα cards */
 .project-card {
-  background: #222;
-  padding: 1rem;
-  margin: 1rem 0;
-  border-radius: 8px;
-  transition: transform 0.3s;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #007bff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Στυλ για τα tech tags */
+.tech-stack span {
+  transition: background 0.3s;
+}
+
+.tech-stack span:hover {
+  background: #007bff;
+  color: white;
 }
 
 .status-badge {
@@ -349,11 +367,6 @@ section {
     font-style: italic;
     color: #ccc;
     margin-bottom: 10px;
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
-  background: #2a2a2a;
 }
 
 .social-icons {
