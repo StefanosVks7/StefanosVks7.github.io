@@ -1175,6 +1175,13 @@ body.light-mode #cta-projects:hover {
         if (dict[key]) el.textContent = dict[key];
       });
 
+      // Μετάφραση placeholders σε πεδία εισαγωγής
+      document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+          const key = el.getAttribute("data-i18n-placeholder");
+          if (dict[key]) {
+              el.placeholder = dict[key];
+          }
+      });
       if (dict["about-p1"]) document.getElementById("about-p1").innerHTML = dict["about-p1"];
       if (dict["about-p2"]) document.getElementById("about-p2").innerHTML = dict["about-p2"];
       
