@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }, { threshold: 0.1 });
-
+ 
     elements.forEach(el => observer.observe(el));
 
     // 2. Initial check for Reveal elements in case they are already in view
