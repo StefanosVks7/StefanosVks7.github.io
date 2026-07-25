@@ -1344,10 +1344,12 @@ async function sendChatMessage() {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer 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',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'HTTP-Referer': 'https://stefanosvks7.github.io',
+                'X-Title': 'Chatbot Stefanos Voikos site'
             },
             body: JSON.stringify({
-                model: 'deepseek/deepseek-r1:free',
+                model: 'openai/gpt-oss-20b:free',
                 messages: [{ role: 'user', content: text }]
             })
         });
