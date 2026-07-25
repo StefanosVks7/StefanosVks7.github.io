@@ -421,24 +421,6 @@ body.light-mode #cta-projects:hover {
           <span data-i18n="cta-projects">See Projects</span>
         </a>
       </div>
-
-      <div id="my-chat-widget">
-    <!-- Το κουμπί που θα φαίνεται κάτω δεξιά -->
-    <button id="chat-toggle-btn" onclick="toggleChat()">💬</button>
-
-    <!-- Το παραθυράκι της συνομιλίας (κρυφό αρχικά) -->
-    <div id="chat-window" style="display: none;">
-        <div id="chat-header">
-            <span>AI Assistant</span>
-            <button onclick="toggleChat()">✕</button>
-        </div>
-        <div id="chat-messages"></div>
-        <div id="chat-input-area">
-            <input type="text" id="chat-user-input" placeholder="Γράψε ένα μήνυμα..." onkeypress="handleKeyPress(event)">
-            <button onclick="sendChatMessage()">Αποστολή</button>
-        </div>
-    </div>
-</div>
       <!-- <h2 data-i18n="services-title" style="text-align: center; margin-bottom: 30px;">Professional Focus</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
             
@@ -499,7 +481,10 @@ body.light-mode #cta-projects:hover {
     "acad-link": "Explore Research →",
     "tech-title": "Technical Services (betterPC)",
     "tech-desc": "High-performance PC building, hardware diagnostic services, and tailored tech consulting for the Greek market.",
-    "tech-link": "Visit betterPC →"
+    "tech-link": "Visit betterPC →",
+    "chat-title": "AI Assistant",
+    "chat-placeholder": "Type a message...",
+    "chat-send": "Send"
   },
   el: {
     "meta-title": "Στέφανος Βόικος",
@@ -532,7 +517,10 @@ body.light-mode #cta-projects:hover {
     "acad-link": "Δείτε την Έρευνα →",
     "tech-title": "Τεχνικές Υπηρεσίες (betterPC)",
     "tech-desc": "PC building υψηλών επιδόσεων, διαγνωστικοί έλεγχοι hardware και τεχνικό consulting για την ελληνική αγορά.",
-    "tech-link": "Επίσκεψη στο betterPC →"
+    "tech-link": "Επίσκεψη στο betterPC →",
+    "chat-title": "Ψηφιακός Βοηθός",
+    "chat-placeholder": "Γράψε ένα μήνυμα...",
+    "chat-send": "Αποστολή"
   },
   de: {
     "meta-title": "Stefanos Voikos",
@@ -565,7 +553,10 @@ body.light-mode #cta-projects:hover {
     "acad-link": "Forschung ansehen →",
     "tech-title": "Technische Dienste (betterPC)",
     "tech-desc": "High-Performance PC-Bau, Hardware-Diagnose und technisches Consulting.",
-    "tech-link": "betterPC besuchen →"
+    "tech-link": "betterPC besuchen →",
+    "chat-title": "KI-Assistent",
+    "chat-placeholder": "Schreiben Sie eine Nachricht...",
+    "chat-send": "Senden"
   },
   fr: {
     "meta-title": "Stefanos Voikos",
@@ -598,7 +589,10 @@ body.light-mode #cta-projects:hover {
     "acad-link": "Voir la recherche →",
     "tech-title": "Services Techniques (betterPC)",
     "tech-desc": "Montage PC haute performance, diagnostic matériel et conseil technique pour le marché grec.",
-    "tech-link": "Visiter betterPC →"
+    "tech-link": "Visiter betterPC →",
+    "chat-title": "Assistant IA",
+    "chat-placeholder": "Écrivez un message...",
+    "chat-send": "Envoyer"
   },
   it: {
     "meta-title": "Stefanos Voikos",
@@ -631,7 +625,10 @@ body.light-mode #cta-projects:hover {
         "acad-link": "Vedi Ricerca →",
         "tech-title": "Servizi Tecnici (betterPC)",
         "tech-desc": "Assemblaggio PC ad alte prestazioni, diagnostica hardware e consulenza tecnica.",
-        "tech-link": "Visita betterPC →"
+        "tech-link": "Visita betterPC →",
+    "chat-title": "Assistente AI",
+    "chat-placeholder": "Scrivi un messaggio...",
+    "chat-send": "Invia"
   },
   es: {
     "meta-title": "Stefanos Voikos",
@@ -664,7 +661,10 @@ body.light-mode #cta-projects:hover {
         "acad-link": "Ver Investigación →",
         "tech-title": "Servicios Técnicos (betterPC)",
         "tech-desc": "Ensamblaje de PC de alto rendimiento, diagnóstico de hardware y consultoría técnica.",
-        "tech-link": "Visitar betterPC →"
+        "tech-link": "Visitar betterPC →",
+    "chat-title": "Asistente de IA",
+    "chat-placeholder": "Escribe un mensaje...",
+    "chat-send": "Enviar"
   },
   ru: {
     "meta-title": "Стефанос Воикос",
@@ -697,7 +697,10 @@ body.light-mode #cta-projects:hover {
         "acad-link": "Исследование →",
         "tech-title": "Технические услуги (betterPC)",
         "tech-desc": "Сборка мощных ПК, диагностика оборудования и технический консалтинг.",
-        "tech-link": "Перейти на betterPC →"
+        "tech-link": "Перейти на betterPC →",
+    "chat-title": "ИИ-помощник",
+    "chat-placeholder": "Введите сообщение...",
+    "chat-send": "Отправить"
   },
   pt: {
     "meta-title": "Stefanos Voikos",
@@ -730,7 +733,10 @@ body.light-mode #cta-projects:hover {
         "acad-link": "Ver Pesquisa →",
         "tech-title": "Serviços Técnicos (betterPC)",
         "tech-desc": "Montagem de PCs de alto desempenho, diagnóstico de hardware e consultoria técnica.",
-        "tech-link": "Visitar betterPC →"
+        "tech-link": "Visitar betterPC →",
+    "chat-title": "Assistente de IA",
+    "chat-placeholder": "Escreva uma mensagem...",
+    "chat-send": "Enviar"
   },
   pl: {
     "meta-title": "Stefanos Voikos",
@@ -763,7 +769,10 @@ body.light-mode #cta-projects:hover {
         "acad-link": "Zobacz badania →",
         "tech-title": "Usługi Techniczne (betterPC)",
         "tech-desc": "Budowa wydajnych komputerów PC, diagnostyka sprzętu i doradztwo techniczne.",
-        "tech-link": "Odwiedź betterPC →"
+        "tech-link": "Odwiedź betterPC →",
+    "chat-title": "Asystent AI",
+    "chat-placeholder": "Wpisz wiadomość...",
+    "chat-send": "Wyślij"
   },
   sv: {
     "meta-title": "Stefanos Voikos",
@@ -796,7 +805,10 @@ body.light-mode #cta-projects:hover {
         "acad-link": "Se forskning →",
         "tech-title": "Tekniska tjänster (betterPC)",
         "tech-desc": "Byggnation av högpresterande PC, hårdvarudiagnostik och teknisk rådgivning.",
-        "tech-link": "Besök betterPC →"
+        "tech-link": "Besök betterPC →",
+    "chat-title": "AI-assistent",
+    "chat-placeholder": "Skriv ett meddelande...",
+    "chat-send": "Skicka"
   },
   sr: {
     "meta-title": "Стефанос Воикос",
@@ -829,7 +841,10 @@ body.light-mode #cta-projects:hover {
         "acad-link": "Погледајте истраживање →",
         "tech-title": "Техничке услуге (betterPC)",
         "tech-desc": "Склапање рачунара високих перформанси, хардверска дијагностика и техничко саветовање.",
-        "tech-link": "Посетите betterPC →"
+        "tech-link": "Посетите betterPC →",
+    "chat-title": "AI асистент",
+    "chat-placeholder": "Упишите поруку...",
+    "chat-send": "Пошаљи"
   },
   bg: {
     "meta-title": "Стефанос Воикос",
@@ -862,7 +877,10 @@ body.light-mode #cta-projects:hover {
         "acad-link": "Вижте изследванията →",
         "tech-title": "Технически услуги (betterPC)",
         "tech-desc": "Сглобяване на мощни компютри, хардуерна диагностика и технически консултации.",
-        "tech-link": "Посетете betterPC →"
+        "tech-link": "Посетете betterPC →",
+    "chat-title": "ИИ асистент",
+    "chat-placeholder": "Въведете съобщение...",
+    "chat-send": "Изпрати"
   },
   ro: {
     "meta-title": "Stefanos Voikos",
@@ -895,7 +913,10 @@ body.light-mode #cta-projects:hover {
         "acad-link": "Vezi cercetarea →",
         "tech-title": "Servicii Tehnice (betterPC)",
         "tech-desc": "Construcție PC de înaltă performanță, diagnosticare hardware și consultanță tehnică.",
-        "tech-link": "Vizitează betterPC →"
+        "tech-link": "Vizitează betterPC →",
+    "chat-title": "Asistent AI",
+    "chat-placeholder": "Scrie un mesaj...",
+    "chat-send": "Trimite"
   },
   sq: {
     "meta-title": "Stefanos Voikos",
@@ -928,7 +949,10 @@ body.light-mode #cta-projects:hover {
         "acad-link": "Shiko kërkimin →",
         "tech-title": "Shërbime Teknike (betterPC)",
         "tech-desc": "Ndërtim i kompjuterëve me performancë të lartë, diagnostikim hardware dhe konsulencë teknike.",
-        "tech-link": "Vizito betterPC →"
+        "tech-link": "Vizito betterPC →",
+    "chat-title": "Asistent AI",
+    "chat-placeholder": "Shkruani një mesazh...",
+    "chat-send": "Dërgo"
   },
   fa: {
     "meta-title": "استفانوس وویکوس",
@@ -961,7 +985,10 @@ body.light-mode #cta-projects:hover {
         "acad-link": "مشاهده پژوهش →",
         "tech-title": "خدمات فنی (betterPC)",
         "tech-desc": "اسمبل کامپیوترهای با عملکرد بالا، عیب‌یابی سخت‌افزار و مشاوره فنی.",
-        "tech-link": "بازدید از betterPC →"
+        "tech-link": "بازدید از betterPC →",
+    "chat-title": "دستیار هوش مصنوعی",
+    "chat-placeholder": "پیامی بنویسید...",
+    "chat-send": "ارسال"
   },
   ar: {
     "meta-title": "ستيفانوس فويكوس",
@@ -994,7 +1021,10 @@ body.light-mode #cta-projects:hover {
         "acad-link": "عرض الأبحاث →",
         "tech-title": "خدمات تقنية (betterPC)",
         "tech-desc": "تجميع أجهزة كمبيوتر عالية الأداء، فحص الأجهزة، واستشارات تقنية.",
-        "tech-link": "زيارة betterPC →"
+        "tech-link": "زيارة betterPC →",
+    "chat-title": "مساعد الذكاء الاصطناعي",
+    "chat-placeholder": "اكتب رسالة...",
+    "chat-send": "إرسال"
   },
   zh: {
     "meta-title": "斯特凡诺斯·沃伊科斯",
@@ -1027,7 +1057,10 @@ body.light-mode #cta-projects:hover {
         "acad-link": "查看研究 →",
         "tech-title": "技术服务 (betterPC)",
         "tech-desc": "高性能PC组装、硬件诊断及技术咨询服务。",
-        "tech-link": "访问 betterPC →"
+        "tech-link": "访问 betterPC →",
+    "chat-title": "AI 助手",
+    "chat-placeholder": "输入消息...",
+    "chat-send": "发送"
   },
   ja: {
     "meta-title": "ステファノス・ヴォイコス",
@@ -1060,7 +1093,10 @@ body.light-mode #cta-projects:hover {
         "acad-link": "研究を見る →",
         "tech-title": "技術サービス (betterPC)",
         "tech-desc": "高性能PCの構築、ハードウェア診断、および技術コンサルティング。",
-        "tech-link": "betterPCにアクセス →"
+        "tech-link": "betterPCにアクセス →",
+    "chat-title": "AIアシスタント",
+    "chat-placeholder": "メッセージを入力...",
+    "chat-send": "送信"
   },
   hi: {
     "meta-title": "स्टेफानोस वोइकोस",
@@ -1093,7 +1129,10 @@ body.light-mode #cta-projects:hover {
         "acad-link": "अनुसंधान देखें →",
         "tech-title": "तकनीकी सेवाएँ (betterPC)",
         "tech-desc": "उच्च-प्रदर्शन पीसी निर्माण, हार्डवेयर डायग्नोस्टिक्स और तकनीकी परामर्श।",
-        "tech-link": "betterPC पर जाएँ →"
+        "tech-link": "betterPC पर जाएँ →",
+    "chat-title": "AI सहायक",
+    "chat-placeholder": "संदेश लिखें...",
+    "chat-send": "भेجें"
   }
 };
 
@@ -1377,6 +1416,20 @@ async function sendChatMessage() {
     }
 }
     </script>
-   
+     <div id="my-chat-widget">
+            <button id="chat-toggle-btn" onclick="toggleChat()">💬</button>
+        
+            <div id="chat-window" style="display: none;">
+                <div id="chat-header">
+                    <span data-i18n="chat-title">AI Assistant</span>
+                    <button onclick="toggleChat()">✕</button>
+                </div>
+                <div id="chat-messages"></div>
+                <div id="chat-input-area">
+                    <input type="text" id="chat-user-input" data-i18n-placeholder="chat-placeholder" placeholder="Γράψε ένα μήνυμα..." onkeypress="handleKeyPress(event)">
+                  <button onclick="sendChatMessage()" data-i18n="chat-send">Αποστολή</button>
+              </div>
+          </div>
+      </div>
 </body>
 </html>
