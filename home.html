@@ -282,6 +282,14 @@ body.light-mode #cta-projects:hover {
     flex-direction: column;
     z-index: 1000;
 }
+    /* Κατάσταση μεγέθυνσης */
+#chat-window.fullscreen-chat {
+    width: 90vw !important;
+    height: 85vh !important;
+    bottom: 5vh !important;
+    right: 5vw !important;
+}
+
 #chat-header {
     background: linear-gradient(135deg, #6366f1, #b9e00b);
     color: white;
@@ -1376,6 +1384,16 @@ body.light-mode #cta-projects:hover {
     win.style.display = win.style.display === 'none' ? 'flex' : 'none';
 }
 
+  let isExpanded = false;
+function toggleChatSize() {
+    const chatWin = document.getElementById('chat-window');
+    isExpanded = !isExpanded;
+    if (isExpanded) {
+        chatWin.classList.add('fullscreen-chat');
+    } else {
+        chatWin.classList.remove('fullscreen-chat');
+    }
+}
 function handleKeyPress(e) {
     if (e.key === 'Enter') sendChatMessage();
 }
@@ -1436,6 +1454,8 @@ async function sendChatMessage() {
             <div id="chat-window" style="display: none;">
                 <div id="chat-header">
                     <span data-i18n="chat-title">AI Assistant</span>
+                    <button onclick="toggleChatSize()" style="background:none; border:none; color:white; cursor:pointer; margin-right:8px;">🗚</button> 
+                    <!-- Ή κάποιο εικονίδιο επέκτασης ⤢ -->
                     <button onclick="toggleChat()">✕</button>
                 </div>
                 <div id="chat-messages"></div>
