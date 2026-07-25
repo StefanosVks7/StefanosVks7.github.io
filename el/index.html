@@ -365,11 +365,11 @@ body.light-mode #cta-projects:hover {
   <div id="mySidebar" class="sidebar">
     <div class="sidebar-content">
       <div class="nav-links" id="sidebar-nav-links">
-        <a href="index.html" data-i18n="nav-home">Home</a>
-        <a href="thesis.html" data-i18n="nav-research">Research & Dissertations</a>
-        <a href="projects.html" data-i18n="nav-projects">Engineering Portfolio, Projects and Research</a>
-        <a href="autobiography.html" data-i18n="nav-bio">Auto-Biography</a>
-        <a href="contact.html" data-i18n="nav-contact">Contact</a>
+        <a href="../index.html" data-i18n="nav-home">Home</a>
+        <a href="../thesis.html" data-i18n="nav-research">Research & Dissertations</a>
+        <a href="../projects.html" data-i18n="nav-projects">Engineering Portfolio, Projects and Research</a>
+        <a href="../autobiography.html" data-i18n="nav-bio">Auto-Biography</a>
+        <a href="../contact.html" data-i18n="nav-contact">Contact</a>
       </div>
       <div class="sidebar-footer">
         <h3 data-i18n="footer-contact">Contact</h3>
@@ -432,11 +432,11 @@ body.light-mode #cta-projects:hover {
       </div>
 
       <div class="cta-container" style="display: flex; gap: 16px; justify-content: center; margin-top: 30px;">
-        <a href="thesis.html" class="btn" id="cta-research">
+        <a href="../thesis.html" class="btn" id="cta-research">
           <i class="fa-solid fa-atom animate-pulse"></i> 
           <span data-i18n="cta-research">View My Research</span>
         </a>
-        <a href="projects.html" class="btn" id="cta-projects">
+        <a href="../projects.html" class="btn" id="cta-projects">
           <i class="fa-solid fa-code"></i> 
           <span data-i18n="cta-projects">See Projects</span>
         </a>
@@ -1159,14 +1159,14 @@ body.light-mode #cta-projects:hover {
     // --- Dynamic D3 Node Declarations globally scoped to adjust dynamically ---
     let rawGraphData = [
       { id: "Stefanos", group: "core", radius: 15, color: "#38bdf8", i18nKey: "node-stefanos" },
-      { id: "6G Networks", group: "pillar", radius: 11, color: "#a78bfa", target: "projects.html#6g", i18nKey: "node-6g" },
-      { id: "Federated Learning", group: "pillar", radius: 11, color: "#f43f5e", target: "projects.html#federated-learning", i18nKey: "node-fl" },
-      { id: "Optimization", group: "pillar", radius: 11, color: "#10b981", target: "projects.html#optimization", i18nKey: "node-opt" },
-      { id: "RIS / Beamforming", group: "tech", radius: 7.5, color: "#c084fc", target: "projects.html#ris", i18nKey: "node-ris" },
-      { id: "Resource Allocation", group: "tech", radius: 7.5, color: "#f472b6", target: "projects.html#resource-allocation", i18nKey: "node-res" },
-      { id: "Distributed Intelligence", group: "tech", radius: 7.5, color: "#fb7185", target: "projects.html#ml", i18nKey: "node-dist" },
-      { id: "CVXPY / Gurobi", group: "tech", radius: 6.5, color: "#34d399", target: "projects.html#tools", i18nKey: "node-tools" },
-      { id: "Python / Data Science", group: "tech", radius: 6.5, color: "#38bdf8", target: "projects.html#tools", i18nKey: "node-ds" }
+      { id: "6G Networks", group: "pillar", radius: 11, color: "#a78bfa", target: "../projects.html#6g", i18nKey: "node-6g" },
+      { id: "Federated Learning", group: "pillar", radius: 11, color: "#f43f5e", target: "../projects.html#federated-learning", i18nKey: "node-fl" },
+      { id: "Optimization", group: "pillar", radius: 11, color: "#10b981", target: "../projects.html#optimization", i18nKey: "node-opt" },
+      { id: "RIS / Beamforming", group: "tech", radius: 7.5, color: "#c084fc", target: "../projects.html#ris", i18nKey: "node-ris" },
+      { id: "Resource Allocation", group: "tech", radius: 7.5, color: "#f472b6", target: "../projects.html#resource-allocation", i18nKey: "node-res" },
+      { id: "Distributed Intelligence", group: "tech", radius: 7.5, color: "#fb7185", target: "../projects.html#ml", i18nKey: "node-dist" },
+      { id: "CVXPY / Gurobi", group: "tech", radius: 6.5, color: "#34d399", target: "../projects.html#tools", i18nKey: "node-tools" },
+      { id: "Python / Data Science", group: "tech", radius: 6.5, color: "#38bdf8", target: "../projects.html#tools", i18nKey: "node-ds" }
     ];
 
     let links = [
