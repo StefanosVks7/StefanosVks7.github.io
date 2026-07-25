@@ -1340,10 +1340,10 @@ async function sendChatMessage() {
 
     // Κλήση API (π.χ. OpenRouter με δωρεάν μοντέλο)
     try {
-        const response = grResponse = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
             method: 'POST',
             headers: {
-                'Authorization': 'Bearer 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', // Βάλε εδώ το κλειδί σου
+                'Authorization': 'Bearer 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',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
