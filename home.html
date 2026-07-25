@@ -1398,6 +1398,25 @@ function handleKeyPress(e) {
     if (e.key === 'Enter') sendChatMessage();
 }
 
+    // Παράδειγμα: Κάθε φορά που ενημερώνεται το chat box σου
+function saveChatHistory() {
+    const chatContainer = document.getElementById("chat-messages"); // Ή όπως αλλιώς λέγεται το container με τα μηνύματα
+    if (chatContainer) {
+        sessionStorage.setItem("chat_history", chatContainer.innerHTML);
+    }
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+    const savedHistory = sessionStorage.getItem("chat_history");
+    if (savedHistory) {
+        const chatContainer = document.getElementById("chat-messages");
+        if (chatContainer) {
+            chatContainer.innerHTML = savedHistory;
+            // Κάνε και ένα auto-scroll κάτω-κάτω αν χρειάζεται
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+    }
+});
 async function sendChatMessage() {
     const inputField = document.getElementById('chat-user-input');
     const messagesContainer = document.getElementById('chat-messages');
