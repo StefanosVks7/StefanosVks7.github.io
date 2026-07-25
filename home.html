@@ -266,14 +266,21 @@ body.light-mode #cta-projects:hover {
     right: 20px;
     width: 320px;
     height: 400px;
-    background: white;
+    /* Η μαγική ιδιότητα για αλλαγή μεγέθους */
+    resize: both; /* Επιτρέπει στον χρήστη να το μεγαλώνει/μικραίνει οριζόντια και κάθετα */
+    overflow: auto; /* Απαραίτητο μαζί με το resize για να δουλέψει σωστά */
+    
+    /* Ορίζουμε και όρια (min/max) για να μην το κάνει τεράστιο ή εξαφανιστεί */
+    min-width: 300px;
+    min-height: 400px;
+    max-width: 600px;
+    max-height: 80vh;
+    background: white; /* Ή το φόντο που έχεις */
     border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
     display: flex;
     flex-direction: column;
-    z-index: 9999;
-    overflow: hidden;
-    font-family: sans-serif;
+    z-index: 1000;
 }
 #chat-header {
     background: linear-gradient(135deg, #6366f1, #b9e00b);
