@@ -113,10 +113,13 @@ body.light-mode .tech-stack span {
 }
 
 /* Status badge (green "Completed") */
-body.light-mode .status-badge {
-  color: #276749;
+body.light-mode .status-badge-completed {
+  color: #327d32;
 }
 
+body.light-mode .status-badge-in-progress {
+  color: #325f7d;
+}
 /* Certification items */
 body.light-mode .cert-item {
   background: rgba(0, 0, 0, 0.03);
@@ -315,7 +318,7 @@ section {
   color: white;
 }
 
-.status-badge {
+.status-badge-completed {
     background-color: #007bff; /* Or a color that fits your theme */
     color: white;
     padding: 4px 10px;
@@ -325,7 +328,16 @@ section {
     margin-bottom: 10px;
     display: inline-block;
 }
-
+.status-badge-in-progress {
+    background-color: #007bff; /* Or a color that fits your theme */
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: inline-block;
+}
  @media (max-width: 600px) {
     /* ...existing rules... */
 
